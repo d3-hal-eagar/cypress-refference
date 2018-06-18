@@ -1,0 +1,1 @@
+placeholder file, .png screenshots of test runs will be stored here

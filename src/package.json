@@ -4,7 +4,10 @@
   "description": "end to end testing with cypress and cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cypress:open": "node_modules/.bin/cypress open",
+    "cypress:headless": "node_modules/.bin/cypress run && echo 'Cypress finished'",
+    "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 && echo 'Cypress finished'",
+    "test": "node_modules/.bin/cypress open"
   },
   "repository": {
     "type": "git",
@@ -22,7 +25,9 @@
   },
   "homepage": "",
   "dependencies": {
-    "cypress": "^2.0.1",
     "cypress-cucumber-preprocessor": "0.2.0"
+  },
+  "devDependencies": {
+    "cypress": "^3.0.1"
   }
 }
