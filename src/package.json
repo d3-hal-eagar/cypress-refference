@@ -4,6 +4,7 @@
   "description": "end to end testing with cypress and cucumber",
   "main": "index.js",
   "scripts": {
+    "start": "node_modules/.bin/cypress run && echo 'Cypress finished'",
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run && echo 'Cypress finished'",
     "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 && echo 'Cypress finished'",
@@ -25,7 +26,7 @@
   },
   "homepage": "",
   "dependencies": {
-    "cypress-cucumber-preprocessor": "0.2.0"
+    "cypress-cucumber-preprocessor": "^1.0.0"
   },
   "devDependencies": {
     "cypress": "^3.0.1"

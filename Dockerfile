@@ -48,13 +48,14 @@ ENV npm_config_unsafe_perm true
 
 WORKDIR /src/
 
-
+RUN mkdir -p /usr/src/cypress
 COPY src/package.json .
-COPY src/cypress ./src
+COPY src/cypress.json .
+COPY src/cypress ./cypress
 RUN npm install
 RUN firefox --version
-RUN $(npm bin)/cypress run --browser chrome
-RUN $(npm bin)/cypress run --browser firefox
+#RUN $(npm bin)/cypress run --browser chrome
+#RUN $(npm bin)/cypress run --browser firefox
 
-# start the application
-CMD ["npm","run cypress:headless"]
+# start the tests
+CMD ["npm","start"]
