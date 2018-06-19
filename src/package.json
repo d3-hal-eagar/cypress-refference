@@ -8,7 +8,8 @@
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run && echo 'Cypress finished'",
     "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 && echo 'Cypress finished'",
-    "test": "node_modules/.bin/cypress open"
+    "test": "node_modules/.bin/cypress open",
+    "runGroup:exampletests": "node_modules/.bin/cypress run --spec 'cypress/integration/exampletests/**/*' && echo 'Cypress finished'"
   },
   "repository": {
     "type": "git",
