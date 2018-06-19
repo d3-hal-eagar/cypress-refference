@@ -1,0 +1,9 @@
+{
+ "projectId": "cwb5ky",
+  "baseUrl": "https://www.google.com",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "cypress/reports/[hash]-cypress-junit-output.xml",
+    "toConsole": true
+  }
+}
