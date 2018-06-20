@@ -1,9 +1,15 @@
 {
  "projectId": "cwb5ky",
-  "baseUrl": "https://www.google.com",
   "reporter": "junit",
   "reporterOptions": {
     "mochaFile": "cypress/reports/[hash]-cypress-junit-output.xml",
-    "toConsole": true
-  }
+    "toConsole": false
+  },
+  "pageLoadTimeout": 100000,
+  "watchForFileChanges": false,
+  "trashAssetsBeforeRuns": false,
+  "video": true,
+  "viewportHeight":	660,
+  "viewportWidth":	1000,
+  "baseURL": "http://localhost:4200"
 }
