@@ -6,3 +6,4 @@ Feature: The Bing
     Given I open Google page
     Then take screenshot named "bing-page"
     Then I see "Bing" in the title
+

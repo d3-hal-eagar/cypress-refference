@@ -4,7 +4,7 @@ Feature: The Google
 
   Scenario: Opening a search engine
     Given I open Google page
-    Then take screenshot
+    And take screenshot
     Then I see "Google" in the title
 
 

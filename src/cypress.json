@@ -8,5 +8,9 @@
   },
   "pageLoadTimeout": 100000,
   "watchForFileChanges": false,
-  "trashAssetsBeforeRuns": false
+  "trashAssetsBeforeRuns": false,
+  "video": true,
+  "viewportHeight":	660,
+  "viewportWidth":	1000,
+  "baseURL": "http://localhost:4200"
 }
