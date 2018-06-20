@@ -1,4 +1,4 @@
-FROM cypress/base:8
+FROM gitreg.systemadmin.com/door3/credmo-infrastructure/docker-cypress-base:latest
 
 ARG FIREFOX_VERSION=57.0.2
 
