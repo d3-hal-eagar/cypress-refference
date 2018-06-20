@@ -25,7 +25,7 @@ RUN wget --no-verbose -O /tmp/firefox.tar.bz2 https://download-installer.cdn.moz
   && rm /tmp/firefox.tar.bz2 \
   && ln -fs /opt/firefox/firefox /usr/bin/firefox
 
-# Add zip utility - it comes in very handy
+# Add zip utility - cypress uses it during install
 RUN apt-get update && apt-get install -y zip
 
 # versions of local tools
