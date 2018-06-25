@@ -57,10 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
-# Genterated report files
-cypress/results/*
-cypress/videos/*
-cypress/screenshots/*
+# Generated report files
+src/cypress/results/
+src/cypress/videos/
+src/cypress/screenshots/
 
 # IDE config
 .idea
