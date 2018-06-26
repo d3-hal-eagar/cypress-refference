@@ -147,3 +147,6 @@ then(`I shall be displayed the Progress Bar with Step3 highlighted in green as s
     cy.get('.progress-section .step.active').should('contain','STEP 2');
     cy.get('.progress-section .step.active').should('contain','STEP 3');
 });
+then(`I shall not be displayed the Progress Bar`, () => {
+    cy.get('.progress-section').should('not.be.visible');
+});
