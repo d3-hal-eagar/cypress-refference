@@ -14,8 +14,7 @@ when(`I am on the ck step1 signup page`, () => {
     cy.visit('/ck/signup').get('.sign-up-page').should('be.visible');
 });
 when(`I am on the ck step2 form page`, () => {
-    // should probably not be sign-up-page
-    cy.visit('/ck/form').get('.sign-up-page').should('be.visible');
+    cy.visit('/ck/form').get('.credit-form-page').should('be.visible');
 });
 when(`I am on the ck step3 confirm page`, () => {
     cy.visit('/ck/confirm').get('.confirm-page').should('be.visible');
