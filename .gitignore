@@ -61,6 +61,8 @@ typings/
 src/cypress/results/
 src/cypress/videos/
 src/cypress/screenshots/
+src/cypress/support/
+src/.Trash-0
 
 # IDE config
 .idea
