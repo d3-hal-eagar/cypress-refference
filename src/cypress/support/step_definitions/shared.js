@@ -11,7 +11,7 @@ then("take screenshot", () =>{
 });
 when('I am on the {string} page', (pageName) => {
     // no host info, so it will use baseURL as set in cypress.json or env variable CYPRESS_baseURL
-    cy.visit('/ck/lp');
+    cy.visit(pageName);
 });
 
 when('I select {string}', (buttonText) => {
