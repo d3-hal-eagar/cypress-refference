@@ -1,5 +1,15 @@
-# cypress-cucumber-example
-Initial example of using Cypress with Cucumber.
+Cypress automated tests with Cucumber specs.
+
+
+##### Required
+
+* git:
+  * (Manually) Go to https://git-scm.com and download the latest version of git.
+  * (homebrew) `brew install git`
+* Nodejs (version 8 or 10):
+  * (Manually) Go to www.nodejs.org and download the latest stable version. (At the moment it is LTS v10)
+  * (homebrew) `brew install node`
+* docker:
 
 install
     
