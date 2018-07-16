@@ -3,27 +3,27 @@
 
 const flow = 'ck/';
 
-given(`I am a user on the ck flow`, () => {
+Given(`I am a user on the ck flow`, () => {
     cy.visit(flow);
 });
 
-when(`I am on the ck landing page`, () => {
+When(`I am on the ck landing page`, () => {
     cy.visit('/ck/lp').get('.landing-page').should('be.visible');
 });
-when(`I am on the ck step1 signup page`, () => {
+When(`I am on the ck step1 signup page`, () => {
     cy.visit('/ck/signup').get('.sign-up-page').should('be.visible');
 });
-when(`I am on the ck step2 form page`, () => {
+When(`I am on the ck step2 form page`, () => {
     cy.visit('/ck/form').get('.credit-form-page').should('be.visible');
 });
-when(`I am on the ck step3 confirm page`, () => {
+When(`I am on the ck step3 confirm page`, () => {
     cy.visit('/ck/confirm').get('.confirm-page').should('be.visible');
 });
-when(`I am on the ck portal page`, () => {
+When(`I am on the ck portal page`, () => {
     cy.visit('/ck/portal/home').get('.portal-page').should('be.visible');
 });
 
-then(`I am displayed the following on the 'Hero Image' block`, () => {
+Then(`I am displayed the following on the 'Hero Image' block`, () => {
     // Logo on the top left corner
     cy.get('.navbar a.navbar-brand').should('be.visible');
     // Background Hero Image
@@ -38,7 +38,7 @@ then(`I am displayed the following on the 'Hero Image' block`, () => {
     cy.url().should('include', '/ck/signup')
 });
 
-then(`I am displayed the following on the 'Free Credit Score is just the beginning.' block`, () => {
+Then(`I am displayed the following on the 'Free Credit Score is just the beginning.' block`, () => {
     // Image on the right side of the block
     cy.get('.landing-page .info-blocks .row:nth-of-type(1) img').should('be.visible');
     // Header: Free Credit Score is just the beginning.
@@ -47,7 +47,7 @@ then(`I am displayed the following on the 'Free Credit Score is just the beginni
     cy.get('.landing-page .info-blocks .row:nth-of-type(1)').contains('As a member, you can see your accounts, your last reported balances and negative items that may be affecting your credit score.');
 });
 
-then(`I am displayed the following on the 'More than a Score' block`, () => {
+Then(`I am displayed the following on the 'More than a Score' block`, () => {
     // Block Header: More than a Score
     cy.get('.landing-page .info-blocks .row:nth-of-type(2)').contains('More than a score');
 
@@ -82,7 +82,7 @@ then(`I am displayed the following on the 'More than a Score' block`, () => {
     cy.get('.landing-page .info-blocks .row:nth-of-type(5)').contains('See what happens to your score when a new account is opened, or a late payment is added.');
 });
 
-then(`I am displayed the following on the 'No Credit Card Required' block`, () => {
+Then(`I am displayed the following on the 'No Credit Card Required' block`, () => {
     // Block Header - No Credit Card Required
     cy.get('.landing-page .info-blocks .row:nth-of-type(6)').contains('No Credit Card Required');
     // Image on the left side of the block
@@ -96,7 +96,7 @@ then(`I am displayed the following on the 'No Credit Card Required' block`, () =
     cy.url().should('include', '/ck/signup')
 });
 
-then(`I am displayed the following on the 'We treat your data as if it was our own.' block`, () => {
+Then(`I am displayed the following on the 'We treat your data as if it was our own.' block`, () => {
 // This block has 2 sections - Security and Privacy and contains the following.
 //     Block Header - "We treat your data as if it was our own
     cy.get('.landing-page .info-blocks .row:nth-of-type(8)').contains('We treat your data as if it was our own');
@@ -115,7 +115,7 @@ then(`I am displayed the following on the 'We treat your data as if it was our o
     cy.get('.landing-page .info-blocks .row:nth-of-type(9)').contains('We do not share your personal information with unaffiliated third parties for their own marketing purposes.');
 });
 
-then(`I am displayed the following on the 'It never hurts to check.' block`, () => {
+Then(`I am displayed the following on the 'It never hurts to check.' block`, () => {
     // Background image
     cy.get('.landing-page .jumbo-content');
 
@@ -128,24 +128,24 @@ then(`I am displayed the following on the 'It never hurts to check.' block`, () 
     cy.url().should('include', '/ck/signup')
 });
 
-then(`I shall be displayed the Progress Bar with Step1 highlighted in green as seen in the design`, () => {
+Then(`I shall be displayed the Progress Bar with Step1 highlighted in green as seen in the design`, () => {
     cy.get('.progress-section .step.active').should('have.length', 1);
     cy.get('.progress-section .step.active').should('contain','STEP 1');
     cy.get('.progress-section .step.active').should('not.contain','STEP 2');
     cy.get('.progress-section .step.active').should('not.contain','STEP 3');
 });
-then(`I shall be displayed the Progress Bar with Step2 highlighted in green as seen in the design`, () => {
+Then(`I shall be displayed the Progress Bar with Step2 highlighted in green as seen in the design`, () => {
     cy.get('.progress-section .step.active').should('have.length', 2);
     cy.get('.progress-section .step.active').should('contain','STEP 1');
     cy.get('.progress-section .step.active').should('contain','STEP 2');
     cy.get('.progress-section .step.active').should('not.contain','STEP 3');
 });
-then(`I shall be displayed the Progress Bar with Step3 highlighted in green as seen in the design`, () => {
+Then(`I shall be displayed the Progress Bar with Step3 highlighted in green as seen in the design`, () => {
     cy.get('.progress-section .step.active').should('have.length', 3);
     cy.get('.progress-section .step.active').should('contain','STEP 1');
     cy.get('.progress-section .step.active').should('contain','STEP 2');
     cy.get('.progress-section .step.active').should('contain','STEP 3');
 });
-then(`I shall not be displayed the Progress Bar`, () => {
+Then(`I shall not be displayed the Progress Bar`, () => {
     cy.get('.progress-section').should('not.be.visible');
 });
