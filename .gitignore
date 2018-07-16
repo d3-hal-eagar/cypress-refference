@@ -57,11 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
-# Generated report files
-src/cypress/results/
-src/cypress/videos/
-src/cypress/screenshots/
-src/cypress/support/
+# Genterated report files
+cypress/results/*
+cypress/videos/*
+cypress/screenshots/*
+src/mochawesome-report
 src/.Trash-0
 
 # IDE config
