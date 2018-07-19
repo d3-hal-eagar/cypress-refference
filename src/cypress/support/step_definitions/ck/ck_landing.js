@@ -3,26 +3,6 @@
 
 const flow = 'ck/';
 
-Given(`I am a user on the ck flow`, () => {
-    cy.visit(flow);
-});
-
-When(`I am on the ck landing page`, () => {
-    cy.visit('/ck/lp').get('.landing-page').should('be.visible');
-});
-When(`I am on the ck step1 signup page`, () => {
-    cy.visit('/ck/signup').get('.sign-up-page').should('be.visible');
-});
-When(`I am on the ck step2 form page`, () => {
-    cy.visit('/ck/form').get('.credit-form-page').should('be.visible');
-});
-When(`I am on the ck step3 confirm page`, () => {
-    cy.visit('/ck/confirm').get('.confirm-page').should('be.visible');
-});
-When(`I am on the ck portal page`, () => {
-    cy.visit('/ck/portal/home').get('.portal-page').should('be.visible');
-});
-
 Then(`I am displayed the following on the 'Hero Image' block`, () => {
     // Logo on the top left corner
     cy.get('.navbar a.navbar-brand').should('be.visible');
@@ -35,7 +15,7 @@ Then(`I am displayed the following on the 'Hero Image' block`, () => {
     cy.get('.landing-page .jumbo.header .jumbo-content .jumbo-content-message h2').contains('No Credit Card Required.');
     // See My Score: Call-to-action button that will take me to the step 1 of the acquisition flow.
     cy.get('.landing-page .jumbo.header .jumbo-content .jumbo-content-message button.cta-button').contains('See my score').click();
-    cy.url().should('include', '/ck/signup')
+    cy.url().should('include', '/ck/signUp')
 });
 
 Then(`I am displayed the following on the 'Free Credit Score is just the beginning.' block`, () => {
@@ -93,7 +73,7 @@ Then(`I am displayed the following on the 'No Credit Card Required' block`, () =
     cy.get('.landing-page .info-blocks .row:nth-of-type(7)').contains('Absolutely! There is no Credit Card Required!');
     // Call-to-action Button - Let's do it*. This will land the user on 1step of acquisition flow.
     cy.get('.landing-page .info-blocks .row:nth-of-type(7) button.cta-button').contains('Let’s do it').click();
-    cy.url().should('include', '/ck/signup')
+    cy.url().should('include', '/ck/signUp')
 });
 
 Then(`I am displayed the following on the 'We treat your data as if it was our own.' block`, () => {
@@ -125,27 +105,5 @@ Then(`I am displayed the following on the 'It never hurts to check.' block`, () 
     cy.get('.landing-page .landing-footer .jumbo-content .jumbo-content-message p').contains('Check your credit reports as often as you want, it won\'t affect your score.');
     // Call-to-action Button - Show my score . This will land the user on Step1 of acquisition flow.
     cy.get('.landing-page .landing-footer .jumbo-content .jumbo-content-message button.cta-button').contains('Show my score').click();
-    cy.url().should('include', '/ck/signup')
-});
-
-Then(`I shall be displayed the Progress Bar with Step1 highlighted in green as seen in the design`, () => {
-    cy.get('.progress-section .step.active').should('have.length', 1);
-    cy.get('.progress-section .step.active').should('contain','STEP 1');
-    cy.get('.progress-section .step.active').should('not.contain','STEP 2');
-    cy.get('.progress-section .step.active').should('not.contain','STEP 3');
-});
-Then(`I shall be displayed the Progress Bar with Step2 highlighted in green as seen in the design`, () => {
-    cy.get('.progress-section .step.active').should('have.length', 2);
-    cy.get('.progress-section .step.active').should('contain','STEP 1');
-    cy.get('.progress-section .step.active').should('contain','STEP 2');
-    cy.get('.progress-section .step.active').should('not.contain','STEP 3');
-});
-Then(`I shall be displayed the Progress Bar with Step3 highlighted in green as seen in the design`, () => {
-    cy.get('.progress-section .step.active').should('have.length', 3);
-    cy.get('.progress-section .step.active').should('contain','STEP 1');
-    cy.get('.progress-section .step.active').should('contain','STEP 2');
-    cy.get('.progress-section .step.active').should('contain','STEP 3');
-});
-Then(`I shall not be displayed the Progress Bar`, () => {
-    cy.get('.progress-section').should('not.be.visible');
+    cy.url().should('include', '/ck/signUp')
 });
