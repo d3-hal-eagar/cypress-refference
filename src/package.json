@@ -4,17 +4,17 @@
   "description": "end to end testing with cypress and cucumber",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/**/*'",
+    "start": "node_modules/.bin/cypress run --spec cypress/integration/ci/**/*",
     "test": "node_modules/.bin/cypress open",
-    "cypress:inprogress": "node_modules/.bin/cypress open --config 'integrationFolder=cypress/integration/inprogress'",
+    "cypress:inprogress": "node_modules/.bin/cypress open --config integrationFolder=cypress/integration/inprogress",
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run",
     "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6",
-    "runGroup:exampletests": "node_modules/.bin/cypress run --spec 'cypress/integration/exampletests/**/*'",
-    "runGroup:ci": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/**/*'",
-    "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/end2end/**/*'",
-    "runGroup:ci-component": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/component/**/*'",
-    "runGroup:inprogress": "node_modules/.bin/cypress run --spec 'cypress/integration/inprogress/**/*'"
+    "runGroup:exampletests": "node_modules/.bin/cypress run --spec cypress/integration/exampletests/**/*",
+    "runGroup:ci": "node_modules/.bin/cypress run --spec cypress/integration/ci/**/*",
+    "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec cypress/integration/ci/end2end/**/*",
+    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/component/**/*",
+    "runGroup:inprogress": "node_modules/.bin/cypress run --spec cypress/integration/inprogress/**/*"
   },
   "repository": {
     "type": "git",
@@ -32,8 +32,11 @@
   },
   "homepage": "",
   "dependencies": {
-    "cypress": "^3.0.1",
-    "cypress-cucumber-preprocessor": "^1.0.0"
+    "cypress": "^3.0.2",
+    "cypress-cucumber-preprocessor": "^1.2.1",
+    "mocha": "^5.2.0",
+    "mochawesome": "^3.0.2",
+    "mochawesome-report-generator": "^3.1.2"
   },
   "devDependencies": {}
 }
