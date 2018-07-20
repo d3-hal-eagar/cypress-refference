@@ -29,5 +29,5 @@ Feature: CK Landing Page
 
   Scenario: Block 6 It never hurts to check.
     Given I am a user on the ck flow
-    When I am on the "ck landing" page
+    When I am on the ck landing page
     Then I am displayed the following on the 'It never hurts to check.' block
