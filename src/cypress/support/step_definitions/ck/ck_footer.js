@@ -12,11 +12,11 @@ Then(`I am displayed ck Footer`, () => {
     cy.get('footer a[href="'+flow+'tos"]').should('be.visible');
 });
 
-Then(`{string} Hyperlinked targets opening in a new tab`, (linkUrl) => {
+Then(/^"(.*?)" Hyperlinked targets opening in a new tab$/, (linkUrl) => {
     cy.get('footer a[href="'+linkUrl+'"][target="_blank"]').should('be.visible');
 });
 
-var siteName = 'TestSite';
+let siteName = 'TestSite';
 Given(/^the siteName is "(.*?)"$/, (providedSiteName) => {
     siteName = providedSiteName;
     cy.log('siteName',siteName)
@@ -46,4 +46,14 @@ Then(/^I am displayed ck Privacy Policy Text$/, () => {
     cy.get('body').contains('Should you have any questions about Privacy, please contact:');
 });
 
-
+Then(`I am displayed the following on the 'right rail'`, () => {
+    cy.get('.sidebar').should('be.visible');
+    // Header:
+    cy.get('.sidebar .row h2').contains('A Truly Free Credit Score');
+    //Description:
+    cy.get('.sidebar .row p').contains(siteName+' is free, forever. We will never ask you for your credit card or payment information.');
+    // Header:
+    cy.get('.sidebar .row h2').contains('Will This Affect My Credit?');
+    //Description:
+    cy.get('.sidebar .row p').contains('Absolutely not! Checking your score on '+siteName+' is a soft inquiry, which will never affect your credit.');
+});
