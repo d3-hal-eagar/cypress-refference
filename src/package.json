@@ -6,15 +6,12 @@
   "scripts": {
     "start": "node_modules/.bin/cypress run --spec cypress/integration/ci/**/*",
     "test": "node_modules/.bin/cypress open",
-    "cypress:inprogress": "node_modules/.bin/cypress open --config integrationFolder=cypress/integration/inprogress",
+    "test:mobile": "node_modules/.bin/cypress open --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile",
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run",
     "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6",
-    "runGroup:exampletests": "node_modules/.bin/cypress run --spec cypress/integration/exampletests/**/*",
-    "runGroup:ci": "node_modules/.bin/cypress run --spec cypress/integration/ci/**/*",
     "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec cypress/integration/ci/end2end/**/*",
-    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/component/**/*",
-    "runGroup:inprogress": "node_modules/.bin/cypress run --spec cypress/integration/inprogress/**/*"
+    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/component/**/*"
   },
   "repository": {
     "type": "git",

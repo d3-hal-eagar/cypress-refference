@@ -2,6 +2,10 @@ Feature: CK Landing Page
 
   As a user when I am on the "ck landing" page then I am displayed the following blocks
 
+  Covers
+  - D3F-219 Build Credit Karma Landing Page
+  - D3F-325 Mobile - Build Credit Karma Landing Page
+
   Scenario: Block 1 Hero Image
     Given I am a user on the ck flow
     When I am on the ck landing page
