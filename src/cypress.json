@@ -20,6 +20,7 @@
     "json": true
   },
   "integrationFolder": "cypress/integration/",
+  "waitForAnimations": true,
   "env": {
     "TESTMODE": "desktop"
   }
