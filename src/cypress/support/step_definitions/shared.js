@@ -67,3 +67,15 @@ When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
 When(/^I have enter invalid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidationFailure) => {
     cy.getElement(formField).type(userInput);
 });
+
+let proprietaryNames = [];
+Given(`the following list of proprietaryNames`, function (dataTable) {
+    proprietaryNames = dataTable.rawTable;
+});
+
+Then(`screen does not contain any proprietaryNames`, function () {
+    for (let rowindex = 0, rows = proprietaryNames.length; rowindex < rows; rowindex++) {
+        cy.log(proprietaryNames[rowindex][0]);
+        cy.get('body').should('not.contain', proprietaryNames[rowindex][0]);
+    }
+});
