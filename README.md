@@ -93,3 +93,4 @@ can be overridden by enviroment variables
     export CYPRESS_VIEWPORT_HEIGHT=600
     export CYPRESS_viewportHeight=600
     export CYPRESS_baseUrl=https://ci.host
+    export CYPRESS_TESTMODE=mobile

@@ -18,6 +18,9 @@
     "inlineAssets": true,
     "html": true,
     "json": true
- },
- "integrationFolder": "cypress/integration/"
+  },
+  "integrationFolder": "cypress/integration/",
+  "env": {
+    "TESTMODE": "mobile"
+  }
 }
