@@ -24,7 +24,7 @@ When(`I am on the ck step3 confirm page`, () => {
 });
 
 When(`I am on the ck portal page`, () => {
-    cy.visit('/ck/portal/home').get('.portal-page').should('be.visible');
+    cy.visit('/ck/portal/home').get('[data-test="portal-nav"]').should('be.visible');
 });
 
 When(`I am on the ck Privacy Policy screen`, () => {
