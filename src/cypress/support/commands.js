@@ -23,3 +23,12 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add("getElement", (dataTest) => {
+    return cy.get('[data-test="'+dataTest+'"]');
+});
+
+Cypress.Commands.add("getFormGroup", (dataTest) => {
+    return cy.getElement(dataTest).closest('.form-group');
+});

@@ -15,7 +15,6 @@ Feature: Header, Footer, Terms of Service and Privacy Policy
     Given I am on the ck step1 signup page
     Then I am displayed siteName in the header
     #Then I am displayed ck Footer
-    #Then I am displayed Copyright, Terms of Service & Privacy Policy in the footer
     And I am displayed "Terms Of Service" Hyperlinked to "/ck/tos"
     And "/ck/tos" Hyperlinked targets opening in a new tab
     And I am displayed "Privacy Policy" Hyperlinked to "/ck/privacy"
