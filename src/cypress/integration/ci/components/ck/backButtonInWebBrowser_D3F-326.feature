@@ -9,19 +9,19 @@ Feature: Back button in the web browser
   Scenario: 1 When the user is on Step1 of acquisition flow in Credit Karma and selects back button on the browser.
     When I am on the ck step1 signup page
     And I select the back button located at the top left corner of the browser
-    Then I am guided to the landing screen
+    Then I am guided to the ck landing page
 
   Scenario: 2a - When the user is on Step2 of acquisition flow in Credit Karma and selects back button on the browser.
     When I am on the ck step2 form page
     And I select the back button located at the top left corner of the browser
-    Then I am on the ck step2 form page
+    Then I am guided to the ck step2 form page
 
   Scenario: 2b - When the user is on Step 3 of acquisition flow in Credit Karma and selects back button on the browser.
     When I am on the ck step3 confirm page
     And I select the back button located at the top left corner of the browser
-    Then I am on the ck step3 confirm page
+    Then I am guided to the ck step3 confirm page
 
   Scenario: 2с - When the user is on the scores screen and selects back button on the browser.
     When I am on the ck portal page
     And I select the back button located at the top left corner of the browser
-    Then I am on the ck portal page
+    Then I am guided to the ck portal page

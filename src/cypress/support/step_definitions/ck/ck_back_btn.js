@@ -9,7 +9,3 @@
 When(`I select the back button located at the top left corner of the browser`, () => {
     cy.go('back');
 });
-
-Then(`I am guided to the landing screen`, () => {
-    cy.url().should('contain','/ck/landing');
-});
