@@ -42,4 +42,3 @@ Feature: Step 1 email tips on hover
     When I focus on the "password" field
     When I hover over "email" address
     Then "email" field attribute title is not visible
-

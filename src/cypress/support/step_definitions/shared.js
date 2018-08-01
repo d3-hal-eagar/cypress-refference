@@ -133,7 +133,7 @@ Then(/^A green checkmark inside the "(.*?)" field is displayed/, function (formF
     cy.getFormGroup(formField).find('i.text-valid').should('have.css', 'color', 'rgb(47, 186, 120)');
 });
 
-Then(/^Shall display no errors as "(.*?)" is not a required field/, function (formField) {
+Then(/^I shall not be displayed any errors or validation markup on non required field "(.*?)"/, function (formField) {
     cy.getFormGroup(formField).find('input.valid').should('not.be.visible');
     cy.getFormGroup(formField).find('input').should('not.have.css', 'border-color', 'rgb(37, 145, 94)');
     cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('not.be.visible');

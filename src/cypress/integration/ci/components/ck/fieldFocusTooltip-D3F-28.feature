@@ -54,7 +54,3 @@ Feature: Step 1 email and password tooltips
 
     When I focus on the "email" field
     Then "password" tooltip is not visible
-
-
-
-

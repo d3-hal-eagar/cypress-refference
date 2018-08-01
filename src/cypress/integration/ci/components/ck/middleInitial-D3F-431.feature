@@ -24,7 +24,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
         # I focus out of the Middle Initial input field
     And I focus on the "step2" field
         # System shall run a validation
-    Then Shall display no errors as "middleInitial" is not a required field
+    Then I shall not be displayed any errors or validation markup on non required field "middleInitial"
 
 #  Validation scenarios for invalid Middle Initial in Step 1 of Experian Acquisition Flow.
 #   Middle Initial input field can contain only 1 alpha character
