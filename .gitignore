@@ -61,8 +61,10 @@ typings/
 src/cypress/results/
 src/cypress/videos/
 src/cypress/screenshots/
-src/cypress/support/
+src/mochawesome-report
 src/.Trash-0
-
+# this is a ghost copy of src/cypress/support/ genreated by the cypress GUI on exit (bug?)
+src/support/
+src/step_definitions/
 # IDE config
 .idea

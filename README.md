@@ -73,6 +73,12 @@ Reports
 
 > if *trashAssetsBeforeRuns* in src/cypress.json is set *true* the video and screenshot folder and all .xml files in reports folder are deleted before test run
     
+when running with --record and sending report data to the cypress.io dashboard the last line of the run will include the url
+of the report, benefits of the dashboard report are integration of video and screencaptures as well as a single report when running multiple specs
+unfortunately there will still be multiple reports if they are run in parallel on different test environments.
+
+    Recorded Run: https://dashboard.cypress.io/#/projects/cwb5ky/runs/4    
+    
 Configuration
 -
 set in src/cypress.json
@@ -86,4 +92,5 @@ can be overridden by enviroment variables
     export CYPRESS_VIEWPORT_WIDTH=800
     export CYPRESS_VIEWPORT_HEIGHT=600
     export CYPRESS_viewportHeight=600
-    export CYPRESS_baseURL=https://ci.host
+    export CYPRESS_baseUrl=https://ci.host
+    export CYPRESS_TESTMODE=mobile
