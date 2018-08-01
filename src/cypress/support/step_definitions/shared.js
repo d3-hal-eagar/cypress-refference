@@ -60,7 +60,7 @@ Then(/^The "(.*?)" field is focused$/, (formField) => {
 });
 
 When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
-    cy.getElement(formField).type(userInput);
+    cy.getElement(formField).clear().type(userInput);
 });
 
 // noinspection JSUnusedLocalSymbols
@@ -79,7 +79,6 @@ Then(`screen does not contain any proprietaryNames`, function () {
         cy.get('body').should('not.contain', proprietaryNames[rowindex][0]);
     }
 });
-
 
 When(/^without entering "(.*?)"$/, (fieldName) => {
 
@@ -122,4 +121,21 @@ When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
 // noinspection JSUnusedLocalSymbols
 When(/^I have enter invalid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidationFailure) => {
     cy.getElement(formField).type(userInput);
+});
+
+Then(/^The "(.*?)" field border is displayed in green/, function (formField) {
+    cy.getFormGroup(formField).find('input.valid').should('be.visible');
+    cy.getFormGroup(formField).find('input').should('have.css', 'border-color', 'rgb(37, 145, 94)');
+});
+
+Then(/^A green checkmark inside the "(.*?)" field is displayed/, function (formField) {
+    cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('be.visible');
+    cy.getFormGroup(formField).find('i.text-valid').should('have.css', 'color', 'rgb(47, 186, 120)');
+});
+
+Then(/^Shall display no errors as "(.*?)" is not a required field/, function (formField) {
+    cy.getFormGroup(formField).find('input.valid').should('not.be.visible');
+    cy.getFormGroup(formField).find('input').should('not.have.css', 'border-color', 'rgb(37, 145, 94)');
+    cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('not.be.visible');
+    cy.getFormGroup(formField).find('i.text-valid').should('not.have.css', 'color', 'rgb(47, 186, 120)');
 });

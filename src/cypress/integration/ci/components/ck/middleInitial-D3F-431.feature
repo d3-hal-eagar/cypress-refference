@@ -1,44 +1,63 @@
 Feature: Middle Initial - Validation Criteria and Error Handling
 
+  Covers D3F-431
+  --------------------
   Validation Criteria:
     - Not a required field.
     - Pattern - "^([A-Za-z]+)$"
     - Middle Initial may only contain 1 letter.
 
-  Scenario: User enters Initial
-    Given: I am a user on ex flow
-    When: I am on Step 1 ex flow
-    And: I enter an Initial 1 character
-    And: I focus out of the Middle Initial input field
-    Then: System shall run a validation
-    And: Outline the input field in green
-    And: Display a green checkmark inside the field
+  Background:
+    Given I am a user on the ex flow
+    Given I am on the ex step1 signup page
 
-  Scenario: User does not enter any character in Middle Initial input field
-    Given: I am a user on ex flow
-    When: I am on Step 1 ex flow
-    And: I do not enter any character in Middle Initial input field
-    And: I focus out of the Middle Initial input field
-    Then: System shall run a validation
-    And: Shall display no errors as it is not a required field
+  Scenario: 1 - User enters Initial
+
+    When I have enter valid "middleInitial" value "A"
+    And I focus on the "step2" field
+    Then The "middleInitial" field border is displayed in green
+    And A green checkmark inside the "middleInitial" field is displayed
+
+  Scenario: 2 - User does not enter any character in Middle Initial input field
+    When I focus on the "middleInitial" field
+        # I do not enter any character in Middle Initial input field
+        # I focus out of the Middle Initial input field
+    And I focus on the "step2" field
+        # System shall run a validation
+    Then Shall display no errors as "middleInitial" is not a required field
 
 #  Validation scenarios for invalid Middle Initial in Step 1 of Experian Acquisition Flow.
 #   Middle Initial input field can contain only 1 alpha character
 
-  Scenario: User enters invalid Middle Initial input field
-    Given: I am a user on ex flow
-    When: I am on Step 1 ex flow
-    And: While entering an invalid Middle Initial - using characters other than - alphabet
-    Then: I shall be displayed an error - "Your middle initial may only contain letters." in red tooltip
-    And: The field is outlined in red color
-    And: Shall display a red warning icon inside the field
+  Scenario: 3 - User enters invalid Middle Initial input field - digits
+        # While entering an invalid Middle Initial - using characters other than - alphabet
+    When I have enter invalid "middleInitial" value "1" that "other than - alphabet"
+    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    And The "middleInitial" field border is outlined in red color
+    And A red warning icon inside the "middleInitial" field is displayed
 
-  Scenario: - User focuses on the input field that is outlined in red
-    Given: I am a user on ex flow
-    When: I am on Step 1 ex flow
-    And: I focus on the input field outlined in red color
-    Then: Cursor is black in color and the error message is displayed -"Your middle initial may only contain letters."
-    When: On entering an alphabet character in the field.
+  Scenario: 3a - User enters invalid Middle Initial input field - symbols
+        # While entering an invalid Middle Initial - using characters other than - alphabet
+    When I have enter invalid "middleInitial" value "&" that "other than - alphabet"
+    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    And The "middleInitial" field border is outlined in red color
+    And A red warning icon inside the "middleInitial" field is displayed
 
-#  If the entered middle initial is correct the field is outlined in green color and a checkmark appears inside the field.
-#  If the entered character is not valid then the field remains outlined in red, with the error mesg displayed and the error icon inside the field.
+  Scenario: 3b - User focuses on the input field that is outlined in red and than enters invalid data again
+    When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
+    And I focus on the "step2" field
+    And I focus on the "middleInitial" field
+    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    When I have enter invalid "middleInitial" value "Ba" that "contain more than 1 letter"
+    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    And The "middleInitial" field border is outlined in red color
+    And A red warning icon inside the "middleInitial" field is displayed
+
+  Scenario: 3c - User focuses on the input field that is outlined in red and than enters valid data
+    When I have enter invalid "middleInitial" value "%" that "other than - alphabet"
+    And I focus on the "step2" field
+    And I focus on the "middleInitial" field
+    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    When I have enter valid "middleInitial" value "Z"
+    Then The "middleInitial" field border is displayed in green
+    And A green checkmark inside the "middleInitial" field is displayed

@@ -12,7 +12,7 @@ When(`I am on the ex landing page`, () => {
 });
 
 When(`I am on the ex step1 signup page`, () => {
-    cy.visit('/ex/signup').get('.sign-up-page').should('be.visible');
+    cy.visit('/ex/signup').get('.signup-page').should('be.visible');
 });
 
 When(`I am on the ex step2 form page`, () => {
