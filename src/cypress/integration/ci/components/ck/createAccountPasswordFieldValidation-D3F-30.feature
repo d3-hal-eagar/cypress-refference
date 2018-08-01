@@ -16,80 +16,81 @@ Feature: Step 1 Create your account fields
   #D3F-30
   Scenario: 1 User enters a password that meets the required password criteria
     When I have enter valid "password" value "asdf1234$RFV"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     And I shall be displayed no error for the "password" field
 
   Scenario: 2 User without entering a Password focuses out of the field
-    When I focus on the "password" field
+    When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "This is a required field"
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
   Scenario: 2a User without entering a Password focuses out of the field, then returns to enter text
-    When I focus on the "password" field
+    When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     And Action detail "User clicks on the error icon and re-focuses field"
     And I click the X Icon on the "password" field
     Then "password" field does not display X Icon
+    Then Check that the "password" field is focused
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
-    Then I have enter into "password" field text "x"
+    Then I enter additional text into "password" field text "x"
     #cursor changes to black (not tested)
     And I shall be displayed no error for the "password" field
 
   Scenario: 2b - When the user focuses back on the Create Password field that has an error
-    When I focus on the "password" field
+    When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "email" field
-    When I focus on the "password" field
+    When I focus on the "section-title" field
+    When I click on the "password" field
     Then "password" field does not display X Icon
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
-    Then I have enter into "password" field text "J"
+    Then I enter additional text into "password" field text "J"
     And I shall be displayed no error for the "password" field
 
   Scenario: 3 User enters a password that does not meet the required minimum character length
     And I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
   Scenario: 3a User enters a password that does not meet the required minimum character length then types more
     And I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
-
     And Action detail "User clicks on the error icon and re-focuses field"
     And I click the X Icon on the "password" field
     Then "password" field does not display X Icon
+    Then Check that the "password" field is focused
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
-    Then I have enter into "password" field text "t"
+    Then I enter additional text into "password" field text "t"
     And I shall be displayed no error for the "password" field
 
   Scenario: 3b User enters a password that does not meet the required minimum character length, then backspaces
     And I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
-
     And Action detail "User clicks on the error icon and re-focuses field"
     And I click the X Icon on the "password" field
+    Then Check that the "password" field is focused
     Then "password" field does not display X Icon
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
-    Then I have enter into "password" field text "{backspace}"
+    Then I enter additional text into "password" field text "{backspace}"
     And I shall be displayed no error for the "password" field
 
   Scenario: 4 User enters a password that is easy to guess
     Given I have enter invalid "password" value "12345678" that "is easy to guess"
-    And I focus on the "email" field
+    And I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Please pick a different password. That one is too easy for someone else to guess."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -98,32 +99,31 @@ Feature: Step 1 Create your account fields
 #  Scenario: 5 User enters email as password.
 #    Given I have enter valid "email" value "testomatic@credmo.com"
 #    When I have enter invalid "password" value "testomatic@credmo.com" that "contains part of the email"
-#    And I focus on the "email" field
+#    And I focus on the "section-title" field
 #    Then I shall be displayed an error for the "password" field - "Please do not use your email as your password."
 #    And "password" field label is displayed in red
 #    And "password" field displays X Icon
 #    #And the characters entered are red in color.
 
-  Scenario: 5a User enters part of their email as password.
+  Scenario: 5a User enters their name from their email as password.
     Given I have enter valid "email" value "testomatic@credmo.com"
     When I have enter invalid "password" value "testomatic" that "contains part of the email"
-    And I focus on the "email" field
+    And I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Password must not include email."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
-  Scenario: 5b User enters part of their email as password.
+  Scenario: 5b User enters the domain from their email as password.
     Given I have enter valid "email" value "testomatic@magicred.com"
     When I have enter invalid "password" value "magicred" that "contains part of the email"
-    And I focus on the "email" field
+    And I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "Password must not include email."
     And "password" field label is displayed in red
     And "password" field displays X Icon
-
 
   Scenario Outline: User enters a valid password
     When I have enter valid "password" value "<userPassword>"
-    When I focus on the "email" field
+    When I focus on the "section-title" field
     And I shall be displayed no error for the "password" field
 
     Examples:
@@ -137,25 +137,28 @@ Feature: Step 1 Create your account fields
     Given I have enter valid "email" value "jimmy.smith@email.myownpoB0x.com"
     When I select the Show button
     When I have enter invalid "password" value "<userPassword>" that "<type_of_error>"
-    And I focus on the "email" field
+    And I focus on the "section-title" field
     Then I shall be displayed an error for the "password" field - "<error_message>"
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
     Examples:
-      | userPassword     | type_of_error              | error_message                                                                     |
-      | jimmy.smith      | contains part of the email | Password must not include email.                                                  |
-      | smith            | contains part of the email | Password must not include email.                                                  |
-      | myownpoB0x       | contains part of the email | Password must not include email.                                                  |
-      | email.myownpoB0x | contains part of the email | Password must not include email.                                                  |
-      | secure           | too short                  | Passwords must be at least 8 characters.                                          |
-      | $EvEn7           | too short                  | Passwords must be at least 8 characters.                                          |
-      | password         | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
-      | 88888888         | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
+      | userPassword        | type_of_error              | error_message                                                                     |
+      | jimmy.smith         | contains part of the email | Password must not include email.                                                  |
+      #| smith               | contains part of the email | Password must not include email.                                                  |
+      | jimmy.smith123      | contains part of the email | Password must not include email.                                                  |
+      #| myownpoB0x          | contains part of the email | Password must not include email.                                                  |
+      | email.myownpoB0x    | contains part of the email | Password must not include email.                                                  |
+      | email.myownpoB0x123 | contains part of the email | Password must not include email.                                                  |
+      | @#$ $               | too short                  | Passwords must be at least 8 characters.                                          |
+      | secure              | too short                  | Passwords must be at least 8 characters.                                          |
+      | $EvEn7              | too short                  | Passwords must be at least 8 characters.                                          |
+      | password            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
+      | 88888888            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
 
   #D3F-32
   Scenario: system shall by default mask the password characters behind bullets, with an option to show the full text
-    When I have enter into "password" field text "LoveG0d!"
+    When I enter additional text into "password" field text "LoveG0d!"
     Then "password" field has masked characters
 
     When I select the Show button

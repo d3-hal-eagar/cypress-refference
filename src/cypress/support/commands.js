@@ -32,3 +32,7 @@ Cypress.Commands.add("getElement", (dataTest) => {
 Cypress.Commands.add("getFormGroup", (dataTest) => {
     return cy.getElement(dataTest).closest('.form-group');
 });
+
+Cypress.Commands.add("getChildElement", (parentDataTest, childDataTest) => {
+    return cy.get('[data-test="'+parentDataTest+'"]').find('[data-test="'+childDataTest+'"]');
+});

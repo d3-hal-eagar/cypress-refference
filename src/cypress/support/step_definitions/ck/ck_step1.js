@@ -39,9 +39,3 @@ Then(/^I click the X Icon on the "(.*?)" field$/, function (formField) {
     // red x oi-circle-x
 });
 
-Then(`I shall be guided to Step 2 screen`, function () {
-    cy.location().should((loc) => {
-        expect(loc.pathname).to.eq('/ck/info')
-    });
-    cy.get('.credit-form-page').should('be.visible');
-});

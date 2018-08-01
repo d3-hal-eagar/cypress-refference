@@ -12,32 +12,27 @@ Feature: Step 1 email tips on hover
 
     #D3F-198
   Scenario: 1 - User hovers over the characters in the email address input field when invalid
-
     When without entering "email"
     When I hover over "email" address
     Then "email" field attribute title is not visible
-
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
     When I focus on the "password" field
     When I hover over "email" address
     Then I am displayed a attribute title on "email" field - "Please include an '@' in the email address. 'userguy' is missing an '@'."
 
   Scenario: User hovers over the characters in the email address input field when it contains no @
-
     When I have enter invalid "email" value "userguy.com" that "does not yet contain @"
     When I focus on the "password" field
     When I hover over "email" address
     Then I am displayed a attribute title on "email" field - "Please include an '@' in the email address. 'userguy.com' is missing an '@'."
 
   Scenario: User hovers over the characters in the email address input field when it lacks domain
-
     And I have enter invalid "email" value "userguy@" that "lacks domain"
     When I focus on the "password" field
     When I hover over "email" address
     Then I am displayed a attribute title on "email" field - "Please enter a part following '@'. 'userguy@' is incomplete."
 
   Scenario: User hovers over the characters in the email address input field when it contains valid data
-
     When I have enter valid "email" value "test@credmo.com"
     When I focus on the "password" field
     When I hover over "email" address
