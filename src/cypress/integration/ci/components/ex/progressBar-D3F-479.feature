@@ -25,4 +25,3 @@ Feature: ex Progress Bar
     Given I am a user on the ex flow
     When I am on the ex step4 verify page
     Then I shall be displayed the ex Progress Bar with Step4 highlighted in green as seen in the design
-
