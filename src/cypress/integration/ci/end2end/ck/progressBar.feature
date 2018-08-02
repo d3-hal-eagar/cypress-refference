@@ -7,9 +7,12 @@ Feature: CK Progress Bar
     Given I am a user on the ck flow
     When I am on the ck landing page
     Then I shall not be displayed the Progress Bar
-    And I select 'See my score'
+    #And I select 'See my score'
+    And I click element "header-signup-button"
     Then I shall be displayed the Progress Bar with Step1 highlighted in green as seen in the design
-    And I select 'Next step'
+    #And I select 'Next Step'
+    And I click element "next-step-button"
     Then I shall be displayed the Progress Bar with Step2 highlighted in green as seen in the design
-    And I select 'Next step'
+    #And I select 'Next Step'
+    And I click element "next-step-button"
     Then I shall be displayed the Progress Bar with Step3 highlighted in green as seen in the design

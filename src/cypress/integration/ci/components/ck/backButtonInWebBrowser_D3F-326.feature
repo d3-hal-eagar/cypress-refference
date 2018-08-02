@@ -9,6 +9,7 @@ Feature: Back button in the web browser
     Given I am on the ck landing page
     Given I am guided to the ck landing page
 
+
   Scenario: 1 When the user is on Step1 of acquisition flow in Credit Karma and selects back button on the browser.
     When I am on the ck step1 signup page
     And I select the back button located at the top left corner of the browser
