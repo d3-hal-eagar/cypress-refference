@@ -16,13 +16,13 @@ Feature: Step 1 Create your account fields
   #D3F-30
   Scenario: 1 User enters a password that meets the required password criteria
     When I have enter valid "password" value "asdf1234$RFV"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     And I shall be displayed no error for the "password" field
 
   Scenario: 2 User without entering a Password focuses out of the field
     When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "This is a required field"
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -30,7 +30,7 @@ Feature: Step 1 Create your account fields
   Scenario: 2a User without entering a Password focuses out of the field, then returns to enter text
     When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     And Action detail "User clicks on the error icon and re-focuses field"
     And I click the X Icon on the "password" field
     Then "password" field does not display X Icon
@@ -44,7 +44,7 @@ Feature: Step 1 Create your account fields
   Scenario: 2b - When the user focuses back on the Create Password field that has an error
     When I click on the "password" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     When I click on the "password" field
     Then "password" field does not display X Icon
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
@@ -53,14 +53,14 @@ Feature: Step 1 Create your account fields
 
   Scenario: 3 User enters a password that does not meet the required minimum character length
     And I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
   Scenario: 3a User enters a password that does not meet the required minimum character length then types more
     And I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -75,7 +75,7 @@ Feature: Step 1 Create your account fields
 
   Scenario: 3b User enters a password that does not meet the required minimum character length, then backspaces
     And I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -123,7 +123,7 @@ Feature: Step 1 Create your account fields
 
   Scenario Outline: User enters a valid password
     When I have enter valid "password" value "<userPassword>"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     And I shall be displayed no error for the "password" field
 
     Examples:

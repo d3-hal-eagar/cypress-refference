@@ -53,3 +53,7 @@ Then(/^I shall not be displayed any errors or validation markup on non required 
     cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('not.be.visible');
     cy.getFormGroup(formField).find('i.text-valid').should('not.have.css', 'color', 'rgb(47, 186, 120)');
 });
+
+Then(/^The "(.*?)" message contains "(.*?)"$/, (element, messageText) => {
+    cy.getElement(element).should('contain', messageText);
+});

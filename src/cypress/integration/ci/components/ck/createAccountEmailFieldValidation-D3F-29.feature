@@ -15,14 +15,14 @@ Feature: Step 1 Create your account fields
   #D3F-29
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed no errors
     And I shall be displayed no error for the "email" field
 #
   Scenario: 2  User without entering an Email Address focuses out of the field
     When I click on the "email" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "email" field - "This is a required field"
     And "email" field label is displayed in red
     And "email" field displays X Icon
@@ -30,7 +30,7 @@ Feature: Step 1 Create your account fields
   Scenario: 2a User without entering a Email Address focuses out of the field, then returns to enter text
     When I click on the "email" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     And Action detail "User clicks on the error icon and re-focuses field"
     And I click the X Icon on the "email" field
     Then "email" field does not display X Icon
@@ -43,7 +43,7 @@ Feature: Step 1 Create your account fields
   Scenario: 2b - User focuses on the Email Address input field that has an error
     When I click on the "email" field
     And Action detail "however, do not input any value"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     When I click on the "email" field
     Then "email" field does not display X Icon
     #Then I am displayed a "email" tooltip - "Your email address will be used to log in to your account." on desktop only
@@ -74,7 +74,7 @@ Feature: Step 1 Create your account fields
 
   Scenario: 3b When the user focuses on the Email Address input field that has the error on it
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
     And "email" field label is displayed in red
     And "email" field displays X Icon
@@ -88,14 +88,14 @@ Feature: Step 1 Create your account fields
 
   Scenario: 4 User enters an email address with typo
     When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
     And "email" field label is displayed in black
     And "email" field displays check Icon
 
   Scenario Outline: User enters an valid email
     When I have enter valid "email" value "<email_entered>"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed no errors
     And I shall be displayed no error for the "email" field
     Examples:
@@ -107,7 +107,7 @@ Feature: Step 1 Create your account fields
 
   Scenario Outline: User enters an invalid email
     When I have enter invalid "email" value "<email_entered>" that "<type_of_error>"
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "email" field - "<error_message>"
 
     Examples:

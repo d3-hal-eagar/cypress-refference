@@ -20,7 +20,7 @@ Feature: CK Focus Tooltip
     Then I am displayed a "firstName" tooltip - "You must provide your full, legal first name." on desktop only
 #    And The First Name input field is outlined in blue #is browser behaviour just check selected
     Then Check that the "firstName" field is focused
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then "firstName" tooltip is not visible
 
 
@@ -28,14 +28,14 @@ Feature: CK Focus Tooltip
     When I click on the "lastName" field
     Then I am displayed a "lastName" tooltip - "You must provide your full, legal last name." on desktop only
     Then Check that the "lastName" field is focused
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then "lastName" tooltip is not visible
 
   Scenario: 3 User on focusing Street Address input field, is displayed a tooltip.
     When I click on the "street1" field
     Then I am displayed a "street1" tooltip - " Moved in the last 6 months? Try using your previous address instead." on desktop only
     Then Check that the "street1" field is focused
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then "street1" tooltip is not visible
 
   Scenario: 4 User on focusing Apartment input field, is displayed a tooltip.
@@ -43,14 +43,14 @@ Feature: CK Focus Tooltip
     When I click on the "street2" field
     Then I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
     Then Check that the "street2" field is focused
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then "street2" tooltip is not visible
 
   Scenario: 5 User on focusing SSN field, is displayed a tooltip.
     When I click on the "ssn3" field
     Then I am displayed a "ssn3" tooltip - "We use your SSN to locate your credit file and retrieve your credit information." on desktop only
     Then Check that the "ssn3" field is focused
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then "ssn3" tooltip is not visible
 
   Scenario: 6 As a user when I focus on any field, the field element is highlighted with a blue outline
@@ -73,5 +73,5 @@ Feature: CK Focus Tooltip
     When I click on the "agreement" field
     Then Check that the "agreement" field is focused
     Then Check that the "agreement" field is checked
-    When I focus on the "section-title" field
+    When I focus on the "next-step-button" field
     Then Check that the "agreement" field is checked
