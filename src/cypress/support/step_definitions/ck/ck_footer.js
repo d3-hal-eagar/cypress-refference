@@ -58,3 +58,8 @@ Then(`I am displayed the following on the 'right rail'`, () => {
     //Description:
     cy.get('.sidebar .row p').contains('Absolutely not! Checking your score on '+siteName+' is a soft inquiry, which will never affect your credit.');
 });
+
+
+Then(/^The "(.*?)" message contains siteName$/, function (element) {
+    cy.getElement(element).should('contain', siteName);
+});
