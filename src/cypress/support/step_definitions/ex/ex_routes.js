@@ -4,6 +4,7 @@
 const flow = 'ex/';
 
 Given(`I am a user on the ex flow`, () => {
+    cy.visit('/');
     cy.visit(flow);
 });
 
