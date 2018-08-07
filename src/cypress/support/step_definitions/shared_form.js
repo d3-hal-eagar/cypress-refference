@@ -31,12 +31,13 @@ Then(/^Check that the "(.*?)" field is focused$/, (formField) => {
 
 Then(/^Check that the "(.*?)" field is not checked/, function (formField) {
     //cy.getElement(formField).should('have.class', 'ng-invalid');
-    cy.get('[data-test='+formField+']:checked').should('not.be.visible');
+    //cy.get('[data-test='+formField+']:checked').should('not.be.visible');
+    cy.getElement(formField).should('not.be.checked');
 });
 
 Then(/^Check that the "(.*?)" field is checked/, function (formField) {
-    //cy.getElement(formField).should('have.class', 'ng-valid');
-    cy.get('[data-test='+formField+']:checked').should('be.visible');
+    //cy.get('[data-test='+formField+']:checked').should('be.visible');
+    cy.getElement(formField).should('be.checked');
 });
 
 When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
@@ -68,4 +69,10 @@ Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
 // noinspection JSUnusedLocalSymbols
 Given(/^Action detail "(.*?)"/, (descriptionText) => {
 
+});
+
+When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" field$/, (lengthLimit,formField) => {
+    cy.getElement(formField).invoke('val').then((text) => {
+        expect(text.length).to.eq(parseInt(lengthLimit));
+    })
 });

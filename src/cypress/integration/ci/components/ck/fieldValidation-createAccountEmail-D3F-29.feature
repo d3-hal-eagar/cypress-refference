@@ -16,7 +16,6 @@ Feature: Step 1 Create your account fields
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
     When I focus on the "next-step-button" field
-    Then I shall be displayed no errors
     And I shall be displayed no error for the "email" field
 #
   Scenario: 2  User without entering an Email Address focuses out of the field

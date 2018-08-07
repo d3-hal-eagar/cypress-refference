@@ -2,6 +2,10 @@ Feature: Step2 info fields
 
   As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
 
+  covers
+  - D3F-37 As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
+  - D3F-338 Mobile - As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
+
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow
     When I am on the ck step2 form page

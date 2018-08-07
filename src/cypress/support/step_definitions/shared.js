@@ -1,5 +1,9 @@
 /* global cy, then, when, given */
 
+Then (/^nothing happens$/, () => {
+
+});
+
 Then(/^I see "(.*?)" in the title$/, (title) => {
     cy.title().should('include', title);
 });
