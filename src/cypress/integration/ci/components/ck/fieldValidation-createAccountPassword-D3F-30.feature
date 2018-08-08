@@ -90,7 +90,7 @@ Feature: Step 1 Create your account fields
 
   Scenario: 4 User enters a password that is easy to guess
     Given I have enter invalid "password" value "12345678" that "is easy to guess"
-    And I focus on the "section-title" field
+    And I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Please pick a different password. That one is too easy for someone else to guess."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -99,7 +99,7 @@ Feature: Step 1 Create your account fields
 #  Scenario: 5 User enters email as password.
 #    Given I have enter valid "email" value "testomatic@credmo.com"
 #    When I have enter invalid "password" value "testomatic@credmo.com" that "contains part of the email"
-#    And I focus on the "section-title" field
+#    And I focus on the "next-step-button" field
 #    Then I shall be displayed an error for the "password" field - "Please do not use your email as your password."
 #    And "password" field label is displayed in red
 #    And "password" field displays X Icon
@@ -108,7 +108,7 @@ Feature: Step 1 Create your account fields
   Scenario: 5a User enters their name from their email as password.
     Given I have enter valid "email" value "testomatic@credmo.com"
     When I have enter invalid "password" value "testomatic" that "contains part of the email"
-    And I focus on the "section-title" field
+    And I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Password must not include email."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -116,7 +116,7 @@ Feature: Step 1 Create your account fields
   Scenario: 5b User enters the domain from their email as password.
     Given I have enter valid "email" value "testomatic@magicred.com"
     When I have enter invalid "password" value "magicred" that "contains part of the email"
-    And I focus on the "section-title" field
+    And I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "Password must not include email."
     And "password" field label is displayed in red
     And "password" field displays X Icon
@@ -137,7 +137,7 @@ Feature: Step 1 Create your account fields
     Given I have enter valid "email" value "jimmy.smith@email.myownpoB0x.com"
     When I select the Show button
     When I have enter invalid "password" value "<userPassword>" that "<type_of_error>"
-    And I focus on the "section-title" field
+    And I focus on the "next-step-button" field
     Then I shall be displayed an error for the "password" field - "<error_message>"
     And "password" field label is displayed in red
     And "password" field displays X Icon
