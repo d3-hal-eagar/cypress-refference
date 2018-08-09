@@ -1,7 +1,6 @@
 /* global cy, then, when, given */
 
 When(/^without entering "(.*?)"$/, (fieldName) => {
-
 });
 
 Then(/^I shall be displayed an error - "(.*?)"$/, (errorText) => {
@@ -12,6 +11,11 @@ Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)"$/, (formFie
     cy.getFormGroup(formField).contains(errorText).should('be.visible');
 });
 
+Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font color$/, (formField,errorText) => {
+    cy.getFormGroup(formField).contains(errorText).should('be.visible');
+    cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
+});
+
 When(/^I focus on the "(.*?)" field$/, (formField) => {
     cy.getElement(formField).focus();
 });
@@ -19,6 +23,7 @@ When(/^I focus on the "(.*?)" field$/, (formField) => {
 When(/^I click on the "(.*?)" field$/, (formField) => {
     cy.getElement(formField).click();
 });
+
 When(/^I click on the "(.*?)" element$/, (formField) => {
     cy.getFormGroup(formField).click('center', { force: true });
 });
@@ -75,4 +80,31 @@ When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" fie
     cy.getElement(formField).invoke('val').then((text) => {
         expect(text.length).to.eq(parseInt(lengthLimit));
     })
+});
+
+// Then(/^The X Icon is displayed inside the "(.*?)" input field$/, function (formField) {
+//     cy.getFormGroup(formField).find('i.oi.oi-circle-x').should('be.visible');
+// });
+
+
+Then(/^I focus and click on X icon inside the "(.*?)" input field$/, function (formField) {
+    cy.getFormGroup(formField).find('i.oi.oi-circle-x').click();
+});
+
+When(/^I have enter invalid "(.*?)" value I see the correct validation error message$/, function (formField,dataTable) {
+    // starting at rowindex 1 to skip header row
+    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+        let userInput = dataTable.rawTable[rowindex][0];
+        let errorType = dataTable.rawTable[rowindex][1];
+        let errorText = dataTable.rawTable[rowindex][2];
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
+        // chained actions clear previous error
+        // re-enter text and check for error
+        cy.getElement(formField).clear().type('valid text').blur()
+          .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
+          .getElement(formField).clear().type(userInput).blur()
+          .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
+    }
+
 });

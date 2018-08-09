@@ -15,6 +15,13 @@ Then(/^"(.*?)" field label is displayed in black/, function (formField) {
     //rgb(73, 80, 87) #495057
 });
 
+Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
+    cy.getFormGroup(formField).find('input').should('have.css', 'color', 'rgb(73, 80, 87)');
+    //rgb(90, 92, 94) #5a5c5e
+    //rgb(64, 66, 69) #404245
+    //rgb(73, 80, 87) #495057
+});
+
 Then(/^"(.*?)" field input is displayed in red$/, function (formField) {
     cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
     cy.getFormGroup(formField).find('label').should('have.css', 'color', 'rgb(220, 53, 69)');
