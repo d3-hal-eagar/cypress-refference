@@ -2,8 +2,7 @@ Feature: Step 2 First Name fields
 
   Is a required field
   First name must be between 1 and 25 characters.
-  consecutive-special - Input cannot have consecutive special characters."
-  Middle initial must only be 1 character.
+  consecutive-special - Input cannot have consecutive special characters.
   Input must begin with a letter- A-Z a-z
 
   - D3F-39 First Name - Validation Criteria & Error Handling
@@ -37,7 +36,7 @@ Feature: Step 2 First Name fields
     And "firstName" field label is displayed in red
     And "firstName" field displays X Icon
     And I click the X Icon on the "firstName" field
-    Then nothing happens
+    Then Check that the "firstName" field is not focused
 
   Scenario: 2b - 2a User without entering any characters focuses out of the First Name field that has an error, then returns to enter text
     When I click on the "firstName" field
@@ -67,7 +66,7 @@ Feature: Step 2 First Name fields
     And "firstName" field displays X Icon
     And "firstName" field input is displayed in red
     And I click the X Icon on the "firstName" field
-    Then nothing happens
+    Then Check that the "firstName" field is not focused
 
   Scenario: 3b User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "that contains a number"
@@ -140,4 +139,7 @@ Feature: Step 2 First Name fields
       | Ilike--mdash      | contains two dashes in a row         | Please enter a valid name. |
       | 'Roid             | does not begin with a letter         | Please enter a valid name. |
 
-    #TODO extended special character test, waiting on D3F-41 merge
+    # performance optimized multi value test
+  Scenario: User enters invalid characters in First Name multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name."
+

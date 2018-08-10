@@ -1,7 +1,7 @@
 /* global cy, then, when, given */
 
 Then (/^nothing happens$/, () => {
-
+   cy.log('this as an assertion probably invalidates the whole test');
 });
 
 Then(/^I see "(.*?)" in the title$/, (title) => {

@@ -22,10 +22,15 @@ Given(/^the siteName is "(.*?)"$/, (providedSiteName) => {
     cy.log('siteName',siteName)
 });
 
+Then(/^The "(.*?)" message contains siteName$/, function (element) {
+    cy.getElement(element).should('contain', siteName);
+});
+
 Then(`I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer`, () => {
     cy.getElement('copyright-text').should('be.visible');
     cy.get('footer').contains('© 2018 '+siteName+'. All Rights Reserved');
 });
+
 
 Then(`I am displayed siteName in the header`, () => {
     cy.get('nav.navbar [data-test="site-link"]').should('contain', siteName);
@@ -47,19 +52,31 @@ Then(/^I am displayed ck Privacy Policy Text$/, () => {
     cy.get('body').contains('Should you have any questions about Privacy, please contact:');
 });
 
-Then(`I am displayed the following on the 'right rail'`, () => {
+
+Then(`I am displayed the correct blocks on the ck Step 1 right rail`, () => {
+    //D3F-217
     cy.get('.sidebar').should('be.visible');
     // Header:
-    cy.get('.sidebar .row h2').contains('A Truly Free Credit Score');
+    cy.get('.sidebar [data-test=score-sidebar-section] h2').contains('A Truly Free Credit Score');
     //Description:
-    cy.get('.sidebar .row p').contains(siteName+' is free, forever. We will never ask you for your credit card or payment information.');
+    cy.get('.sidebar [data-test=score-sidebar-section] p').contains(siteName+' is free, forever. We will never ask you for your credit card or payment information.');
     // Header:
-    cy.get('.sidebar .row h2').contains('Will This Affect My Credit?');
+    cy.get('.sidebar [data-test=credit-sidebar-section] h2').contains('Will This Affect My Credit?');
     //Description:
-    cy.get('.sidebar .row p').contains('Absolutely not! Checking your score on '+siteName+' is a soft inquiry, which will never affect your credit.');
+    cy.get('.sidebar [data-test=credit-sidebar-section] p').contains('Absolutely not! Checking your score on '+siteName+' is a soft inquiry, which will never affect your credit.');
 });
 
+Then(`I am displayed the correct blocks on the ck Step 2 right rail`, () => {
+    //D3F-218
+    cy.get('.sidebar').should('be.visible');
+    // Header:
+    cy.get('.sidebar .row h2').contains('Why Do You Need My Information?');
+    //Description:
+    cy.get('.sidebar .row p').contains('Your information allows us to securely retrieve your credit scores and provide personalized recommendations based on your credit profile. For the best results, avoid nicknames and use full addresses.');
+    // Header:
+    cy.get('.sidebar .row h2').contains('Information Security');
+    //Description:
+    cy.get('.sidebar .row ul li').contains(siteName+' uses 256-bit encryption to secure the transmission of information to our site.');
+    cy.get('.sidebar .row ul li').contains('We do not share your personal information with unaffiliated third parties for their own marketing purposes.');
 
-Then(/^The "(.*?)" message contains siteName$/, function (element) {
-    cy.getElement(element).should('contain', siteName);
 });

@@ -16,7 +16,7 @@ Feature: Step 1 Create your account fields
   Scenario: As a user when I am on Step 1 of acquisition path, I am displayed blocks of information on the right rail
     #D3F-217
     Given the siteName is "NotCreditKarma"
-    Then I am displayed the following on the 'right rail'
+    Then I am displayed the correct blocks on the ck Step 1 right rail
 
     #D3F-27
   Scenario: System applies a blue glow border around active form elements

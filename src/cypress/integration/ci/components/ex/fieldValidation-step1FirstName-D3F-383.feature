@@ -124,7 +124,8 @@ Feature: First Name - Validation Criteria & Error Handling
       | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
       | 'Roid            | does not begin with a letter         | Please enter a valid name. |
 
+   # performance optimized multi value test
+  Scenario: User enters invalid characters in First Name multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name." on ex flow
 
-
-     #TODO extended special character test, waiting on D3F-41 merge
 
