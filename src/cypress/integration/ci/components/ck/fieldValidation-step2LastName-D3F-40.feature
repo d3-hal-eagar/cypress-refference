@@ -108,7 +108,18 @@ Feature: Step 2 Last Name fields
     When I hover over "lastName" address
     Then I am displayed a attribute title on "lastName" field - "Please fill out this field."
 
-  Scenario Outline: User enters an valid email
+  # extended validations
+  Scenario: User enters invalid Last Name with multiple special characters
+    When I have enter invalid "lastName" value "hal--stone" that "contains a number"
+    When I focus on the "next-step-button" field
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+
+  Scenario: User enters invalid Last Name not starting with a letter
+    When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
+    When I focus on the "next-step-button" field
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+
+  Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
     When I focus on the "next-step-button" field
     Then I shall be displayed no errors
@@ -120,7 +131,7 @@ Feature: Step 2 Last Name fields
       | mell-any     |
       | D amore      |
 
-  Scenario Outline: User enters an invalid email
+  Scenario Outline: User enters an invalid lastName
     When I have enter invalid "lastName" value "<name_entered>" that "<type_of_error>"
     When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "lastName" field - "<error_message>"
@@ -133,3 +144,6 @@ Feature: Step 2 Last Name fields
       | userguy@mail.com | does not contain @                   | Please enter a valid name. |
       | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
       | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
+      | 'Roid            | does not begin with a letter         | Please enter a valid name. |
+
+    #TODO extended special character test, waiting on D3F-41 merge

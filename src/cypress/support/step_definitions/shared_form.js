@@ -11,6 +11,10 @@ Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)"$/, (formFie
     cy.getFormGroup(formField).contains(errorText).should('be.visible');
 });
 
+Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
+    cy.getFormGroup(formField).find('.text-danger').should('be.visible');
+});
+
 Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font color$/, (formField,errorText) => {
     cy.getFormGroup(formField).contains(errorText).should('be.visible');
     cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
