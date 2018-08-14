@@ -36,8 +36,39 @@ Given(`the following list of proprietaryNames`, function (dataTable) {
 
 Then(`screen does not contain any proprietaryNames`, function () {
     for (let rowindex = 0, rows = proprietaryNames.length; rowindex < rows; rowindex++) {
-        cy.log(proprietaryNames[rowindex][0]);
-        cy.get('body').should('not.contain', proprietaryNames[rowindex][0]);
+
+        let badName = proprietaryNames[rowindex][0];
+        let badNameTitleCase = proprietaryNames[rowindex][0];
+        badNameTitleCase = badNameTitleCase.replace(/\w\S*/g, function(txt){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+        let badNameLowercase = badName.toLowerCase();
+        let badNameSentenceCase = badNameLowercase.charAt(0).toUpperCase() + badNameLowercase.slice(1);
+        let badNameCram = badName.replace(/\s/g, '');
+        let badNameTitleCaseCram = badNameTitleCase.replace(/\s/g, '');
+        let badNameLowercaseCram = badNameCram.toLowerCase();
+        let badNameSentenceCaseCram = badNameSentenceCase.replace(/\s/g, '');
+        let badNameCamel = badNameTitleCaseCram.charAt(0).toLowerCase() + badNameTitleCaseCram.slice(1);
+
+
+                                     cy.log('badName: '+badName);
+        cy.get('body').should('not.contain', badName);
+                                     cy.log('badNameTitleCase: '+badNameTitleCase);
+        cy.get('body').should('not.contain', badNameTitleCase);
+                                     cy.log('badNameLowercase: '+badNameLowercase);
+        cy.get('body').should('not.contain', badNameLowercase);
+                                     cy.log('badNameSentenceCase: '+badNameSentenceCase);
+        cy.get('body').should('not.contain', badNameSentenceCase);
+                                     cy.log('badNameCram: '+badNameCram);
+        cy.get('body').should('not.contain', badNameCram);
+                                     cy.log('badNameTitleCaseCram: '+badNameTitleCaseCram);
+        cy.get('body').should('not.contain', badNameTitleCaseCram);
+                                     cy.log('badNameLowercaseCram: '+badNameLowercaseCram);
+        cy.get('body').should('not.contain', badNameLowercaseCram);
+                                     cy.log('badNameSentenceCaseCram: '+badNameSentenceCaseCram);
+        cy.get('body').should('not.contain', badNameSentenceCaseCram);
+                                     cy.log('badNameCamel: '+badNameCamel);
+        cy.get('body').should('not.contain', badNameCamel);
     }
 });
 
