@@ -7,7 +7,7 @@ Feature: ex Step 1 Right rail content
 
   Background:
     Given I am a user on the ex flow
-    When I am on the ex step2 form page
+    When I am on the ex step1 signup page
 
 
   Scenario: On the right rail I am displayed information blocks one below the other.
