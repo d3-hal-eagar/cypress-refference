@@ -53,7 +53,7 @@ Feature: Street Address - Validation Criteria & Error Handling
   Scenario: 3b - User focuses on the Street Address input field that has the error "This is a required field"
     When I focus on the "street1" field
     And I focus on the "street2" field
-    And Action detail "I focus on the Street Address input field that has the error - 'This is a required field'"
+    And Action detail "Trigger error state - 'This is a required field'"
     And I focus on the "street1" field
     Then "street1" field does not display X Icon
     And I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
@@ -134,7 +134,7 @@ Feature: Street Address - Validation Criteria & Error Handling
     When I focus on the "street1" field
     And I have enter invalid "street1" value "22 Cortl%nd streeet" that "has an '% symbol"
     And I focus on the "street2" field
-    And Action detail "I focus on the Street Address input field that has the error 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+    And Action detail "Trigger error state - 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
     And I focus on the "street1" field
     Then "street1" field does not display X Icon
     And I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
