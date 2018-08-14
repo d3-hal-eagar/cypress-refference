@@ -1,29 +1,28 @@
 Feature: test pages to ensure proprietary names are removed
 
   Pages will not contain proprietaryNames (list pending)
+  provide the name with spaces
+  Test will check for permutations of the test with
+    - aS iS
+    - aSiS-unspaced
+    - Title Case
+    - TitleCase-Unspaced
+    - lower case
+    - lowercase-unspaced
+    - Sentence case
+    - Sentencecase-unspaced
+    - camelCase
 
   Background:
     Given I am a user on the ck flow
     Given the following list of proprietaryNames
-      | myscore           |
-      | myScore           |
-      | MyScore           |
-      | credit karma      |
-      | Credit Karma      |
-      | creditkarma       |
-      | CreditKarma       |
-      | experian          |
-      | Experian          |
-      | lendingtree       |
-      | LendingTree       |
-      | lending tree      |
-      | Lending Tree      |
-      | lendingtree       |
-      | LendingTree       |
-      | CheckFreeScore    |
-      | checkfreescore    |
-#      | credmo            |
-#      | Credmo            |
+      | Lending Tree     |
+      | Credit Sesame    |
+      | MyScore          |
+      | Experian         |
+      | Check Free Score |
+      | Credit Karma     |
+#      | Credmo           |
 
 
   Scenario: No proprietaryNames are displayed on the landing page
