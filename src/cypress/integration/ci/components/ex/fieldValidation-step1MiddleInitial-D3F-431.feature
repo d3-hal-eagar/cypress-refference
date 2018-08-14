@@ -14,7 +14,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
   Scenario: 1 - User enters Initial
 
     When I have enter valid "middleInitial" value "A"
-    And I focus on the "step2" field
+    And I click on the "step2" field
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
 
@@ -22,7 +22,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
     When I focus on the "middleInitial" field
         # I do not enter any character in Middle Initial input field
         # I focus out of the Middle Initial input field
-    And I focus on the "step2" field
+    And I click on the "step2" field
         # System shall run a validation
     Then I shall not be displayed any errors or validation markup on non required field "middleInitial"
 
@@ -45,7 +45,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 3b - User focuses on the input field that is outlined in red and than enters invalid data again
     When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
-    And I focus on the "step2" field
+    And I click on the "step2" field
     And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     When I have enter invalid "middleInitial" value "Ba" that "contain more than 1 letter"
@@ -55,7 +55,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 3c - User focuses on the input field that is outlined in red and than enters valid data
     When I have enter invalid "middleInitial" value "%" that "other than - alphabet"
-    And I focus on the "step2" field
+    And I click on the "step2" field
     And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     When I have enter valid "middleInitial" value "Z"

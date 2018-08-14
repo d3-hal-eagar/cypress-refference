@@ -5,6 +5,7 @@ Feature: ex Progress Bar
   Covers
   - D3F-479 Progress Bar Indicator on Step1, 2, 3 & 4
   - D3F-481 Mobile - Progress Bar Indicator on Step1, 2, 3 & 4
+  - D3F-632 Mobile - Progress Bar Indicator on Step1, 2, 3 & 4
 
   Scenario: Progress Bar as user navigates flow
     Given I am a user on the ex flow

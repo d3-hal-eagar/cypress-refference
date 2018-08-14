@@ -2,21 +2,24 @@
 /// <reference types="Cypress" />
 
 const flow = 'ck/';
+const errorRed = 'rgb(220, 53, 69)';
+const textBlack = 'rgb(73, 80, 87)';
+const textDark = 'rgb(90, 92, 94)';
 
 Then(/^"(.*?)" field label is displayed in red$/, function (formField) {
     cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', 'rgb(220, 53, 69)');
+    cy.getFormGroup(formField).find('label').should('have.css', 'color', errorRed);
 });
 
 Then(/^"(.*?)" field label is displayed in black/, function (formField) {
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', 'rgb(90, 92, 94)');
+    cy.getFormGroup(formField).find('label').should('have.css', 'color', textDark);
     //rgb(90, 92, 94) #5a5c5e
     //rgb(64, 66, 69) #404245
     //rgb(73, 80, 87) #495057
 });
 
 Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
-    cy.getFormGroup(formField).find('input').should('have.css', 'color', 'rgb(73, 80, 87)');
+    cy.getFormGroup(formField).find('input').should('have.css', 'color', textBlack);
     //rgb(90, 92, 94) #5a5c5e
     //rgb(64, 66, 69) #404245
     //rgb(73, 80, 87) #495057
@@ -24,7 +27,7 @@ Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
 
 Then(/^"(.*?)" field input is displayed in red$/, function (formField) {
     cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', 'rgb(220, 53, 69)');
+    cy.getFormGroup(formField).find('label').should('have.css', 'color', errorRed);
 });
 
 Then(/^"(.*?)" field displays X Icon$/, function (formField) {

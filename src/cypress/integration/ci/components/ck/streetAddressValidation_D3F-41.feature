@@ -5,14 +5,10 @@ Feature: Street Address - Validation Criteria & Error Handling
 
   Validation Criteria:
   - Is a required field.
-  - Min length of 2 characters and Max length of 100 characters
+  - Min length of 1 characters and Max length of 100 characters
   - Street address may only contain
+  - contains only Letters, numbers, commas, dashes, number signs, and spaces.
 
-  1.Letters, numbers, commas, dashes, number signs, and spaces.
-  2. Address must be between 1 and 100 characters in length.
-  3. Cities may only contain letters and spaces.
-  4. States may only contain letters and spaces.
-  5. Zip codes must be exactly 5 digits long.
 
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow

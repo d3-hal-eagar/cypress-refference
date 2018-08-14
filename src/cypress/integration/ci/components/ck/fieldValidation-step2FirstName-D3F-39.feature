@@ -52,15 +52,7 @@ Feature: Step 2 First Name fields
     And I shall be displayed no error for the "firstName" field
 
   Scenario: 3 User enters invalid First Name
-    When I have enter invalid "firstName" value "3#" that "contains a number"
-    When I click on the "section-title" field
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
-    And "firstName" field label is displayed in red
-    And "firstName" field displays X Icon
-    And "firstName" field input is displayed in red
-
-  Scenario: 3 User enters invalid First Name
-    When I have enter invalid "firstName" value "2" that "contains a number"
+    When I have enter invalid "firstName" value "4ork" that "contains a number"
     When I click on the "section-title" field
     Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
     And "firstName" field label is displayed in red
@@ -86,7 +78,7 @@ Feature: Step 2 First Name fields
     And "firstName" field input is displayed in red
     Then I enter additional text into "firstName" field text "ly"
     And I shall be displayed no error for the "firstName" field
-    When I have enter valid "firstName" value "fork-spelled-with-four"
+    When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
     And "firstName" field label is displayed in black
     And I shall be displayed no error for the "firstName" field
 
@@ -110,7 +102,18 @@ Feature: Step 2 First Name fields
     When I hover over "firstName" address
     Then I am displayed a attribute title on "firstName" field - "Please fill out this field."
 
-  Scenario Outline: User enters an valid email
+  # extended validations
+  Scenario: User enters invalid First Name with multiple special characters
+    When I have enter invalid "firstName" value "hal--stone" that "contains a number"
+    When I focus on the "next-step-button" field
+    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
+
+  Scenario: User enters invalid First Name not starting with a letter
+    When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
+    When I focus on the "next-step-button" field
+    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
+
+  Scenario Outline: User enters an valid firstName
     When I have enter valid "firstName" value "<name_entered>"
     When I focus on the "next-step-button" field
     Then I shall be displayed no errors
@@ -122,7 +125,7 @@ Feature: Step 2 First Name fields
       | mell-any     |
       | D amore      |
 
-  Scenario Outline: User enters an invalid email
+  Scenario Outline: User enters an invalid firstName
     When I have enter invalid "firstName" value "<name_entered>" that "<type_of_error>"
     When I focus on the "next-step-button" field
     Then I shall be displayed an error for the "firstName" field - "<error_message>"
@@ -135,3 +138,6 @@ Feature: Step 2 First Name fields
       | userguy@mail.com  | does not contain @                   | Please enter a valid name. |
       | Jimmy  John       | contains two spaces in a row         | Please enter a valid name. |
       | Ilike--mdash      | contains two dashes in a row         | Please enter a valid name. |
+      | 'Roid             | does not begin with a letter         | Please enter a valid name. |
+
+    #TODO extended special character test, waiting on D3F-41 merge
