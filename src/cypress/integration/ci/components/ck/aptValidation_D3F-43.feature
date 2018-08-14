@@ -47,6 +47,7 @@ Feature: Apartment - Validation Criteria & Error Handling
       | apartment_entered | type_of_err      | err_message                                                                                 |
       | 22/ C             | has a '/' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22' A             | has a ''' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22. A             | has a '.' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
     # performance optimized multi value test
     # benefit fast test execution
@@ -101,7 +102,7 @@ Feature: Apartment - Validation Criteria & Error Handling
     When I focus on the "street2" field
     And I have enter invalid "street2" value "22%n" that "has an '% symbol"
     And I focus on the "street2" field
-    And Action detail "Trigger error state 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+    And Action detail "Trigger error state - 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
     And I focus on the "street2" field
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
@@ -119,6 +120,6 @@ Feature: Apartment - Validation Criteria & Error Handling
     Then I shall be displayed no error for the "street2" field
     Examples:
       | apartment_entered | testing_character |
-      | 22,b  | commas            |
-      | #11  | number signs      |
-      | 22-A | hyphen (-)        |
+      | 22,b              | commas            |
+      | #11               | number signs      |
+      | 22-A              | hyphen (-)        |
