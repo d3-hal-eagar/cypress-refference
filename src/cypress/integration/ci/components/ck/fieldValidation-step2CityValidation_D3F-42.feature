@@ -1,7 +1,8 @@
 Feature: City - Validation Criteria and Error Handling
 
-  D3F-42
-  Validation scenarios for City input field in Step 2 of Acquisition Flow.
+  D3F-42 Validation scenarios for City input field in Step 2 of Acquisition Flow.
+  D3F-360 Mobile - City - Validation Criteria and Error Handling
+  D3F-820 City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
 
   Validation Rules:
   - Is a required field.
@@ -51,6 +52,18 @@ Feature: City - Validation Criteria and Error Handling
     #  Validation scenarios for invalid City in Step 2 of Acquisition Flow.
     #  User can enter only letters and space in the city input field.
 
+  # extended validations
+  Scenario Outline: 1 - User enters valid City
+    When I focus on the "city" field
+    And I have enter valid "city" value "<city_entered>"
+    And I focus on the "street2" field
+    Then I shall be displayed no error for the "city" field
+    Examples:
+      | city_entered             |
+      | San Diego                |
+      | Martha's Vineyard        |
+
+
   Scenario Outline: 4 - User enters invalid City.
     When I focus on the "city" field
     And I have enter invalid "city" value "<city_entered>" that "<type_of_error>"
@@ -59,10 +72,12 @@ Feature: City - Validation Criteria and Error Handling
     And "city" field label is displayed in red
     And "city" field input is displayed in red
     Examples:
-      | city_entered | type_of_error     | error_message                               |
-      | New / York   | has a '/' symbol  | Cities may only contain letters and spaces. |
-      | New \\ York  | has a '\\' symbol | Cities may only contain letters and spaces. |
-      | New ' York   | has a ''' symbol  | Cities may only contain letters and spaces. |
+      | city_entered             | type_of_error               | error_message                               |
+      | New / York               | has a '/' symbol            | Cities may only contain letters and spaces. |
+      | New \\ York              | has a '\\' symbol           | Cities may only contain letters and spaces. |
+      | San José                 | has a extended latin symbol | Cities may only contain letters and spaces. |
+      | St. Louis                | has a '.' symbol            | Cities may only contain letters and spaces. |
+      | Winchester-on-the-Severn | has a '-' symbol            | Cities may only contain letters and spaces. |
 
     # performance optimized multi value test
     # benefit fast test execution

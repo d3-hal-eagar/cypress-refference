@@ -3,6 +3,7 @@ Feature: Street Address - Validation Criteria & Error Handling
   covers
     - D3F-41 Validation scenarios for Street Address input field in Step 2 of Acquisition Flow.
     - D3F-359 Mobile - Street Address - Validation Criteria & Error Handling
+    - D3F-820 City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
 
   Validation Criteria:
   - Is a required field.
@@ -62,6 +63,20 @@ Feature: Street Address - Validation Criteria & Error Handling
     And "street1" field input is displayed in black
     And I shall be displayed no error for the "street1" field
 
+  # extended validations
+  Scenario Outline: 1 - User enters valid City
+    When I focus on the "street1" field
+    And I have enter valid "street1" value "<street_entered>"
+    And I focus on the "street1" field
+    Then I shall be displayed no error for the "city" field
+    Examples:
+      | street_entered                |
+      | 42nd st.                      |
+      | Scholars' Walk                |
+      | High Lane #44                 |
+      | 22 Cortand street, suite 1103 |
+      | 41-45 45th st                 |
+
   # Validation scenarios for Street Address input field when user enters invalid address.
 
   Scenario Outline: 4 - User enters invalid Street Address
@@ -76,7 +91,6 @@ Feature: Street Address - Validation Criteria & Error Handling
       | street_address_entered | type_of_err       | err_message                                                                                 |
       | 22 Cortland / street   | has a '/' symbol  | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22 Cortland \\ street  | has a '\\' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 Cortland ' street   | has a ''' symbol  | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
     # performance optimized multi value test
     # benefit fast test execution
@@ -97,7 +111,7 @@ Feature: Street Address - Validation Criteria & Error Handling
   Scenario: User enters invalid characters in Street Address multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "some st" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
 
-  Scenario: 4a - User clicks on the error icon and clicks on it.
+  Scenario: 4a - User clicks on the error icon
     When I focus on the "street1" field
     And I have enter invalid "street1" value "22 Cortl@nd streeet" that "has an '@' symbol"
     And I focus on the "street2" field
