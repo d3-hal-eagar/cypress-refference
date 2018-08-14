@@ -59,7 +59,7 @@ Feature: Apartment - Validation Criteria & Error Handling
     When I have enter invalid "street2" value I see the correct validation error message
       | apartment_entered | type_of_err                    | err_message                                                                                 |
       | 22 !T             | has a ! symbol                 | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | D\/ 2             | has a '\/' symbol              | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | D\\ 2             | has a '\\' symbol              | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22 [T             | has a '[' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22]T              | has a ']' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22&T              | has a '&' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
@@ -101,7 +101,7 @@ Feature: Apartment - Validation Criteria & Error Handling
     When I focus on the "street2" field
     And I have enter invalid "street2" value "22%n" that "has an '% symbol"
     And I focus on the "street2" field
-    And Action detail "I focus on the Apartment input field that has the error 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."'"
+    And Action detail "Trigger error state 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
     And I focus on the "street2" field
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
