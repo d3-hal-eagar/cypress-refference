@@ -31,7 +31,7 @@ Feature: City - Validation Criteria and Error Handling
   Scenario: 2a - User focuses back on the City field that has the error - "This is a required field."
     When I focus on the "city" field
     And I focus on the "street2" field
-    And Action detail "I focus back on City input field that has the error - 'This is a required field'"
+    And Action detail "Trigger error state 'This is a required field'"
     And I focus on the "city" field
     Then I shall be displayed an error for the "city" field - "This is a required field" in red font color
     And "city" field label is displayed in red
@@ -62,7 +62,7 @@ Feature: City - Validation Criteria and Error Handling
       | city_entered | type_of_error    | error_message                               |
       | New! York    | has a '!' symbol | Cities may only contain letters and spaces. |
       | New / York   | has a '/' symbol | Cities may only contain letters and spaces. |
-      | New \ York   | has a '\' symbol | Cities may only contain letters and spaces. |
+      | New \\ York   | has a '\\' symbol | Cities may only contain letters and spaces. |
       | New ' York  | has a ''' symbol | Cities may only contain letters and spaces. |
 
     # performance optimized multi value test
