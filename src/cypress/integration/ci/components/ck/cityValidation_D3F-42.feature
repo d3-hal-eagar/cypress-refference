@@ -31,7 +31,7 @@ Feature: City - Validation Criteria and Error Handling
   Scenario: 2a - User focuses back on the City field that has the error - "This is a required field."
     When I focus on the "city" field
     And I focus on the "street2" field
-    And Action detail "I focus back on City input field that has the error - 'This is a required field'"
+    And Action detail "Trigger error state - 'This is a required field'"
     And I focus on the "city" field
     Then I shall be displayed an error for the "city" field - "This is a required field" in red font color
     And "city" field label is displayed in red
@@ -59,11 +59,10 @@ Feature: City - Validation Criteria and Error Handling
     And "city" field label is displayed in red
     And "city" field input is displayed in red
     Examples:
-      | city_entered | type_of_error    | error_message                               |
-      | New! York    | has a '!' symbol | Cities may only contain letters and spaces. |
-      | New / York   | has a '/' symbol | Cities may only contain letters and spaces. |
-      | New \ York   | has a '\' symbol | Cities may only contain letters and spaces. |
-      | New ' York  | has a ''' symbol | Cities may only contain letters and spaces. |
+      | city_entered | type_of_error     | error_message                               |
+      | New / York   | has a '/' symbol  | Cities may only contain letters and spaces. |
+      | New \\ York  | has a '\\' symbol | Cities may only contain letters and spaces. |
+      | New ' York   | has a ''' symbol  | Cities may only contain letters and spaces. |
 
     # performance optimized multi value test
     # benefit fast test execution
@@ -78,6 +77,9 @@ Feature: City - Validation Criteria and Error Handling
     When I have enter invalid "city" value I see the correct validation error message
       | city_entered    | type_of_error                  | error_message                               |
       | New 45 York     | has a number                   | Cities may only contain letters and spaces. |
+      | New! York       | has a '!' symbol               | Cities may only contain letters and spaces. |
+      | New. York       | has a '.' symbol               | Cities may only contain letters and spaces. |
+      | New, York       | has a ',' symbol               | Cities may only contain letters and spaces. |
       | New ] York      | has a ']' symbol               | Cities may only contain letters and spaces. |
       | New & York      | has a '&' symbol               | Cities may only contain letters and spaces. |
       | New @ York      | has a '@' symbol               | Cities may only contain letters and spaces. |
@@ -107,11 +109,10 @@ Feature: City - Validation Criteria and Error Handling
       | New ✉ York      | has a emoji symbol             | Cities may only contain letters and spaces. |
 
   Scenario: 4b - User focuses on the City input field that has the error "Cities may only contain letters and spaces."
-  Scenario: 4b - User focuses on the Street Address input field that has the error "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
     When I focus on the "city" field
     And I have enter invalid "city" value "New &York" that "has an '&' symbol"
     And I focus on the "street2" field
-    And Action detail "I focus on the City input field that has the error - 'Cities may only contain letters and spaces.'"
+    And Action detail "Trigger error state - 'Cities may only contain letters and spaces.'"
     And I focus on the "city" field
     Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red font color
     And "city" field label is displayed in red
