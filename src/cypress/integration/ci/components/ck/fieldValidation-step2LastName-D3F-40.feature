@@ -1,9 +1,8 @@
 Feature: Step 2 Last Name fields
 
   Is a required field
-  First name must be between 1 and 25 characters.
-  consecutive-special - Input cannot have consecutive special characters."
-  Middle initial must only be 1 character.
+  Last name must be between 1 and 25 characters.
+  consecutive-special - Input cannot have consecutive special characters.
   Input must begin with a letter- A-Z a-z
 
   - D3F-40 Last Name - Validation Criteria & Error Handling
@@ -36,7 +35,8 @@ Feature: Step 2 Last Name fields
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And I click the X Icon on the "lastName" field
-    Then nothing happens
+    Then Check that the "lastName" field is not focused
+
 
   Scenario: 2b - 2a User without entering any characters focuses out of the First Name field that has an error, then returns to enter text
     When I click on the "lastName" field
@@ -53,7 +53,7 @@ Feature: Step 2 Last Name fields
   Scenario: 3 User enters invalid First Name
     When I have enter invalid "lastName" value "3#" that "contains a number"
     When I click on the "section-title" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" field input is displayed in red
@@ -61,7 +61,7 @@ Feature: Step 2 Last Name fields
   Scenario: 3 User enters invalid First Name
     When I have enter invalid "lastName" value "2" that "contains a number"
     When I click on the "section-title" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" field input is displayed in red
@@ -69,17 +69,17 @@ Feature: Step 2 Last Name fields
   Scenario: 3a User enters invalid First Name , then clicks the error icon
     When I have enter invalid "lastName" value "1" that "contains a number"
     When I click on the "section-title" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" field input is displayed in red
     And I click the X Icon on the "lastName" field
-    Then nothing happens
+    Then Check that the "lastName" field is not focused
 
   Scenario: 3b User enters invalid First Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "that contains a number"
     When I click on the "section-title" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" field input is displayed in red
@@ -112,12 +112,12 @@ Feature: Step 2 Last Name fields
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
     When I focus on the "next-step-button" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
     When I focus on the "next-step-button" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -138,12 +138,14 @@ Feature: Step 2 Last Name fields
 
     Examples:
       | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contians a number                    | Please enter a valid name. |
-      | $mtih            | contains invalid non alpha character | Please enter a valid name. |
-      | はると              | contians unicode                     | Please enter a valid name. |
-      | userguy@mail.com | does not contain @                   | Please enter a valid name. |
-      | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
-      | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
-      | 'Roid            | does not begin with a letter         | Please enter a valid name. |
+      | mighty77         | contians a number                    | Please enter a valid last name. |
+      | $mtih            | contains invalid non alpha character | Please enter a valid last name. |
+      | はると              | contians unicode                     | Please enter a valid last name. |
+      | userguy@mail.com | does not contain @                   | Please enter a valid last name. |
+      | smith  jones     | contains two spaces in a row         | Please enter a valid last name. |
+      | Mc--Mac          | contains two dashes in a row         | Please enter a valid last name. |
+      | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
 
-    #TODO extended special character test, waiting on D3F-41 merge
+    # performance optimized multi value test
+  Scenario: User enters invalid characters in Last Name multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."

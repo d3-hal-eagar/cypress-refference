@@ -5,6 +5,7 @@ Feature: Step2 info fields
   covers
   - D3F-37 As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
   - D3F-338 Mobile - As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
+  - D3F-218 As a user when I am on Step 2 of acquisition path, I am displayed blocks of information on the right rail
 
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow
@@ -31,7 +32,7 @@ Feature: Step2 info fields
     Given the siteName is "NotCreditKarma"
     Then The page header is "You're on your way to free credit scores."
     Then The "terms" message contains "By clicking on "Next Step", you agree to"
-    Then The "terms" message contains "Terms Of Use, including our Privacy Policy"
+    Then The "terms" message contains "Terms Of Service, including our Privacy Policy"
     Then The "terms" message contains siteName
     Then The "account-created-section" message contains "Account Created! Your account is now created for the following email address: "
 
@@ -42,3 +43,7 @@ Feature: Step2 info fields
     Then The "agreement-text" message contains "and affiliated companies obtain such information at any time for as long as I have a registered"
     Then The "agreement-text" message contains "account to use as described in the Terms of Service and Privacy Policy."
 
+    #D3F-218
+  Scenario: As a user when I am on Step 2 of acquisition path, I am displayed blocks of information on the right rail
+    Given the siteName is "NotCreditKarma"
+    Then I am displayed the correct blocks on the ck Step 2 right rail

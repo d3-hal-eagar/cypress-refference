@@ -1,6 +1,8 @@
 /* global cy, then, when, given */
 
+// noinspection JSUnusedLocalSymbols
 When(/^without entering "(.*?)"$/, (fieldName) => {
+    // this is a placeholder step used to describe lack of action for clarity
 });
 
 Then(/^I shall be displayed an error - "(.*?)"$/, (errorText) => {
@@ -36,6 +38,10 @@ Then(/^Check that the "(.*?)" field is focused$/, (formField) => {
     cy.focused().should('have.attr', 'data-test', formField);
     // the test browser does not show the focused highlight correctly though this is known to work,
     // but that appears to be because the browser itself does not have focus.
+});
+
+Then(/^Check that the "(.*?)" field is not focused$/, (formField) => {
+    cy.focused().should('not.have.attr', 'data-test', formField);
 });
 
 Then(/^Check that the "(.*?)" field is not checked/, function (formField) {
@@ -77,7 +83,7 @@ Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
 
 // noinspection JSUnusedLocalSymbols
 Given(/^Action detail "(.*?)"/, (descriptionText) => {
-
+    // this is a placeholder step used to describe lack of action for clarity
 });
 
 When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" field$/, (lengthLimit,formField) => {
@@ -90,11 +96,6 @@ When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" fie
 //     cy.getFormGroup(formField).find('i.oi.oi-circle-x').should('be.visible');
 // });
 
-
-Then(/^I focus and click on X icon inside the "(.*?)" input field$/, function (formField) {
-    cy.getFormGroup(formField).find('i.oi.oi-circle-x').click();
-});
-
 When(/^I have enter invalid "(.*?)" value I see the correct validation error message$/, function (formField,dataTable) {
     // starting at rowindex 1 to skip header row
     for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
@@ -106,9 +107,41 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         // chained actions clear previous error
         // re-enter text and check for error
         cy.getElement(formField).clear().type('valid text').blur()
-          .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
+          .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
           .getElement(formField).clear().type(userInput).blur()
-          .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
+          .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
+    }
+
+});
+
+When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
+    // starting at rowindex 1 to skip header row
+    for (let charindex = 0; charindex < characterList.length; charindex++) {
+        let userInput = validInput + characterList.substring(charindex, charindex+1);
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
+        // chained actions clear previous error
+        // re-enter text and check for error
+        cy.getElement(formField).clear().type(validInput).blur()
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
+            .getElement(formField).clear().type(userInput).blur()
+            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
+    }
+
+});
+
+When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)" on ex flow$/, function (characterList,validInput,formField,errorText) {
+    // starting at rowindex 1 to skip header row
+    for (let charindex = 0; charindex < characterList.length; charindex++) {
+        let userInput = validInput + characterList.substring(charindex, charindex+1);
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
+        // chained actions clear previous error
+        // re-enter text and check for error
+        cy.getElement(formField).clear().type(validInput)
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
+            .getElement(formField).clear().type(userInput)
+            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
     }
 
 });

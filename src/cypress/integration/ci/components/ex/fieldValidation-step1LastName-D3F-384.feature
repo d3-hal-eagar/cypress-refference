@@ -59,16 +59,16 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario: 4 User enters invalid Last Name
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     When I click on the "step2" field
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
     When I click on the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
   Scenario: 4a User enters invalid Last Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     When I click on the "step2" field
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
@@ -80,7 +80,7 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario: 4b User enters invalid Last Name, and it remains invalid
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
     When I click on the "step2" field
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
@@ -88,16 +88,16 @@ Feature: Last Name - Validation Criteria & Error Handling
     When I enter additional text into "lastName" field text "{backspace}{backspace}{backspace}{backspace}me@dee.da"
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
  # extended validations
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "lastName" field - "YPlease enter a valid name."
+    Then I shall be displayed an error for the "lastName" field - "YPlease enter a valid last name."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -118,13 +118,14 @@ Feature: Last Name - Validation Criteria & Error Handling
 
     Examples:
       | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contians a number                    | Please enter a valid name. |
-      | $mtih            | contains invalid non alpha character | Please enter a valid name. |
-      | はると              | contians unicode                     | Please enter a valid name. |
-      | userguy@mail.com | does not contain @                   | Please enter a valid name. |
-      | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
-      | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
-      | 'Roid            | does not begin with a letter         | Please enter a valid name. |
+      | mighty77         | contians a number                    | Please enter a valid last name. |
+      | $mtih            | contains invalid non alpha character | Please enter a valid last name. |
+      | はると              | contians unicode                     | Please enter a valid last name. |
+      | userguy@mail.com | does not contain @                   | Please enter a valid last name. |
+      | smith  jones     | contains two spaces in a row         | Please enter a valid last name. |
+      | Mc--Mac          | contains two dashes in a row         | Please enter a valid last name. |
+      | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
 
- #TODO extended special character test, waiting on D3F-41 merge
-
+  # performance optimized multi value test
+  Scenario: User enters invalid characters in Last Name multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name." on ex flow
