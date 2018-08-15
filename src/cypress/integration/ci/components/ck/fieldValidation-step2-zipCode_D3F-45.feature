@@ -1,7 +1,8 @@
 Feature: Zip Code - Validation Criteria & Character Restriction
 
-  D3F-45
-  Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.
+  Covers
+    - D3F-45 Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.
+    - D3F-366 Mobile - Zip Code - Validation Criteria & Character Restriction
 
   Validation Rules:
   - Is a required field.

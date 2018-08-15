@@ -106,23 +106,15 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         let userInput = dataTable.rawTable[rowindex][0];
         let errorType = dataTable.rawTable[rowindex][1];
         let errorText = dataTable.rawTable[rowindex][2];
+        let validInput = 'ax';
+        if (formField === 'zip'){
+            validInput = '12345';
+        }
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
         // re-enter text and check for error
-        if (formField === 'zip'){
-            cy.getElement(formField).clear().type('12345').blur()
-                .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
-                .getElement(formField).clear().type(userInput).blur()
-                .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
-        }
-        else {
-            cy.getElement(formField).clear().type('valid text').blur()
-                .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
-                .getElement(formField).clear().type(userInput).blur()
-                .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
-        }
-        cy.getElement(formField).clear().type('valid text').blur()
+        cy.getElement(formField).clear().type(validInput).blur()
           .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
           .getElement(formField).clear().type(userInput).blur()
           .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
