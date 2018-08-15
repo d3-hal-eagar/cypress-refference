@@ -49,6 +49,10 @@ When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
     cy.getElement(formField).clear().type(userInput);
 });
 
+When(/^I have enter valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
+    cy.getElement(formField).clear().type(userInput);
+});
+
 When(/^I enter additional text into "(.*?)" field text "(.*?)"$/, (formField,userInput) => {
     // no clear on this one, that's intentional
     cy.getElement(formField).type(userInput);
