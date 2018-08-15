@@ -1,8 +1,7 @@
 Feature: Apartment - Validation Criteria & Error Handling
 
-  D3F-43
-  Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
-
+  D3F-43 ZZZValidation scenarios for Apartment input field on Step 2 of Acquisition Flow.
+  D3F-361 Mobile - Apartment - Validation Criteria & Error Handling
   Validation Criteria:
   - Not a required field.
   - Max length of 5 characters
@@ -103,10 +102,11 @@ Feature: Apartment - Validation Criteria & Error Handling
     And I have enter invalid "street2" value "22%n" that "has an '% symbol"
     And I focus on the "street2" field
     And Action detail "Trigger error state - 'Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+    And I focus on the "firstName" field
     And I focus on the "street2" field
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
-    Then I shall be displayed an error for the "street1" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
+    Then I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
     And "street2" field label is displayed in red
     When I have enter valid "street2" value "22A"
     Then "street2" field label is displayed in black
@@ -115,7 +115,7 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario Outline: 5 User enters valid Apartment
     When I focus on the "street2" field
-    When I have enter valid "street2" value "<apartment_entered>" that "<testing_character>"
+    When I have enter a valid "street2" value "<apartment_entered>" that "<testing_character>"
     And I focus on the "firstName" field
     Then I shall be displayed no error for the "street2" field
     Examples:
