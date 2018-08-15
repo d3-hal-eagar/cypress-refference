@@ -45,9 +45,9 @@ Feature: Apartment - Validation Criteria & Error Handling
     And "street2" field displays X Icon
     Examples:
       | apartment_entered | type_of_err      | err_message                                                                                 |
-      | 22/ C             | has a '/' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22' A             | has a ''' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22. A             | has a '.' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22/ C             | has a '/' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22' A             | has a ''' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22. A             | has a '.' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
     # performance optimized multi value test
     # benefit fast test execution
@@ -59,54 +59,54 @@ Feature: Apartment - Validation Criteria & Error Handling
   Scenario: 4 - User enters invalid Apartment multiple input errors
     When I have enter invalid "street2" value I see the correct validation error message
       | apartment_entered | type_of_err                    | err_message                                                                                 |
-      | 22 !T             | has a ! symbol                 | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | D\\ 2             | has a '\\' symbol              | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 [T             | has a '[' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22]T              | has a ']' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22&T              | has a '&' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22@T              | has a '@' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22%T              | has a '%' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22&T              | has a '&' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22?T              | has a '?' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22>T              | has a '>' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22<T              | has a '<' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22"T              | has a '"' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22$T              | has a '$' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22)T              | has a ')' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22(T              | has a '(' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22:T              | has a ':' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22;T              | has a ';' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22~T              | has a '~' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22^T              | has a '^' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22}T              | has a '}' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22{T              | has a '{' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22+T              | has a '+' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22_T              | has a '_' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22*T              | has a '*' symbol               | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 7São              | has a non-ASCII symbol         | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 8Nürn             | has a non-ASCII symbol         | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 –n             | has a non-ASCII en dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 —w             | has a non-ASCII em dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | R六本木              | has a unicode HAN symbol       | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22✉T              | has a emoji symbol             | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 !T             | has a ! symbol                 | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | D\\ 2             | has a '\\' symbol              | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 [T             | has a '[' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22]T              | has a ']' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22&T              | has a '&' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22@T              | has a '@' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22%T              | has a '%' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22&T              | has a '&' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22?T              | has a '?' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22>T              | has a '>' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22<T              | has a '<' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22"T              | has a '"' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22$T              | has a '$' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22)T              | has a ')' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22(T              | has a '(' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22:T              | has a ':' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22;T              | has a ';' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22~T              | has a '~' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22^T              | has a '^' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22}T              | has a '}' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22{T              | has a '{' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22+T              | has a '+' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22_T              | has a '_' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22*T              | has a '*' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 7São              | has a non-ASCII symbol         | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 8Nürn             | has a non-ASCII symbol         | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 –n             | has a non-ASCII en dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 —w             | has a non-ASCII em dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | R六本木              | has a unicode HAN symbol       | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22✉T              | has a emoji symbol             | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
   Scenario: 4a - User focuses on the error icon and clicks on it.
     When I have enter invalid "street2" value "22@t" that "has an '@' symbol"
     And I focus on the "firstName" field
     And I focus and click on X icon inside the "street2" input field
-    Then I shall be displayed an error for the "street2" field - "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
+    Then I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
     And "street2" field label is displayed in red
     And "street2" field displays X Icon
 
-  Scenario: 4b - User focuses on the Apartment input field that has the error "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
+  Scenario: 4b - User focuses on the Apartment input field that has the error "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
     When I focus on the "street2" field
     And I have enter invalid "street2" value "22%n" that "has an '% symbol"
     And I focus on the "street2" field
-    And Action detail "Trigger error state - 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+    And Action detail "Trigger error state - 'Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
     And I focus on the "street2" field
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
-    Then I shall be displayed an error for the "street1" field - "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
+    Then I shall be displayed an error for the "street1" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
     And "street2" field label is displayed in red
     When I have enter valid "street2" value "22A"
     Then "street2" field label is displayed in black
@@ -115,11 +115,11 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario Outline: 5 User enters valid Apartment
     When I focus on the "street2" field
-    When I have enter valid "street2" value "<apartment_entered>"
+    When I have enter valid "street2" value "<apartment_entered>" that "<testing_character>"
     And I focus on the "firstName" field
     Then I shall be displayed no error for the "street2" field
     Examples:
-      | apartment_entered | testing_character |
-      | 22,b              | commas            |
-      | #11               | number signs      |
-      | 22-A              | hyphen (-)        |
+      | apartment_entered | testing_character  |
+      | 22,b              | has a comma        |
+      | #11               | has a number signs |
+      | 22-A              | has a hyphen (-)   |
