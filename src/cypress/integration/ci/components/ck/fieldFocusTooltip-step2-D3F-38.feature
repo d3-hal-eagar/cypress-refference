@@ -33,7 +33,7 @@ Feature: CK Focus Tooltip
 
   Scenario: 3 User on focusing Street Address input field, is displayed a tooltip.
     When I click on the "street1" field
-    Then I am displayed a "street1" tooltip - " Moved in the last 6 months? Try using your previous address instead." on desktop only
+    Then I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
     Then Check that the "street1" field is focused
     When I focus on the "next-step-button" field
     Then "street1" tooltip is not visible
