@@ -63,10 +63,6 @@ When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,use
     cy.getElement(formField).clear().type(userInput);
 });
 
-When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
-    cy.getElement(formField).clear().type(userInput);
-});
-
 When(/^I enter additional text into "(.*?)" field text "(.*?)"$/, (formField,userInput) => {
     // no clear on this one, that's intentional
     cy.getElement(formField).type(userInput);
@@ -79,6 +75,14 @@ When(/^I have enter invalid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,use
 
 When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
     cy.getElement(formField).focus().select(userInput);
+});
+
+// Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field that has "(.*?)" index$/, (userInput, formField, optionIndex) => {
+//     cy.getElement(formField).children().eq(optionIndex).should('be.selected', userInput);
+// });
+
+Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field by default$/, (userInput, formField) => {
+    cy.getElement(formField).children().eq(0).should('be.selected', userInput);
 });
 
 Then(/^I shall be displayed no errors$/, () => {
@@ -156,6 +160,24 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
             .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
     }
 
+});
+
+When(/^I have selected valid "(.*?)" option I see the correct value$/, function (formField,dataTable) {
+    // starting at rowindex 1 to skip header row
+    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+        let stateName = dataTable.rawTable[rowindex][0];
+        let stateValue = dataTable.rawTable[rowindex][1];
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #' + rowindex + ') I have selected valid ' + stateName + ' option for the ' + formField + ' field that has ' + stateValue + ' value');
+        cy.getElement(formField).select(stateName).should('have.value', stateValue).and('contain',stateName)
+        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50);
+    }
+
+});
+
+Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formField) {
+    cy.getElement(formField).should('not.have','attr','multiple');
+    cy.get('select[data-test='+formField+']').should('be.visible');
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {

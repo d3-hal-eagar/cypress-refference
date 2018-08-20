@@ -26,8 +26,18 @@ Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
 });
 
 Then(/^"(.*?)" field input is displayed in red$/, function (formField) {
+    cy.getFormGroup(formField).find('input.text-danger').should('be.visible');
+    cy.getFormGroup(formField).find('input').should('have.css', 'color', errorRed);
+});
+
+Then(/^"(.*?)" field select is displayed in red$/, function (formField) {
+    cy.getFormGroup(formField).find('select.text-danger').should('be.visible');
+    cy.getFormGroup(formField).find('select').should('have.css', 'color', errorRed);
+});
+
+Then(/^"(.*?)" field placeholder is displayed in red$/, function (formField) {
     cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', errorRed);
+    cy.getFormGroup(formField).find('select').should('have.css', 'color', errorRed);
 });
 
 Then(/^"(.*?)" field displays X Icon$/, function (formField) {
@@ -55,4 +65,3 @@ Then(/^I click the X Icon on the "(.*?)" field$/, function (formField) {
     // green check oi-circle-check
     // red x oi-circle-x
 });
-
