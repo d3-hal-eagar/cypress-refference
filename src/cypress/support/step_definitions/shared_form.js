@@ -59,7 +59,11 @@ When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
     cy.getElement(formField).clear().type(userInput);
 });
 
-When(/^I have enter valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
+When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
+    cy.getElement(formField).clear().type(userInput);
+});
+
+When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
     cy.getElement(formField).clear().type(userInput);
 });
 
