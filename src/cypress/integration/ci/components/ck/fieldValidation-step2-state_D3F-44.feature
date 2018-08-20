@@ -14,7 +14,7 @@ Feature: State - Validation Criteria and when no character is entered
 
   Scenario: 1 - User selects State from the dropdown
     When I select "AK" on the "state" field
-    And I focus on the "street2" field
+    And I focus on the "next-step-button" field
     Then I shall be displayed no error for the "state" field
 
   Scenario: 2 System by default displays 'Select' and on focusing on State field highlights 'Select'.
@@ -86,15 +86,19 @@ Feature: State - Validation Criteria and when no character is entered
 
   Scenario: 4 - User without selecting a state, focuses out of state field.
     When I focus on the "state" field
-#    And I focus on "state" drop-down field
-    And I focus on the "street2" field
-    Then I shall be displayed an error for the "state" field - "Select state." in red font color
+    And I focus on the "next-step-button" field
     And "state" field label is displayed in red
     And "state" field placeholder is displayed in red
+    Then I shall be displayed an error for the "state" field - "Select state." in red font color
 
-#  Scenario: 4a - User without selecting a state, focuses back on state field that has the error message - "Select state."
-#    When Action detail "I focus on state field that has an error - 'Select state.'"
-#    And I focus on "state" drop-down field
-#    Then: I shall be displayed the dropdown options of all the states in red font
-#    And: By default 'Select' shall be highlighted in blue an error
-#    And: on selecting a 'State' - The dropdown & the error message disappears, The selected state shall be displayed on the drop-down field, 'State' - field name & selected state shall be displayed in black color
+  Scenario: 4a - User focuses back on state field that has error message
+    When Action detail "I focus on state field that has an error - 'Select state.'"
+    When I focus on the "state" field
+    And I focus on the "next-step-button" field
+    When I focus on the "state" field
+    And "state" field select is displayed in red
+    Then Check that the "state" field is focused
+    When Action detail "I enter valid state and the the error message disappears"
+    When I select "NY" on the "state" field
+    And I focus on the "next-step-button" field
+    Then I shall be displayed no error for the "state" field

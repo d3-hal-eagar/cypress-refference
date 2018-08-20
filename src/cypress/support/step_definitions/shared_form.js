@@ -170,13 +170,14 @@ When(/^I have selected valid "(.*?)" option I see the correct value$/, function 
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #' + rowindex + ') I have selected valid ' + stateName + ' option for the ' + formField + ' field that has ' + stateValue + ' value');
         cy.getElement(formField).select(stateName).should('have.value', stateValue).and('contain',stateName)
-        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300);
+        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50);
     }
 
 });
 
 Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formField) {
-        cy.getElement(formField).should('not.have','attr','multiple');
+    cy.getElement(formField).should('not.have','attr','multiple');
+    cy.get('select[data-test='+formField+']').should('be.visible');
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
