@@ -157,3 +157,19 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
     }
 
 });
+
+When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
+    // starting at rowindex 1 to skip header row
+    for (let charindex = 0; charindex < characterList.length; charindex++) {
+        let userInput = validInput + characterList.substring(charindex, charindex+1);
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
+        // chained actions clear previous error
+        // re-enter text and check for error
+        cy.getElement(formField).clear().type(validInput).blur()
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
+            .getElement(formField).clear().type(userInput).blur()
+            .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
+    }
+
+});
