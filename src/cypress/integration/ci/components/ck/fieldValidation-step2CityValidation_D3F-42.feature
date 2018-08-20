@@ -95,7 +95,6 @@ Feature: City - Validation Criteria and Error Handling
       | New! York       | has a '!' symbol               | Cities may only contain letters and spaces. |
       | New. York       | has a '.' symbol               | Cities may only contain letters and spaces. |
       | New, York       | has a ',' symbol               | Cities may only contain letters and spaces. |
-      | New ] York      | has a ']' symbol               | Cities may only contain letters and spaces. |
       | New & York      | has a '&' symbol               | Cities may only contain letters and spaces. |
       | New @ York      | has a '@' symbol               | Cities may only contain letters and spaces. |
       | New % York      | has a '%' symbol               | Cities may only contain letters and spaces. |
@@ -122,6 +121,8 @@ Feature: City - Validation Criteria and Error Handling
       | New York —west  | has a non-ASCII em dash symbol | Cities may only contain letters and spaces. |
       | Roppongi 六本木    | has a unicode HAN symbol       | Cities may only contain letters and spaces. |
       | New ✉ York      | has a emoji symbol             | Cities may only contain letters and spaces. |
+      | New [ York      | has a '[' symbol               | Cities may only contain letters and spaces. |
+      | New ] York      | has a ']' symbol               | Cities may only contain letters and spaces. |
 
   Scenario: 4b - User focuses on the City input field that has the error "Cities may only contain letters and spaces."
     When I focus on the "city" field
