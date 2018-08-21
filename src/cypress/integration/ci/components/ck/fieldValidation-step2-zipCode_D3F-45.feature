@@ -3,44 +3,38 @@ Feature: Zip Code - Validation Criteria & Character Restriction
   Covers
     - D3F-45 Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.
     - D3F-366 Mobile - Zip Code - Validation Criteria & Character Restriction
+  Validation Criteria
+    - Is a required field.
+    - must be exactly 5 digits long.
 
-  Validation Rules:
-  - Is a required field.
-  - must be exactly 5 digits long.
 
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow
-    When I am on the ck step2 form page
+    Given I am on the ck step2 form page
 
 
   Scenario: 1 - User enters valid Zip Code
-    When I focus on the "zip" field
     When I have enter valid "zip" value "10007"
-    And I focus on the "street2" field
+    And I blur the "zip" field
     Then I shall be displayed no error for the "zip" field
 
   Scenario: 2 - System restricts the user to enter a maximum of five characters
-    When I focus on the "zip" field
     When I have enter valid "zip" value "12345"
-    When I focus on the "street2" field
-    And I shall be displayed no error for the "zip" field
-    Then I enter additional text into "zip" field text "678"
-    Then I am restricted from entering more than "5" characters in "zip" field
+    And I blur the "zip" field
+    Then I shall be displayed no error for the "zip" field
+    And I enter additional text into "zip" field text "678"
+    And I am restricted from entering more than "5" characters in "zip" field
 
-  Scenario: 3 - User enters less than 5 digits
-
-    When Action detail "I enter less than 5 digits on Zip Code input field"
-    And I have enter invalid "zip" value "100" that "has less than 5 digits"
-    And Action detail "Trigger error state - Zip codes must be exactly 5 digits long."
-    And I focus on the "street2" field
+  Scenario: 3 - User enters less than 5 digits on Zip Code input field
+    When I have enter invalid "zip" value "100" that "has less than 5 digits"
+    And I blur the "zip" field
     Then I shall be displayed an error for the "zip" field - "Zip codes must be exactly 5 digits long." in red font color
     And "zip" field label is displayed in red
 
   Scenario: 3a - User focuses back on the Zip-Code field that has the error "Zip codes must be exactly 5 digits long."
-    When I focus on the "zip" field
-    And I have enter invalid "zip" value "123" that "has less than 5 digits"
-    And Action detail "Trigger error state - 'Zip codes must be exactly 5 digits long.'"
-    And I focus on the "street2" field
+    When Action detail "Trigger error state - 'Zip codes must be exactly 5 digits long.'"
+      And I have enter invalid "zip" value "123" that "has less than 5 digits"
+      And I blur the "zip" field
     And I focus on the "zip" field
     Then I shall be displayed an error for the "zip" field - "Zip codes must be exactly 5 digits long." in red font color
     And "zip" field label is displayed in red
@@ -50,13 +44,13 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     And I shall be displayed no error for the "zip" field
 
   Scenario Outline: 4 - User enters alphabets/special characters
-    When I focus on the "zip" field
-    And I have enter invalid "zip" value "<zip_entered>" that "<type_of_err>"
-    And Action detail "Trigger error state - 'Please use numbers only in this field.'"
-    And I focus on the "street2" field
+    When Action detail "Trigger error state - 'Please use numbers only in this field.'"
+      And I have enter invalid "zip" value "<zip_entered>" that "<type_of_err>"
+      And I blur the "zip" field
     Then I shall be displayed an error for the "zip" field - "<err_message>" in red font color
     And "zip" field label is displayed in red
-    And "zip" field input is displayed in red
+    And "zip" input field is displayed in red
+
     Examples:
       | zip_entered | type_of_err      | err_message                                                                                 |
       | 123O5             | has a 'O' letter | Please use numbers only in this field. |
@@ -108,10 +102,9 @@ Feature: Zip Code - Validation Criteria & Character Restriction
       | 22✉02             | has a emoji symbol             | Please use numbers only in this field. |
 
   Scenario: 4a - User focuses back on the Zip-Code field that has the error "Please use numbers only in this field"
-    When I focus on the "zip" field
-    And I have enter invalid "zip" value "100%2" that "has an '%' symbol"
-    And Action detail "Trigger error state - 'Please use numbers only in this field.'"
-    And I focus on the "street2" field
+    When Action detail "Trigger error state - 'Please use numbers only in this field.'"
+      And I have enter invalid "zip" value "100%2" that "has an '%' symbol"
+      And I blur the "zip" field
     And I focus on the "zip" field
     Then I shall be displayed an error for the "zip" field - "Please use numbers only in this field." in red font color
     And "zip" field label is displayed in red
@@ -124,15 +117,15 @@ Feature: Zip Code - Validation Criteria & Character Restriction
 
   Scenario: 5 - User does not enter a Zip Code
     When I focus on the "zip" field
-    When Action detail "I do not enter anything in zip input field AND focus out of field"
-    And I focus on the "street2" field
+    And without entering "zip"
+    And I blur the "zip" field
     Then I shall be displayed an error for the "zip" field - "This is a required field." in red font color
     And "zip" field label is displayed in red
 
   Scenario: 5a - User focuses back on the Zip code field that has the error - "This is a required field."
     When I focus on the "zip" field
-    When Action detail "I do not enter anything in zip input field AND focus out of field"
-    And I focus on the "street2" field
+    And without entering "zip"
+    And I blur the "zip" field
     And I focus on the "zip" field
     Then I shall be displayed an error for the "zip" field - "This is a required field." in red font color
     And "zip" field label is displayed in red

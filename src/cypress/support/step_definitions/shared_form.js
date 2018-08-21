@@ -25,6 +25,9 @@ Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font
 When(/^I focus on the "(.*?)" field$/, (formField) => {
     cy.getElement(formField).focus();
 });
+When(/^I blur the "(.*?)" field$/, (formField) => {
+    cy.getElement(formField).blur();
+});
 
 When(/^I click on the "(.*?)" field$/, (formField) => {
     cy.getElement(formField).click();
@@ -189,9 +192,9 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
         // chained actions clear previous error
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput).blur()
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(300)
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
             .getElement(formField).clear().type(userInput).blur()
-            .getFormGroup(formField).contains(errorText).should('be.visible').wait(300);
+            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
     }
 
 });

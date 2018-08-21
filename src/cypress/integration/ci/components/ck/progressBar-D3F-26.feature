@@ -10,6 +10,7 @@ Feature: CK Progress Bar
   - D3F-339 As a user when I am on Step 3 of acquisition flow then I am displayed the Progress Indicator
   - D3F-373 Mobile - As a user when I am on Step 3 of acquisition flow then I am displayed the Progress Indicator
 
+
   Background:
     Given I am a user on the ck flow
 

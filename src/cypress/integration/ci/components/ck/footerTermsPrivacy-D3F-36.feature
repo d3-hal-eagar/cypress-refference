@@ -7,13 +7,14 @@ Feature: Header, Footer, Terms of Service and Privacy Policy
    - D3F-49 Terms of Service & Privacy Policy
    - D3F-335 Mobile - Terms of Service & Privacy Policy
 
+
   Background:
     Given the siteName is "NotCreditKarma"
     Given I am a user on the ck flow
 
 
   Scenario: 1 Footer shall contain Copyright, Terms of Service & Privacy Policy
-    Given I am on the ck step1 signup page
+    When I am on the ck step1 signup page
     Then I am displayed siteName in the header
     #Then I am displayed ck Footer
     And I am displayed "Terms Of Service" Hyperlinked to "/ck/tos"
@@ -23,13 +24,13 @@ Feature: Header, Footer, Terms of Service and Privacy Policy
     And I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer
 
   Scenario: 2 User is displayed the following on Terms of Service screen
-    Given I am on the ck Terms of Service screen
+    When I am on the ck Terms of Service screen
     Then I am displayed ck Logo
     Then I am displayed ck Terms of Service Text
     Then I am displayed ck Footer
 
   Scenario: 3 User is displayed the following on Privacy Policy screen
-    Given I am on the ck Privacy Policy screen
+    When I am on the ck Privacy Policy screen
     Then I am displayed ck Logo
     Then I am displayed ck Privacy Policy Text
     Then I am displayed ck Footer

@@ -1,20 +1,21 @@
 Feature: State - Validation Criteria and when no character is entered
 
-  D3F-44
-  Validation scenarios for State input field in Step 2 of Acquisition Flow.
+  Covers
+    - D3F-44 Validation scenarios for State input field in Step 2 of Acquisition Flow.
+    - D3F-362 Mobile - State - Validation Criteria and when no character is entered
+  Validation Criteria
+    - Is a required field.
+    - Dropdown
 
-  Validation Rules:
-  - Is a required field.
-  - Dropdown
 
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow
-    When I am on the ck step2 form page
+    Given I am on the ck step2 form page
 
 
   Scenario: 1 - User selects State from the dropdown
     When I select "AK" on the "state" field
-    And I focus on the "next-step-button" field
+    And I blur the "state" field
     Then I shall be displayed no error for the "state" field
 
   Scenario: 2 System by default displays 'Select' and on focusing on State field highlights 'Select'.
@@ -86,19 +87,20 @@ Feature: State - Validation Criteria and when no character is entered
 
   Scenario: 4 - User without selecting a state, focuses out of state field.
     When I focus on the "state" field
-    And I focus on the "next-step-button" field
+    And without entering "state"
+    And I blur the "state" field
     And "state" field label is displayed in red
-    And "state" field placeholder is displayed in red
+    And "state" field select is displayed in red
     Then I shall be displayed an error for the "state" field - "Select state." in red font color
 
   Scenario: 4a - User focuses back on state field that has error message
-    When Action detail "I focus on state field that has an error - 'Select state.'"
-    When I focus on the "state" field
-    And I focus on the "next-step-button" field
+    When Action detail "Trigger error state - 'Select state.'"
+      And I focus on the "state" field
+      And I blur the "state" field
     When I focus on the "state" field
     And "state" field select is displayed in red
     Then Check that the "state" field is focused
     When Action detail "I enter valid state and the the error message disappears"
-    When I select "NY" on the "state" field
-    And I focus on the "next-step-button" field
+      And I select "NY" on the "state" field
+      And I blur the "state" field
     Then I shall be displayed no error for the "state" field

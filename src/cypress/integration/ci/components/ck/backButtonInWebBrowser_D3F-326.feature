@@ -5,6 +5,7 @@ Feature: Back button in the web browser
   Note: Routing Exception, User should be able to select Terms and conditions,
   Privacy policy screens either from the agreement text or from the footer links.
 
+
   Background:
     Given I am on the ck landing page
     Given I am guided to the ck landing page
