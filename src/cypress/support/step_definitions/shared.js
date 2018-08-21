@@ -29,6 +29,14 @@ Then(/^The page header is "(.*?)"$/, (headerText) => {
     cy.getElement('section-title').contains(headerText).should('be.visible');
 });
 
+Then(/^The a subheader exists "(.*?)"$/, (headerText) => {
+    cy.get('h4').contains(headerText).should('be.visible');
+});
+
+Then(/^The page contians "(.*?)"$/, (headerText) => {
+    cy.get('body').contains(headerText).should('be.visible');
+});
+
 let proprietaryNames = [];
 Given(`the following list of proprietaryNames`, function (dataTable) {
     proprietaryNames = dataTable.rawTable;
@@ -91,4 +99,14 @@ Then(/^I shall not be displayed any errors or validation markup on non required 
 
 Then(/^The "(.*?)" message contains "(.*?)"$/, (element, messageText) => {
     cy.getElement(element).should('contain', messageText);
+});
+
+When(/^I close the modal$/, () => {
+    cy.getElement('modal-header').find('.close').click();
+});
+
+Then(/^the modal is not visible$/, () => {
+    cy.getElement('modal-header').should('not.be.visible');
+    cy.get('.modal-content').should('not.be.visible');
+
 });
