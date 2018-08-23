@@ -13,6 +13,7 @@ Feature: test pages to ensure proprietary names are removed
     - Sentencecase-unspaced
     - camelCase
 
+
   Background:
     Given I am a user on the ck flow
     Given the following list of proprietaryNames

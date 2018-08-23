@@ -6,9 +6,10 @@ Feature: CK Landing Page
   - D3F-219 Build Credit Karma Landing Page
   - D3F-325 Mobile - Build Credit Karma Landing Page
 
+
   Background:
     Given I am a user on the ck flow
-    When I am on the ck landing page
+    Given I am on the ck landing page
 
 
   Scenario: Block 1 Hero Image
@@ -30,14 +31,14 @@ Feature: CK Landing Page
     Then I am displayed the following on the 'It never hurts to check.' block
 
   Scenario: Header Button See my score
-    And I click element "header-signup-button"
+    When I click element "header-signup-button"
     Then I am guided to the ck step1 signup page
 
   Scenario: Cta Button Let’s do it
-    And I click element "cta-signup-button"
+    When I click element "cta-signup-button"
     Then I am guided to the ck step1 signup page
 
   Scenario: Footer Button Show my score
-    And I click element "footer-signup-button"
+    When I click element "footer-signup-button"
     Then I am guided to the ck step1 signup page
 

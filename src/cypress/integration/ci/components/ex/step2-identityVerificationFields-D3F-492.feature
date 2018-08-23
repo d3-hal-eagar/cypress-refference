@@ -7,14 +7,15 @@ Feature: Step2 info fields
     (formerly D3F-459)
   - D3F-492 Mobile - Step 2 - Identity Verification Field Elements
 
+
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ex flow
-    When I am on the ex step2 form page
+    Given I am on the ex step2 form page
     Given the siteName is "NotCreditKarma"
 
-  Scenario: 1 - test existence of form fields
 
-    Then I focus on the "ssn3" field
+  Scenario: 1 - test existence of form fields
+    When I focus on the "ssn3" field
     And I focus on the "ssn" field
     And I focus on the "ssn-display-checkbox" field
     And I focus on the "dobMonth" field
@@ -24,6 +25,7 @@ Feature: Step2 info fields
     And I focus on the "password" field
     And I focus on the "cofirmPassword" field
     And I focus on the "submit-button" field
+    Then Action detail "all fields were present"
 
   Scenario: 2 - test existence of messages and site name token
     #Then The page header is "Create Your Account"
@@ -31,9 +33,9 @@ Feature: Step2 info fields
     And The a subheader exists "Identity Verification"
     And The page contians "Why do we need this?"
     And The a subheader exists "Account Information"
-    Then The "terms" message contains "By clicking on "Submit Secure Order": you agree to"
-    Then The "terms" message contains "Terms Of Use, including our Privacy Policy"
-    Then The "terms" message contains siteName
+    And The "terms" message contains "By clicking on "Submit Secure Order": you agree to"
+    And The "terms" message contains "Terms Of Use, including our Privacy Policy"
+    And The "terms" message contains siteName
 
   Scenario: On the right rail I am displayed information blocks one below the other.
     Then I am displayed the correct blocks on the ex Step 2 right rail

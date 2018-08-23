@@ -8,6 +8,7 @@ Feature: Step 1 Create your account fields
   - D3F-344 Mobile - Next Step 'Call-to-action' Button in Step 1
   - D3F-217 As a user when I am on Step 1 of acquisition path, I am displayed blocks of information on the right rail
 
+
   Background:
     Given I am a user on the ck flow
     Given I am on the ck step1 signup page
@@ -62,12 +63,12 @@ Feature: Step 1 Create your account fields
     And without entering "Password"
     #And I click button "Next Step"
     And I click element "next-step-button"
-    And "email" field label is displayed in red
-    Then I shall be displayed an error for the "email" field - "Email is not a valid email address"
+    Then "email" field label is displayed in red
+    And I shall be displayed an error for the "email" field - "Email is not a valid email address"
     # actual Please enter a valid email address.
 
   Scenario: 5 User enters a password that does meet the password criteria.
-    And I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
+    When I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
     And without entering "Email Address"
     #And I click button "Next Step"
     And I click element "next-step-button"
