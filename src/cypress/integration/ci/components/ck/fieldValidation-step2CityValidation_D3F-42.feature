@@ -1,9 +1,9 @@
 Feature: City - Validation Criteria and Error Handling
 
   Covers
-    - D3F-42 Validation scenarios for City input field in Step 2 of Acquisition Flow.
-    - D3F-360 Mobile - City - Validation Criteria and Error Handling
-    - D3F-820 City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
+    - CP-777 (D3F-42) Validation scenarios for City input field in Step 2 of Acquisition Flow.
+    - CP-817 (D3F-360) Mobile - City - Validation Criteria and Error Handling
+    - CP-836 (D3F-820) City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
   Validation Criteria
     - Is a required field.
     - Max length of 27 characters

@@ -1,8 +1,8 @@
 Feature: Zip Code - Validation Criteria & Character Restriction
 
   Covers
-    - D3F-45 Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.
-    - D3F-366 Mobile - Zip Code - Validation Criteria & Character Restriction
+    - CP-710 (D3F-45) Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.
+    - CP-831 (D3F-366) Mobile - Zip Code - Validation Criteria & Character Restriction
   Validation Criteria
     - Is a required field.
     - must be exactly 5 digits long.

@@ -1,9 +1,9 @@
 Feature: Street Address - Validation Criteria & Error Handling
 
   covers
-    - D3F-41 Validation scenarios for Street Address input field in Step 2 of Acquisition Flow.
-    - D3F-359 Mobile - Street Address - Validation Criteria & Error Handling
-    - D3F-820 City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
+    - CP-818 (D3F-41) Validation scenarios for Street Address input field in Step 2 of Acquisition Flow.
+    - CP-829 (D3F-359) Mobile - Street Address - Validation Criteria & Error Handling
+    - CP-836 (D3F-820) City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
   Validation Criteria
     - Is a required field.
     - Min length of 1 characters and Max length of 100 characters
