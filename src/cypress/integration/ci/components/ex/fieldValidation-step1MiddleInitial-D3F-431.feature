@@ -81,3 +81,10 @@ Feature: Middle Initial - Validation Criteria and Error Handling
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
     And I shall be displayed no error for the "middleInitial" field
+
+  # performance optimized multi value test
+  Scenario: User enters invalid characters in Middle initial multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters." on ex flow
+
+  Scenario: User enters additional invalid characters in Middle initial multiple input errors
+    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters." on ex flow

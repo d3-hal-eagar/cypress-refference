@@ -5,7 +5,8 @@ const flow = 'ex/';
 
 Given(`I am a user on the ex flow`, () => {
     cy.visit('/');
-    cy.visit(flow);
+    cy.wait(200);
+    //cy.visit(flow);
 });
 
 When(`I am on the ex landing page`, () => {

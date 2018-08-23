@@ -75,28 +75,19 @@ Feature: Street Address - Validation Criteria & Error Handling
       | Scholars' Walk                |
 
   # Validation scenarios for Street Address input field when user enters invalid address.
+#
+#  Scenario Outline: 4 - User enters invalid Street Address
+#    When I have enter invalid "street1" value "<street_address_entered>" that "<type_of_err>"
+#    And I blur the "street1" field
+#    Then I shall be displayed an error for the "street1" field - "<err_message>" in red font color
+#    And "street1" field label is displayed in red
+#    And "street1" input field is displayed in red
+#    And "street1" field displays X Icon
+#
+#    Examples:
+#      | street_address_entered | type_of_err       | err_message                                                                                 |
+#      | 22 Cortland / street   | has a '/' symbol  | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
-  Scenario Outline: 4 - User enters invalid Street Address
-    When I have enter invalid "street1" value "<street_address_entered>" that "<type_of_err>"
-    And I blur the "street1" field
-    Then I shall be displayed an error for the "street1" field - "<err_message>" in red font color
-    And "street1" field label is displayed in red
-    And "street1" input field is displayed in red
-    And "street1" field displays X Icon
-
-    Examples:
-      | street_address_entered | type_of_err       | err_message                                                                                 |
-      | 22 Cortland / street   | has a '/' symbol  | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 Cortland \\ street  | has a '\\' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 42nd st.               | has a '.' symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-
-    # performance optimized multi value test
-    # benefit fast test execution
-    # downside less specific error data bubbled up to the top level report,
-    # downside reported as 1 test though it's many
-    # stops on error not testing every permutation
-
-    # TIP: if it fails to test every permutation comment out the next three lines an let table be used by previous Scenario Outline
   Scenario: User enters invalid Street Address multiple input errors
     When I have enter invalid "street1" value I see the correct validation error message
       | street_address_entered   | type_of_err                    | err_message                                                                                 |
@@ -132,3 +123,8 @@ Feature: Street Address - Validation Criteria & Error Handling
     And "street1" field input is displayed in black
     And I shall be displayed no error for the "street1" field
 
+  Scenario: User enters invalid characters in Street Address multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
+
+  Scenario: User enters additional invalid characters in Street Address multiple input errors
+    When I have enter invalid characters ".\//\"" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."

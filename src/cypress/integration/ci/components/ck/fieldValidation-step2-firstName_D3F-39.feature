@@ -129,14 +129,12 @@ Feature: Step 2 First Name fields
     Examples:
       | name_entered      | type_of_error                        | error_message              |
       | mighty77          | contians a number                    | Please enter a valid name. |
-      | $mtih             | contains invalid non alpha character | Please enter a valid name. |
-      | はると              | contians unicode                     | Please enter a valid name. |
-      | userguy@mail.com  | does not contain @                   | Please enter a valid name. |
       | Jimmy  John       | contains two spaces in a row         | Please enter a valid name. |
       | Ilike--mdash      | contains two dashes in a row         | Please enter a valid name. |
       | 'Roid             | does not begin with a letter         | Please enter a valid name. |
 
-    # performance optimized multi value test
   Scenario: User enters invalid characters in First Name multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name."
 
+  Scenario: User enters additional invalid characters in First Name multiple input errors
+    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name."

@@ -1,7 +1,7 @@
 Feature: Apartment - Validation Criteria & Error Handling
 
   Covers
-    - D3F-43 ZZZValidation scenarios for Apartment input field on Step 2 of Acquisition Flow.
+    - D3F-43 Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
     - D3F-361 Mobile - Apartment - Validation Criteria & Error Handling
   Validation Criteria
     - Not a required field.
@@ -13,8 +13,8 @@ Feature: Apartment - Validation Criteria & Error Handling
     Given I am on the ck step2 form page
 
 
-  Scenario: 1 - User enters Street Address
-    When I have enter valid "street2" value "Apt. 156"
+  Scenario: 1 - User enters valid Apartment
+    When I have enter valid "street2" value "S56"
     And I blur the "street2" field
     Then I shall be displayed no error for the "street2" field
 
@@ -34,60 +34,23 @@ Feature: Apartment - Validation Criteria & Error Handling
     # Validation scenarios for invalid Apartment number in Step 2 of Acquisition Flow.
     # Apartment field can only contain letters, numbers, commas, dashes, number signs, and spaces.
 
-  Scenario Outline: 4 - User enters invalid Apartment Number.
-    When I have enter invalid "street2" value "<apartment_entered>" that "<type_of_err>"
-    And I blur the "street2" field
-    Then I shall be displayed an error for the "street2" field - "<err_message>" in red font color
-    And "street2" field label is displayed in red
-    And "street2" input field is displayed in red
-    And "street2" field displays X Icon
+#  Scenario Outline: 4 - User enters invalid Apartment Number.
+#    When I have enter invalid "street2" value "<apartment_entered>" that "<type_of_err>"
+#    And I blur the "street2" field
+#    Then I shall be displayed an error for the "street2" field - "<err_message>" in red font color
+#    And "street2" field label is displayed in red
+#    And "street2" input field is displayed in red
+#    And "street2" field displays X Icon
+#
+#    Examples:
+#      | apartment_entered | type_of_err      | err_message                                                                                 |
+#      | 22/ C             | has a '/' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
-    Examples:
-      | apartment_entered | type_of_err      | err_message                                                                                 |
-      | 22/ C             | has a '/' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22' A             | has a ''' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22. A             | has a '.' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-
-    # performance optimized multi value test
-    # benefit fast test execution
-    # downside less specific error data bubbled up to the top level report,
-    # downside reported as 1 test though it's many
-    # stops on error not testing every permutation
-
-    # TIP: if it fails to test every permutation comment out the next three lines an let table be used by previous Scenario Outline
   Scenario: 4 - User enters invalid Apartment multiple input errors
     When I have enter invalid "street2" value I see the correct validation error message
       | apartment_entered | type_of_err                    | err_message                                                                                 |
-      | 22 !T             | has a ! symbol                 | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | D\\ 2             | has a '\\' symbol              | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 [T             | has a '[' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22]T              | has a ']' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22&T              | has a '&' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22@T              | has a '@' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22%T              | has a '%' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22&T              | has a '&' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22?T              | has a '?' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22>T              | has a '>' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22<T              | has a '<' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22"T              | has a '"' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22$T              | has a '$' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22)T              | has a ')' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22(T              | has a '(' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22:T              | has a ':' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22;T              | has a ';' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22~T              | has a '~' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22^T              | has a '^' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22}T              | has a '}' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22{T              | has a '{' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22+T              | has a '+' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22_T              | has a '_' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22*T              | has a '*' symbol               | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 7São              | has a non-ASCII symbol         | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 8Nürn             | has a non-ASCII symbol         | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22 –n             | has a non-ASCII en dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22 —w             | has a non-ASCII em dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | R六本木              | has a unicode HAN symbol       | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22✉T              | has a emoji symbol             | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
 
   Scenario: 4a - User focuses on the error icon and clicks on it.
     When I have enter invalid "street2" value "22@t" that "has an '@' symbol"
@@ -121,3 +84,10 @@ Feature: Apartment - Validation Criteria & Error Handling
       | 22,b              | has a comma        |
       | #11               | has a number signs |
       | 22-A              | has a hyphen (-)   |
+      | 22 A              | has a space        |
+
+  Scenario: User enters invalid characters in Apartment multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
+
+  Scenario: User enters additional invalid characters in Apartment multiple input errors
+    When I have enter invalid characters ".\//\"" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."

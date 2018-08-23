@@ -134,13 +134,12 @@ Feature: Step 2 Last Name fields
     Examples:
       | name_entered     | type_of_error                        | error_message              |
       | mighty77         | contians a number                    | Please enter a valid last name. |
-      | $mtih            | contains invalid non alpha character | Please enter a valid last name. |
-      | はると              | contians unicode                     | Please enter a valid last name. |
-      | userguy@mail.com | does not contain @                   | Please enter a valid last name. |
       | smith  jones     | contains two spaces in a row         | Please enter a valid last name. |
       | Mc--Mac          | contains two dashes in a row         | Please enter a valid last name. |
       | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
 
-    # performance optimized multi value test
   Scenario: User enters invalid characters in Last Name multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
+
+   Scenario: User enters additional invalid characters in Last Name multiple input errors
+    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."

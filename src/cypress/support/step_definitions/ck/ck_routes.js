@@ -6,7 +6,7 @@ const flow = 'ck/';
 Given(`I am a user on the ck flow`, () => {
     cy.visit('/');
     cy.wait(200);
-    cy.visit(flow);
+    //cy.visit(flow);
 });
 
 When(`I am on the ck landing page`, () => {
