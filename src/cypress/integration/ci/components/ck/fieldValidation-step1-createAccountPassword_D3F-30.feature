@@ -31,7 +31,9 @@ Feature: Step 1 Create your account fields password
     When I click on the "password" field
     And without entering "password"
     And I blur the "password" field
-    And I click the X Icon on the "password" field
+    When I click on the "email" field
+    And I click the label on the "password" field
+    #And I click the X Icon on the "password" field
     Then "password" field does not display X Icon
     And Check that the "password" field is focused
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
@@ -61,8 +63,9 @@ Feature: Step 1 Create your account fields password
     When I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
     And I blur the "password" field
     Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
-
-    When I click the X Icon on the "password" field
+    When I click on the "email" field
+    And I click the label on the "password" field
+    #And I click the X Icon on the "password" field
     Then "password" field does not display X Icon
     And Check that the "password" field is focused
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
@@ -117,27 +120,29 @@ Feature: Step 1 Create your account fields password
     And I shall be displayed no error for the "password" field
 
     Examples:
-      | userPassword    |
-      | theWind1n*      |
-      | The-will0ws     |
-      | 1$ecurePassword |
-
+      | userPassword                   |
+      | theWind1n*                     |
+      | The-will0ws                    |
+      | 1$ecurePassword                |
+      | 2$ecürePassword                |
+      | 3$ecurePass✉                   |
+      | 4$ecure木assworD                |
+      | 1Secure\"                      |
+      | 1Secure'#,.                    |
+      | 1Secure![]&@%?<>!$():;~^{}+=_* |
 
   Scenario Outline: User enters invalid password.
+    Given
     Given I have enter valid "email" value "jimmy.smith@email.myownpoB0x.com"
     When I select the Show button
     When I have enter invalid "password" value "<userPassword>" that "<type_of_error>"
     And I blur the "password" field
     Then I shall be displayed an error for the "password" field - "<error_message>"
-    And "password" field label is displayed in red
-    And "password" field displays X Icon
 
     Examples:
       | userPassword        | type_of_error              | error_message                                                                     |
       | jimmy.smith         | contains part of the email | Password must not include email.                                                  |
-      #| smith               | contains part of the email | Password must not include email.                                                  |
       | jimmy.smith123      | contains part of the email | Password must not include email.                                                  |
-      #| myownpoB0x          | contains part of the email | Password must not include email.                                                  |
       | email.myownpoB0x    | contains part of the email | Password must not include email.                                                  |
       | email.myownpoB0x123 | contains part of the email | Password must not include email.                                                  |
       | @#$ $               | too short                  | Passwords must be at least 8 characters.                                          |
@@ -145,6 +150,8 @@ Feature: Step 1 Create your account fields password
       | $EvEn7              | too short                  | Passwords must be at least 8 characters.                                          |
       | password            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
       | 88888888            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
+      #| smith               | contains part of the email | Password must not include email.                                                  |
+      #| myownpoB0x          | contains part of the email | Password must not include email.                                                  |
 
   #D3F-32
   Scenario: system shall by default mask the password characters behind bullets, with an option to show the full text

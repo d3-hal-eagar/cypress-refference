@@ -12,6 +12,19 @@ Feature: Step 1 Create your account fields Email Addres
 
 
   #D3F-29
+  Scenario: 2a User without entering a Email Address focuses out of the field, then returns to enter text
+    When I click on the "email" field
+    When without entering "email"
+    And I blur the "email" field
+    When I click on the "password" field
+    And I click the X Icon on the "email" field
+    And I click the label on the "email" field
+    Then "email" field does not display X Icon
+    And Check that the "email" field is focused
+    And "email" field label is displayed in red
+    Then I enter additional text into "email" field text "x"
+    And I shall be displayed no error for the "email" field
+
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
     And I blur the "email" field
@@ -24,17 +37,6 @@ Feature: Step 1 Create your account fields Email Addres
     Then I shall be displayed an error for the "email" field - "This is a required field"
     And "email" field label is displayed in red
     And "email" field displays X Icon
-
-  Scenario: 2a User without entering a Email Address focuses out of the field, then returns to enter text
-    When I click on the "email" field
-    When without entering "email"
-    And I blur the "email" field
-    And I click the X Icon on the "email" field
-    Then "email" field does not display X Icon
-    And Check that the "email" field is focused
-    And "email" field label is displayed in red
-    Then I enter additional text into "email" field text "x"
-    And I shall be displayed no error for the "email" field
 
   Scenario: 2b - User focuses on the Email Address input field that has an error
     When I click on the "email" field
@@ -58,7 +60,9 @@ Feature: Step 1 Create your account fields Email Addres
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
     And "email" field label is displayed in red
     And "email" field displays X Icon
+    When I click on the "password" field
     And I click the X Icon on the "email" field
+    And I click the label on the "email" field
     Then "email" field does not display X Icon
     And Check that the "email" field is focused
     And "email" field label is displayed in red
@@ -92,11 +96,16 @@ Feature: Step 1 Create your account fields Email Addres
     And I shall be displayed no error for the "email" field
 
     Examples:
-      | email_entered    |
-      | hal@haleagar.com |
-      | info@example.com |
-      | a@be.com         |
-      | hal@toys.cc      |
+      | email_entered       |
+      | hal@haleagar.com    |
+      | info@example.com    |
+      | a@be.com            |
+      | hal@toys.cc         |
+      | hal.e@toys.net      |
+      | Unfo@example.com    |
+      | info@Example.com    |
+      | one@number2.com     |
+      | jane387@hotmail.com |
 
   Scenario Outline: User enters an invalid email
     When I have enter invalid "email" value "<email_entered>" that "<type_of_error>"
@@ -104,8 +113,15 @@ Feature: Step 1 Create your account fields Email Addres
     Then I shall be displayed an error for the "email" field - "<error_message>"
 
     Examples:
-      | email_entered     | type_of_error      | error_message                                                                                               |
-      | userguy@gnail.com | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
-      | userguy@gmail.co  | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
-      | userguy.gmail.com | does not contain @ | Please enter a valid email address.                                                                         |
-      | userguy.%mail.com | does not contain @ | Please enter a valid email address.                                                                         |
+      | email_entered        | type_of_error      | error_message                                                                                               |
+      | userguy@gnail.com    | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
+      | userguy@gmail.co     | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
+      | userguy@gmail..com   | double dot         | Please enter a valid email address.                                                                         |
+      | .userguy@gmail.com   | stars with dot     | Please enter a valid email address.                                                                         |
+      | userguy.gmail.com    | does not contain @ | Please enter a valid email address.                                                                         |
+
+  Scenario: User enters invalid characters in email multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
+
+  Scenario: User enters additional invalid characters in email multiple input errors
+    When I have enter invalid characters ",#\//\"'" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."

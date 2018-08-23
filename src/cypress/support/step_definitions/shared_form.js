@@ -96,6 +96,10 @@ Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
     cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
 });
 
+Then(/^"(.*?)" field displays check Icon$/, function (formField) {
+    cy.getFormGroup(formField).find('i.oi-circle-check').should('be.visible');
+});
+
 // noinspection JSUnusedLocalSymbols
 Given(/^Action detail "(.*?)"/, (descriptionText) => {
     // this is a placeholder step used to describe lack of action for clarity
@@ -126,41 +130,52 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         // chained actions clear previous error
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput).blur()
-          .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
+          .getFormGroup(formField).find('.text-danger').should('not.be.visible')
           .getElement(formField).clear().type(userInput).blur()
-          .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
+          .getFormGroup(formField).contains(errorText).should('be.visible');
     }
 
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
     // starting at rowindex 1 to skip header row
+    let  validInputShort = validInput;
+    if (formField === 'middleInitial'){
+        validInputShort = '';
+    }
     for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInput + characterList.substring(charindex, charindex+1);
+        let userInput = validInputShort + characterList.substring(charindex, charindex+1);
+        if (formField === 'zip'){
+            validInput = '99999';
+        }
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput).blur()
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible')
             .getElement(formField).clear().type(userInput).blur()
-            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
+            .getFormGroup(formField).contains(errorText).should('be.visible');
     }
 
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)" on ex flow$/, function (characterList,validInput,formField,errorText) {
     // starting at rowindex 1 to skip header row
+    let  validInputShort = validInput;
+    if (formField === 'middleInitial'){
+        validInputShort = '';
+    }
     for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInput + characterList.substring(charindex, charindex+1);
+        let userInput = validInputShort + characterList.substring(charindex, charindex+1);
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput)
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible')
             .getElement(formField).clear().type(userInput)
-            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
+            .getFormGroup(formField).contains(errorText).should('be.visible');
     }
 
 });
@@ -173,7 +188,7 @@ When(/^I have selected valid "(.*?)" option I see the correct value$/, function 
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #' + rowindex + ') I have selected valid ' + stateName + ' option for the ' + formField + ' field that has ' + stateValue + ' value');
         cy.getElement(formField).select(stateName).should('have.value', stateValue).and('contain',stateName)
-        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50);
+        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(5);
     }
 
 });
@@ -181,20 +196,4 @@ When(/^I have selected valid "(.*?)" option I see the correct value$/, function 
 Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formField) {
     cy.getElement(formField).should('not.have','attr','multiple');
     cy.get('select[data-test='+formField+']').should('be.visible');
-});
-
-When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
-    // starting at rowindex 1 to skip header row
-    for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInput + characterList.substring(charindex, charindex+1);
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
-        // chained actions clear previous error
-        // re-enter text and check for error
-        cy.getElement(formField).clear().type(validInput).blur()
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(50)
-            .getElement(formField).clear().type(userInput).blur()
-            .getFormGroup(formField).contains(errorText).should('be.visible').wait(50);
-    }
-
 });

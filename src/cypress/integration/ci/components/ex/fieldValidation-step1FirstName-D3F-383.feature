@@ -114,21 +114,19 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario Outline: User enters an invalid firstName
     When I have enter invalid "firstName" value "<name_entered>" that "<type_of_error>"
-    And I blur the "firstName" field
     Then I shall be displayed an error for the "firstName" field - "<error_message>"
 
     Examples:
       | name_entered     | type_of_error                        | error_message              |
       | mighty77         | contians a number                    | Please enter a valid name. |
-      | $mtih            | contains invalid non alpha character | Please enter a valid name. |
-      | はると              | contians unicode                     | Please enter a valid name. |
-      | userguy@mail.com | does not contain @                   | Please enter a valid name. |
       | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
       | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
       | 'Roid            | does not begin with a letter         | Please enter a valid name. |
 
-   # performance optimized multi value test
   Scenario: User enters invalid characters in First Name multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name." on ex flow
+
+  Scenario: User enters additional invalid characters in First Name multiple input errors
+    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name." on ex flow
 
 

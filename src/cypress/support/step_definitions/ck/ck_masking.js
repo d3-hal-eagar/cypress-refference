@@ -1,9 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ck/';
-
-
 When(/^I select the Show button$/, function () {
     cy.get('.showhide-pw').contains('Show').click();
 });

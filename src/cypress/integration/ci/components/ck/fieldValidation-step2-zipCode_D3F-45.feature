@@ -70,36 +70,10 @@ Feature: Zip Code - Validation Criteria & Character Restriction
       | 22z12             | has a 'z' letter               | Please use numbers only in this field. |
       | 22#12             | has a '#' symbol               | Please use numbers only in this field. |
       | 22.12             | has a '.' symbol               | Please use numbers only in this field. |
-      | 22!09             | has a '!' symbol               | Please use numbers only in this field. |
       | 1\\123            | has a '\\' symbol              | Please use numbers only in this field. |
-      | 22[00             | has a '[' symbol               | Please use numbers only in this field. |
-      | 22]00             | has a ']' symbol               | Please use numbers only in this field. |
-      | 22&00             | has a '&' symbol               | Please use numbers only in this field. |
-      | 22@00             | has a '@' symbol               | Please use numbers only in this field. |
-      | 22%00             | has a '%' symbol               | Please use numbers only in this field. |
-      | 22&00             | has a '&' symbol               | Please use numbers only in this field. |
-      | 22?00             | has a '?' symbol               | Please use numbers only in this field. |
-      | 22>00             | has a '>' symbol               | Please use numbers only in this field. |
-      | 22<00             | has a '<' symbol               | Please use numbers only in this field. |
       | 22"00             | has a '"' symbol               | Please use numbers only in this field. |
-      | 22$00             | has a '$' symbol               | Please use numbers only in this field. |
-      | 22)00             | has a ')' symbol               | Please use numbers only in this field. |
-      | 22(00             | has a '(' symbol               | Please use numbers only in this field. |
-      | 22:00             | has a ':' symbol               | Please use numbers only in this field. |
-      | 22;00             | has a ';' symbol               | Please use numbers only in this field. |
-      | 22~00             | has a '~' symbol               | Please use numbers only in this field. |
-      | 22^00             | has a '^' symbol               | Please use numbers only in this field. |
-      | 22}00             | has a '}' symbol               | Please use numbers only in this field. |
-      | 22{00             | has a '{' symbol               | Please use numbers only in this field. |
-      | 22+00             | has a '+' symbol               | Please use numbers only in this field. |
-      | 22_00             | has a '_' symbol               | Please use numbers only in this field. |
-      | 22*00             | has a '*' symbol               | Please use numbers only in this field. |
-      | 70ã99             | has a non-ASCII symbol         | Please use numbers only in this field. |
-      | 23ü46             | has a non-ASCII symbol         | Please use numbers only in this field. |
       | 22–09             | has a non-ASCII en dash symbol | Please use numbers only in this field. |
       | 22—21             | has a non-ASCII em dash symbol | Please use numbers only in this field. |
-      | 12六21             | has a unicode HAN symbol       | Please use numbers only in this field. |
-      | 22✉02             | has a emoji symbol             | Please use numbers only in this field. |
 
   Scenario: 4a - User focuses back on the Zip-Code field that has the error "Please use numbers only in this field"
     When Action detail "Trigger error state - 'Please use numbers only in this field.'"
@@ -133,3 +107,9 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     Then "zip" field label is displayed in black
     And "zip" field input is displayed in black
     And I shall be displayed no error for the "zip" field
+
+  Scenario: User enters invalid characters in Zip code multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "1234" on the "zip" and I see validation error message "Please use numbers only in this field."
+
+  Scenario: User enters additional invalid characters in Zip code multiple input errors
+    When I have enter invalid characters ".,#'\//\" " into valid input "1234" on the "zip" and I see validation error message "Please use numbers only in this field."

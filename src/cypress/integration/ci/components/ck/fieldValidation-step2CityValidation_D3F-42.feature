@@ -71,7 +71,6 @@ Feature: City - Validation Criteria and Error Handling
     Examples:
       | city_entered             | type_of_error               | error_message                               |
       | New / York               | has a '/' symbol            | Cities may only contain letters and spaces. |
-      | New \\ York              | has a '\\' symbol           | Cities may only contain letters and spaces. |
       | San José                 | has a extended latin symbol | Cities may only contain letters and spaces. |
       | St. Louis                | has a '.' symbol            | Cities may only contain letters and spaces. |
       | Winchester-on-the-Severn | has a '-' symbol            | Cities may only contain letters and spaces. |
@@ -89,37 +88,8 @@ Feature: City - Validation Criteria and Error Handling
     When I have enter invalid "city" value I see the correct validation error message
       | city_entered    | type_of_error                  | error_message                               |
       | New 45 York     | has a number                   | Cities may only contain letters and spaces. |
-      | New! York       | has a '!' symbol               | Cities may only contain letters and spaces. |
-      | New. York       | has a '.' symbol               | Cities may only contain letters and spaces. |
-      | New, York       | has a ',' symbol               | Cities may only contain letters and spaces. |
-      | New & York      | has a '&' symbol               | Cities may only contain letters and spaces. |
-      | New @ York      | has a '@' symbol               | Cities may only contain letters and spaces. |
-      | New % York      | has a '%' symbol               | Cities may only contain letters and spaces. |
-      | New & York      | has a '&' symbol               | Cities may only contain letters and spaces. |
-      | New ? York      | has a '?' symbol               | Cities may only contain letters and spaces. |
-      | New > York      | has a '>' symbol               | Cities may only contain letters and spaces. |
-      | New < York      | has a '<' symbol               | Cities may only contain letters and spaces. |
-      | New " York      | has a '"' symbol               | Cities may only contain letters and spaces. |
-      | New $ York      | has a '$' symbol               | Cities may only contain letters and spaces. |
-      | New ) York      | has a ')' symbol               | Cities may only contain letters and spaces. |
-      | New ( York      | has a '(' symbol               | Cities may only contain letters and spaces. |
-      | New : York      | has a ':' symbol               | Cities may only contain letters and spaces. |
-      | New ; York      | has a ';' symbol               | Cities may only contain letters and spaces. |
-      | New ~ York      | has a '~' symbol               | Cities may only contain letters and spaces. |
-      | New ^ York      | has a '^' symbol               | Cities may only contain letters and spaces. |
-      | New } York      | has a '}' symbol               | Cities may only contain letters and spaces. |
-      | New { York      | has a '{' symbol               | Cities may only contain letters and spaces. |
-      | New + York      | has a '+' symbol               | Cities may only contain letters and spaces. |
-      | New _ York      | has a '_' symbol               | Cities may only contain letters and spaces. |
-      | New * York      | has a '*' symbol               | Cities may only contain letters and spaces. |
-      | São Paulo       | has a non-ASCII symbol         | Cities may only contain letters and spaces. |
-      | Nürnberg        | has a non-ASCII symbol         | Cities may only contain letters and spaces. |
       | New York –north | has a non-ASCII en dash symbol | Cities may only contain letters and spaces. |
       | New York —west  | has a non-ASCII em dash symbol | Cities may only contain letters and spaces. |
-      | Roppongi 六本木    | has a unicode HAN symbol       | Cities may only contain letters and spaces. |
-      | New ✉ York      | has a emoji symbol             | Cities may only contain letters and spaces. |
-      | New [ York      | has a '[' symbol               | Cities may only contain letters and spaces. |
-      | New ] York      | has a ']' symbol               | Cities may only contain letters and spaces. |
 
   Scenario: 4b - User focuses on the City input field that has the error "Cities may only contain letters and spaces."
     When Action detail "Trigger error state - 'Cities may only contain letters and spaces.'"
@@ -132,3 +102,9 @@ Feature: City - Validation Criteria and Error Handling
     Then "city" field label is displayed in black
     And "city" field input is displayed in black
     And I shall be displayed no error for the "city" field
+
+  Scenario: User enters invalid characters in City multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "twn" on the "city" and I see validation error message "Cities may only contain letters and spaces."
+
+  Scenario: User enters additional invalid characters in City multiple input errors
+    When I have enter invalid characters ",#\//\"" into valid input "twn" on the "city" and I see validation error message "Cities may only contain letters and spaces."

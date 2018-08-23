@@ -18,7 +18,8 @@ Feature: Step2 info fields
     And I focus on the "lastName" field
     And I focus on the "street1" field
     And I focus on the "street2" field
-    And I focus on the "ssn3" field
+    #And I focus on the "ssn3" field
+    And I focus on the "ssn" field
     And I focus on the "city" field
     And I focus on the "state" field
     And I focus on the "zip" field

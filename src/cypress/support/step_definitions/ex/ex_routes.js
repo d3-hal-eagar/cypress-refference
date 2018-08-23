@@ -1,11 +1,13 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ex/';
+let flow = 'ex/';
 
 Given(`I am a user on the ex flow`, () => {
-    cy.visit('/');
-    cy.visit(flow);
+    flow = 'ex/';
+    cy.visit('/?marketingid=00001');
+    cy.wait(200);
+    //cy.visit(flow);
 });
 
 When(`I am on the ex landing page`, () => {
