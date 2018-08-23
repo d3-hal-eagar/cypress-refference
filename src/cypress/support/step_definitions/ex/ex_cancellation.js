@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ex/';
-
 Then(`I am shown an error apology`, () => {
     cy.get('.modal');
 

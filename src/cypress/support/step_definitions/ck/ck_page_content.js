@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = '/ck/';
-
 Then(/^I am displayed "(.*?)" Hyperlinked to "(.*?)"$/, (linkText, linkUrl) => {
     cy.get('footer a[href="'+linkUrl+'"]').contains(linkText);
 });
@@ -16,10 +14,23 @@ Then(/^"(.*?)" Hyperlinked targets opening in a new tab$/, (linkUrl) => {
     cy.get('footer a[href="'+linkUrl+'"][target="_blank"]').should('be.visible');
 });
 
-let siteName = 'TestSite';
+let siteName = 'IasadGeas';
+Given(/^make siteName is "(.*?)"$/, (providedSiteName) => {
+    siteName = providedSiteName;
+    cy.log('siteName',siteName);
+    cy.fixture('ck_matrix.json').as('matrixJSON');
+    cy.server();           // enable response stubbing
+    cy.route({
+        method: 'GET',      // Route all GET requests
+        url: '/api/v1/matrix/*/00000',    // that have a URL that matches
+        response: '@matrixJSON'        // and force the response to be:
+    }).as('matrixCall');
+    //cy.wait(['@matrixCall']);
+});
+
 Given(/^the siteName is "(.*?)"$/, (providedSiteName) => {
     siteName = providedSiteName;
-    cy.log('siteName',siteName)
+    cy.log('siteName',siteName);
 });
 
 Then(/^The "(.*?)" message contains siteName$/, function (element) {

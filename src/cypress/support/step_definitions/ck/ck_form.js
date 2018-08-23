@@ -1,7 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ck/';
 const errorRed = 'rgb(220, 53, 69)';
 const textBlack = 'rgb(73, 80, 87)';
 const textDark = 'rgb(90, 92, 94)';

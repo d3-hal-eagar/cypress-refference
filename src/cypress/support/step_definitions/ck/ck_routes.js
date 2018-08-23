@@ -1,9 +1,10 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ck/';
+let flow = 'ck/';
 
 Given(`I am a user on the ck flow`, () => {
+    flow = 'ck/';
     cy.visit( flow+'?marketingid=00000');
     cy.wait(200);
     //cy.visit(flow);
@@ -19,6 +20,7 @@ Then(`I am guided to the ck landing page`, () => {
 
 When(`I am on the ck step1 signup page`, () => {
     cy.visit('/ck/signUp').getElement('sign-up-section').should('be.visible');
+    //cy.getElement('header-signup-button').click().url().should('contain','/ck/signUp').getElement('sign-up-section').should('be.visible');
 });
 
 Then(`I am guided to the ck step1 signup page`, () => {

@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ex/';
-
 Then(`I shall be displayed the ex Progress Bar with Step1 highlighted in green as seen in the design`, () => {
     cy.get('.progress-bar .step.complete').should('have.length', 1);
     cy.get('.progress-bar .step.complete').should('contain','Step 1');

@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ck/';
-
 Then(`I am displayed the following on the 'Hero Image' block`, () => {
     // Logo on the top left corner
     cy.get('.navbar a.navbar-brand').should('be.visible');

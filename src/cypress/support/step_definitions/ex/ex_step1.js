@@ -1,7 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ex/';
 const errorRedBorder = 'rgb(203, 18, 62)';
 const validGreenBorder = 'rgb(37, 145, 94)';
 const neutralGray = 'rgb(206, 212, 218)';

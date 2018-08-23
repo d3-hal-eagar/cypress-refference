@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = '/ex/';
-
 let siteName = 'TestSite';
 
 Then(`I am displayed the correct blocks on the ex Step 1 right rail`, () => {

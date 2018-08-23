@@ -1,8 +1,6 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-const flow = 'ck/';
-
 Then(`I shall be displayed the Progress Bar with Step1 highlighted in green as seen in the design`, () => {
     cy.getElement('progress-section').find('.step.active').should('have.length', 1);
     cy.getChildElement('progress-section','step-1').should('have.class', 'active');

@@ -114,7 +114,6 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario Outline: User enters an invalid firstName
     When I have enter invalid "firstName" value "<name_entered>" that "<type_of_error>"
-    And I blur the "firstName" field
     Then I shall be displayed an error for the "firstName" field - "<error_message>"
 
     Examples:
