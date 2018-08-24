@@ -3,8 +3,8 @@ Feature: CK Landing Page
   As a user when I am on the "ck landing" page then I am displayed the following blocks
 
   Covers
-  - D3F-219 Build Credit Karma Landing Page
-  - D3F-325 Mobile - Build Credit Karma Landing Page
+  - CP-91 (D3F-219) Build Credit Karma Landing Page
+  - CP-822 (D3F-325) Mobile - Build Credit Karma Landing Page
 
 
   Background:
@@ -35,7 +35,8 @@ Feature: CK Landing Page
     Then I am guided to the ck step1 signup page
 
   Scenario: Cta Button Let’s do it
-    When I click element "cta-signup-button"
+    #When I click element "cta-signup-button"
+    When I click button "Let’s do it"
     Then I am guided to the ck step1 signup page
 
   Scenario: Footer Button Show my score

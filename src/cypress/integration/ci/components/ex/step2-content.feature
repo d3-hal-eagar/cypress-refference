@@ -15,15 +15,24 @@ Feature: Step2 info fields
 
 
   Scenario: 1 - test existence of form fields
-    When I focus on the "ssn3" field
-    And I focus on the "ssn" field
+    When I click on the "username" field
+    Then Check that the "username" field is focused
+    And The "username" field label is "Username"
+    When I click on the "password" field
+    Then Check that the "password" field is focused
+    And The "password" field label is "Password"
+    When I click on the "cofirmPassword" field
+    Then Check that the "cofirmPassword" field is focused
+    And The "cofirmPassword" field label is "Confirm Password"
+    When I click on the "ssn" field
+    Then Check that the "ssn" field is focused
+    And The "ssn" field label is "Social Security Number"
     And I focus on the "ssn-display-checkbox" field
+    #And The "ssn-display-checkbox" field label is "Display"
     And I focus on the "dobMonth" field
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    And I focus on the "username" field
-    And I focus on the "password" field
-    And I focus on the "cofirmPassword" field
+    #And The "dobYear" field label is "Date Of Birth"
     And I focus on the "submit-button" field
     Then Action detail "all fields were present"
 

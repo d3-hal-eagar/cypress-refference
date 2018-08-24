@@ -214,3 +214,7 @@ Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$
 Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (formField) {
     cy.getElement(formField).should('not.contain', ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018']);
 });
+
+Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
+    cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
+});

@@ -14,23 +14,38 @@ Feature: Step2 info fields
 
 
   Scenario: 1 - test existence of form fields
-    When I focus on the "firstName" field
-    And I focus on the "lastName" field
-    And I focus on the "street1" field
-    And I focus on the "street2" field
-    #And I focus on the "ssn3" field
-    And I focus on the "ssn" field
-    And I focus on the "city" field
-    And I focus on the "state" field
-    And I focus on the "zip" field
-    And I focus on the "dobMonth" field
-    And I focus on the "dobDay" field
+    When I click on the "firstName" field
+    Then Check that the "firstName" field is focused
+    And The "firstName" field label is "First Name"
+    When I click on the "lastName" field
+    Then Check that the "lastName" field is focused
+    And The "lastName" field label is "Last Name"
+    When I click on the "street1" field
+    Then Check that the "street1" field is focused
+    And The "street1" field label is "Street Address"
+    When I click on the "street2" field
+    Then Check that the "street2" field is focused
+    And The "street2" field label is "Apartment"
+    When I click on the "ssn" field
+    Then Check that the "ssn" field is focused
+    #And The "ssn" field label is "Last 4 Digits of your Social Security Number"
+    When I click on the "city" field
+    Then Check that the "city" field is focused
+    And The "city" field label is "City"
+    When I click on the "zip" field
+    Then Check that the "zip" field is focused
+    And The "zip" field label is "Zip Code"
+    When I focus on the "state" field
+    Then The "state" field label is "State"
+    When I focus on the "dobMonth" field
+    Then I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    And I focus on the "agreement" field
+    #And The "dobYear" field label is "Date of Birth"
+    When I focus on the "agreement" field
     And I focus on the "next-step-button" field
     Then Action detail "all fields were present"
 
-  Scenario: 2 - test existence of messages
+  Scenario: 2 - test for terms and account created section and site name token
     Given the siteName is "NotCreditKarma"
     Then The page header is "You're on your way to free credit scores."
     And The "terms" message contains "By clicking on "Next Step", you agree to"
