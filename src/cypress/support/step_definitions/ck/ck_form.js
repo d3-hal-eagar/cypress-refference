@@ -23,11 +23,6 @@ Then(/^"(.*?)" input field is displayed in red$/, function (formField) {
     cy.getFormGroup(formField).find('input').should('have.css', 'color', errorRed);
 });
 
-Then(/^"(.*?)" field select is displayed in red$/, function (formField) {
-    cy.getFormGroup(formField).find('select.text-danger').should('be.visible');
-    cy.getFormGroup(formField).find('select').should('have.css', 'color', errorRed);
-});
-
 Then(/^"(.*?)" field displays X Icon$/, function (formField) {
     cy.getFormGroup(formField).find('i.oi-circle-x').should('be.visible');
 });
@@ -46,4 +41,21 @@ Then(/^I click the label on the "(.*?)" field$/, function (formField) {
     cy.wait(200);
     cy.getFormGroup(formField).find('label').click();
     cy.wait(200);
+});
+
+Then(/^"(.*?)" select field shall be red/, function (formField) {
+    cy.getFormGroup(formField).find('select').should('have.css', 'color', textRed);
+});
+
+Then(/^"(.*?)" select field is displayed in red$/, function (formField) {
+    cy.getFormGroup(formField).find('select.text-danger').should('be.visible');
+    cy.getFormGroup(formField).find('select').should('have.css', 'color', errorRed);
+});
+
+
+Then(/^"(.*?)" select field is displayed in black$/, function (formField) {
+    cy.getFormGroup(formField).find('select').should('have.css', 'color', textBlack);
+    //rgb(90, 92, 94) #5a5c5e
+    //rgb(64, 66, 69) #404245
+    //rgb(73, 80, 87) #495057
 });

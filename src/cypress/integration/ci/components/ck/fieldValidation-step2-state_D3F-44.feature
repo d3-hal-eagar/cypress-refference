@@ -90,7 +90,7 @@ Feature: State - Validation Criteria and when no character is entered
     And without entering "state"
     And I blur the "state" field
     And "state" field label is displayed in red
-    And "state" field select is displayed in red
+    And "state" select field is displayed in red
     Then I shall be displayed an error for the "state" field - "Select state." in red font color
 
   Scenario: 4a - User focuses back on state field that has error message
@@ -98,7 +98,7 @@ Feature: State - Validation Criteria and when no character is entered
       And I focus on the "state" field
       And I blur the "state" field
     When I focus on the "state" field
-    And "state" field select is displayed in red
+    And "state" select field is displayed in red
     Then Check that the "state" field is focused
     When Action detail "I enter valid state and the the error message disappears"
       And I select "NY" on the "state" field

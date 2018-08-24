@@ -84,10 +84,6 @@ When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
 //     cy.getElement(formField).children().eq(optionIndex).should('be.selected', userInput);
 // });
 
-Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field by default$/, (userInput, formField) => {
-    cy.getElement(formField).children().eq(0).should('be.selected', userInput);
-});
-
 Then(/^I shall be displayed no errors$/, () => {
     cy.get('.text-danger').should('not.be.visible');
 });
@@ -180,20 +176,38 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
 
 });
 
-When(/^I have selected valid "(.*?)" option I see the correct value$/, function (formField,dataTable) {
-    // starting at rowindex 1 to skip header row
-    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
-        let stateName = dataTable.rawTable[rowindex][0];
-        let stateValue = dataTable.rawTable[rowindex][1];
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #' + rowindex + ') I have selected valid ' + stateName + ' option for the ' + formField + ' field that has ' + stateValue + ' value');
-        cy.getElement(formField).select(stateName).should('have.value', stateValue).and('contain',stateName)
-        .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(5);
-    }
-
-});
 
 Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formField) {
     cy.getElement(formField).should('not.have','attr','multiple');
     cy.get('select[data-test='+formField+']').should('be.visible');
+});
+
+Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field by default$/, (userInput, formField) => {
+    cy.getElement(formField).children().eq(0).should('be.selected', userInput);
+});
+
+Then(/^I shall be able to scroll within the options in "(.*?)" field$/, (formField) => {
+    cy.getElement(formField).children().scrollTo('0%', '100%');
+});
+
+When(/^I have selected valid "(.*?)" option I see the correct value$/, function (formField,dataTable) {
+    // starting at rowindex 1 to skip header row
+    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+        let optionName = dataTable.rawTable[rowindex][0];
+        let optionValue = dataTable.rawTable[rowindex][1];
+        // log test intent this is otherwise lost when doing multiple tests in a single step
+        cy.log('(example #' + rowindex + ') I have selected valid ' + optionName + ' option for the ' + formField + ' field that has ' + optionValue + ' value');
+        cy.getElement(formField).select(optionName).should('have.value', optionValue).and('contain',optionName)
+            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(5);
+
+    }
+
+});
+
+Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$/, (userInput, formField) => {
+    cy.getElement(formField).select(userInput).should('be.selected').and('be.visible');
+});
+
+Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (formField) {
+    cy.getElement(formField).should('not.contain', ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018']);
 });
