@@ -52,7 +52,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
     And I blur the "middleInitial" field
     And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
-    When I have enter invalid "middleInitial" value "4" that "contain more than 1 letter"
+    When I have enter invalid "middleInitial" value "4" that "other than - alphabet"
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     And The "middleInitial" field border is outlined in red color
     And A red warning icon inside the "middleInitial" field is displayed

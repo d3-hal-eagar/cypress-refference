@@ -1,8 +1,8 @@
 Feature: Apartment - Validation Criteria & Error Handling
 
   Covers
-    - D3F-43 Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
-    - D3F-361 Mobile - Apartment - Validation Criteria & Error Handling
+    -  CP-799 (D3F-43) Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
+    - CP-799 (D3F-361) Mobile - Apartment - Validation Criteria & Error Handling
   Validation Criteria
     - Not a required field.
     - Max length of 5 characters

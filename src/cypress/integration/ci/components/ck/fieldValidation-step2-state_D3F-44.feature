@@ -1,8 +1,8 @@
 Feature: State - Validation Criteria and when no character is entered
 
   Covers
-    - D3F-44 Validation scenarios for State input field in Step 2 of Acquisition Flow.
-    - D3F-362 Mobile - State - Validation Criteria and when no character is entered
+    - CP-816 (D3F-44) Validation scenarios for State input field in Step 2 of Acquisition Flow.
+    - CP-774 (D3F-362) Mobile - State - Validation Criteria and when no character is entered
   Validation Criteria
     - Is a required field.
     - Dropdown

@@ -121,6 +121,9 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         if (formField === 'zip'){
             validInput = '12345';
         }
+        else if(formField === 'ssn3'){
+            validInput = '1234';
+        }
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
