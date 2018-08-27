@@ -84,7 +84,6 @@ Feature: First Name - Validation Criteria & Error Handling
     When I blur the "firstName" field
     And "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red
-    And I blur the "firstName" field
     And I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}me@dee.da"
     Then "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red

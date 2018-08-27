@@ -33,12 +33,12 @@ Feature: Step2 info fields
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
     #And The "dobYear" field label is "Date Of Birth"
-    And I focus on the "submit-button" field
+    And I focus on the "next-step-button" field
     Then Action detail "all fields were present"
 
   Scenario: 2 - test existence of messages and site name token
     #Then The page header is "Create Your Account"
-    Then The "account-section-title" message contains "Create Your Account"
+    Then The "account-section containing title" message contains "Create Your Account"
     And The a subheader exists "Identity Verification"
     And The page contians "Why do we need this?"
     And The a subheader exists "Account Information"

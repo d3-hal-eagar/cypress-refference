@@ -15,7 +15,7 @@ Feature: CK Focus Tooltip
     And "street1" tooltip is not visible
     #street2 = apartment
     And "street2" tooltip is not visible
-    And "ssn3" tooltip is not visible
+    And "ssn" tooltip is not visible
 
   Scenario: 1 User on focusing First Name input field, is displayed a tooltip.
     When I click on the "firstName" field
@@ -44,10 +44,10 @@ Feature: CK Focus Tooltip
     Then "street2" tooltip is not visible
 
   Scenario: 5 User on focusing SSN field, is displayed a tooltip.
-    When I click on the "ssn3" field
-    Then I am displayed a "ssn3" tooltip - "We use your SSN to locate your credit file and retrieve your credit information." on desktop only
-    When I blur the "ssn3" field
-    Then "ssn3" tooltip is not visible
+    When I click on the "ssn" field
+    Then I am displayed a "ssn" tooltip - "We use your SSN to locate your credit file and retrieve your credit information." on desktop only
+    When I blur the "ssn" field
+    Then "ssn" tooltip is not visible
 
   Scenario: 6 As a user when I focus on any field, the field element is highlighted with a blue outline
     When I click on the "firstName" field
@@ -58,8 +58,8 @@ Feature: CK Focus Tooltip
     Then Check that the "street1" field is focused
     When I click on the "street2" field
     Then Check that the "street2" field is focused
-    When I click on the "ssn3" field
-    Then Check that the "ssn3" field is focused
+    When I click on the "ssn" field
+    Then Check that the "ssn" field is focused
     When I click on the "city" field
     Then Check that the "city" field is focused
     When I select "NY" on the "state" field

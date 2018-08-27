@@ -22,7 +22,7 @@ Feature: ex Step 2 Right rail content
       And I have enter valid "username" value "ConsumerJoe"
       And I have enter valid "password" value "1Secure9@55W0rd"
       And I have enter valid "cofirmPassword" value "1Secure9@55W0rd"
-    And I click element "submit-button"
+    And I click element "next-step-button"
     And Action detail "System sends users information to the TU Bureau"
     And Action detail "if the given information still doesn't match the credit files"
     Then I am shown an error apology
@@ -31,14 +31,14 @@ Feature: ex Step 2 Right rail content
     Given I am a user on the ex flow
     And I am on the ex step3 confirm page
     #And I answer the KBA Questions incorrectly
-    When I click element "submit-button"
+    When I click element "next-step-button"
     Then I am shown an error and cancel the registration process
 
   Scenario: 3 As a user when I am on Step 3 and I run out of time while answering KBA question in both the occasions then I am thrown an error and registration is canceled.
     Given I am a user on the ex flow
     And I am on the ex step3 confirm page
     #And I answer the KBA Questions incorrectly
-    When I click element "submit-button"
+    When I click element "next-step-button"
     And Action detail "System sends users information to the TU Bureau"
     And Action detail "if the given information still doesn't match the credit files"
     Then I am shown an error and about protecting your personal information
