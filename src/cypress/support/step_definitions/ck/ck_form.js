@@ -6,8 +6,14 @@ const textBlack = 'rgb(73, 80, 87)';
 const textDark = 'rgb(90, 92, 94)';
 
 Then(/^"(.*?)" field label is displayed in red$/, function (formField) {
-    cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', errorRed);
+    if (formField = 'ssn-label'){
+        cy.get('label.form-row-label.text-danger').should('be.visible');
+        cy.getElement(formField).should('have.css', 'color', errorRed);
+    }
+    else {
+        cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
+        cy.getFormGroup(formField).find('label').should('have.css', 'color', errorRed);
+    }
 });
 
 Then(/^"(.*?)" field label is displayed in black/, function (formField) {

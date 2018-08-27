@@ -18,8 +18,14 @@ Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
 });
 
 Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font color$/, (formField,errorText) => {
-    cy.getFormGroup(formField).contains(errorText).should('be.visible');
-    cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
+    if (formField = 'ssn-error-message') {
+        cy.get('div.text-danger.ssn-validation-message').contains(errorText).should('be.visible');
+        cy.getElement(formField).should('have.css', 'color', 'rgb(220, 53, 69)');
+    }
+    else {
+        cy.getFormGroup(formField).contains(errorText).should('be.visible');
+        cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
+    }
 });
 
 When(/^I focus on the "(.*?)" field$/, (formField) => {
@@ -126,7 +132,7 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         if (formField === 'zip'){
             validInput = '12345';
         }
-        else if(formField === 'ssn3'){
+        else if(formField === 'ssn'){
             validInput = '1234';
         }
         // log test intent this is otherwise lost when doing multiple tests in a single step
@@ -135,8 +141,13 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput).blur()
           .getFormGroup(formField).find('.text-danger').should('not.be.visible')
-          .getElement(formField).clear().type(userInput).blur()
-          .getFormGroup(formField).contains(errorText).should('be.visible');
+          .getElement(formField).clear().type(userInput).blur();
+        if(formField = 'ssn'){
+            cy.getElement('ssn-error-message').contains(errorText).should('be.visible')
+        }
+        else {
+            cy.getFormGroup(formField).contains(errorText).should('be.visible');
+        }
     }
 
 });
