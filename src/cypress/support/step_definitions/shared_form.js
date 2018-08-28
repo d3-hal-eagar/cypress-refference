@@ -89,7 +89,12 @@ Then(/^I shall be displayed no errors$/, () => {
 });
 
 Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
-    cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
+    if (formField.startsWith("ssn") || formField.startsWith("dob")){
+        // e.g. ssn-label, dob-label
+        cy.get('label[data-test='+formField+'-label].text-danger').should('not.be.visible');
+    } else {
+        cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
+    }
 });
 
 Then(/^"(.*?)" field displays check Icon$/, function (formField) {

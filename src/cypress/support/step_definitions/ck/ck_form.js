@@ -11,7 +11,12 @@ Then(/^"(.*?)" field label is displayed in red$/, function (formField) {
 });
 
 Then(/^"(.*?)" field label is displayed in black/, function (formField) {
-    cy.getFormGroup(formField).find('label').should('have.css', 'color', textDark);
+    if (formField.startsWith("ssn") || formField.startsWith("dob")){
+        // e.g. ssn-label, dob-label
+        cy.get('label[data-test='+formField+'-label]').should('have.css', 'color', textDark);
+    } else {
+        cy.getFormGroup(formField).find('label').should('have.css', 'color', textDark);
+    }
 });
 
 Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
