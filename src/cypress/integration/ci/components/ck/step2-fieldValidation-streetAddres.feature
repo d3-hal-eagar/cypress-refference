@@ -73,6 +73,8 @@ Feature: Street Address - Validation Criteria & Error Handling
       | 22 Cortand street, suite 1103 |
       | 41-45 45th st                 |
       | Scholars' Walk                |
+      | 42nd st.                      |
+      | 46th st/Packard st            |
 
   # Validation scenarios for Street Address input field when user enters invalid address.
 #
@@ -93,12 +95,6 @@ Feature: Street Address - Validation Criteria & Error Handling
       | street_address_entered   | type_of_err                    | err_message                                                                                 |
       | 22 Cortand street –north | has a non-ASCII en dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
       | 22 Cortand street —west  | has a non-ASCII em dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-
-    # performance optimized multi value test
-    # benefit over the dataTable is concise gherkin and less duplication
-    # downside no description of the invalid character, super long line
-  Scenario: User enters invalid characters in Street Address multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "some st" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
 
   Scenario: 4a - User clicks on the error icon
     When I have enter invalid "street1" value "22 Cortl@nd streeet" that "has an '@' symbol"
@@ -127,4 +123,5 @@ Feature: Street Address - Validation Criteria & Error Handling
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
 
   Scenario: User enters additional invalid characters in Street Address multiple input errors
-    When I have enter invalid characters ".\//\"" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
+  # yea escaping this tests quote " and \
+    When I have enter invalid characters "\\\"" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
