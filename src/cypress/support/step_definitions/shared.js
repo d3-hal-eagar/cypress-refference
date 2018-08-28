@@ -33,6 +33,14 @@ Then(/^The a subheader exists "(.*?)"$/, (headerText) => {
     cy.get('h4').contains(headerText).should('be.visible');
 });
 
+Then(/^The form title is "(.*?)"$/, (headerText) => {
+    cy.getElement('title').contains(headerText).should('be.visible');
+});
+
+Then(/^The form header is "(.*?)"$/, (headerText) => {
+    cy.getElement('header').contains(headerText).should('be.visible');
+});
+
 Then(/^The page contians "(.*?)"$/, (headerText) => {
     cy.get('body').contains(headerText).should('be.visible');
 });
