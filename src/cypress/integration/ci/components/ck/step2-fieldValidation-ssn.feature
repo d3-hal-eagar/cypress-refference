@@ -71,29 +71,35 @@ Feature: Social Security Number - Validation Criteria & Error Handling
       | 22✉0        | has a emoji symbol             | Your entry must be a number consisting of 4 digits |
 
     And "ssn-label" field label is displayed in red
-    And I shall be displayed an error for the "ssn-error-message" field - "Your entry must be a number consisting of 4 digits" in red font color
+    And I shall be displayed an error for the "ssn" field - "Your entry must be a number consisting of 4 digits" in red font color
 
   Scenario: 5a - User enters symbol other than digits on SSN Input field.
     And I focus on the "ssn" field
     And I have enter invalid "ssn" value "123k" that "has symbol other than digits"
     And "ssn-label" field label is displayed in red
-    And I shall be displayed an error for the "ssn-error-message" field - "Your entry must be a number consisting of 4 digits" in red font color
+    And I shall be displayed an error for the "ssn" field - "Your entry must be a number consisting of 4 digits" in red font color
 
   Scenario: 5b - User enters less than 4 digits on SSN Input field.
     And I focus on the "ssn" field
     And I have enter invalid "ssn" value "123" that "has less then 4 digits"
     And I focus on the "street2" field
     And "ssn-label" field label is displayed in red
-    And I shall be displayed an error for the "ssn-error-message" field - "Your entry must be a number consisting of 4 digits" in red font color
+    And I shall be displayed an error for the "ssn" field - "Your entry must be a number consisting of 4 digits" in red font color
 
   Scenario: 5c - User focuses back on SSN Input field that has the error message -"Your entry must be a number consisting of 4 digits"
     And I focus on the "ssn" field
     And I have enter invalid "ssn" value "123" that "has less then 4 digits"
-    And I focus on the "street2" field
+    And I blur the "ssn" field
     Then "ssn-label" field label is displayed in red
-    And I shall be displayed an error for the "ssn-error-message" field - "Your entry must be a number consisting of 4 digits" in red font color
+    And I shall be displayed an error for the "ssn" field - "Your entry must be a number consisting of 4 digits" in red font color
     When I focus on the "ssn" field
     And I have enter valid "ssn" value "7865"
     Then I shall be displayed no error for the "ssn" field
-    And "ssn-label" field label is displayed in black
+    And "ssn" field label is displayed in black
     And "ssn" input field shall be black
+
+  Scenario: User enters invalid characters in SSN code multiple input errors
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "1234" on the "ssn" and I see validation error message "Your entry must be a number consisting of 4 digits"
+
+  Scenario: User enters additional invalid characters in SSN code multiple input errors
+    When I have enter invalid characters ".,#'\//\" " into valid input "1234" on the "ssn" and I see validation error message "Your entry must be a number consisting of 4 digits"

@@ -109,7 +109,7 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     And I shall be displayed no error for the "zip" field
 
   Scenario: User enters invalid characters in Zip code multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "1234" on the "zip" and I see validation error message "Please use numbers only in this field."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "12345" on the "zip" and I see validation error message "Please use numbers only in this field."
 
   Scenario: User enters additional invalid characters in Zip code multiple input errors
-    When I have enter invalid characters ".,#'\//\" " into valid input "1234" on the "zip" and I see validation error message "Please use numbers only in this field."
+    When I have enter invalid characters ".,#'\//\" " into valid input "12345" on the "zip" and I see validation error message "Please use numbers only in this field."

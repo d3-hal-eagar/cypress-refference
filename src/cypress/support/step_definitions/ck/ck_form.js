@@ -6,8 +6,9 @@ const textBlack = 'rgb(73, 80, 87)';
 const textDark = 'rgb(90, 92, 94)';
 
 Then(/^"(.*?)" field label is displayed in red$/, function (formField) {
-    if (formField = 'ssn-label'){
-        cy.get('label.form-row-label.text-danger').should('be.visible');
+    // e.g. ssn-label, dob-label
+    if (formField.endsWith("-label")){
+        cy.get('label[data-test='+formField+'].text-danger').should('be.visible');
         cy.getElement(formField).should('have.css', 'color', errorRed);
     }
     else {
