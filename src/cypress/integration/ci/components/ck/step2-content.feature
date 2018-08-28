@@ -28,7 +28,7 @@ Feature: Step2 info fields
     And The "street2" field label is "Apartment"
     When I click on the "ssn" field
     Then Check that the "ssn" field is focused
-    #And The "ssn" field label is "Last 4 Digits of your Social Security Number"
+    And The "ssn" field label is "Last 4 Digits of your Social Security Number"
     When I click on the "city" field
     Then Check that the "city" field is focused
     And The "city" field label is "City"
@@ -40,7 +40,7 @@ Feature: Step2 info fields
     When I focus on the "dobMonth" field
     Then I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    #And The "dobYear" field label is "Date of Birth"
+    And The "dob" field label is "Date of Birth"
     When I focus on the "agreement" field
     And I focus on the "next-step-button" field
     Then Action detail "all fields were present"

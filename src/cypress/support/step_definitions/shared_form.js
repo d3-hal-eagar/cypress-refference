@@ -216,5 +216,10 @@ Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (f
 });
 
 Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
-    cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
+    if (formField.startsWith("ssn") || formField.startsWith("dob")){
+        // e.g. ssn-label, dob-label
+        cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
+    } else {
+        cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
+    }
 });
