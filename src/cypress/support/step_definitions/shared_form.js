@@ -89,7 +89,12 @@ Then(/^I shall be displayed no errors$/, () => {
 });
 
 Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
-    cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
+    if (formField.startsWith("ssn") || formField.startsWith("dob")){
+        // e.g. ssn-label, dob-label
+        cy.get('label[data-test='+formField+'-label].text-danger').should('not.be.visible');
+    } else {
+        cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
+    }
 });
 
 Then(/^"(.*?)" field displays check Icon$/, function (formField) {
@@ -213,4 +218,13 @@ Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$
 
 Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (formField) {
     cy.getElement(formField).should('not.contain', ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018']);
+});
+
+Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
+    if (formField.startsWith("ssn") || formField.startsWith("dob")){
+        // e.g. ssn-label, dob-label
+        cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
+    } else {
+        cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
+    }
 });

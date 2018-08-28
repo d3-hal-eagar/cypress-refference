@@ -85,9 +85,11 @@ Feature: Apartment - Validation Criteria & Error Handling
       | #11               | has a number signs |
       | 22-A              | has a hyphen (-)   |
       | 22 A              | has a space        |
+      | 22.1              | has a space        |
+      | 22A/B             | has a space        |
 
   Scenario: User enters invalid characters in Apartment multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
 
   Scenario: User enters additional invalid characters in Apartment multiple input errors
-    When I have enter invalid characters ".\//\"" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
+    When I have enter invalid characters "\\\"" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."

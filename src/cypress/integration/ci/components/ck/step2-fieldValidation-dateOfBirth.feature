@@ -202,19 +202,19 @@ Feature: Date of Birth - Validation Criteria and Error Handling
 
   Scenario: 3 - User without selecting a Date, Month and Year focuses out of DOB Field.
     And I focus on the "dobMonth" field
-    And I focus on the "street2" field
+    And I blur the "dobMonth" field
     Then "dobMonth" select field is displayed in red
     And "dobDay" select field is displayed in black
     And "dobYear" select field is displayed in black
 #    And "dob" field label is displayed in black
     When I focus on the "dobDay" field
-    And I focus on the "street2" field
+    And I blur the "dobDay" field
     Then "dobMonth" select field is displayed in red
     And "dobDay" select field is displayed in red
     And "dobYear" select field is displayed in black
     #    And "dob" field label is displayed in black
     When I focus on the "dobYear" field
-    And I focus on the "street2" field
+    And I blur the "dobYear" field
     Then "dobMonth" select field is displayed in red
     And "dobDay" select field is displayed in red
     And "dobYear" select field is displayed in red
@@ -224,7 +224,7 @@ Feature: Date of Birth - Validation Criteria and Error Handling
     When I focus on the "dobMonth" field
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    And I focus on the "street2" field
+    And I blur the "dobYear" field
 #    Then I shall be displayed an error for the "dob" field - "Please choose a Month, Please choose a Day, Please choose a year" in red font color
 
     #  Note - Date of Birth - Field Name will turn red and Error Message appears only when the user has focused on all the 3 dropdowns - Month, Day & Year. User could have selected 1 or 2 fields, please note the error is displayed when all the 3 are focused.
@@ -233,18 +233,16 @@ Feature: Date of Birth - Validation Criteria and Error Handling
     When I focus on the "dobMonth" field
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    And I focus on the "street2" field
+    And I blur the "dobYear" field
 #    Then I shall be displayed an error for the "Please choose a Month, Please choose a Day, Please choose a year" field - "dob" in red font color
     When I select "02" on the "dobMonth" field
     And I select "23" on the "dobDay" field
     And I select "1989" on the "dobYear" field
-    And I focus on the "street2" field
+    And I blur the "dobYear" field
     Then Action detail "A system is running a validation"
-    And I shall be displayed no error for the "dobMonth" field
-    And I shall be displayed no error for the "dobDay" field
-    And I shall be displayed no error for the "dobYear" field
+    And I shall be displayed no error for the "dob" field
     And "dobMonth" select field is displayed in black
     And "dobDay" select field is displayed in black
     And "dobYear" select field is displayed in black
-#    And "dob" field label is displayed in black
+    And "dob" field label is displayed in black
 

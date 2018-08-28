@@ -24,9 +24,43 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+function wrapWithDataId (dataTest) {
+    var cssSelector = '';
+    if (dataTest.match(/^(\.|#|\+)/)) {
+        //if (dataTest.startsWith('#') || dataTest.startsWith('.')) {
+        cssSelector = dataTest;
+    } else if (dataTest.startsWith('<')) {
+        cssSelector = dataTest.replace(/^<|>$/g, '');
+    } else if (dataTest.startsWith('^')) {
+        dataTest = dataTest.replace(/^\^/, '');
+        cssSelector = '[data-test^='+dataTest+']';
+    } else if (dataTest.startsWith('$')) {
+        dataTest = dataTest.replace(/^\$/, '');
+        cssSelector = '[data-test$='+dataTest+']';
+    } else if (dataTest.startsWith('*')) {
+        dataTest = dataTest.replace(/^\*/, '');
+        cssSelector = '[data-test*='+dataTest+']';
+    } else {
+        cssSelector = '[data-test='+dataTest+']';
+    }
+    return cssSelector;
+};
+
 
 Cypress.Commands.add("getElement", (dataTest) => {
-    return cy.get('[data-test="'+dataTest+'"]');
+    var separatorsChildFirst = [' in ', ' on ', ' within '];
+    var separatorsParentFirst = [' containing ', ' with '];
+    var multiSelectorsChildFirst = dataTest.split(new RegExp(separatorsChildFirst.join('|'), 'g'));
+    var multiSelectorsParentFirst = dataTest.split(new RegExp(separatorsParentFirst.join('|'), 'g'));
+    if (multiSelectorsChildFirst.length == 2) {
+        return cy.getChildElement(multiSelectorsChildFirst[1],multiSelectorsChildFirst[0]);
+    }
+    if (multiSelectorsParentFirst.length == 2) {
+        return cy.getChildElement(multiSelectorsParentFirst[0],multiSelectorsParentFirst[1]);
+    } else {
+        var cssSelector = wrapWithDataId(dataTest);
+        return cy.get(cssSelector);
+    }
 });
 
 Cypress.Commands.add("getFormGroup", (dataTest) => {
@@ -34,5 +68,7 @@ Cypress.Commands.add("getFormGroup", (dataTest) => {
 });
 
 Cypress.Commands.add("getChildElement", (parentDataTest, childDataTest) => {
-    return cy.get('[data-test="'+parentDataTest+'"]').find('[data-test="'+childDataTest+'"]');
+    var parentCssSelector = wrapWithDataId(parentDataTest);
+    var childCssSelector = wrapWithDataId(childDataTest);
+    return cy.get(parentCssSelector).find(childCssSelector);
 });
