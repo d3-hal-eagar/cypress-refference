@@ -12,5 +12,5 @@ Feature: ex Step 1 Right rail content
 
 
   Scenario: On the right rail I am displayed information blocks one below the other.
-    Given the siteName is "NotCreditKarma"
+    Given the siteName is "NotCreditExperian"
     Then I am displayed the correct blocks on the ex Step 1 right rail

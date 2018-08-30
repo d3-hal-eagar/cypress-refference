@@ -228,3 +228,11 @@ Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
         cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
     }
 });
+
+Then(/^The "(.*?)" radio group label is "(.*?)"$/, (formField,labelText) => {
+    cy.getFormGroup(formField).contains(labelText).should('be.visible');
+});
+
+Then(/^Check that the "(.*?)" is not visible$/, (formField) => {
+    cy.getElement(formField).should('not.be.visible')
+});
