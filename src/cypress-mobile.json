@@ -4,8 +4,8 @@
   "watchForFileChanges": false,
   "trashAssetsBeforeRuns": false,
   "video": true,
-  "viewportHeight":	360,
-  "viewportWidth":	640,
+  "viewportHeight":	640,
+  "viewportWidth":	360,
   "baseUrl": "http://localhost:4200",
   "reporter": "mochawesome",
   "reporterOptions": {
