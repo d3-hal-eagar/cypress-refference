@@ -27,7 +27,7 @@ Feature: City - Validation Criteria and Error Handling
     Then I shall be displayed an error for the "city" field - "This is a required field" in red font color
     And "city" field label is displayed in red
 
-  Scenario: 2a - User focuses back on the City field that has the error - "This is a required field."
+  Scenario: 2a - User focuses back on empty City field and enters valid text
     When Action detail "Trigger error state - 'This is a required field'"
       And I focus on the "city" field
       And I blur the "city" field
@@ -37,6 +37,40 @@ Feature: City - Validation Criteria and Error Handling
     When I have enter valid "city" value "New York"
     Then "city" field label is displayed in black
     And "city" field input is displayed in black
+    And I shall be displayed no error for the "city" field
+
+  Scenario: 2b - User focuses back on empty City field and enters invalid text
+    When Action detail "Trigger error state - 'This is a required field'"
+    And I focus on the "city" field
+    And I blur the "city" field
+    Then I shall be displayed an error for the "city" field - "This is a required field" in red font color
+
+    When I enter additional text into "city" field text "hears platt3"
+    And I blur the "city" field
+    Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red font color
+
+  Scenario: 2c - User focuses back on valid City field and enters invalid text
+    When I have enter valid "city" value "New York"
+    And I blur the "city" field
+
+    When I enter additional text into "city" field text "silver $ city"
+    And I blur the "city" field
+    Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red font color
+
+  Scenario: 2d - User focuses back on the City field that has the error and edits
+    When I have enter invalid "city" value "district 4" that "contains numbers"
+    And I blur the "city" field
+    Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red font color
+
+    When I enter additional text into "city" field text "x"
+    And I shall be displayed no error for the "city" field
+
+  Scenario: 2e - User focuses back on the City field that has the error and backspaces
+    When I have enter invalid "city" value "district 4" that "contains numbers"
+    And I blur the "city" field
+    Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red font color
+
+    When I enter additional text into "city" field text "{backspace}"
     And I shall be displayed no error for the "city" field
 
   Scenario: 3 - System restricts user from entering more than 27 characters in the City input field.
