@@ -61,7 +61,7 @@ Feature: Step 2 Last Name fields
   Scenario: 3 User enters invalid First Name with number
     When I have enter invalid "lastName" value "2" that "contains a number"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" input field is displayed in red
@@ -69,14 +69,14 @@ Feature: Step 2 Last Name fields
   Scenario: 3a User enters invalid First Name, then clicks the error icon
     When I have enter invalid "lastName" value "1" that "contains a number"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
     When I click the X Icon on the "lastName" field
     Then Check that the "lastName" field is not focused
 
   Scenario: 3b User enters invalid First Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "that contains a number"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
     When I enter additional text into "lastName" field text "ly"
     Then I shall be displayed no error for the "lastName" field
     When I have enter valid "lastName" value "fork-spelled-with-four"
@@ -106,12 +106,12 @@ Feature: Step 2 Last Name fields
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Please enter a valid name."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -133,10 +133,10 @@ Feature: Step 2 Last Name fields
 
     Examples:
       | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contians a number                    | Please enter a valid last name. |
-      | smith  jones     | contains two spaces in a row         | Please enter a valid last name. |
-      | Mc--Mac          | contains two dashes in a row         | Please enter a valid last name. |
-      | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
+      | mighty77         | contians a number                    | Please enter a valid name. |
+      | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
+      | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
+      | 'Roid            | does not begin with a letter         | Please enter a valid name. |
 
   Scenario: User enters invalid characters in Last Name multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
