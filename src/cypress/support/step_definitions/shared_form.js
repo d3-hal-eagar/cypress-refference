@@ -18,8 +18,15 @@ Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
 });
 
 Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font color$/, (formField,errorText) => {
-    cy.getFormGroup(formField).contains(errorText).should('be.visible');
-    cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
+    if (formField.startsWith("ssn") || formField.startsWith("dob")) {
+        // e.g. ssn-error-message, dob-error-message
+        cy.get('div[data-test='+formField+'-error-message].text-danger').contains(errorText).should('be.visible');
+        cy.getElement(formField+'-error-message').should('have.css', 'color', 'rgb(220, 53, 69)');
+    }
+    else {
+        cy.getFormGroup(formField).contains(errorText).should('be.visible');
+        cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
+    }
 });
 
 When(/^I focus on the "(.*?)" field$/, (formField) => {
@@ -89,10 +96,10 @@ Then(/^I shall be displayed no errors$/, () => {
 });
 
 Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
-    if (formField.startsWith("ssn") || formField.startsWith("dob")){
-        // e.g. ssn-label, dob-label
-        cy.get('label[data-test='+formField+'-label].text-danger').should('not.be.visible');
-    } else {
+    if (formField.startsWith("ssn") || formField.startsWith("dob")) {
+        cy.getElement(formField+'-error-message').should('not.be.visible');
+    }
+    else {
         cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
     }
 });
@@ -126,7 +133,7 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         if (formField === 'zip'){
             validInput = '12345';
         }
-        else if(formField === 'ssn3'){
+        else if(formField === 'ssn'){
             validInput = '1234';
         }
         // log test intent this is otherwise lost when doing multiple tests in a single step
@@ -135,23 +142,21 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
         // re-enter text and check for error
         cy.getElement(formField).clear().type(validInput).blur()
           .getFormGroup(formField).find('.text-danger').should('not.be.visible')
-          .getElement(formField).clear().type(userInput).blur()
-          .getFormGroup(formField).contains(errorText).should('be.visible');
+          .getElement(formField).clear().type(userInput).blur();
+        if(formField.startsWith("ssn") || formField.startsWith("dob")){
+            cy.getElement(formField+'-error-message').contains(errorText).should('be.visible')
+        }
+        else {
+            cy.getFormGroup(formField).contains(errorText).should('be.visible');
+        }
     }
 
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
     // starting at rowindex 1 to skip header row
-    let  validInputShort = validInput;
-    if (formField === 'middleInitial'){
-        validInputShort = '';
-    }
     for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInputShort + characterList.substring(charindex, charindex+1);
-        if (formField === 'zip'){
-            validInput = '99999';
-        }
+        let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
@@ -161,17 +166,12 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
             .getElement(formField).clear().type(userInput).blur()
             .getFormGroup(formField).contains(errorText).should('be.visible');
     }
-
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)" on ex flow$/, function (characterList,validInput,formField,errorText) {
     // starting at rowindex 1 to skip header row
-    let  validInputShort = validInput;
-    if (formField === 'middleInitial'){
-        validInputShort = '';
-    }
     for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInputShort + characterList.substring(charindex, charindex+1);
+        let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
         // log test intent this is otherwise lost when doing multiple tests in a single step
         cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
         // chained actions clear previous error
