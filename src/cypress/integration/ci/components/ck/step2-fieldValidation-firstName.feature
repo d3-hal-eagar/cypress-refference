@@ -52,6 +52,22 @@ Feature: Step 2 First Name fields
     When I enter additional text into "firstName" field text "ly"
     Then I shall be displayed no error for the "firstName" field
 
+  Scenario: 2c - User focuses back on valid firstname field and enters invalid text
+    When I have enter valid "firstName" value "John"
+    And I blur the "firstName" field
+
+    When I enter additional text into "firstName" field text " (the dude)"
+    And I blur the "firstName" field
+    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
+
+  Scenario: 2d - User focuses back on the first name field that has the error and backspaces
+    When I have enter invalid "firstName" value "4ork" that "contains a number"
+    And I blur the "firstName" field
+    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name."
+
+    When I enter additional text into "firstName" field text "{backspace}"
+    And I shall be displayed no error for the "firstName" field
+
   Scenario: 3 User enters invalid First Name
     When I have enter invalid "firstName" value "4ork" that "contains a number"
     And I blur the "firstName" field
