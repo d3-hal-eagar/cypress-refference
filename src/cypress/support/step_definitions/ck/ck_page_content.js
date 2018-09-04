@@ -5,6 +5,11 @@ Then(/^I am displayed "(.*?)" Hyperlinked to "(.*?)"$/, (linkText, linkUrl) => {
     cy.get('footer a[href="'+linkUrl+'"]').contains(linkText);
 });
 
+Then(/^"(.*?)" with text "(.*?)" Hyperlinked to "(.*?)"$/, (dataTest, linkText, linkUrl) => {
+    cy.getElement(dataTest).contains(linkText).should('have.attr', 'href', linkUrl).and('be.visible');
+
+});
+
 Then(`I am displayed ck Footer`, () => {
     cy.get('footer').should('be.visible');
     cy.getElement('copyright-text').should('be.visible');
@@ -12,6 +17,10 @@ Then(`I am displayed ck Footer`, () => {
 
 Then(/^"(.*?)" Hyperlinked targets opening in a new tab$/, (linkUrl) => {
     cy.get('footer a[href="'+linkUrl+'"][target="_blank"]').should('be.visible');
+});
+
+Then(/^"(.*?)" targets opening in a new tab$/, (dataTest) => {
+    cy.getElement(dataTest).should('have.attr', 'target', '_blank').and('be.visible');
 });
 
 let siteName = 'IasadGeas';
@@ -54,13 +63,14 @@ Then(`I am displayed ck Logo`, () => {
 Then(`I am displayed ck Terms of Service Text`, () => {
     cy.getElement('section-title').contains('Terms of Use');
     cy.get('body').contains('BY USING THE WEBSITE AND THE SERVICES AND/OR REQUESTING THAT WE CONTACT YOU ABOUT OUR SERVICES,');
-    cy.get('body').contains('If you do not understand any of the foregoing Terms of Use or if you have any questions or comments, we encourage you to contact us via written correspondence');
+    cy.get('body').contains('The following additional terms apply to any software (including any updates or upgrades to the software and any related documentation) that we make available to you from time to time for your use in connection with the Website and Services (the "Software"):');
 });
 
 Then(/^I am displayed ck Privacy Policy Text$/, () => {
     cy.getElement('section-title').contains('Privacy Policy');
     cy.get('body').contains('We Are Committed to Safeguarding Customer Information');
-    cy.get('body').contains('Should you have any questions about Privacy, please contact:');
+    cy.get('body').contains('Any material changes to our Privacy Practices or security procedures will be posted on this page so that you are always aware of what information we collect and how we use it as well as the latest material changes we make to our security procedures.');
+    //cy.get('body').contains('Should you have any questions about Privacy, please contact:');
 });
 
 
