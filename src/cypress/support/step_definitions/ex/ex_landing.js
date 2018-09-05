@@ -63,52 +63,51 @@ Then(`I am displayed the following on the 'Credit Report resources' block`, () =
 
 Then(`I am displayed the following on the 'Credit Report basics' block`, () => {
     //QA 1
-    cy.get('[data-test="basics-qa"] h5:nth-of-type(1)').contains('Why is my Credit Report important?');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(1)').contains('Your credit report is your financial reflection. It shows lenders several things, including your current and past credit mix, how timely your payments have been, and whether your accounts are currently (or have been) in good standing.');
+    cy.get('[data-test="basics-qa"] h5').contains('Why is my Credit Report important?');
+    cy.get('[data-test="basics-qa"] p').contains('Your credit report is your financial reflection. It shows lenders several things, including your current and past credit mix, how timely your payments have been, and whether your accounts are currently (or have been) in good standing.');
 
     //QA 2
-    cy.get('[data-test="basics-qa"] h5:nth-of-type(2)').contains('How often is my Credit Report updated?');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(2)').contains('While the day of the month will vary between organizations, your credit report is updated on a monthly basis. Creditors submit information throughout the month, which will then show up on your credit report by the end of the month.');
+    cy.get('[data-test="basics-qa"] h5').contains('How often is my Credit Report updated?');
+    cy.get('[data-test="basics-qa"] p').contains('While the day of the month will vary between organizations, your credit report is updated on a monthly basis. Creditors submit information throughout the month, which will then show up on your credit report by the end of the month.');
 
     //QA 3
-    console.log(cy.get('[data-test="basics-qa"] p:nth-of-type(3)'));
-    cy.get('[data-test="basics-qa"] h5:nth-of-type(3)').contains('How to Get Your Annual Credit Report from Experian?');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(3)').contains('Under federal law you are entitled to a copy of your credit report annually from all three credit reporting agencies - Experian');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(3)').contains('®');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(3)').contains('and TransUnion');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(3)').contains('- once every 12 months. To get your annual credit report online, and by phone or mail, visit');
-    cy.get('[data-test="basics-qa"] p:nth-of-type(3)').contains('www.AnnualCreditReport.com');
+    cy.get('[data-test="basics-qa"] h5').contains('How to Get Your Annual Credit Report from Experian?');
+    cy.get('[data-test="basics-qa"] p').contains('Under federal law you are entitled to a copy of your credit report annually from all three credit reporting agencies - Experian');
+    cy.get('[data-test="basics-qa"] p').contains('®');
+    cy.get('[data-test="basics-qa"] p').contains('and TransUnion');
+    cy.get('[data-test="basics-qa"] p').contains('- once every 12 months. To get your annual credit report online, and by phone or mail, visit');
+    cy.get('[data-test="basics-qa"] p').contains('www.AnnualCreditReport.com');
 
     //included-section
     cy.get('[data-test="included-section"] h5').contains('What is included in a Credit Report?');
     
     //li 1
-    cy.get('[data-test="included-section"] ul li:nth-of-type(1) span').contains('Personal identifying information:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(1)').contains('Your full name along, address (past and current), date of birth, social security number, and employer information.');
+    cy.get('[data-test="included-section"] ul li span').contains('Personal identifying information:');
+    cy.get('[data-test="included-section"] ul li').contains('Your full name along, address (past and current), date of birth, social security number, and employer information.');
 
     //li 2
-    cy.get('[data-test="included-section"] ul li:nth-of-type(2) span').contains('Accounts:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(2)').contains('Revolving credit, installment loans, account status, contact information, credit limits, loan amounts, recent payments, and individual or joint responsibility.');
+    cy.get('[data-test="included-section"] ul li span').contains('Accounts:');
+    cy.get('[data-test="included-section"] ul li').contains('Revolving credit, installment loans, account status, contact information, credit limits, loan amounts, recent payments, and individual or joint responsibility.');
 
     //li 3
-    cy.get('[data-test="included-section"] ul li:nth-of-type(3) span').contains('Payment information:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(3)').contains('Details regarding all monthly payments across all accounts.');
+    cy.get('[data-test="included-section"] ul li span').contains('Payment information:');
+    cy.get('[data-test="included-section"] ul li').contains('Details regarding all monthly payments across all accounts.');
 
     //li 4
-    cy.get('[data-test="included-section"] ul li:nth-of-type(4) span').contains('Public records:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(4)').contains('Bankruptcies, tax liens, and civil judgments.');
+    cy.get('[data-test="included-section"] ul li span').contains('Public records:');
+    cy.get('[data-test="included-section"] ul li').contains('Bankruptcies, tax liens, and civil judgments.');
 
     //li 5
-    cy.get('[data-test="included-section"] ul li:nth-of-type(5) span').contains('Debts:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(5)').contains('Any and all debts owed across all accounts, such as credit card debt and mortgages.');
+    cy.get('[data-test="included-section"] ul li span').contains('Debts:');
+    cy.get('[data-test="included-section"] ul li').contains('Any and all debts owed across all accounts, such as credit card debt and mortgages.');
 
     //li 6
-    cy.get('[data-test="included-section"] ul li:nth-of-type(6) span').contains('Hard inquiries:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(6)').contains('\"Hard inquiries\" appear on your credit report any time you apply for credit. ');
+    cy.get('[data-test="included-section"] ul li span').contains('Hard inquiries:');
+    cy.get('[data-test="included-section"] ul li').contains('\"Hard inquiries\" appear on your credit report any time you apply for credit. ');
 
     //li 7
-    cy.get('[data-test="included-section"] ul li:nth-of-type(7) span').contains('Negative information:');
-    cy.get('[data-test="included-section"] ul li:nth-of-type(7)').contains('Late payments, collections, settled accounts, repossession or voluntary surrender, charge offs, and other derogatory items.');
+    cy.get('[data-test="included-section"] ul li span').contains('Negative information:');
+    cy.get('[data-test="included-section"] ul li').contains('Late payments, collections, settled accounts, repossession or voluntary surrender, charge offs, and other derogatory items.');
 });
 
 Then(`I am displayed the following on the 'landing footer' block`, () => {
