@@ -20,8 +20,8 @@ And I select "02" on the "dobMonth" field
 And I select "23" on the "dobDay" field
 And I select "1979" on the "dobYear" field
 And I have enter valid "ssn" value "1234"
-And I click element "next-step-button"
 And I click element "agreement"
+And I click element "next-step-button"
 Then The "error-message-section" message contains "Whoops! Looks like we’re missing some important information."
 And The "error-message-section" message contains "You may have tried to continue to the next step too soon or missed a required field. Please ensure you've provided all of the required information before continuing. Missed entries are highlighted in red."
 And I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red font color
