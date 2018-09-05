@@ -1,4 +1,4 @@
-Feature: Step4 verify fields
+Feature: Step 4 verify fields
 
   As a user when I am on Step 4 of acquisition flow then I am displayed the form fields
 
@@ -7,7 +7,7 @@ Feature: Step4 verify fields
   - CP-813 - Your Order Summary in Step 4
   - CP-303 - SSL Logo
 
-  Background: user on Step 2 acquisition flow screen
+  Background: user on Step 4 acquisition flow screen
     Given I am a user on the ex flow
     Given I am on the ex step4 verify page
     Given the siteName is "NotCreditExperian"

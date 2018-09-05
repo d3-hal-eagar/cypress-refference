@@ -45,6 +45,9 @@ Then(`I am displayed the correct blocks on the ex Step 2 right rail`, () => {
     cy.get('.sidebar [data-test^=sidebar-section] h4').contains('Privacy Policy Notice');
     //Description:
     cy.get('.sidebar [data-test^=sidebar-section] p').contains(siteName + 'policy on how your personal information is used and disclosed is contained in our Privacy Policy and Ad Targeting Policy. This product is Web-based and you agree to accept this notification, revisions, and the provision of an annual notice electronically through this website, if required.');
+
+    //Secure block
+    cy.getElement('aside-secure').find('img').should('be.visible');
 });
 
 Then(`I am displayed the right rail Order Summary block`, () => {

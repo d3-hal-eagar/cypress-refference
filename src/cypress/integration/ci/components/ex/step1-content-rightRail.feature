@@ -4,7 +4,7 @@ Feature: ex Step 1 Right rail content
 
   Covers
   - D3F-381 As a user when I am on Step 1 of Experian acquisition flow, I am displayed blocks of information on the right rail
-
+  - CP-303 - SSL Logo
 
   Background:
     Given I am a user on the ex flow
