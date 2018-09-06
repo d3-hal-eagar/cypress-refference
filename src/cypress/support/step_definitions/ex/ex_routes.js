@@ -5,9 +5,8 @@ let flow = 'ex/';
 
 Given(`I am a user on the ex flow`, () => {
     flow = 'ex/';
-    cy.visit('/?marketingid=00001');
+    cy.visit( flow+'?marketingid=00001');
     cy.wait(200);
-    //cy.visit(flow);
 });
 
 When(`I am on the ex landing page`, () => {

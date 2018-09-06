@@ -10,7 +10,7 @@ Feature: Step4 verify fields
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ex flow
     Given I am on the ex step4 verify page
-    #Given the siteName is "NotExperian"
+    Given the siteName is "NotCreditExperian"
 
 
   Scenario: 1 - test existence of form fields

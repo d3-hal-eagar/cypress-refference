@@ -15,18 +15,14 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario: 1 - User enters valid Apartment
     When I have enter valid "street2" value "S56"
-    And I blur the "street2" field
     Then I shall be displayed no error for the "street2" field
 
   Scenario: 2 - User does not enter any characters in Apartment input field
-    When I focus on the "street2" field
     And without entering "street2"
-    And I blur the "street2" field
     Then I shall be displayed no error for the "street2" field
 
   Scenario: 3 - System restricts the user to enter a maximum of five characters
     When I have enter valid "street2" value "123"
-    And I blur the "street2" field
     Then I shall be displayed no error for the "street2" field
     When I enter additional text into "street2" field text "456"
     Then I am restricted from entering more than "5" characters in "street2" field
@@ -36,8 +32,7 @@ Feature: Apartment - Validation Criteria & Error Handling
 
 #  Scenario Outline: 4 - User enters invalid Apartment Number.
 #    When I have enter invalid "street2" value "<apartment_entered>" that "<type_of_err>"
-#    And I blur the "street2" field
-#    Then I shall be displayed an error for the "street2" field - "<err_message>" in red font color
+#    Then I shall be displayed an error for the "street2" field - "<err_message>" in red
 #    And "street2" field label is displayed in red
 #    And "street2" input field is displayed in red
 #    And "street2" field displays X Icon
@@ -54,20 +49,17 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario: 4a - User focuses on the error icon and clicks on it.
     When I have enter invalid "street2" value "22@t" that "has an '@' symbol"
-    And I blur the "street2" field
     And I click the X Icon on the "street2" field
-    Then I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
+    Then I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
     And "street2" field label is displayed in red
     And "street2" field displays X Icon
 
   Scenario: 4b - User focuses on the Apartment input field that has the error "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
     When Action detail "Trigger error state - 'Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
       And I have enter invalid "street2" value "22%n" that "has an '% symbol"
-      And I blur the "street2" field
-    And I focus on the "street2" field
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
-    And I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red font color
+    And I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
     And "street2" field label is displayed in red
     When I have enter valid "street2" value "22A"
     Then "street2" field label is displayed in black
@@ -76,7 +68,6 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario Outline: 5 User enters valid Apartment
     When I have enter a valid "street2" value "<apartment_entered>" that "<testing_character>"
-    And I blur the "street2" field
     Then I shall be displayed no error for the "street2" field
 
     Examples:

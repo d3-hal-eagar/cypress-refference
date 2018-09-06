@@ -36,7 +36,7 @@ Then(/^"(.*?)" input field is displayed in red$/, function (formField) {
 });
 
 Then(/^"(.*?)" field displays X Icon$/, function (formField) {
-    cy.getFormGroup(formField).find('i.oi-circle-x').should('be.visible');
+    cy.getElement(formField).focus().blur().getFormGroup(formField).find('i.oi-circle-x').should('be.visible');
 });
 
 Then(/^"(.*?)" field does not display X Icon$/, function (formField) {
