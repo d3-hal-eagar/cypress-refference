@@ -11,7 +11,7 @@ Feature: Step2 info fields
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ex flow
     Given I am on the ex step2 form page
-    Given the siteName is "NotCreditKarma"
+    Given the siteName is "NotCreditExperian"
 
 
   Scenario: 1 - test existence of form fields

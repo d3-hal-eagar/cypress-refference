@@ -7,7 +7,6 @@ Given(`I am a user on the ck flow`, () => {
     flow = 'ck/';
     cy.visit( flow+'?marketingid=00000');
     cy.wait(200);
-    //cy.visit(flow);
 });
 
 When(`I am on the ck landing page`, () => {

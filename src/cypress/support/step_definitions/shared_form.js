@@ -1,8 +1,8 @@
 /* global cy, then, when, given */
 
 // noinspection JSUnusedLocalSymbols
-When(/^without entering "(.*?)"$/, (fieldName) => {
-    // this is a placeholder step used to describe lack of action for clarity
+When(/^without entering "(.*?)"$/, (formField) => {
+    cy.getElement(formField).focus().blur().focus();
 });
 
 Then(/^I shall be displayed an error - "(.*?)"$/, (errorText) => {
@@ -14,19 +14,40 @@ Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)"$/, (formFie
 });
 
 Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
-    cy.getFormGroup(formField).find('.text-danger').should('be.visible');
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        cy.getFormGroup(formField).find(errorSelector).should('be.visible');
+    });
 });
 
-Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red font color$/, (formField,errorText) => {
-    if (formField.startsWith("ssn") || formField.startsWith("dob")) {
-        // e.g. ssn-error-message, dob-error-message
-        cy.get('div[data-test='+formField+'-error-message].text-danger').contains(errorText).should('be.visible');
-        cy.getElement(formField+'-error-message').should('have.css', 'color', 'rgb(220, 53, 69)');
-    }
-    else {
-        cy.getFormGroup(formField).contains(errorText).should('be.visible');
-        cy.getFormGroup(formField).find('span.text-danger').should('have.css', 'color', 'rgb(220, 53, 69)');
-    }
+
+const EX_errorRed = 'rgb(203, 18, 62) none repeat scroll 0% 0% / auto padding-box border-box';
+const CK_errorRed = 'rgb(220, 53, 69)';
+Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red$/, (formField,errorText) => {
+
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '[data-test=validation-message]';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        if (flow === 'ck') { errorSelector = '.text-danger'; }
+
+        if (flow === 'ck' && (formField.startsWith("ssn") || formField.startsWith("dob"))) {
+            // e.g. ssn-error-message, dob-error-message
+            cy.get('div[data-test='+formField+'-error-message]'+errorSelector).contains(errorText).should('be.visible');
+            cy.getElement(formField+'-error-message').should('have.css', 'color', CK_errorRed);
+        } else {
+            cy.getFormGroup(formField).contains(errorText).should('be.visible');
+            if (flow === 'ck') {
+                cy.getFormGroup(formField).find('span'+errorSelector).should('have.css', 'color', CK_errorRed);
+            } else if (flow === 'ex') {
+                cy.getFormGroup(formField).find(errorSelector).should('have.css', 'background', EX_errorRed);
+            }
+        }
+    });
 });
 
 When(/^I focus on the "(.*?)" field$/, (formField) => {
@@ -66,11 +87,12 @@ Then(/^Check that the "(.*?)" field is checked/, function (formField) {
 });
 
 When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
-    cy.getElement(formField).clear().type(userInput);
+    cy.getElement(formField).clear().type(userInput).blur().focus();
 });
 
+// noinspection JSUnusedLocalSymbols
 When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
-    cy.getElement(formField).clear().type(userInput);
+    cy.getElement(formField).clear().type(userInput).blur().focus();
 });
 
 When(/^I enter additional text into "(.*?)" field text "(.*?)"$/, (formField,userInput) => {
@@ -80,11 +102,11 @@ When(/^I enter additional text into "(.*?)" field text "(.*?)"$/, (formField,use
 
 // noinspection JSUnusedLocalSymbols
 When(/^I have enter invalid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidationFailure) => {
-    cy.getElement(formField).clear().type(userInput);
+    cy.getElement(formField).clear().type(userInput).blur().focus();
 });
 
 When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
-    cy.getElement(formField).focus().select(userInput);
+    cy.getElement(formField).focus().select(userInput).blur().focus();
 });
 
 // Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field that has "(.*?)" index$/, (userInput, formField, optionIndex) => {
@@ -92,16 +114,36 @@ When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
 // });
 
 Then(/^I shall be displayed no errors$/, () => {
-    cy.get('.text-danger').should('not.be.visible');
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        cy.get(errorSelector).should('not.be.visible');
+    });
+});
+
+When(`I check the what flow`, () => {
+    cy.clearLocalStorage('noting').then((ls) => {
+         let store = JSON.parse(ls.getItem('store'));
+         let flow = store.flow.name;
+         cy.log('i am on flow name ' + flow);
+     });
 });
 
 Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
-    if (formField.startsWith("ssn") || formField.startsWith("dob")) {
-        cy.getElement(formField+'-error-message').should('not.be.visible');
-    }
-    else {
-        cy.getFormGroup(formField).find('.text-danger').should('not.be.visible');
-    }
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        if (formField.startsWith("ssn") || formField.startsWith("dob")) {
+            cy.getElement(formField+'-error-message').should('not.be.visible');
+        }
+        else {
+            cy.getFormGroup(formField).find(errorSelector).should('not.be.visible');
+        }
+    });
 });
 
 Then(/^"(.*?)" field displays check Icon$/, function (formField) {
@@ -113,7 +155,13 @@ Given(/^Action detail "(.*?)"/, (descriptionText) => {
     // this is a placeholder step used to describe lack of action for clarity
 });
 
-When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" field$/, (lengthLimit,formField) => {
+Then(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" field$/, (lengthLimit,formField) => {
+    cy.getElement(formField).invoke('val').then((text) => {
+        expect(text.length).to.eq(parseInt(lengthLimit));
+    })
+});
+
+Then(/^"(.*?)" field is "(.*?)" characters in length$/, (formField,lengthLimit) => {
     cy.getElement(formField).invoke('val').then((text) => {
         expect(text.length).to.eq(parseInt(lengthLimit));
     })
@@ -124,66 +172,63 @@ When(/^I am restricted from entering more than "(.*?)" characters in "(.*?)" fie
 // });
 
 When(/^I have enter invalid "(.*?)" value I see the correct validation error message$/, function (formField,dataTable) {
-    // starting at rowindex 1 to skip header row
-    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
-        let userInput = dataTable.rawTable[rowindex][0];
-        let errorType = dataTable.rawTable[rowindex][1];
-        let errorText = dataTable.rawTable[rowindex][2];
-        let validInput = 'ax';
-        if (formField === 'zip'){
-            validInput = '12345';
-        }
-        else if(formField === 'ssn'){
-            validInput = '1234';
-        }
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
-        // chained actions clear previous error
-        // re-enter text and check for error
-        cy.getElement(formField).clear().type(validInput).blur()
-          .getFormGroup(formField).find('.text-danger').should('not.be.visible')
-          .getElement(formField).clear().type(userInput).blur();
-        if(formField.startsWith("ssn") || formField.startsWith("dob")){
-            cy.getElement(formField+'-error-message').contains(errorText).should('be.visible')
-        }
-        else {
-            cy.getFormGroup(formField).contains(errorText).should('be.visible');
-        }
-    }
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
 
+        // starting at rowindex 1 to skip header row
+        for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+            let userInput = dataTable.rawTable[rowindex][0];
+            let errorType = dataTable.rawTable[rowindex][1];
+            let errorText = dataTable.rawTable[rowindex][2];
+            let validInput = 'ax';
+            if (formField === 'zip'){
+                validInput = '12345';
+            }
+            else if(formField === 'ssn'){
+                validInput = '1234';
+            }
+            // log test intent this is otherwise lost when doing multiple tests in a single step
+            cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
+            // chained actions clear previous error
+            // re-enter text and check for error
+            cy.getElement(formField).clear().type(validInput).blur().focus()
+              .getFormGroup(formField).find(errorSelector).should('not.be.visible')
+              .getElement(formField).clear().type(userInput).blur().focus();
+            if(formField.startsWith("ssn") || formField.startsWith("dob")){
+                cy.getElement(formField+'-error-message').contains(errorText).should('be.visible')
+            }
+            else {
+                cy.getFormGroup(formField).contains(errorText).should('be.visible');
+            }
+        }
+
+    });
 });
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
-    // starting at rowindex 1 to skip header row
-    for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
-        // chained actions clear previous error
-        // re-enter text and check for error
-        cy.getElement(formField).clear().type(validInput).blur()
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible')
-            .getElement(formField).clear().type(userInput).blur()
-            .getFormGroup(formField).contains(errorText).should('be.visible');
-    }
+
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        // starting at rowindex 1 to skip header row
+        for (let charindex = 0; charindex < characterList.length; charindex++) {
+            let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
+            // log test intent this is otherwise lost when doing multiple tests in a single step
+            cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
+            // chained actions clear previous error
+            // re-enter text and check for error
+            cy.getElement(formField).clear().type(validInput).blur().focus()
+                .getFormGroup(formField).find(errorSelector).should('not.be.visible')
+                .getElement(formField).clear().type(userInput).blur().focus()
+                .getFormGroup(formField).contains(errorText).should('be.visible');
+        }
+    });
 });
-
-When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)" on ex flow$/, function (characterList,validInput,formField,errorText) {
-    // starting at rowindex 1 to skip header row
-    for (let charindex = 0; charindex < characterList.length; charindex++) {
-        let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #'+charindex+') I have enter invalid '+formField+' value "'+userInput+'" and am displayed an error "'+errorText+'"');
-        // chained actions clear previous error
-        // re-enter text and check for error
-        cy.getElement(formField).clear().type(validInput)
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible')
-            .getElement(formField).clear().type(userInput)
-            .getFormGroup(formField).contains(errorText).should('be.visible');
-    }
-
-});
-
 
 Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formField) {
     cy.getElement(formField).should('not.have','attr','multiple');
@@ -191,7 +236,7 @@ Then(/^I shall be able to select only one "(.*?)" at a time$/, function (formFie
 });
 
 Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field by default$/, (userInput, formField) => {
-    cy.getElement(formField).children().eq(0).should('be.selected', userInput);
+    cy.getElement(formField).focus().children().eq(0).should('be.selected', userInput);
 });
 
 Then(/^I shall be able to scroll within the options in "(.*?)" field$/, (formField) => {
@@ -199,17 +244,23 @@ Then(/^I shall be able to scroll within the options in "(.*?)" field$/, (formFie
 });
 
 When(/^I have selected valid "(.*?)" option I see the correct value$/, function (formField,dataTable) {
-    // starting at rowindex 1 to skip header row
-    for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
-        let optionName = dataTable.rawTable[rowindex][0];
-        let optionValue = dataTable.rawTable[rowindex][1];
-        // log test intent this is otherwise lost when doing multiple tests in a single step
-        cy.log('(example #' + rowindex + ') I have selected valid ' + optionName + ' option for the ' + formField + ' field that has ' + optionValue + ' value');
-        cy.getElement(formField).select(optionName).should('have.value', optionValue).and('contain',optionName)
-            .getFormGroup(formField).find('.text-danger').should('not.be.visible').wait(5);
 
-    }
+    cy.clearLocalStorage('noting').then((ls) => {
+        let store = JSON.parse(ls.getItem('store'));
+        let flow = store.flow.name;
+        let errorSelector = '.text-danger';
+        if (flow === 'ex') { errorSelector = '.popover-body'; }
+        // starting at rowindex 1 to skip header row
+        for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+            let optionName = dataTable.rawTable[rowindex][0];
+            let optionValue = dataTable.rawTable[rowindex][1];
+            // log test intent this is otherwise lost when doing multiple tests in a single step
+            cy.log('(example #' + rowindex + ') I have selected valid ' + optionName + ' option for the ' + formField + ' field that has ' + optionValue + ' value');
+            cy.getElement(formField).select(optionName).should('have.value', optionValue).and('contain',optionName)
+                .getFormGroup(formField).find(errorSelector).should('not.be.visible').wait(5);
 
+        }
+    });
 });
 
 Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$/, (userInput, formField) => {

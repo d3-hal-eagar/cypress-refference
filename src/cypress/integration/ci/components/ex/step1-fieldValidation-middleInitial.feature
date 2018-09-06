@@ -1,9 +1,8 @@
 Feature: Middle Initial - Validation Criteria and Error Handling
 
   Covers
-    - D3F-431 Middle Initial - Validation Criteria and Error Handling
-    - CP-713 Middle Initial - Validation Criteria and Error Handling
-    - D3F-816 EX/Signup: Remove the checkmark for apartment, middle initial, and suffix if no characters are entered on blur
+    - CP-713 (D3F-431) Middle Initial - Validation Criteria and Error Handling
+    - CP-827 (D3F-816) EX/Signup: Remove the checkmark for apartment, middle initial, and suffix if no characters are entered on blur
   Validation Criteria
     - Not a required field.
     - Pattern - "^([A-Za-z]+)$"
@@ -17,18 +16,14 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 1 - User enters Initial
     When I have enter valid "middleInitial" value "A"
-    And I blur the "middleInitial" field
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
     And I shall be displayed no error for the "middleInitial" field
 
   Scenario: 2 - User does not enter any character in Middle Initial input field
-    When I focus on the "middleInitial" field
-        # I do not enter any character in Middle Initial input field
-        # I focus out of the Middle Initial input field
-    And I blur the "middleInitial" field
-        # System shall run a validation
+    When without entering "middleInitial"
     Then I shall not be displayed any errors or validation markup on non required field "middleInitial"
+    And I shall be displayed no error for the "middleInitial" field
 
 #  Validation scenarios for invalid Middle Initial in Step 1 of Experian Acquisition Flow.
 #   Middle Initial input field can contain only 1 alpha character
@@ -49,8 +44,6 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 3b - User focuses on the input field that is outlined in red and than enters invalid data again
     When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
-    And I blur the "middleInitial" field
-    And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     When I have enter invalid "middleInitial" value "4" that "other than - alphabet"
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
@@ -59,8 +52,6 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 3c - User focuses on the input field that is outlined in red and than enters valid data
     When I have enter invalid "middleInitial" value "%" that "other than - alphabet"
-    And I blur the "middleInitial" field
-    And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     When I have enter valid "middleInitial" value "Z"
     Then The "middleInitial" field border is displayed in green
@@ -73,18 +64,15 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   Scenario: 3b - User focuses on the input field that is outlined in red and than enters valid data
     When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
-    And I blur the "middleInitial" field
-    And I focus on the "middleInitial" field
     Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
     When I have enter valid "middleInitial" value "A"
-    And I blur the "middleInitial" field
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
     And I shall be displayed no error for the "middleInitial" field
 
   # performance optimized multi value test
   Scenario: User enters invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters." on ex flow
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters."
 
   Scenario: User enters additional invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters." on ex flow
+    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters."

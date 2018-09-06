@@ -7,7 +7,7 @@ Feature: ex Step 2 Right rail content
 
 
   Background:
-    Given the siteName is "NotCreditKarma"
+    Given the siteName is "NotCreditExperian"
 
 
   Scenario: 1 upon receiving an error on Step 2, I get an opportunity to review the information provided before and select 'Submit secure order' again. If the information still does not match the credit files then I am displayed a message on canceling the order.

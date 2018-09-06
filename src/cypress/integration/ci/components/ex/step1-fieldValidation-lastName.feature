@@ -18,29 +18,22 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario: 1 User enters Legal Last Name that meets the required rules
     When I have enter valid "lastName" value "McSmith"
-    And I blur the "lastName" field
     Then The "lastName" field border is displayed in green
     And A green checkmark inside the "lastName" field is displayed
 
   Scenario: 2 System restricts the user from entering more than 25 characters
     When I have enter valid "lastName" value "abcdefghijklmnopqrstuvwx"
-    And I blur the "lastName" field
     Then I shall be displayed no error for the "lastName" field
     And I enter additional text into "lastName" field text "yzw"
     And I am restricted from entering more than "25" characters in "lastName" field
 
   Scenario: 3 User without entering any characters focuses out of the Last Name field
-    When I click on the "lastName" field
-    And without entering "lastName"
-    And I blur the "lastName" field
+    When without entering "lastName"
     Then "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
 
   Scenario: 3a User focuses on the Last Name input field that has the warning icon and enters valid text
-    When I click on the "lastName" field
-    And without entering "lastName"
-    And I blur the "lastName" field
-    And I click on the "lastName" field
+    When without entering "lastName"
     Then I shall be displayed an error for the "lastName" field - "This is a required field"
     And "lastName" input field shall be black
     When I enter additional text into "lastName" field text "Codeson"
@@ -49,10 +42,7 @@ Feature: Last Name - Validation Criteria & Error Handling
     And "lastName" input field shall be outlined in green
 
   Scenario: 3b User focuses on the Last Name input field that has the warning icon and enters invalid text
-    When I click on the "lastName" field
-    And without entering "lastName"
-    And I blur the "lastName" field
-    And I click on the "lastName" field
+    When without entering "lastName"
     Then I shall be displayed an error for the "lastName" field - "This is a required field"
     And "lastName" input field shall be black
     When I enter additional text into "lastName" field text "3rd"
@@ -62,16 +52,13 @@ Feature: Last Name - Validation Criteria & Error Handling
   Scenario: 4 User enters invalid Last Name
     When I have enter invalid "lastName" value "4ork" that "contains a number"
     Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
-    And I blur the "lastName" field
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
-    When I click on the "lastName" field
     Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
 
   Scenario: 4a User enters invalid Last Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "contains a number"
     Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
-    When I blur the "lastName" field
     And "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
     When I enter additional text into "lastName" field text "{backspace}{backspace}{backspace}{backspace}Jones"
@@ -83,10 +70,8 @@ Feature: Last Name - Validation Criteria & Error Handling
   Scenario: 4b User enters invalid Last Name, and it remains invalid
     When I have enter invalid "lastName" value "4ork" that "contains a number"
     Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
-    And I blur the "lastName" field
     Then "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
-    When I click on the "lastName" field
     And I enter additional text into "lastName" field text "{backspace}{backspace}{backspace}{backspace}me@dee.da"
     Then "lastName" field displays warning Icon
     And "lastName" input field shall be outlined in red
@@ -103,8 +88,6 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
-    And I blur the "lastName" field
-    Then I shall be displayed no errors
     And I shall be displayed no error for the "lastName" field
 
     Examples:
@@ -116,7 +99,6 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario Outline: User enters an invalid lastName
     When I have enter invalid "lastName" value "<name_entered>" that "<type_of_error>"
-    And I blur the "lastName" field
     Then I shall be displayed an error for the "lastName" field - "<error_message>"
 
     Examples:
@@ -127,7 +109,7 @@ Feature: Last Name - Validation Criteria & Error Handling
       | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
 
   Scenario: User enters invalid characters in Last Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name." on ex flow
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
 
   Scenario: User enters additional invalid characters in Last Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name." on ex flow
+    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
