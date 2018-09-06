@@ -6,6 +6,7 @@ Feature: Step2 info fields
   - CP-421 Step 2 - Identity Verification Field Elements
     (formerly D3F-459)
   - D3F-492 Mobile - Step 2 - Identity Verification Field Elements
+  - CP-303 - SSL Logo
 
 
   Background: user on Step 2 acquisition flow screen
