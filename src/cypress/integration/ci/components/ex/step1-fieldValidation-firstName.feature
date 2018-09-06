@@ -33,7 +33,7 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario: 3a User focuses on the First Name input field that has the warning icon and enters valid text
     When without entering "firstName"
-    Then I shall be displayed an error for the "firstName" field - "First Name is required"
+    Then I shall be displayed an error for the "firstName" field - "First Name is required."
     And "firstName" input field shall be black
     When I enter additional text into "firstName" field text "billy"
     Then "firstName" field does not display warning Icon
@@ -42,7 +42,7 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario: 3b User focuses on the First Name input field that has the warning icon and enters invalid text
     When without entering "firstName"
-    Then I shall be displayed an error for the "firstName" field - "First Name is required"
+    Then I shall be displayed an error for the "firstName" field - "First Name is required."
     And "firstName" input field shall be black
     When I enter additional text into "firstName" field text "4ork"
     Then "firstName" field displays warning Icon
@@ -50,10 +50,10 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario: 4 User enters invalid First Name
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     And "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red
-    Then I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario: 4a User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "contains a number"
@@ -68,22 +68,22 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario: 4b User enters invalid First Name, and it remains invalid
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     And "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red
     And I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}me@dee.da"
     Then "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red
-    And I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    And I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   # extended validations
   Scenario: User enters invalid First Name with multiple special characters
     When I have enter invalid "firstName" value "hal--stone" that "has consecutive special characters"
-    Then I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario: User enters invalid First Name not starting with a letter
     When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "firstName" field - "You must provide your full, legal first name."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario Outline: User enters an valid firstName
     When I have enter valid "firstName" value "<name_entered>"

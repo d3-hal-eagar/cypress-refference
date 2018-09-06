@@ -89,7 +89,7 @@ Feature: State - Validation Criteria and when no character is entered
     And without entering "state"
     And "state" field label is displayed in red
     And "state" select field is displayed in red
-    Then I shall be displayed an error for the "state" field - "Select state." in red
+    Then I shall be displayed an error for the "state" field - "Please select a State/Province." in red
 
   Scenario: 4a - User focuses back on state field that has error message
     When without entering "state"

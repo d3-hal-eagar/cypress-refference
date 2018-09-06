@@ -27,7 +27,7 @@ Feature: Step 1 Next Step button
     And I click element "next-step-button"
     Then I am guided to the ck step1 signup page
     # expected in D3F-35
-    Then I shall be displayed an error for the "password" field - "This is a required field."
+    Then I shall be displayed an error for the "password" field - "Please create your password."
     # actual  "Please enter a valid password."
     And "password" field label is displayed in red
 
@@ -37,7 +37,7 @@ Feature: Step 1 Next Step button
     And I click element "next-step-button"
     Then I am guided to the ck step1 signup page
     # expected in D3F-35
-    Then I shall be displayed an error for the "email" field - "This is a required field."
+    Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
     # actual "Please enter a valid email address."
     And "email" field label is displayed in red
 
@@ -57,4 +57,4 @@ Feature: Step 1 Next Step button
     Then I am guided to the ck step1 signup page
     And "password" field label is displayed in red
     And "password" field displays X Icon
-    Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
+    Then I shall be displayed an error for the "password" field - "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"

@@ -22,44 +22,34 @@ Feature: Apartment - Validation Criteria & Error Handling
     Then I shall be displayed no error for the "street2" field
 
   Scenario: 3 - System restricts the user to enter a maximum of five characters
-    When I have enter valid "street2" value "123"
-    Then I shall be displayed no error for the "street2" field
-    When I enter additional text into "street2" field text "456"
-    Then I am restricted from entering more than "5" characters in "street2" field
+    When I have enter valid "street2" value "12345678901234567890123456789012345678901234567890123456789012345678901234567890 Address street"
+    And I shall be displayed no error for the "street2" field
+    Then I enter additional text into "street2" field text " 7890123"
+    Then I am restricted from entering more than "100" characters in "street2" field
 
-    # Validation scenarios for invalid Apartment number in Step 2 of Acquisition Flow.
-    # Apartment field can only contain letters, numbers, commas, dashes, number signs, and spaces.
-
-#  Scenario Outline: 4 - User enters invalid Apartment Number.
-#    When I have enter invalid "street2" value "<apartment_entered>" that "<type_of_err>"
-#    Then I shall be displayed an error for the "street2" field - "<err_message>" in red
-#    And "street2" field label is displayed in red
-#    And "street2" input field is displayed in red
-#    And "street2" field displays X Icon
-#
-#    Examples:
-#      | apartment_entered | type_of_err      | err_message                                                                                 |
-#      | 22/ C             | has a '/' symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+  Scenario: 3a - Must be at least 2 characters in length.
+    When I have enter invalid "street2" value "1" that "too short"
+    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
 
   Scenario: 4 - User enters invalid Apartment multiple input errors
     When I have enter invalid "street2" value I see the correct validation error message
       | apartment_entered | type_of_err                    | err_message                                                                                 |
-      | 22 –n             | has a non-ASCII en dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 —w             | has a non-ASCII em dash symbol | Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 –n             | has a non-ASCII en dash symbol | Please enter valid address format. |
+      | 22 —w             | has a non-ASCII em dash symbol | Please enter valid address format. |
 
   Scenario: 4a - User focuses on the error icon and clicks on it.
     When I have enter invalid "street2" value "22@t" that "has an '@' symbol"
     And I click the X Icon on the "street2" field
-    Then I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
+    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
     And "street2" field label is displayed in red
     And "street2" field displays X Icon
 
-  Scenario: 4b - User focuses on the Apartment input field that has the error "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
-    When Action detail "Trigger error state - 'Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+  Scenario: 4b - User focuses on the Apartment input field that has the error "Please enter valid address format."
+    When Action detail "Trigger error state - 'Please enter valid address format.'"
       And I have enter invalid "street2" value "22%n" that "has an '% symbol"
     Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
-    And I shall be displayed an error for the "street2" field - "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
+    And I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
     And "street2" field label is displayed in red
     When I have enter valid "street2" value "22A"
     Then "street2" field label is displayed in black
@@ -71,16 +61,17 @@ Feature: Apartment - Validation Criteria & Error Handling
     Then I shall be displayed no error for the "street2" field
 
     Examples:
-      | apartment_entered | testing_character  |
-      | 22,b              | has a comma        |
-      | #11               | has a number signs |
-      | 22-A              | has a hyphen (-)   |
-      | 22 A              | has a space        |
-      | 22.1              | has a space        |
-      | 22A/B             | has a space        |
+      | apartment_entered | testing_character   |
+      | 22,b              | has a comma         |
+      | #11               | has a number signs  |
+      | 22-A              | has a hyphen (-)    |
+      | 22 A              | has a space         |
+      | 22.1              | has a period        |
+      | 22A/B             | has a forward slash |
+      | 22A'B             | has a single quote  |
 
   Scenario: User enters invalid characters in Apartment multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."
 
   Scenario: User enters additional invalid characters in Apartment multiple input errors
-    When I have enter invalid characters "\\\"" into valid input "4M" on the "street2" and I see validation error message "Apartment may only contain letters, numbers, commas, dashes, number signs, and spaces."
+    When I have enter invalid characters "\\\"" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."

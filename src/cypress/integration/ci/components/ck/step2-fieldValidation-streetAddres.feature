@@ -26,11 +26,15 @@ Feature: Street Address - Validation Criteria & Error Handling
     Then I enter additional text into "street1" field text " 7890123"
     Then I am restricted from entering more than "100" characters in "street1" field
 
+  Scenario: 2a - Must be at least 2 characters in length.
+    When I have enter invalid "street1" value "1" that "too short"
+    Then I shall be displayed an error for the "street1" field - "Please enter valid address format." in red
+
   # Validation scenarios for Street Address input field - When user does not enter any characters in the field.
 
   Scenario: 3 - User without entering Street Address focuses out of Street Address field.
     When without entering "street1"
-    Then I shall be displayed an error for the "street1" field - "This is a required field" in red
+    Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     And "street1" field label is displayed in red
     And "street1" field displays X Icon
 
@@ -38,15 +42,15 @@ Feature: Street Address - Validation Criteria & Error Handling
     When without entering "street1"
     And I click the X Icon on the "street1" field
     Then Check that the "street1" field is not focused
-    And I shall be displayed an error for the "street1" field - "This is a required field" in red
+    And I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     And "street1" field label is displayed in red
     And "street1" field displays X Icon
 
-  Scenario: 3b - User focuses on the Street Address input field that has the error "This is a required field"
+  Scenario: 3b - User focuses on the Street Address input field that has the error "Please enter your street address."
     When without entering "firstName"
     Then "street1" field does not display X Icon
     And I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
-    Then I shall be displayed an error for the "street1" field - "This is a required field" in red
+    Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     And "street1" field label is displayed in red
     When I have enter valid "street1" value "22 Cortland st"
     Then "street1" field label is displayed in black

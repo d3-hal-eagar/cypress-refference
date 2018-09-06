@@ -112,15 +112,33 @@ Feature: Date of Birth - Validation Criteria and Error Handling
     When without entering "dobMonth"
     When without entering "dobDay"
     When without entering "dobYear"
-#    Then I shall be displayed an error for the "dob" field - "Please choose a Month, Please choose a Day, Please choose a year" in red
+    Then I shall be displayed an error for the "dob" field - "Please provide a valid date." in red
+
+  Scenario: 3b - User without selecting a Month focuses out of DOB Field - error message is appeared.
+    When without entering "dobMonth"
+    And I select "23" on the "dobDay" field
+    And I select "1989" on the "dobYear" field
+    Then I shall be displayed an error for the "dob" field - "Please provide a valid date." in red
+
+  Scenario: 3c - User without selecting a Day focuses out of DOB Field - error message is appeared
+    When I select "02" on the "dobMonth" field.
+    When without entering "dobDay"
+    And I select "1989" on the "dobYear" field
+    Then I shall be displayed an error for the "dob" field - "Please provide a valid date." in red
+
+  Scenario: 3d - User without selecting a Year focuses out of DOB Field - error message is appeared.
+    When I select "02" on the "dobMonth" field
+    And I select "23" on the "dobDay" field
+    When without entering "dobYear"
+    Then I shall be displayed an error for the "dob" field - "Please provide a valid date." in red
 
     #  Note - Date of Birth - Field Name will turn red and Error Message appears only when the user has focused on all the 3 dropdowns - Month, Day & Year. User could have selected 1 or 2 fields, please note the error is displayed when all the 3 are focused.
 
-  Scenario: 3b - User focuses on the Date of Birth field that has the error -" Please choose a month. Please chose a day. Please choose a year."
+  Scenario: 3b - User focuses on the Date of Birth field that has the error
     When without entering "dobMonth"
     When without entering "dobDay"
     When without entering "dobYear"
-#    Then I shall be displayed an error for the "Please choose a Month, Please choose a Day, Please choose a year" field - "dob" in red
+    Then I shall be displayed an error for the "Please provide a valid date." field - "dob" in red
     When I select "02" on the "dobMonth" field
     And I select "23" on the "dobDay" field
     And I select "1989" on the "dobYear" field

@@ -29,7 +29,7 @@ Feature: Step 1 Create your account fields Email Addres
 #
   Scenario: 2  User without entering an Email Address focuses out of the field
     When without entering "email"
-    Then I shall be displayed an error for the "email" field - "This is a required field"
+    Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
     And "email" field label is displayed in red
     And "email" field displays X Icon
 
@@ -106,6 +106,8 @@ Feature: Step 1 Create your account fields Email Addres
 
   Scenario: User enters invalid characters in email multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
-
+# note @ is included here because an email can contain only 1 @
+# in actual fact many of these characters are allowed in the "local-part" but not domain
+# in some cases even the unicode characters could be in the domain
   Scenario: User enters additional invalid characters in email multiple input errors
     When I have enter invalid characters ",#\//\"'" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
