@@ -53,31 +53,31 @@ Feature: Step 2 First Name fields
     When I have enter valid "firstName" value "John"
     And I enter additional text into "firstName" field text " (the dude)"
     And I blur the "firstName" field
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario: 3d User focuses back on the first name field that has the error and backspaces
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    And I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    And I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     And I enter additional text into "firstName" field text "{backspace}"
     Then I shall be displayed no error for the "firstName" field
 
   Scenario: 4 User enters invalid First Name with number
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     And "firstName" field label is displayed in red
     And "firstName" field displays X Icon
     And "firstName" input field is displayed in red
 
   Scenario: 4a User enters invalid First Name , then clicks the error icon
     When I have enter invalid "firstName" value "1" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     When I blur the "firstName" field
     And I click the X Icon on the "firstName" field
     Then Check that the "firstName" field is not focused
 
   Scenario: 4b User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "that contains a number"
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     Then I enter additional text into "firstName" field text "ly"
     And I shall be displayed no error for the "firstName" field
     When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
@@ -88,21 +88,21 @@ Feature: Step 2 First Name fields
   Scenario: 5 User hovers over an pristine empty First Name input field
     When without entering "firstName"
     And I hover over "firstName"
-    Then I am displayed a attribute title on "firstName" field - "Please fill out this field."
+    Then I am displayed a attribute title on "firstName" field - "First Name is required."
 
   Scenario: 5a User hovers over an empty First Name input field with error
     When without entering "firstName"
     And I hover over "firstName"
-    Then I am displayed a attribute title on "firstName" field - "Please fill out this field."
+    Then I am displayed a attribute title on "firstName" field - "First Name is required."
 
   # extended validations
   Scenario: User enters invalid First Name with multiple special characters
     When I have enter invalid "firstName" value "hal--stone" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario: User enters invalid First Name not starting with a letter
     When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "firstName" field - "Please enter a valid name"
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
   Scenario Outline: User enters an valid firstName
     When I have enter valid "firstName" value "<name_entered>"
@@ -120,16 +120,16 @@ Feature: Step 2 First Name fields
     Then I shall be displayed an error for the "firstName" field - "<error_message>"
 
     Examples:
-      | name_entered      | type_of_error                        | error_message              |
-      | mighty77          | contians a number                    | Please enter a valid name |
-      | Ilike--mdash      | contains two dashes in a row         | Please enter a valid name |
-      | d''art            | contains two single quotes in a row  | Please enter a valid name |
-      | 'Roid             | does not begin with a letter         | Please enter a valid name |
-      | -flash            | does not begin with a letter         | Please enter a valid name |
-      | Jimmy  John       | contains two spaces in a row         | Please enter a valid name |
+      | name_entered      | type_of_error                        | error_message                                             |
+      | mighty77          | contians a number                    | First Name may not include numbers or special characters. |
+      | Ilike--mdash      | contains two dashes in a row         | First Name may not include numbers or special characters. |
+      | d''art            | contains two single quotes in a row  | First Name may not include numbers or special characters. |
+      | 'Roid             | does not begin with a letter         | First Name may not include numbers or special characters. |
+      | -flash            | does not begin with a letter         | First Name may not include numbers or special characters. |
+      | Jimmy  John       | contains two spaces in a row         | First Name may not include numbers or special characters. |
 
   Scenario: User enters invalid characters in First Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name"
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
   Scenario: User enters additional invalid characters in First Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name"
+    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."

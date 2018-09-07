@@ -6,7 +6,7 @@ Feature: City - Validation Criteria and Error Handling
   Validation Criteria
   - Is a required field.
   - Max length of 27 characters
-  - Cities may only contain letters and spaces.
+  - Please enter a valid city.
 
 
   Background: user on Step 1 acquisition flow screen
@@ -55,9 +55,10 @@ Feature: City - Validation Criteria and Error Handling
 
     Examples:
       | city_entered             | type_of_error               | error_message                               |
-      | New / York               | has a '/' symbol            | Cities may only contain letters and spaces. |
-      | San José                 | has a extended latin symbol | Cities may only contain letters and spaces. |
-      | St. Louis                | has a '.' symbol            | Cities may only contain letters and spaces. |
+      | New / York               | has a '/' symbol            | Please enter a valid city. |
+      | San José                 | has a extended latin symbol | Please enter a valid city. |
+      | St. Louis                | has a '.' symbol            | Please enter a valid city. |
+      | Town323                  | has a numer                 | Please enter a valid city. |
 
     # performance optimized multi value test
     # benefit fast test execution
@@ -71,19 +72,19 @@ Feature: City - Validation Criteria and Error Handling
   I have enter invalid "(.*?)" value I see the correct validation error message
     When I have enter invalid "city" value I see the correct validation error message
       | city_entered    | type_of_error                  | error_message                               |
-      | New 45 York     | has a number                   | Cities may only contain letters and spaces. |
-      | New York –north | has a non-ASCII en dash symbol | Cities may only contain letters and spaces. |
-      | New York —west  | has a non-ASCII em dash symbol | Cities may only contain letters and spaces. |
+      | New 45 York     | has a number                   | Please enter a valid city. |
+      | New York –north | has a non-ASCII en dash symbol | Please enter a valid city. |
+      | New York —west  | has a non-ASCII em dash symbol | Please enter a valid city. |
 
-  Scenario: 4b - User focuses on the City input field that has the error "Cities may only contain letters and spaces."
-    When Action detail "Trigger error state - 'Cities may only contain letters and spaces.'"
+  Scenario: 4b - User focuses on the City input field that has the error "Please enter a valid city."
+    When Action detail "Trigger error state - 'Please enter a valid city.'"
     And I have enter invalid "city" value "New &York" that "has an '&' symbol"
-   Then I shall be displayed an error for the "city" field - "Cities may only contain letters and spaces." in red
+   Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I have enter valid "city" value "New York"
     And I shall be displayed no error for the "city" field
 
   Scenario: User enters invalid characters in City multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "twn" on the "city" and I see validation error message "Cities may only contain letters and spaces."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "twn" on the "city" and I see validation error message "Please enter a valid city."
 
   Scenario: User enters additional invalid characters in City multiple input errors
-    When I have enter invalid characters ",#\//\"" into valid input "twn" on the "city" and I see validation error message "Cities may only contain letters and spaces."
+    When I have enter invalid characters ",#\//\"" into valid input "twn" on the "city" and I see validation error message "Please enter a valid city."

@@ -94,21 +94,21 @@ Feature: Step 2 Last Name fields
   Scenario: 5 User hovers over an pristine empty Last Name input field
     When without entering "lastName"
     And I hover over "lastName"
-    Then I am displayed a attribute title on "lastName" field - "Please fill out this field."
+    Then I am displayed a attribute title on "lastName" field - "Last Name is required."
 
   Scenario: 5a User hovers over an empty Last Name input field with error
     When without entering "lastName"
     And I hover over "lastName"
-    Then I am displayed a attribute title on "lastName" field - "Please fill out this field."
+    Then I am displayed a attribute title on "lastName" field - "Last Name is required."
 
   # extended validations
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Last Name is required."
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name."
+    Then I shall be displayed an error for the "lastName" field - "Last Name is required."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -126,14 +126,16 @@ Feature: Step 2 Last Name fields
     Then I shall be displayed an error for the "lastName" field - "<error_message>"
 
     Examples:
-      | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contians a number                    | Please enter a valid last name. |
-      | smith  jones     | contains two spaces in a row         | Please enter a valid last name. |
-      | Mc--Mac          | contains two dashes in a row         | Please enter a valid last name. |
-      | 'Roid            | does not begin with a letter         | Please enter a valid last name. |
+      | name_entered | type_of_error                       | error_message                                            |
+      | mighty77     | contians a number                   | Last Name is required.                                   |
+      | smith  jones | contains two spaces in a row        | Last Name is required.                                   |
+      | Mc--Mac      | contains two dashes in a row        | Last Name is required.                                   |
+      | d''art       | contains two single quotes in a row | Last Name may not include numbers or special characters. |
+      | 'Roid        | does not begin with a letter        | Last Name is required.                                   |
+      | -flash       | does not begin with a letter        | Last Name may not include numbers or special characters. |
 
   Scenario: User enters invalid characters in Last Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Last Name is required."
 
    Scenario: User enters additional invalid characters in Last Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Please enter a valid last name."
+    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Last Name is required."

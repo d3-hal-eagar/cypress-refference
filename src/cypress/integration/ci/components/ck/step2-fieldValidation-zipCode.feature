@@ -85,12 +85,12 @@ Feature: Zip Code - Validation Criteria & Character Restriction
 
   Scenario: 5 - User does not enter a Zip Code
     When without entering "zip"
-    Then I shall be displayed an error for the "zip" field - "This is a required field." in red
+    Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And "zip" field label is displayed in red
 
-  Scenario: 5a - User focuses back on the Zip code field that has the error - "This is a required field."
+  Scenario: 5a - User focuses back on the Zip code field that has the error - "Please enter a valid zip code."
     When without entering "zip"
-    Then I shall be displayed an error for the "zip" field - "This is a required field." in red
+    Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And "zip" field label is displayed in red
     When I have enter valid "zip" value "99999"
     Then "zip" field label is displayed in black

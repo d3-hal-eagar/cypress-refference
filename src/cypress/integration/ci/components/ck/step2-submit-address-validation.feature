@@ -11,8 +11,8 @@ Scenario: 1 - User submits form with valid information but the zip code
 #Zip Code 11111 is valid on the FE but will be invalidated when validate/address api is called
 When I have enter valid "firstName" value "John"
 And I have enter valid "lastName" value "Smith"
-And I have enter valid "street1" value "22 Cortland streeet" 
-And I have enter valid "street2" value "Fl 11" 
+And I have enter valid "street1" value "22 Cortland streeet"
+And I have enter valid "street2" value "Fl 11"
 And I have enter valid "city" value "New York"
 And I select "NY" on the "state" field
 And I have enter valid "zip" value "11111"
@@ -24,5 +24,5 @@ And I click element "agreement"
 And I click element "next-step-button"
 Then The "error-message-section" message contains "Whoops! Looks like we’re missing some important information."
 And The "error-message-section" message contains "You may have tried to continue to the next step too soon or missed a required field. Please ensure you've provided all of the required information before continuing. Missed entries are highlighted in red."
-And I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red font color
-And I shall be displayed an error for the "ssn" field - "Please re-enter your SSN." in red font color
+And I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
+And I shall be displayed an error for the "ssn" field - "Please re-enter your SSN." in red

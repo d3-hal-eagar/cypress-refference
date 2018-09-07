@@ -20,7 +20,7 @@ Feature: Step 1 Create your account fields password
 
   Scenario: 2 User without entering a Password focuses out of the field
     When without entering "password"
-    Then I shall be displayed an error for the "password" field - "This is a required field"
+    Then I shall be displayed an error for the "password" field - "Please create your password."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
@@ -45,13 +45,13 @@ Feature: Step 1 Create your account fields password
 
   Scenario: 3 User enters a password that does not meet the required minimum character length
     When I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-   Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
+   Then I shall be displayed an error for the "password" field - "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
   Scenario: 3a User enters a password that does not meet the required minimum character length then types more
     When I have enter invalid "password" value "asdf1" that "does not meet the required minimum character length"
-    Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
+    Then I shall be displayed an error for the "password" field - "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"
     When I click on the "email" field
     And I click the label on the "password" field
     #And I click the X Icon on the "password" field
@@ -64,14 +64,14 @@ Feature: Step 1 Create your account fields password
 
   Scenario: 3b User enters a password that does not meet the required minimum character length, then backspaces
     When I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
-    Then I shall be displayed an error for the "password" field - "Passwords must be at least 8 characters."
+    Then I shall be displayed an error for the "password" field - "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"
 
     When I enter additional text into "password" field text "{backspace}"
     And I shall be displayed no error for the "password" field
 
   Scenario: 4 User enters a password that is easy to guess
     Given I have enter invalid "password" value "12345678" that "is easy to guess"
-    Then I shall be displayed an error for the "password" field - "Please pick a different password. That one is too easy for someone else to guess."
+    Then I shall be displayed an error for the "password" field - "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
@@ -105,14 +105,23 @@ Feature: Step 1 Create your account fields password
     Examples:
       | userPassword                   |
       | theWind1n*                     |
-      | The-will0ws                    |
+      | The_will0ws                    |
       | 1$ecurePassword                |
       | 2$ecürePassword                |
       | 3$ecurePass✉                   |
       | 4$ecure木assworD                |
-      | 1Secure\"                      |
-      | 1Secure'#,.                    |
+      | 1Secure?\"                      |
+      | 1Secure&'#,.                    |
       | 1Secure![]&@%?<>!$():;~^{}+=_* |
+      | 1!ecurePassword                |
+      | 1#ecurePassword                |
+      | 1$ecurePassword                |
+      | 1%ecurePassword                |
+      | 1^ecurePassword                |
+      | 1?ecurePassword                |
+      | 1 ecurePassword                |
+      | 1<ecurePassword                |
+      | 1>ecurePassword                |
 
   Scenario Outline: User enters invalid password.
     Given
@@ -127,11 +136,11 @@ Feature: Step 1 Create your account fields password
       | jimmy.smith123      | contains part of the email | Password must not include email.                                                  |
       | email.myownpoB0x    | contains part of the email | Password must not include email.                                                  |
       | email.myownpoB0x123 | contains part of the email | Password must not include email.                                                  |
-      | @#$ $               | too short                  | Passwords must be at least 8 characters.                                          |
-      | secure              | too short                  | Passwords must be at least 8 characters.                                          |
-      | $EvEn7              | too short                  | Passwords must be at least 8 characters.                                          |
-      | password            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
-      | 88888888            | easy to guess              | Please pick a different password. That one is too easy for someone else to guess. |
+      | @#$ $               | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
+      | secure              | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
+      | $EvEn7              | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
+      | password            | easy to guess              | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
+      | 88888888            | easy to guess              | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
       #| smith               | contains part of the email | Password must not include email.                                                  |
       #| myownpoB0x          | contains part of the email | Password must not include email.                                                  |
 
