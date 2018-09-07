@@ -47,7 +47,7 @@ Feature: Street Address - Validation Criteria & Error Handling
     And "street1" field displays X Icon
 
   Scenario: 3b - User focuses on the Street Address input field that has the error "Please enter your street address."
-    When without entering "firstName"
+   When without entering "street1"
     Then "street1" field does not display X Icon
     And I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
     Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
