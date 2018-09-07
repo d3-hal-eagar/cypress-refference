@@ -42,3 +42,11 @@ Then(`I am displayed the correct blocks on the ck Step 2 right rail`, () => {
     cy.get('.sidebar .row ul li').contains('We do not share your personal information with unaffiliated third parties for their own marketing purposes.');
 
 });
+
+Then(`I will be displayed a preloading screen`, () => {
+    cy.getElement('modal-body').should('be.visible');
+    cy.getElement('modal-body').find('img').should('be.visible');
+    cy.getElement('modal-body').find('h2').contains('Please wait, Updating your credit information.');
+    cy.getElement('modal-body').find('p').contains('Loading your information...');
+
+});
