@@ -2,11 +2,11 @@
 /// <reference types="Cypress" />
 
 When(/^I select the Show button$/, function () {
-    cy.get('.showhide-pw').contains('Show').click();
+    cy.getElement('password-toggle').contains('Show').click();
 });
 
 When(/^I select the Hide button$/, function () {
-    cy.get('.showhide-pw').contains('Hide').click();
+    cy.getElement('password-toggle').contains('Hide').click();
 });
 
 Then(/^"(.*?)" field displays as plain text$/, function (formField) {

@@ -1,11 +1,17 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-let flow = 'ck/';
 
 Given(`I am a user on the ck flow`, () => {
-    flow = 'ck/';
-    cy.visit( flow+'?marketingid=00000');
+    cy.wrap({
+        flowName: 'ck',
+        textBlack: 'rgb(73, 80, 87)',
+        validGreen: 'rgb(206, 212, 218)',
+        errorRed: 'rgb(220, 53, 69)',
+        errorSelector: '.text-danger',
+        errorClass: '.text-danger'
+    }).as('flow');
+    cy.visit( 'ck/?marketingid=00000');
     cy.wait(200);
 });
 

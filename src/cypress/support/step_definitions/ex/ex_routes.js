@@ -1,11 +1,18 @@
 /* global cy, Cypress, then, when, given */
 /// <reference types="Cypress" />
 
-let flow = 'ex/';
 
 Given(`I am a user on the ex flow`, () => {
-    flow = 'ex/';
-    cy.visit( flow+'?marketingid=00001');
+    cy.wrap({
+        flowName: 'ex',
+        textBlack: 'rgb(73, 80, 87)',
+        validGreen: 'rgb(37, 145, 94)',
+        errorRedBorder: 'rgb(203, 18, 62)',
+        errorRed: 'rgb(203, 18, 62) none repeat scroll 0% 0% / auto padding-box border-box',
+        errorSelector: '.popover-body',
+        errorClass: '.invalid'
+    }).as('flow');
+    cy.visit( 'ex/?marketingid=00001');
     cy.wait(200);
 });
 
