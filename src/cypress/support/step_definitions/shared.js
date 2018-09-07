@@ -45,6 +45,10 @@ Then(/^The page contians "(.*?)"$/, (headerText) => {
     cy.get('body').contains(headerText).should('be.visible');
 });
 
+Then(/^"(.*?)" contains "(.*?)"$/, (element, messageText) => {
+    cy.getElement(element).should('contain', messageText);
+});
+
 let proprietaryNames = [];
 Given(`the following list of proprietaryNames`, function (dataTable) {
     proprietaryNames = dataTable.rawTable;
