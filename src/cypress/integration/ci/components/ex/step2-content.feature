@@ -29,11 +29,13 @@ Feature: Step2 info fields
     Then Check that the "ssn" field is focused
     And The "ssn" field label is "Social Security Number"
     And I focus on the "ssn-display-checkbox" field
-    #And The "ssn-display-checkbox" field label is "Display"
+    And "ssn-display-checkbox" contains "Display"
+    And The "ssn-i" message contains "Why do we need this?"
+
     And I focus on the "dobMonth" field
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    #And The "dobYear" field label is "Date Of Birth"
+    And The "dob" field label is "Date Of Birth"
     And I focus on the "next-step-button" field
     Then Action detail "all fields were present"
 
@@ -41,10 +43,15 @@ Feature: Step2 info fields
     #Then The page header is "Create Your Account"
     Then The "account-section containing title" message contains "Create Your Account"
     And The a subheader exists "Identity Verification"
-    And The page contians "Why do we need this?"
     And The a subheader exists "Account Information"
-    And The "terms" message contains "By clicking on "Submit Secure Order": you agree to"
-    And The "terms" message contains "Terms Of Use, including our Privacy Policy"
+    And The "terms" message contains "By clicking \"Submit Secure Order\": I accept and agree to your Terms of Use Agreement, as well as acknowledge receipt of your Privacy Policy."
+    And The "terms" message contains "I authorize"
+    And The "terms" message contains "to obtain my credit report and/or credit score(s), on a recurring basis to:"
+    And The "terms" message contains "Provide my credit report (and/or credit score) to me for review while I have an account with "
+    And The "terms" message contains "Notify me of other products and services that may be available to me through "
+    And The "terms" message contains "or through unaffiliated third parties."
+    And The "terms" message contains "Notify me of credit opportunities and advertised credit offers."
+    And The "terms" message contains "I understand that I may withdraw this authorization at any time by contacting"
     And The "terms" message contains siteName
 
   Scenario: On the right rail I am displayed information blocks one below the other.
