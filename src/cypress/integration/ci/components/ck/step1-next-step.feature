@@ -43,7 +43,7 @@ Feature: Step 1 Next Step button
 
   Scenario: 4 User enters invalid email address
     When I have enter invalid "email" value "invalid@email" that "lacks a TLD"
-    And without entering "Password"
+    #And without entering "password"
     And I click element "next-step-button"
     Then I am guided to the ck step1 signup page
     Then "email" field label is displayed in red
@@ -52,7 +52,7 @@ Feature: Step 1 Next Step button
 
   Scenario: 5 User enters a password that does meet the password criteria.
     When I have enter invalid "password" value "asdf123" that "does not meet the required minimum character length"
-    And without entering "Email Address"
+    #And without entering "email"
     And I click element "next-step-button"
     Then I am guided to the ck step1 signup page
     And "password" field label is displayed in red
