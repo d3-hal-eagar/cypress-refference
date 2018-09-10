@@ -2,8 +2,8 @@ Feature: Step 1 Create your account fields Email Addres
 
   As a user I create an account by providing valid email and password
   Covers
-    - D3F-29 Email Address - Field Validations and Error Handling
-    - D3F-336 Mobile - Email Address - Field Validations and Error Handling
+    - CP-815 (D3F-29) Email Address - Field Validations and Error Handling
+    - CP-86 (D3F-336) Mobile - Email Address - Field Validations and Error Handling
 
 
   Background:

@@ -4,7 +4,7 @@ Feature: Step 1 email tips on hover
   Display of help is browser function based on field title, and does not display visibly on mobile where hover is not possible.
 
   Covers
-    - D3F-198 As a user when I hover over the entered characters in the email address input field then I am displayed a tooltip
+    - CP-112 (D3F-198) As a user when I hover over the entered characters in the email address input field then I am displayed a tooltip
 
 
   Background:
