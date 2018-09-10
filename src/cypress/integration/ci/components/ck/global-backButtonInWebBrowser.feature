@@ -1,7 +1,7 @@
 Feature: Back button in the web browser
 
   Covers
-  - D3F-326 Back button in the web browser
+  - CP-786 (D3F-326) Back button in the web browser
   Note: Routing Exception, User should be able to select Terms and conditions,
   Privacy policy screens either from the agreement text or from the footer links.
 

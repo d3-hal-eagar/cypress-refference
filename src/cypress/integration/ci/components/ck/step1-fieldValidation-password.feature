@@ -38,8 +38,6 @@ Feature: Step 1 Create your account fields password
 
   Scenario: 2b - When the user focuses back on the Create Password field that has an error
     When without entering "password"
-    Then "password" field does not display X Icon
-    #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And I enter additional text into "password" field text "J"
     And I shall be displayed no error for the "password" field
 
@@ -55,11 +53,11 @@ Feature: Step 1 Create your account fields password
     When I click on the "email" field
     And I click the label on the "password" field
     #And I click the X Icon on the "password" field
-    Then "password" field does not display X Icon
     And Check that the "password" field is focused
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
     When I enter additional text into "password" field text "t"
+    Then "password" field does not display X Icon
     Then I shall be displayed no error for the "password" field
 
   Scenario: 3b User enters a password that does not meet the required minimum character length, then backspaces
@@ -86,15 +84,15 @@ Feature: Step 1 Create your account fields password
 
   Scenario: 5a User enters their name from their email as password.
     Given I have enter valid "email" value "testomatic@credmo.com"
-    When I have enter invalid "password" value "testomatic" that "contains part of the email"
-    Then I shall be displayed an error for the "password" field - "Password must not include email."
+    When I have enter invalid "password" value "testomatic3D#" that "contains part of the email"
+    Then I shall be displayed an error for the "password" field - "Password must not include e-mail."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
   Scenario: 5b User enters the domain from their email as password.
     Given I have enter valid "email" value "testomatic@magicred.com"
-    When I have enter invalid "password" value "magicred" that "contains part of the email"
-    Then I shall be displayed an error for the "password" field - "Password must not include email."
+    When I have enter invalid "password" value "magicred3D#" that "contains part of the email"
+    Then I shall be displayed an error for the "password" field - "Password must not include e-mail."
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
@@ -107,12 +105,6 @@ Feature: Step 1 Create your account fields password
       | theWind1n*                     |
       | The_will0ws                    |
       | 1$ecurePassword                |
-      | 2$ecürePassword                |
-      | 3$ecurePass✉                   |
-      | 4$ecure木assworD                |
-      | 1Secure?\"                      |
-      | 1Secure&'#,.                    |
-      | 1Secure![]&@%?<>!$():;~^{}+=_* |
       | 1!ecurePassword                |
       | 1#ecurePassword                |
       | 1$ecurePassword                |
@@ -131,18 +123,12 @@ Feature: Step 1 Create your account fields password
     Then I shall be displayed an error for the "password" field - "<error_message>"
 
     Examples:
-      | userPassword        | type_of_error              | error_message                                                                     |
-      | jimmy.smith         | contains part of the email | Password must not include email.                                                  |
-      | jimmy.smith123      | contains part of the email | Password must not include email.                                                  |
-      | email.myownpoB0x    | contains part of the email | Password must not include email.                                                  |
-      | email.myownpoB0x123 | contains part of the email | Password must not include email.                                                  |
-      | @#$ $               | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
-      | secure              | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
-      | $EvEn7              | too short                  | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_                                          |
-      | password            | easy to guess              | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
-      | 88888888            | easy to guess              | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
-      #| smith               | contains part of the email | Password must not include email.                                                  |
-      #| myownpoB0x          | contains part of the email | Password must not include email.                                                  |
+      | userPassword | type_of_error | error_message                                                                                                                                      |
+      | @#$ $        | too short     | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
+      | secure       | too short     | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
+      | $EvEn7       | too short     | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
+      | password     | easy to guess | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
+      | 88888888     | easy to guess | Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_ |
 
   #D3F-32
   Scenario: system shall by default mask the password characters behind bullets, with an option to show the full text
@@ -158,3 +144,5 @@ Feature: Step 1 Create your account fields password
     #And change the Hide button to Show button
     When I select the Show button
 
+  Scenario: User enters invalid characters in password multiple input errors
+    When I have enter invalid characters "[]():;~{}+=|ãü木✉,\/\\\"'" into valid input "LoveG0d!s" on the "password" and I see validation error message "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"

@@ -2,8 +2,8 @@ Feature: Step 1 Create your account fields Email Addres
 
   As a user I create an account by providing valid email and password
   Covers
-    - D3F-29 Email Address - Field Validations and Error Handling
-    - D3F-336 Mobile - Email Address - Field Validations and Error Handling
+    - CP-815 (D3F-29) Email Address - Field Validations and Error Handling
+    - CP-86 (D3F-336) Mobile - Email Address - Field Validations and Error Handling
 
 
   Background:
@@ -35,7 +35,6 @@ Feature: Step 1 Create your account fields Email Addres
 
   Scenario: 2b - User focuses on the Email Address input field that has an error
     When without entering "email"
-    Then "email" field does not display X Icon
     And I enter additional text into "email" field text "@"
     And I shall be displayed no error for the "email" field
 
@@ -52,10 +51,10 @@ Feature: Step 1 Create your account fields Email Addres
     And "email" field displays X Icon
     #And I click the X Icon on the "email" field
     And I click the label on the "email" field
-    Then "email" field does not display X Icon
     And Check that the "email" field is focused
     And "email" field label is displayed in red
     Then I enter additional text into "email" field text "."
+    Then "email" field does not display X Icon
     And I shall be displayed no error for the "email" field
 
   Scenario: 3b When the user focuses on the Email Address input field that has the error on it
@@ -110,4 +109,4 @@ Feature: Step 1 Create your account fields Email Addres
 # in actual fact many of these characters are allowed in the "local-part" but not domain
 # in some cases even the unicode characters could be in the domain
   Scenario: User enters additional invalid characters in email multiple input errors
-    When I have enter invalid characters ",#\//\"'" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
+    When I have enter invalid characters ",#\/\\\"'" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."

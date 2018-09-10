@@ -5,7 +5,7 @@ Feature: Step 1 email and password tooltips
   Tooltips are not shown on mobile view
 
   Covers
-    - D3F-28 Tooltip behavior for Email Address and Password
+    - CP-98 (D3F-28) Tooltip behavior for Email Address and Password
 
 
   Background:
@@ -15,7 +15,6 @@ Feature: Step 1 email and password tooltips
 
     #D3F-28
   Scenario: 0 - no interaction with fields and no tooltips show
-    When without entering "anything"
     Then "email" tooltip is not visible
     Then "password" tooltip is not visible
 
