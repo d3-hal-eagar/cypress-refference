@@ -1,11 +1,11 @@
 Feature: Step 1 Create your account fields
 
   Covers
-  - D3F-27 Create your account fields
-  - D3F-332 Mobile - Create your account fields
-  - D3F-217 As a user when I am on Step 1 of acquisition path, I am displayed blocks of information on the right rail
-
-
+  - CP-70 (D3F-27) Create your account fields
+  - (D3F-332) Mobile - Create your account fields
+    has become - CP-753 Mobile - CK - Step 1 Page - Create your account fields
+  - CP-115 (D3F-217) As a user when I am on Step 1 of acquisition path, I am displayed blocks of information on the right rail
+     but current content from - CP-756 content for right rail blocks
   Background:
     Given I am a user on the ck flow
     Given I am on the ck step1 signup page

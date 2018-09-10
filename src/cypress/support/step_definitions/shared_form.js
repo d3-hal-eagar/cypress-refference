@@ -273,12 +273,15 @@ Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (f
 });
 
 Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
-    if (formField.startsWith("ssn") || formField.startsWith("dob")){
-        // e.g. ssn-label, dob-label
-        cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
-    } else {
-        cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
-    }
+
+    cy.get('@flow').then((flow) => {
+        if (flow.flowName === 'ck' && (formField.startsWith("ssn") || formField.startsWith("dob"))){
+            // e.g. ssn-label, dob-label
+            cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
+        } else {
+            cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
+        }
+    });
 });
 
 Then(/^The "(.*?)" radio group label is "(.*?)"$/, (formField,labelText) => {

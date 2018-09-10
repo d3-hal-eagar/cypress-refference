@@ -9,7 +9,8 @@ Given(`I am a user on the ck flow`, () => {
         validGreen: 'rgb(206, 212, 218)',
         errorRed: 'rgb(220, 53, 69)',
         errorSelector: '.text-danger',
-        errorClass: '.text-danger'
+        errorClass: '.text-danger',
+        siteName: 'IasadGeas'
     }).as('flow');
     cy.visit( 'ck/?marketingid=00000');
     cy.wait(200);

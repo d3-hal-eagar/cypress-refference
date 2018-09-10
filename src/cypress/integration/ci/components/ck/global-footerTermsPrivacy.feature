@@ -10,8 +10,8 @@ Feature: Header, Footer, Terms of Service and Privacy Policy
 
 
   Background:
-    Given the siteName is "NotCreditKarma"
     Given I am a user on the ck flow
+    Given the siteName is "NotCreditKarma"
 
 
   Scenario: 1 Footer shall contain Copyright, Terms of Service & Privacy Policy

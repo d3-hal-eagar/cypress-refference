@@ -7,8 +7,8 @@ Feature: Header, Footer, Terms of Service and Privacy Policy
 
 
   Background:
-    Given the siteName is "NotCreditExperian"
     Given I am a user on the ex flow
+    Given the siteName is "NotCreditExperian"
 
   Scenario: 1 Footer shall contain Copyright, Terms of Service & Privacy Policy
     When I am on the ex step1 signup page

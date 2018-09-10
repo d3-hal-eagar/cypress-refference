@@ -15,13 +15,14 @@ Then(`I am shown an error and cancel the registration process`, () => {
 
 });
 
-let siteName = 'TestSite';
 Then(`I am shown an error and about protecting your personal information`, () => {
-    cy.get('.modal');
+    cy.get('@flow').then((flow) => {
+        cy.get('.modal');
 
-    // Header:
-    cy.get('.modal h1').contains('Oops, we\'re sorry!');
-    // Description Text:
-    cy.get('.modal p').contains(siteName);
-    cy.get('.modal p').contains('is committed to protecting your personal information. We utilize a thorough identity verification system because your security is important to us. Unfortunately, we have not been able to properly identify you from the information you provided. Please note that your order has been canceled.');
+        // Header:
+        cy.get('.modal h1').contains('Oops, we\'re sorry!');
+        // Description Text:
+        cy.get('.modal p').contains(flow.siteName);
+        cy.get('.modal p').contains('is committed to protecting your personal information. We utilize a thorough identity verification system because your security is important to us. Unfortunately, we have not been able to properly identify you from the information you provided. Please note that your order has been canceled.');
+    });
 });

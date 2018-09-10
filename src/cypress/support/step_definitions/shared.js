@@ -49,6 +49,10 @@ Then(/^"(.*?)" contains "(.*?)"$/, (element, messageText) => {
     cy.getElement(element).should('contain', messageText);
 });
 
+Then(/^"(.*?)" parent div contains "(.*?)"$/, (element, messageText) => {
+    cy.getElement(element).closest('div').should('contain', messageText);
+});
+
 let proprietaryNames = [];
 Given(`the following list of proprietaryNames`, function (dataTable) {
     proprietaryNames = dataTable.rawTable;

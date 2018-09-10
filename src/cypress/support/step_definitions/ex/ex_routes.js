@@ -10,7 +10,8 @@ Given(`I am a user on the ex flow`, () => {
         errorRedBorder: 'rgb(203, 18, 62)',
         errorRed: 'rgb(203, 18, 62) none repeat scroll 0% 0% / auto padding-box border-box',
         errorSelector: '.popover-body',
-        errorClass: '.invalid'
+        errorClass: '.invalid',
+        siteName: 'IasadGeas'
     }).as('flow');
     cy.visit( 'ex/?marketingid=00001');
     cy.wait(200);
