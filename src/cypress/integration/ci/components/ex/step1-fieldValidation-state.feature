@@ -1,7 +1,7 @@
 Feature: State - Validation Criteria and when no character is entered
 
   Covers
-    -
+    - CP-808 Desktop - EX - State - Error Handling & Validation Criteria
   Validation Criteria
     - Is a required field.
     - Dropdown
@@ -16,6 +16,7 @@ Feature: State - Validation Criteria and when no character is entered
     When I select "AK" on the "state" field
     And I blur the "state" field
     Then I shall be displayed no error for the "state" field
+    Then The "state" select border is displayed in green
 
   Scenario: 2 System by default displays 'Select' and on focusing on State field highlights 'Select'.
     Then I shall be displayed "Select..." option for the "state" field by default
@@ -86,9 +87,7 @@ Feature: State - Validation Criteria and when no character is entered
 
   Scenario: 4 - User without selecting a state, focuses out of state field.
     And without entering "state"
-    And "state" field label is displayed in red
     And "state" select field is displayed in red
-    Then I shall be displayed an error for the "state" field - "Please select a State/Province." in red
 
   Scenario: 4a - User focuses back on state field that has error message
     When without entering "state"
@@ -96,3 +95,10 @@ Feature: State - Validation Criteria and when no character is entered
     Then Check that the "state" field is focused
       And I select "NY" on the "state" field
     Then I shall be displayed no error for the "state" field
+    Then The "state" select border is displayed in green
+
+  Scenario: 5 User shall be able to change the state that was prefilled by the system according to the entered zip code.
+    When I have enter valid "zip" value "10007"
+    #todo should be checking state changed but it does not
+    Then I select "NJ" on the "state" field
+    And "zip" value is "10007"
