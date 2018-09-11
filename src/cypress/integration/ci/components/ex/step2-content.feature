@@ -29,8 +29,8 @@ Feature: Step2 info fields
     Then Check that the "ssn" field is focused
     And The "ssn" field label is "Social Security Number"
     And I focus on the "ssn-display-checkbox" field
-    And "ssn-display-checkbox" contains "Display"
-    And The "ssn-i" message contains "Why do we need this?"
+    And "ssn-display-checkbox" parent div contains "Display"
+    And The "modal-link" message contains "Why do we need this?"
 
     And I focus on the "dobMonth" field
     And I focus on the "dobDay" field

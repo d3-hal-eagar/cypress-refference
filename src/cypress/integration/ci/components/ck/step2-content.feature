@@ -11,6 +11,7 @@ Feature: Step2 info fields
   Background: user on Step 2 acquisition flow screen
     Given I am a user on the ck flow
     Given I am on the ck step2 form page
+    Given the siteName is "NotCreditKarma"
 
 
   Scenario: 1 - test existence of form fields
@@ -46,7 +47,6 @@ Feature: Step2 info fields
     Then Action detail "all fields were present"
 
   Scenario: 2 - test for terms and account created section and site name token
-    Given the siteName is "NotCreditKarma"
     Then The page header is "You're on your way to free credit scores."
     And The "terms" message contains "By clicking on "Next Step", you agree to"
     And The "terms" message contains "Terms Of Service, including our Privacy Policy"
@@ -62,5 +62,4 @@ Feature: Step2 info fields
 
     #D3F-218
   Scenario: As a user when I am on Step 2 of acquisition path, I am displayed blocks of information on the right rail
-    Given the siteName is "NotCreditKarma"
     Then I am displayed the correct blocks on the ck Step 2 right rail
