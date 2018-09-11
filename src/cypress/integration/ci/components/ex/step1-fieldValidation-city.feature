@@ -22,13 +22,13 @@ Feature: City - Validation Criteria and Error Handling
 
   Scenario: 2 - User without entering City focuses out of City field.
     When without entering "city"
-    Then I shall be displayed an error for the "city" field - "This is a required field" in red
+    Then I shall be displayed an error for the "city" field - "Please enter a valid city."" in red
     And The "city" field border is outlined in red color
     And A red warning icon inside the "city" field is displayed
 
-  Scenario: 2a - User focuses back on the City field that has the error - "This is a required field."
+  Scenario: 2a - User focuses back on the City field that has the error - "Please enter a valid city."
     When without entering "city"
-    Then I shall be displayed an error for the "city" field - "This is a required field" in red
+    Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I have enter valid "city" value "New York"
     And I shall be displayed no error for the "city" field
 

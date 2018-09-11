@@ -54,7 +54,7 @@ Feature: Apartment - Validation Criteria & Error Handling
       | 22,b              | has a comma         |
       | #11               | has a number signs  |
       | 22-A              | has a hyphen (-)    |
-      | 22 A              | has a space         |
+      | Suite 1103        | has a space         |
       | 22.1              | has a period        |
       | 22A/B             | has a forward slash |
       | 22A'B             | has a single quote  |

@@ -101,6 +101,11 @@ Then(/^The "(.*?)" field border is displayed in green/, function (formField) {
     cy.getFormGroup(formField).find('input').should('have.css', 'border-color', 'rgb(37, 145, 94)');
 });
 
+Then(/^The "(.*?)" select border is displayed in green/, function (formField) {
+    cy.getFormGroup(formField).find('select.valid').should('be.visible');
+    cy.getFormGroup(formField).find('select').should('have.css', 'border-color', 'rgb(37, 145, 94)');
+});
+
 Then(/^A green checkmark inside the "(.*?)" field is displayed/, function (formField) {
     cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('be.visible');
     cy.getFormGroup(formField).find('i.text-valid').should('have.css', 'color', 'rgb(47, 186, 120)');

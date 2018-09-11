@@ -105,6 +105,10 @@ When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
     cy.getElement(formField).clear().type(userInput).blur().focus();
 });
 
+Then(/^"(.*?)" value is "(.*?)"$/, (formField,userInput) => {
+    cy.getElement(formField).should('have.value', userInput);
+});
+
 // noinspection JSUnusedLocalSymbols
 When(/^I have enter a valid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidation) => {
     cy.getElement(formField).clear().type(userInput).blur().focus();
@@ -290,4 +294,8 @@ Then(/^The "(.*?)" radio group label is "(.*?)"$/, (formField,labelText) => {
 
 Then(/^Check that the "(.*?)" is not visible$/, (formField) => {
     cy.getElement(formField).should('not.be.visible')
+});
+
+Then(/^Check that the "(.*?)" is visible$/, (formField) => {
+    cy.getElement(formField).should('be.visible')
 });
