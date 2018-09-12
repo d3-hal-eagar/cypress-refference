@@ -53,7 +53,7 @@ Then(/^"(.*?)" select field is displayed in red$/, function (formField) {
 
 Then(/^"(.*?)" select field is bordered in green$/, function (formField) {
     cy.get('@flow').then((flow) => {
-        cy.getFormGroup(formField).find('select'+flow.errorSelector).should('be.visible');
+        cy.getFormGroup(formField).find('select'+flow.errorSelector).should('not.be.visible');
         cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow.validGreen);
     });
 });
