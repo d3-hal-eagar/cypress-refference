@@ -69,7 +69,6 @@ Feature: City - Validation Criteria and Error Handling
     # TIP: if it fails to test every permutation comment out the next three lines an let table be used by previous Scenario Outline
 
   Scenario: 4a - User enters invalid City multiple input errors.
-  I have enter invalid "(.*?)" value I see the correct validation error message
     When I have enter invalid "city" value I see the correct validation error message
       | city_entered    | type_of_error                  | error_message                               |
       | New 45 York     | has a number                   | Please enter a valid city. |
