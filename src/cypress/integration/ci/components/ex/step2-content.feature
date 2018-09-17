@@ -5,8 +5,9 @@ Feature: Step2 info fields
   covers
   - CP-421 Step 2 - Identity Verification Field Elements
     (formerly D3F-459)
-  - D3F-492 Mobile - Step 2 - Identity Verification Field Elements
+  - CP-764 (D3F-492) Mobile - Step 2 - Identity Verification Field Elements
   - CP-303 - SSL Logo
+  - CP-421 Desktop - EX - Step 2 - Identity Verification Field Elements
 
 
   Background: user on Step 2 acquisition flow screen
@@ -27,7 +28,7 @@ Feature: Step2 info fields
     And The "cofirmPassword" field label is "Confirm Password"
     When I click on the "ssn" field
     Then Check that the "ssn" field is focused
-    And The "ssn" field label is "Social Security Number"
+    And The "<label[for=ssn]" field label is "Last 4 Digits of your Social Security Number"
     And I focus on the "ssn-display-checkbox" field
     And "ssn-display-checkbox" parent div contains "Display"
     And The "modal-link" message contains "Why do we need this?"
@@ -35,7 +36,7 @@ Feature: Step2 info fields
     And I focus on the "dobMonth" field
     And I focus on the "dobDay" field
     And I focus on the "dobYear" field
-    And The "dob" field label is "Date Of Birth"
+    And The "<label[for=dobMonth]" field label is "Date Of Birth"
     And I focus on the "next-step-button" field
     Then Action detail "all fields were present"
 

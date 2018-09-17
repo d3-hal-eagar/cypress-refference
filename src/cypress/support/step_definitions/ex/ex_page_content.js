@@ -31,20 +31,24 @@ Then(`I am displayed the correct blocks on the ex Step 2 right rail`, () => {
     cy.get('@flow').then((flow) => {
         //D3F-492
         // Header:
-        cy.getElement('aside-order').find('h4').contains('Your Order Summary');
+        cy.getElement('aside-order').find('h2').contains('Your Order Summary');
         //Description:
-        cy.get('[data-test^=sidebar-section] p').contains(flow.siteName + 'Credmo Basic $0.00');
-        cy.get('[data-test^=sidebar-section] p').contains('Free '+flow.siteName+' Credit Report\n' +
-            'Report Refreshed Every 30 Days on Sign In\n' +
-            flow.siteName+' Credit Monitoring Alerts*\n' +
-            'Free Dark Web Surveillance Report\n' +
-            'Sales Tax $0.00\n' +
-            'Order Total $0.00\n' +
-            'Note: Includes New Inquiries, New Accounts, Public Records, Fraud Alerts and Personal Information updates when added to your '+flow.siteName+' Credit Report ');
+        cy.getElement('aside-order').find('h3').contains(flow.siteName+' Basic $0.00');
+        cy.getElement('aside-order').find('li').contains('Free TransUnion Credit Report');
+        cy.getElement('aside-order').find('li').contains('See The Latest TransUnion Credit Information');
+        cy.getElement('aside-order').find('li').contains('Stay Up To Date on Changes');
+        cy.getElement('aside-order').find('li').contains('Act Quickly If Issues Are Found');
+        cy.getElement('aside-order').find('li').contains('Identify Possible Negative Items');
+
+        cy.getElement('aside-order-tax').contains('Sales Tax');
+        cy.getElement('aside-order-tax').contains('$0.00');
+        cy.getElement('aside-order-total').contains('Order Total');
+        cy.getElement('aside-order-total').contains('$0.00');
+        cy.getElement('aside-order').find('li').contains('* Includes New Inquiries, New Accounts, Public Records, Fraud Alerts and Personal Information updates when added to your '+flow.siteName+' Credit Report');
         // Header:
-        cy.get('[data-test^=sidebar-section] h4').contains('Privacy Policy Notice');
+        cy.getElement('aside-secure').find('h4').contains('Privacy Policy Notice');
         //Description:
-        cy.get('[data-test^=sidebar-section] p').contains(flow.siteName + 'policy on how your personal information is used and disclosed is contained in our Privacy Policy and Ad Targeting Policy. This product is Web-based and you agree to accept this notification, revisions, and the provision of an annual notice electronically through this website, if required.');
+        cy.getElement('aside-secure').find('p').contains(flow.siteName + '\'s policy on how your personal information is used and disclosed is contained in our Privacy Policy. This product is Web-based and you agree to accept this notification, revisions, and the provision of an annual notice electronically through this website, if required.');
 
         //Secure block
         cy.getElement('aside-secure').find('img').should('be.visible');
