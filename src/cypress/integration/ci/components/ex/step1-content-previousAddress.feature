@@ -127,7 +127,7 @@ Feature: Desktop - EX - Step 1 - Previous Address
     Then I shall be displayed no error for the "city in previous-address-section" field
 
 
-  Scenario: City single test validation rules
+  Scenario: State single test validation rules
     When I click on the "continuousResidenceNo" field
 
     Then Action detail "required"
@@ -138,3 +138,31 @@ Feature: Desktop - EX - Step 1 - Previous Address
       When I select "AK" on the "state in previous-address-section" field
       And I blur the "state in previous-address-section" field
     Then The "state in previous-address-section" select border is displayed in green
+
+  Scenario: Zip single test validation rules
+    When I click on the "continuousResidenceNo" field
+
+    Then Action detail "required"
+    When without entering "zip in previous-address-section"
+    Then "zip in previous-address-section" field displays warning Icon
+    And "zip in previous-address-section" input field shall be outlined in red
+    Then I shall be displayed an error for the "zip in previous-address-section" field - "Please enter a valid zip code." in red
+
+    Then Action detail "enter valid"
+    When I have enter valid "zip in previous-address-section" value "10010"
+    Then I shall be displayed no error for the "zip in previous-address-section" field
+    And "zip in previous-address-section" field does not display warning Icon
+    And "zip in previous-address-section" field displays check Icon
+    And "zip in previous-address-section" input field shall be outlined in green
+
+    Then Action detail "maximum length"
+    When I have enter valid "zip in previous-address-section" value "1234567890"
+    Then I am restricted from entering more than "5" characters in "zip in previous-address-section" field
+
+    Then Action detail "no minimum length"
+
+    Then Action detail "invalid characters"
+    When I have enter invalid "zip in previous-address-section" value "one23" that "has an letter"
+    And I shall be displayed an error for the "zip in previous-address-section" field - "Please enter a valid zip code." in red
+    When I have enter valid "zip in previous-address-section" value "87654"
+    And I shall be displayed no error for the "zip in previous-address-section" field
