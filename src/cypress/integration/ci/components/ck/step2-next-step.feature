@@ -1,4 +1,4 @@
-Feature: Submit Step 2 wil valid data
+Feature: Submit Step 2 with valid data
 
 covers
     - CP-785 Desktop - CK - Step 2 - Next Step Call-to-Action Button
