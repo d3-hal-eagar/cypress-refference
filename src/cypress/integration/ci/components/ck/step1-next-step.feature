@@ -18,6 +18,7 @@ Feature: Step 1 Next Step button
   Scenario: 1 User enters valid information on the email address and password fields
     When I have enter valid "email" value "test@credmo.com"
     And I have enter valid "password" value "asdf1234$RFV"
+    #Then Check that the "communication-preferences" field is checked
     And I click element "next-step-button"
     Then I am guided to the ck step2 form page
 
