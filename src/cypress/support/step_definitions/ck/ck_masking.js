@@ -35,3 +35,11 @@ Then(/^I shall be displayed the "(.*?)", "(.*?)" and "(.*?)" fields in the XXX-X
         .should('not.be.disabled')
         .should('be.empty');
 });
+
+Then(/^I shall be displayed the "(.*?)" ssn-input field$/, function (formField) {
+    cy.getElement(formField).should('be.visible')
+        .should('have.attr', 'type', 'password')
+        .should('have.attr', 'numbersonly')
+        .should('not.be.disabled')
+        .should('be.empty');
+});

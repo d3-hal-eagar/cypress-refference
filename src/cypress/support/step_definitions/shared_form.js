@@ -150,7 +150,7 @@ Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
 });
 
 Then(/^"(.*?)" field displays check Icon$/, function (formField) {
-    cy.getFormGroup(formField).find('i.oi-circle-check').should('be.visible');
+    cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('be.visible');
 });
 
 // noinspection JSUnusedLocalSymbols
@@ -216,9 +216,15 @@ When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "
             // chained actions clear previous error
             // re-enter text and check for error
             cy.getElement(formField).clear().type(validInput).blur().focus()
-                .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible')
-                .getElement(formField).clear().type(userInput).blur().focus()
-                .getFormGroup(formField).contains(errorText).should('be.visible');
+                .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible');
+            if (flow.flowName === 'ck') {
+                cy.getElement(formField).clear().type(userInput).blur().focus()
+                    .getFormGroup(formField).contains(errorText).should('be.visible');
+            }
+            else if (flow.flowName === 'ex') {
+                cy.getElement(formField).clear().type(userInput).focus()
+                    .getFormGroup(formField).contains(errorText).should('be.visible');
+            }
         }
     });
 });
@@ -293,9 +299,17 @@ Then(/^The "(.*?)" radio group label is "(.*?)"$/, (formField,labelText) => {
 });
 
 Then(/^Check that the "(.*?)" is not visible$/, (formField) => {
-    cy.getElement(formField).should('not.be.visible')
+    cy.getElement(formField).should('not.be.visible');
 });
 
 Then(/^Check that the "(.*?)" is visible$/, (formField) => {
-    cy.getElement(formField).should('be.visible')
+    cy.getElement(formField).should('be.visible');
+});
+
+When(/^I select the checkbox on "(.*?)" field element$/, (formField) => {
+    cy.getElement(formField).check().should('be.checked');
+});
+
+When(/^I unselect the checkbox on "(.*?)" field element$/, (formField) => {
+    cy.getElement(formField).uncheck().should('not.be.checked');
 });
