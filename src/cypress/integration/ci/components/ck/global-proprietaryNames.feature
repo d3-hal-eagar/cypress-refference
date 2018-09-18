@@ -17,6 +17,7 @@ Feature: test pages to ensure proprietary names are removed
   Background:
     Given make siteName is "IasadGeas"
     Given I am a user on the ck flow
+    Given the siteName is "IasadGeas"
     Given the following list of proprietaryNames
       | Lending Tree     |
       | Credit Sesame    |
@@ -24,11 +25,11 @@ Feature: test pages to ensure proprietary names are removed
       | Experian         |
       | Check Free Score |
       | Credit Karma     |
-#      | Credmo           |
+      | Credmo           |
 
 
   Scenario: Testing Sitename shows in header
-    Given I am on the ex landing page
+    Given I am on the ck landing page
     And The "site-link" message contains siteName
 
   Scenario: No proprietary names are displayed on the landing page
@@ -40,6 +41,13 @@ Feature: test pages to ensure proprietary names are removed
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the Terms of Service screen
+    Given the following list of proprietaryNames
+      | Lending Tree     |
+      | Credit Sesame    |
+      | MyScore          |
+      | Check Free Score |
+      | Credit Karma     |
+      | Credmo           |
     Given I am on the ck Terms of Service screen
     Then screen does not contain any proprietaryNames
 

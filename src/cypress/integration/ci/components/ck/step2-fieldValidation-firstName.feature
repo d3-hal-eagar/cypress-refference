@@ -88,12 +88,12 @@ Feature: Step 2 First Name fields
   Scenario: 5 User hovers over an pristine empty First Name input field
     When without entering "firstName"
     And I hover over "firstName"
-    Then I am displayed a attribute title on "firstName" field - "First Name is required."
+    Then I am displayed a attribute title on "firstName" field - "Please fill out this field."
 
   Scenario: 5a User hovers over an empty First Name input field with error
     When without entering "firstName"
     And I hover over "firstName"
-    Then I am displayed a attribute title on "firstName" field - "First Name is required."
+    Then I am displayed a attribute title on "firstName" field - "Please fill out this field."
 
   # extended validations
   Scenario: User enters invalid First Name with multiple special characters

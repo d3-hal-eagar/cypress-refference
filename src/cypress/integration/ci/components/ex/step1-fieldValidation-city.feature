@@ -22,7 +22,7 @@ Feature: City - Validation Criteria and Error Handling
 
   Scenario: 2 - User without entering City focuses out of City field.
     When without entering "city"
-    Then I shall be displayed an error for the "city" field - "Please enter a valid city."" in red
+    Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     And The "city" field border is outlined in red color
     And A red warning icon inside the "city" field is displayed
 

@@ -35,8 +35,8 @@ Feature: City - Validation Criteria and Error Handling
 
   Scenario: 2b - User focuses back on empty City field and enters invalid text
     When Action detail "Trigger error state - 'Please enter a valid city.'"
+    And without entering "city"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
-
     When I enter additional text into "city" field text "hears platt3"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
 
@@ -50,7 +50,7 @@ Feature: City - Validation Criteria and Error Handling
     When I have enter invalid "city" value "district 4" that "contains numbers"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
 
-    When I enter additional text into "city" field text "x"
+    When I enter additional text into "city" field text "{backspace}test"
     And I shall be displayed no error for the "city" field
 
   Scenario: 2e - User focuses back on the City field that has the error and backspaces

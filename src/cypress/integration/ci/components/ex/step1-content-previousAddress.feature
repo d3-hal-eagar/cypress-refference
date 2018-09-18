@@ -79,10 +79,6 @@ Feature: Desktop - EX - Step 1 - Previous Address
     When I have enter valid "street2 in previous-address-section" value "12345678901234567890123456789012345678901234567890123456789012345678901234567890 Address street 789012312345678901234567890a"
     Then I am restricted from entering more than "100" characters in "street2 in previous-address-section" field
 
-    Then Action detail "minimum length"
-    When I have enter invalid "street2 in previous-address-section" value "1" that "too short"
-    Then I shall be displayed an error for the "street2 in previous-address-section" field - "Please enter valid address format." in red
-
     Then Action detail "invalid characters"
     When I have enter invalid "street2 in previous-address-section" value "22 %" that "has an '% symbol"
     And I shall be displayed an error for the "street2 in previous-address-section" field - "Please enter valid address format." in red

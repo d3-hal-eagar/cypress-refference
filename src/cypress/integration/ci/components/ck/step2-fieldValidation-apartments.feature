@@ -1,7 +1,7 @@
 Feature: Apartment - Validation Criteria & Error Handling
 
   Covers
-    -  CP-799 (D3F-43) Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
+    - CP-799 (D3F-43) Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.
     - CP-799 (D3F-361) Mobile - Apartment - Validation Criteria & Error Handling
   Validation Criteria
     - Not a required field.
@@ -27,9 +27,9 @@ Feature: Apartment - Validation Criteria & Error Handling
     Then I enter additional text into "street2" field text " 7890123"
     Then I am restricted from entering more than "100" characters in "street2" field
 
-  Scenario: 3a - Must be at least 2 characters in length.
-    When I have enter invalid "street2" value "1" that "too short"
-    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
+#  Scenario: 3a - Must be at least 2 characters in length.
+#    When I have enter invalid "street2" value "1" that "too short"
+#    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
 
   Scenario: 4 - User enters invalid Apartment multiple input errors
     When I have enter invalid "street2" value I see the correct validation error message

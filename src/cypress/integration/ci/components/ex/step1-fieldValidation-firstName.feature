@@ -57,7 +57,7 @@ Feature: First Name - Validation Criteria & Error Handling
 
   Scenario: 4a User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    #Then I shall be displayed an error for the "firstName" field - "Please enter a valid First Name"
+    #Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
     Then "firstName" field displays warning Icon
     And "firstName" input field shall be outlined in red
     When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
@@ -103,15 +103,15 @@ Feature: First Name - Validation Criteria & Error Handling
 
     Examples:
       | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contians a number                    | Please enter a valid name. |
-      | smith  jones     | contains two spaces in a row         | Please enter a valid name. |
-      | Mc--Mac          | contains two dashes in a row         | Please enter a valid name. |
-      | 'Roid            | does not begin with a letter         | Please enter a valid name. |
+      | mighty77         | contians a number                    | First Name may not include numbers or special characters. |
+      | smith  jones     | contains two spaces in a row         | First Name may not include numbers or special characters. |
+      | Mc--Mac          | contains two dashes in a row         | First Name may not include numbers or special characters. |
+      | 'Roid            | does not begin with a letter         | First Name may not include numbers or special characters. |
 
   Scenario: User enters invalid characters in First Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
   Scenario: User enters additional invalid characters in First Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "Please enter a valid name."
+    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
 
