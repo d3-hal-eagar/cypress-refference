@@ -31,40 +31,40 @@ Feature: Middle Initial - Validation Criteria and Error Handling
   Scenario: 3 - User enters invalid Middle Initial input field - digits
         # While entering an invalid Middle Initial - using characters other than - alphabet
     When I have enter invalid "middleInitial" value "1" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     And The "middleInitial" field border is outlined in red color
     And A red warning icon inside the "middleInitial" field is displayed
 
   Scenario: 3a - User enters invalid Middle Initial input field - symbols
         # While entering an invalid Middle Initial - using characters other than - alphabet
     When I have enter invalid "middleInitial" value "&" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     And The "middleInitial" field border is outlined in red color
     And A red warning icon inside the "middleInitial" field is displayed
 
   Scenario: 3b - User focuses on the input field that is outlined in red and than enters invalid data again
     When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     When I have enter invalid "middleInitial" value "4" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     And The "middleInitial" field border is outlined in red color
     And A red warning icon inside the "middleInitial" field is displayed
 
   Scenario: 3c - User focuses on the input field that is outlined in red and than enters valid data
     When I have enter invalid "middleInitial" value "%" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     When I have enter valid "middleInitial" value "Z"
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
 
   Scenario: 3d - Middle initial length limited to 1 character
     When I have enter invalid "middleInitial" value "Ba" that "contain more than 1 letter"
-    #Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    #Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     Then I am restricted from entering more than "1" characters in "middleInitial" field
 
   Scenario: 3b - User focuses on the input field that is outlined in red and than enters valid data
     When I have enter invalid "middleInitial" value "=" that "other than - alphabet"
-    Then I shall be displayed an error for the "middleInitial" field - "Your middle initial may only contain letters."
+    Then I shall be displayed an error for the "middleInitial" field - "Middle Initial may only be letters."
     When I have enter valid "middleInitial" value "A"
     Then The "middleInitial" field border is displayed in green
     And A green checkmark inside the "middleInitial" field is displayed
@@ -72,7 +72,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   # performance optimized multi value test
   Scenario: User enters invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."
 
   Scenario: User enters additional invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Your middle initial may only contain letters."
+    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."

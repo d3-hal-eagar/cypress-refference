@@ -9,7 +9,7 @@ Feature: CK Focus Tooltip
 
 
   Scenario: 0 - no interaction with fields and no tooltips show
-    When without entering "anything"
+    #When without entering "anything"
     Then "firstName" tooltip is not visible
     And "lastName" tooltip is not visible
     And "street1" tooltip is not visible

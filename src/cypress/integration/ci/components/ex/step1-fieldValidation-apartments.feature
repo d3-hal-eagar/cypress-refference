@@ -22,8 +22,6 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario: 2 - User does not enter any characters in Apartment input field
     And without entering "street2"
-    Then "street2" field displays warning Icon
-    And "street2" input field shall be outlined in red
     Then I shall be displayed no error for the "street2" field
 
   Scenario: 3 - System restricts the user to enter a maximum of five characters
@@ -32,9 +30,10 @@ Feature: Apartment - Validation Criteria & Error Handling
     Then I enter additional text into "street2" field text " 7890123"
     Then I am restricted from entering more than "100" characters in "street2" field
 
-  Scenario: 3a - Must be at least 2 characters in length.
-    When I have enter invalid "street2" value "1" that "too short"
-    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
+#    removed as illogical for non required field
+#  Scenario: 3a - Must be at least 2 characters in length.
+#    When I have enter invalid "street2" value "1" that "too short"
+#    Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
 
   Scenario: 4b - User focuses on the Apartment input field that has the error
     And I have enter invalid "street2" value "22%n" that "has an '% symbol"

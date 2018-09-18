@@ -24,9 +24,10 @@ Then(/^"(.*?)" targets opening in a new tab$/, (dataTest) => {
 });
 
 Given(/^make siteName is "(.*?)"$/, (providedSiteName) => {
-    cy.get('@flow').then((flow) => {
-        flow.siteName = providedSiteName;
-        cy.log('siteName',flow.siteName);
+    //flow does not exist yet
+    //cy.get('@flow').then((flow) => {
+    //    flow.siteName = providedSiteName;
+        cy.log('siteName',providedSiteName);
         cy.fixture('ck_matrix.json').as('matrixJSON');
         cy.server();           // enable response stubbing
         cy.route({
@@ -35,7 +36,7 @@ Given(/^make siteName is "(.*?)"$/, (providedSiteName) => {
             response: '@matrixJSON'        // and force the response to be:
         }).as('matrixCall');
         //cy.wait(['@matrixCall']);
-    });
+    //});
 });
 
 Given(/^the siteName is "(.*?)"$/, (providedSiteName) => {

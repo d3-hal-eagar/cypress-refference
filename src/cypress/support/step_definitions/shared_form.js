@@ -128,6 +128,13 @@ When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
     cy.getElement(formField).focus().select(userInput).blur().focus();
 });
 
+
+When(/^I select 18yrs ago on the "(.*?)" field$/, (formField) => {
+    const thisYear = (new Date()).getFullYear();
+    const selectYear = (Number(thisYear)-18).toString()
+    cy.getElement(formField).focus().select(selectYear).blur().focus();
+});
+
 // Then(/^I shall be displayed "(.*?)" option for the "(.*?)" field that has "(.*?)" index$/, (userInput, formField, optionIndex) => {
 //     cy.getElement(formField).children().eq(optionIndex).should('be.selected', userInput);
 // });
@@ -243,10 +250,10 @@ Then(/^I shall be able to scroll within the options in "(.*?)" field$/, (formFie
 });
 
 When(/^I have selected valid dobYear option I see the correct value$/, function () {
-    let thisYear = (new Date()).getFullYear();
-    let youngYear = thisYear - 18;
-    let oldYear = thisYear - 99;
-    let formField = 'dobYear';
+    const thisYear = (new Date()).getFullYear();
+    const youngYear = thisYear - 18;
+    const oldYear = thisYear - 99;
+    const formField = 'dobYear';
     cy.get('@flow').then((flow) => {
 
         for (let year = youngYear; year > oldYear; year--) {

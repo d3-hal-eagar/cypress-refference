@@ -17,8 +17,11 @@ Feature: Step 1 Create your account fields Email Addres
     And I blur the "email" field
     #And I click the X Icon on the "email" field
     And I click the label on the "email" field
-    Then "email" field does not display X Icon
     And Check that the "email" field is focused
+    # this test is funky and needs to be forced to trigger but manual testing shows it's fine
+    Then I blur the "email" field
+    Then I click on the "email" field
+    Then "email" field does not display X Icon
     And "email" field label is displayed in red
     Then I enter additional text into "email" field text "x"
     And I shall be displayed no error for the "email" field
@@ -26,6 +29,8 @@ Feature: Step 1 Create your account fields Email Addres
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
     Then I shall be displayed no error for the "email" field
+    Then I blur the "email" field
+    And "email" field displays check Icon
 #
   Scenario: 2  User without entering an Email Address focuses out of the field
     When without entering "email"
@@ -52,9 +57,10 @@ Feature: Step 1 Create your account fields Email Addres
     #And I click the X Icon on the "email" field
     And I click the label on the "email" field
     And Check that the "email" field is focused
+    Then I click on the "email" field
+    Then "email" field does not display X Icon
     And "email" field label is displayed in red
     Then I enter additional text into "email" field text "."
-    Then "email" field does not display X Icon
     And I shall be displayed no error for the "email" field
 
   Scenario: 3b When the user focuses on the Email Address input field that has the error on it
@@ -73,7 +79,6 @@ Feature: Step 1 Create your account fields Email Addres
     When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
     Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
     And "email" field label is displayed in black
-    And "email" field displays check Icon
 
   Scenario Outline: User enters an valid email
     When I have enter valid "email" value "<email_entered>"

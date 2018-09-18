@@ -1,8 +1,8 @@
 Feature: Step 2 Last Name fields
 
   Covers
-    - D3F-40 Last Name - Validation Criteria & Error Handling
-    - D3F-357 Mobile - Last Name - Validation Criteria & Error Handling
+    - CP-810 (D3F-40) Last Name - Validation Criteria & Error Handling
+    - CP-793 (D3F-357) Mobile - Last Name - Validation Criteria & Error Handling
   Validation Criteria
     - Is a required field
     - Last name must be between 1 and 25 characters.
@@ -53,38 +53,38 @@ Feature: Step 2 Last Name fields
     When I have enter valid "lastName" value "Smith"
     And I enter additional text into "lastName" field text " (the dude)"
     And I blur the "lastName" field
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
 
   Scenario: 3d User focuses back on the first name field that has the error and backspaces
     When I have enter invalid "lastName" value "doctor$" that "contains a symbol"
-    And I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    And I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
     And I enter additional text into "lastName" field text "{backspace}"
     Then I shall be displayed no error for the "lastName" field
 
   Scenario: 4 User enters invalid Last Name with symbol
     When I have enter invalid "lastName" value "#" that "contains a symbol"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" input field is displayed in red
 
   Scenario: 4a User enters invalid First Name with number
     When I have enter invalid "lastName" value "2" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
     And "lastName" field label is displayed in red
     And "lastName" field displays X Icon
     And "lastName" input field is displayed in red
 
-  Scenario: 4a User enters invalid First Name, then clicks the error icon
+  Scenario: 4b User enters invalid First Name, then clicks the error icon
     When I have enter invalid "lastName" value "1" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
     And I blur the "lastName" field
     When I click the X Icon on the "lastName" field
     Then Check that the "lastName" field is not focused
 
-  Scenario: 4b User enters invalid First Name, and fixes it
+  Scenario: 4c User enters invalid First Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "that contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Please enter a valid last name"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
     When I enter additional text into "lastName" field text "ly"
     And I shall be displayed no error for the "lastName" field
     When I have enter valid "lastName" value "fork-spelled-with-four"
@@ -94,21 +94,21 @@ Feature: Step 2 Last Name fields
   Scenario: 5 User hovers over an pristine empty Last Name input field
     When without entering "lastName"
     And I hover over "lastName"
-    Then I am displayed a attribute title on "lastName" field - "Last Name is required."
+    Then I am displayed a attribute title on "lastName" field - "Please fill out this field."
 
   Scenario: 5a User hovers over an empty Last Name input field with error
     When without entering "lastName"
     And I hover over "lastName"
-    Then I am displayed a attribute title on "lastName" field - "Last Name is required."
+    Then I am displayed a attribute title on "lastName" field - "Please fill out this field."
 
   # extended validations
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
-    Then I shall be displayed an error for the "lastName" field - "Last Name is required."
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "lastName" field - "Last Name is required."
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -126,16 +126,16 @@ Feature: Step 2 Last Name fields
     Then I shall be displayed an error for the "lastName" field - "<error_message>"
 
     Examples:
-      | name_entered | type_of_error                       | error_message                                            |
-      | mighty77     | contians a number                   | Last Name is required.                                   |
-      | smith  jones | contains two spaces in a row        | Last Name is required.                                   |
-      | Mc--Mac      | contains two dashes in a row        | Last Name is required.                                   |
-      | d''art       | contains two single quotes in a row | Last Name may not include numbers or special characters. |
-      | 'Roid        | does not begin with a letter        | Last Name is required.                                   |
-      | -flash       | does not begin with a letter        | Last Name may not include numbers or special characters. |
+      | name_entered | type_of_error                       | error_message                                                          |
+      | mighty77     | contians a number                   | Last Name may not begin with or include numbers or special characters. |
+      | smith  jones | contains two spaces in a row        | Last Name may not begin with or include numbers or special characters. |
+      | Mc--Mac      | contains two dashes in a row        | Last Name may not begin with or include numbers or special characters. |
+      | d''art       | contains two single quotes in a row | Last Name may not begin with or include numbers or special characters. |
+      | 'Roid        | does not begin with a letter        | Last Name may not begin with or include numbers or special characters. |
+      | -flash       | does not begin with a letter        | Last Name may not begin with or include numbers or special characters. |
 
   Scenario: User enters invalid characters in Last Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Last Name is required."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Last Name may not begin with or include numbers or special characters."
 
    Scenario: User enters additional invalid characters in Last Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Last Name is required."
+    When I have enter invalid characters ".,#\//\"" into valid input "Jones" on the "lastName" and I see validation error message "Last Name may not begin with or include numbers or special characters."

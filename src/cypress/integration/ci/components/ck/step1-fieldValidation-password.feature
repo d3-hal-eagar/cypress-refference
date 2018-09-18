@@ -2,10 +2,10 @@ Feature: Step 1 Create your account fields password
 
   As a user I create an account by providing valid email and password
   Covers
-    - D3F-30 Create Password - Field Validations and Error Handling
-    - D3F-355 Mobile - Create Password - Field Validations and Error Handling
-    - D3F-33 Show/Hide Password Feature
-    - D3F-32 Password Masking Feature
+    - CP-783 (D3F-30) Create Password - Field Validations and Error Handling
+    - CP-837 (D3F-355) Mobile - Create Password - Field Validations and Error Handling
+    - CP-83 (D3F-33) Show/Hide Password Feature
+    - CP-116 (D3F-32) Password Masking Feature
 
 
   Background:
@@ -28,8 +28,10 @@ Feature: Step 1 Create your account fields password
     When without entering "password"
     And I click the label on the "password" field
     #And I click the X Icon on the "password" field
-    Then "password" field does not display X Icon
     And Check that the "password" field is focused
+    Then I blur the "password" field
+    Then I click on the "password" field
+    Then "password" field does not display X Icon
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
     When I enter additional text into "password" field text "x"
@@ -54,10 +56,12 @@ Feature: Step 1 Create your account fields password
     And I click the label on the "password" field
     #And I click the X Icon on the "password" field
     And Check that the "password" field is focused
+    Then I blur the "password" field
+    Then I click on the "password" field
+    Then "password" field does not display X Icon
     #Then I am displayed a "password" tooltip - "This should be at least 8 characters. Try to pick something that's not easy to guess." on desktop only
     And "password" field label is displayed in red
     When I enter additional text into "password" field text "t"
-    Then "password" field does not display X Icon
     Then I shall be displayed no error for the "password" field
 
   Scenario: 3b User enters a password that does not meet the required minimum character length, then backspaces

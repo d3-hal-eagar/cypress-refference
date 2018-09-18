@@ -28,7 +28,7 @@ Feature: Street Address - Validation Criteria & Error Handling
 
   Scenario: 2a - Must be at least 2 characters in length.
     When I have enter invalid "street1" value "1" that "too short"
-    Then I shall be displayed an error for the "street1" field - "Please enter valid address format." in red
+    Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
 
   # Validation scenarios for Street Address input field - When user does not enter any characters in the field.
 
@@ -82,29 +82,29 @@ Feature: Street Address - Validation Criteria & Error Handling
 #
 #    Examples:
 #      | street_address_entered | type_of_err       | err_message                                                                                 |
-#      | 22 Cortland / street   | has a '/' symbol  | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+#      | 22 Cortland / street   | has a '/' symbol  | Please enter your street address. |
 
   Scenario: User enters invalid Street Address multiple input errors
     When I have enter invalid "street1" value I see the correct validation error message
       | street_address_entered   | type_of_err                    | err_message                                                                                 |
-      | 22 Cortand street –north | has a non-ASCII en dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
-      | 22 Cortand street —west  | has a non-ASCII em dash symbol | Street address may only contain letters, numbers, commas, dashes, number signs, and spaces. |
+      | 22 Cortand street –north | has a non-ASCII en dash symbol | Please enter your street address. |
+      | 22 Cortand street —west  | has a non-ASCII em dash symbol | Please enter your street address. |
 
   Scenario: 4a - User clicks on the error icon
     When I have enter invalid "street1" value "22 Cortl@nd streeet" that "has an '@' symbol"
     And I blur the "street1" field
     And I click the X Icon on the "street1" field
     Then Check that the "street1" field is not focused
-    And I shall be displayed an error for the "street1" field - "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
+    And I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     And "street1" field label is displayed in red
     And "street1" field displays X Icon
 
-  Scenario: 4b - User focuses on the Street Address input field that has the error "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
-    When Action detail "Trigger error state - 'Street address may only contain letters, numbers, commas, dashes, number signs, and spaces.'"
+  Scenario: 4b - User focuses on the Street Address input field that has the error "Please enter your street address."
+    When Action detail "Trigger error state - 'Please enter your street address.'"
       And I have enter invalid "street1" value "22 Cortl%nd streeet" that "has an '% symbol"
     Then "street1" field does not display X Icon
     And I am displayed a "street1" tooltip - "Moved in the last 6 months? Try using your previous address instead." on desktop only
-    And I shall be displayed an error for the "street1" field - "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces." in red
+    And I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     And "street1" field label is displayed in red
     When I have enter valid "street1" value "22 Cortland st"
     Then "street1" field label is displayed in black
@@ -112,8 +112,8 @@ Feature: Street Address - Validation Criteria & Error Handling
     And I shall be displayed no error for the "street1" field
 
   Scenario: User enters invalid characters in Street Address multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."
 
   Scenario: User enters additional invalid characters in Street Address multiple input errors
   # yea escaping this tests quote " and \
-    When I have enter invalid characters "\\\"" into valid input "road" on the "street1" and I see validation error message "Street address may only contain letters, numbers, commas, dashes, number signs, and spaces."
+    When I have enter invalid characters "\\\"" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."

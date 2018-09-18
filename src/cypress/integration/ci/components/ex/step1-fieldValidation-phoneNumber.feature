@@ -63,3 +63,19 @@ Feature: Phone Number - Validation Criteria and Error Handling
     Then "phone" field displays warning Icon
     And The "phone" field border is outlined in red color
     And I shall be displayed an error for the "phone" field - "Please enter a valid phone number."
+
+  Scenario: user enters common formated phone number
+    When I have enter invalid "phone" value "(646) 555-5555" that "has a non-numeric characters"
+    Then I shall be displayed no error for the "phone" field
+
+  Scenario: users form autofill enters common formated phone number with area code
+    When I have enter invalid "phone" value "1 (646) 555-5555" that "has first number'1'"
+    Then "phone" field displays warning Icon
+    And The "phone" field border is outlined in red color
+    And I shall be displayed an error for the "phone" field - "Please enter a valid phone number."
+
+  Scenario: users form autofill enters common formated phone number with international area code
+    When I have enter invalid "phone" value "+01 (646) 555-5555" that "has first number'1'"
+    Then "phone" field displays warning Icon
+    And The "phone" field border is outlined in red color
+    And I shall be displayed an error for the "phone" field - "Please enter a valid phone number."

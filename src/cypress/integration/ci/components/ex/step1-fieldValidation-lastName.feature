@@ -1,7 +1,7 @@
 Feature: Last Name - Validation Criteria & Error Handling
 
   Covers
-    - D3F-384 Last Name - Validation Criteria & Error Handling
+    - CP-834 (D3F-384) Last Name - Validation Criteria & Error Handling
   Validation Criteria
     - Is a required field
     - Last Name must be between 1 and 25 characters
@@ -84,7 +84,7 @@ Feature: Last Name - Validation Criteria & Error Handling
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "lastName" field - "YLast Name may not begin with or include numbers or special characters."
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
 
   Scenario Outline: User enters an valid lastName
     When I have enter valid "lastName" value "<name_entered>"
@@ -106,9 +106,9 @@ Feature: Last Name - Validation Criteria & Error Handling
       | mighty77     | contians a number                   | Last Name may not begin with or include numbers or special characters. |
       | smith  jones | contains two spaces in a row        | Last Name may not begin with or include numbers or special characters. |
       | Mc--Mac      | contains two dashes in a row        | Last Name may not begin with or include numbers or special characters. |
-      | d''art       | contains two single quotes in a row | Last Name may not include numbers or special characters.               |
+      | d''art       | contains two single quotes in a row | Last Name may not begin with or include numbers or special characters. |
       | 'Roid        | does not begin with a letter        | Last Name may not begin with or include numbers or special characters. |
-      | -flash       | does not begin with a letter        | Last Name may not include numbers or special characters.               |
+      | -flash       | does not begin with a letter        | Last Name may not begin with or include numbers or special characters.               |
 
   Scenario: User enters invalid characters in Last Name multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Jones" on the "lastName" and I see validation error message "Last Name may not begin with or include numbers or special characters."
