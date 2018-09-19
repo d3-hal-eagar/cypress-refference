@@ -39,6 +39,7 @@ Feature: Apartment - Validation Criteria & Error Handling
 
   Scenario: 4a - User focuses on the error icon and clicks on it.
     When I have enter invalid "street2" value "22@t" that "has an '@' symbol"
+    And I blur the "street2" field
     And I click the X Icon on the "street2" field
     Then I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
     And "street2" field label is displayed in red

@@ -11,7 +11,7 @@ Feature: Step 1 Create your account fields Email Addres
     Given I am on the ck step1 signup page
 
 
-  #D3F-29
+   #D3F-29
   Scenario: 2a User without entering a Email Address focuses out of the field, then returns to enter text
     When without entering "email"
     And I blur the "email" field
@@ -79,6 +79,12 @@ Feature: Step 1 Create your account fields Email Addres
     When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
     Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
     And "email" field label is displayed in black
+
+  Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
+    When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
+    Then I shall be displayed no error for the "email" field
+    And I enter additional text into "email" field text ".comando"
+    And I am restricted from entering more than "75" characters in "email" field
 
   Scenario Outline: User enters an valid email
     When I have enter valid "email" value "<email_entered>"
