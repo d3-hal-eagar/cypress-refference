@@ -16,8 +16,7 @@ Feature: Social Security Number - Validation Criteria & Error Handling
 
   Scenario: 1 - Default view of the SSN field
     Then I shall be displayed the "ssn" ssn-input field
-    And The "<label[for=ssn]" field label is "Last 4 Digits of your Social Security Number"
-    And The "ssn-display-checkbox" field label is "Last 4 Digits of your Social Security Number"
+    And The "ssn" field label is "Last 4 Digits of your Social Security Number"
 
 
   Scenario: 2 - As a user when I enter digits on 'Last 4 of SSN' field, the system shall mask the SSN digits as entered, behind bullets.

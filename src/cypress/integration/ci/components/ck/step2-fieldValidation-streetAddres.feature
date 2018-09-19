@@ -40,6 +40,7 @@ Feature: Street Address - Validation Criteria & Error Handling
 
   Scenario: 3a - User clicks on the error icon
     When without entering "street1"
+    And I blur the "street1" field
     And I click the X Icon on the "street1" field
     Then Check that the "street1" field is not focused
     And I shall be displayed an error for the "street1" field - "Please enter your street address." in red

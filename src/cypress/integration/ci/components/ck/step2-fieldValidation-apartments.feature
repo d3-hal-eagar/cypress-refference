@@ -47,7 +47,6 @@ Feature: Apartment - Validation Criteria & Error Handling
   Scenario: 4b - User focuses on the Apartment input field that has the error "Please enter valid address format."
     When Action detail "Trigger error state - 'Please enter valid address format.'"
       And I have enter invalid "street2" value "22%n" that "has an '% symbol"
-    Then "street2" field does not display X Icon
     And I am displayed a "street2" tooltip - "Use this field to provide your apartment, suite, unit, or floor number." on desktop only
     And I shall be displayed an error for the "street2" field - "Please enter valid address format." in red
     And "street2" field label is displayed in red
