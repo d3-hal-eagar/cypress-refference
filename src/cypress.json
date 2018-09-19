@@ -3,7 +3,7 @@
   "pageLoadTimeout": 100000,
   "watchForFileChanges": false,
   "trashAssetsBeforeRuns": false,
-  "video": true,
+  "video": false,
   "viewportHeight":	768,
   "viewportWidth":	1024,
   "baseUrl": "http://localhost:4200",

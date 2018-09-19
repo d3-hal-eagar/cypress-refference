@@ -38,6 +38,7 @@ Feature: City - Validation Criteria and Error Handling
     And without entering "city"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I enter additional text into "city" field text "hears platt3"
+    And I blur the "city" field
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
 
   Scenario: 2c - User focuses back on valid City field and enters invalid text
