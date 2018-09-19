@@ -23,7 +23,7 @@ Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
 Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red$/, (formField,errorText) => {
     cy.get('@flow').then((flow) => {
 
-        if (flow.flowName === 'ck' && (formField.startsWith("ssn") || formField.startsWith("dob"))) {
+        if (formField.startsWith("ssn") || formField.startsWith("dob")) {
             // e.g. ssn-error-message, dob-error-message
             cy.get('div[data-test='+formField+'-error-message]'+flow.errorSelector).contains(errorText).should('be.visible');
             cy.getElement(formField+'-error-message').should('have.css', 'color', flow.errorRed);
@@ -292,7 +292,7 @@ Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (f
 Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
 
     cy.get('@flow').then((flow) => {
-        if (flow.flowName === 'ck' && (formField.startsWith("ssn") || formField.startsWith("dob"))){
+        if (formField.startsWith("ssn") || formField.startsWith("dob")){
             // e.g. ssn-label, dob-label
             cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
         } else {
