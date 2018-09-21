@@ -3,6 +3,7 @@
 
 
 Given(`I am a user on the ck flow`, () => {
+    //www.notcreditkarma.local
     cy.wrap({
         flowName: 'ck',
         textBlack: 'rgb(73, 80, 87)',
@@ -12,7 +13,7 @@ Given(`I am a user on the ck flow`, () => {
         errorClass: '.text-danger',
         siteName: 'IasadGeas'
     }).as('flow');
-    cy.visit( 'ck/?marketingid=00000');
+    cy.visit( '?marketingid=00000');
     cy.wait(200);
 });
 

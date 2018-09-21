@@ -3,6 +3,7 @@
 
 
 Given(`I am a user on the ex flow`, () => {
+    //www.notcreditexperian.local
     cy.wrap({
         flowName: 'ex',
         textBlack: 'rgb(73, 80, 87)',
@@ -13,7 +14,7 @@ Given(`I am a user on the ex flow`, () => {
         errorClass: '.invalid',
         siteName: 'IasadGeas'
     }).as('flow');
-    cy.visit( 'ex/?marketingid=00001');
+    cy.visit( '?marketingid=11111');
     cy.wait(200);
 });
 
