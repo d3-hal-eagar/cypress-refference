@@ -100,11 +100,8 @@ Feature: Step 1 Create your account fields password
     And "password" field label is displayed in red
     And "password" field displays X Icon
 
-  Scenario Outline: User enters a valid password
-    When I have enter valid "password" value "<userPassword>"
-    And I shall be displayed no error for the "password" field
-
-    Examples:
+  Scenario: User enters a valid password
+    When I have enter valid "password" value I do not see the validation error message
       | userPassword                   |
       | theWind1n*                     |
       | The_will0ws                    |
@@ -148,5 +145,6 @@ Feature: Step 1 Create your account fields password
     #And change the Hide button to Show button
     When I select the Show button
 
+    # this is NOT the usual list of never allowed characters
   Scenario: User enters invalid characters in password multiple input errors
     When I have enter invalid characters "[]():;~{}+=|ãü木✉,\/\\\"'" into valid input "LoveG0d!s" on the "password" and I see validation error message "Password must be 8 characters or longer, and contain at least one of each: uppercase letters, lowercase letters, numbers, and symbols !@#$%^&*<>?_"

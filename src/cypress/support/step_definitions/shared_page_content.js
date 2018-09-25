@@ -23,16 +23,16 @@ Then(/^"(.*?)" targets opening in a new tab$/, (dataTest) => {
     cy.getElement(dataTest).should('have.attr', 'target', '_blank').and('be.visible');
 });
 
-Given(/^make siteName is "(.*?)"$/, (providedSiteName) => {
+Given(/^We make siteName "(.*?)" and flow is "(.*?)"$/, (providedSiteName, flowname) => {
     //flow does not exist yet
     //cy.get('@flow').then((flow) => {
-    //    flow.siteName = providedSiteName;
+        //flow.siteName = providedSiteName;
         cy.log('siteName',providedSiteName);
-        cy.fixture('ck_matrix.json').as('matrixJSON');
+        cy.fixture(flowname+'_matrix.json').as('matrixJSON');
         cy.server();           // enable response stubbing
         cy.route({
             method: 'GET',      // Route all GET requests
-            url: '/api/v1/matrix/*/00000',    // that have a URL that matches
+            url: '/api/v1/matrix/*/*',    // that have a URL that matches
             response: '@matrixJSON'        // and force the response to be:
         }).as('matrixCall');
         //cy.wait(['@matrixCall']);

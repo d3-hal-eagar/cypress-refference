@@ -49,11 +49,8 @@ Feature: Security Answer - Validation Criteria & Error Handling
     Then I shall be displayed an error for the "s-answer" field - "Your reminder answer may not contain the following characters" in red
 
   # extended validations
-  Scenario Outline: 1 - User enters valid Security Answer
-    When I have enter valid "s-answer" value "<street_entered>"
-    Then I shall be displayed no error for the "s-answer" field
-
-    Examples:
+  Scenario: 1 - User enters valid Security Answer
+    When I have enter valid "s-answer" value I do not see the validation error message
       | street_entered           |
       | My dog has feas          |
       | Spetember 1943           |
@@ -68,7 +65,7 @@ Feature: Security Answer - Validation Criteria & Error Handling
     And I shall be displayed no error for the "s-answer" field
 
   Scenario: User enters invalid characters in Security Answer multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "s-answer" and I see validation error message "Your reminder answer may not contain the following characters:"
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "road" on the "s-answer" and I see validation error message "Your reminder answer may not contain the following characters:"
 
   Scenario: User enters additional invalid characters in Security Answer multiple input errors
   # yea escaping this tests quote " and \

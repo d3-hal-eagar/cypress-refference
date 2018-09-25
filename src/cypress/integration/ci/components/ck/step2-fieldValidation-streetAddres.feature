@@ -59,11 +59,8 @@ Feature: Street Address - Validation Criteria & Error Handling
     And I shall be displayed no error for the "street1" field
 
   # extended validations
-  Scenario Outline: 1 - User enters valid StreetAddress
-    When I have enter valid "street1" value "<street_entered>"
-    Then I shall be displayed no error for the "street1" field
-
-    Examples:
+  Scenario: 1 - User enters valid StreetAddress
+    When I have enter valid "street1" value I do not see the validation error message
       | street_entered                |
       | High Lane #44                 |
       | 22 Cortand street, suite 1103 |
@@ -71,19 +68,6 @@ Feature: Street Address - Validation Criteria & Error Handling
       | Scholars' Walk                |
       | 42nd st.                      |
       | 46th st/Packard st            |
-
-  # Validation scenarios for Street Address input field when user enters invalid address.
-#
-#  Scenario Outline: 4 - User enters invalid Street Address
-#    When I have enter invalid "street1" value "<street_address_entered>" that "<type_of_err>"
-#    Then I shall be displayed an error for the "street1" field - "<err_message>" in red
-#    And "street1" field label is displayed in red
-#    And "street1" input field is displayed in red
-#    And "street1" field displays X Icon
-#
-#    Examples:
-#      | street_address_entered | type_of_err       | err_message                                                                                 |
-#      | 22 Cortland / street   | has a '/' symbol  | Please enter your street address. |
 
   Scenario: User enters invalid Street Address multiple input errors
     When I have enter invalid "street1" value I see the correct validation error message
@@ -113,8 +97,8 @@ Feature: Street Address - Validation Criteria & Error Handling
     And I shall be displayed no error for the "street1" field
 
   Scenario: User enters invalid characters in Street Address multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."
 
   Scenario: User enters additional invalid characters in Street Address multiple input errors
   # yea escaping this tests quote " and \
-    When I have enter invalid characters "\\\"" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."
+    When I have enter invalid characters "_\\\"" into valid input "road" on the "street1" and I see validation error message "Please enter your street address."

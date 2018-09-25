@@ -47,16 +47,16 @@ Feature: Ex Landing Page
     Then I should see full Article 3 and link to Read Less
     When I click element "read2-link"
     Then I should see shortened Article 3 and link to Read More
-    
-  Scenario: Header Button See my score
+
+  Scenario: Header Button
     When I click element "header-signup-button"
     Then I am on the ex step1 signup page
 
-  Scenario: Cta Button Get started now for free
+  Scenario: Cta Button
     When I click element "report-signup-button"
     Then I am on the ex step1 signup page
 
-  Scenario: Footer Button Show my score
+  Scenario: Footer Button
     When I click element "footer-signup-button"
     Then I am on the ex step1 signup page
 

@@ -56,11 +56,8 @@ Feature: Apartment - Validation Criteria & Error Handling
     And "street2" field input is displayed in black
     And I shall be displayed no error for the "street2" field
 
-  Scenario Outline: 5 User enters valid Apartment
-    When I have enter a valid "street2" value "<apartment_entered>" that "<testing_character>"
-    Then I shall be displayed no error for the "street2" field
-
-    Examples:
+  Scenario: 5 User enters valid Apartment
+    When I have enter valid "street2" value I do not see the validation error message
       | apartment_entered | testing_character   |
       | 22,b              | has a comma         |
       | #11               | has a number signs  |
@@ -71,7 +68,7 @@ Feature: Apartment - Validation Criteria & Error Handling
       | 22A'B             | has a single quote  |
 
   Scenario: User enters invalid characters in Apartment multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."
 
   Scenario: User enters additional invalid characters in Apartment multiple input errors
-    When I have enter invalid characters "\\\"" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."
+    When I have enter invalid characters "_\\\"" into valid input "4M" on the "street2" and I see validation error message "Please enter valid address format."

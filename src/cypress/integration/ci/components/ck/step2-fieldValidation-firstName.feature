@@ -25,6 +25,7 @@ Feature: Step 2 First Name fields
     And I shall be displayed no error for the "firstName" field
     Then I enter additional text into "firstName" field text "yzw"
     Then I am restricted from entering more than "25" characters in "firstName" field
+    And I shall be displayed no error for the "firstName" field
 
   Scenario: 3 User without entering any characters focuses out of the First Name field
     When without entering "firstName"
@@ -78,10 +79,10 @@ Feature: Step 2 First Name fields
   Scenario: 4b User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "that contains a number"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
-    Then I enter additional text into "firstName" field text "ly"
-    And I shall be displayed no error for the "firstName" field
     When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
+    And I shall be displayed no error for the "firstName" field
     Then "firstName" field label is displayed in black
+    And I blur the "firstName" field
     And I shall be displayed no error for the "firstName" field
 
   #D3F-216
@@ -104,22 +105,16 @@ Feature: Step 2 First Name fields
     When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
-  Scenario Outline: User enters an valid firstName
-    When I have enter valid "firstName" value "<name_entered>"
-    Then I shall be displayed no error for the "firstName" field
-
-    Examples:
+  Scenario: User enters an valid firstName
+    When I have enter valid "firstName" value I do not see the validation error message
       | name_entered |
       | Henry        |
       | d'Amore      |
       | mell-any     |
       | D amore      |
 
-  Scenario Outline: User enters an invalid firstName
-    When I have enter invalid "firstName" value "<name_entered>" that "<type_of_error>"
-    Then I shall be displayed an error for the "firstName" field - "<error_message>"
-
-    Examples:
+  Scenario: User enters an invalid firstName
+    When I have enter invalid "firstName" value I see the correct validation error message
       | name_entered      | type_of_error                        | error_message                                             |
       | mighty77          | contians a number                    | First Name may not include numbers or special characters. |
       | Ilike--mdash      | contains two dashes in a row         | First Name may not include numbers or special characters. |
@@ -129,7 +124,7 @@ Feature: Step 2 First Name fields
       | Jimmy  John       | contains two spaces in a row         | First Name may not include numbers or special characters. |
 
   Scenario: User enters invalid characters in First Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
   Scenario: User enters additional invalid characters in First Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
+    When I have enter invalid characters ".,#_\/\\\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."

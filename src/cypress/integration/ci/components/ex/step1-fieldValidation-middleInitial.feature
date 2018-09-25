@@ -72,7 +72,7 @@ Feature: Middle Initial - Validation Criteria and Error Handling
 
   # performance optimized multi value test
   Scenario: User enters invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."
 
   Scenario: User enters additional invalid characters in Middle initial multiple input errors
-    When I have enter invalid characters ".,#\//\"' " into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."
+    When I have enter invalid characters "' .,#_\/\\\"" into valid input "D" on the "middleInitial" and I see validation error message "Middle Initial may only be letters."

@@ -80,17 +80,17 @@ Feature: Step 1 Create your account fields Email Addres
     Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
     And "email" field label is displayed in black
 
+    # additional rules correctly enforced localpart@label.tld
+    # *label* can only be 63
+    # *localpart* can only be 64 characters
   Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
     When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
     Then I shall be displayed no error for the "email" field
     And I enter additional text into "email" field text ".comando"
     And I am restricted from entering more than "75" characters in "email" field
 
-  Scenario Outline: User enters an valid email
-    When I have enter valid "email" value "<email_entered>"
-    And I shall be displayed no error for the "email" field
-
-    Examples:
+  Scenario: User enters an valid email
+    When I have enter valid "email" value I do not see the validation error message
       | email_entered       |
       | hal@haleagar.com    |
       | info@example.com    |
@@ -102,11 +102,8 @@ Feature: Step 1 Create your account fields Email Addres
       | one@number2.com     |
       | jane387@hotmail.com |
 
-  Scenario Outline: User enters an invalid email
-    When I have enter invalid "email" value "<email_entered>" that "<type_of_error>"
-    Then I shall be displayed an error for the "email" field - "<error_message>"
-
-    Examples:
+  Scenario: User enters an invalid email
+    When I have enter invalid "email" value I see the correct validation error message
       | email_entered        | type_of_error      | error_message                                                                                               |
       | userguy@gnail.com    | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
       | userguy@gmail.co     | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
@@ -115,9 +112,9 @@ Feature: Step 1 Create your account fields Email Addres
       | userguy.gmail.com    | does not contain @ | Please enter a valid email address.                                                                         |
 
   Scenario: User enters invalid characters in email multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
 # note @ is included here because an email can contain only 1 @
 # in actual fact many of these characters are allowed in the "local-part" but not domain
 # in some cases even the unicode characters could be in the domain
   Scenario: User enters additional invalid characters in email multiple input errors
-    When I have enter invalid characters ",#\/\\\"'" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
+    When I have enter invalid characters "',#_\/\\\"" into valid input "me@you.com" on the "email" and I see validation error message "Please enter a valid email address."
