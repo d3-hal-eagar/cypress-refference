@@ -64,10 +64,10 @@ Feature: Social Security Number - Validation Criteria & Error Handling
     And "ssn" input field shall be outlined in green
 
   Scenario: 9 - User enters invalid characters in SSN code multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
 
   Scenario: 10 - User enters additional invalid characters in SSN code multiple input errors
-    When I have enter invalid characters ".,#'\//\" " into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
+    When I have enter invalid characters "' .,#_\/\\\"" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
 
   Scenario: 11 - User without entering SSN focuses out of field.
     When without entering "ssn"

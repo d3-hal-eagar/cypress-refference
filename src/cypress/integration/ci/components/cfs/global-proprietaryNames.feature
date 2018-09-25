@@ -15,8 +15,8 @@ Feature: test pages to ensure proprietary names are removed
 
 
   Background:
-    Given We make siteName "IasadGeas" and flow is "ex"
-    Given I am a user on the ex flow
+    Given We make siteName "IasadGeas" and flow is "cfs"
+    Given I am a user on the cfs flow
     Given the siteName is "IasadGeas"
     Given the following list of proprietaryNames
       | Lending Tree     |
@@ -29,15 +29,15 @@ Feature: test pages to ensure proprietary names are removed
 
 
   Scenario: Testing Sitename shows in header
-    Given I am on the ex landing page
+    Given I am on the cfs landing page
     And The "site-link" message contains siteName
 
   Scenario: No proprietary names are displayed on the landing page
-    Given I am on the ex landing page
+    Given I am on the cfs landing page
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the Privacy Policy screen
-    Given I am on the ex Privacy Policy screen
+    Given I am on the cfs Privacy Policy screen
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the Terms of Service screen
@@ -48,25 +48,25 @@ Feature: test pages to ensure proprietary names are removed
       | Check Free Score |
       | Credit Karma     |
       | Credmo           |
-    Given I am on the ex Terms of Service screen
+    Given I am on the cfs Terms of Service screen
     Then screen does not contain any proprietaryNames
 
 #  Scenario: No proprietary names are displayed on the portal page
-#    Given I am on the ex portal page
+#    Given I am on the cfs portal page
 #    Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step1 signup page
-    Given I am on the ex step1 signup page
+    Given I am on the cfs step1 page
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step2 form page
-    Given I am on the ex step2 form page
+    Given I am on the cfs step2 page
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step3 confirm page
-    Given I am on the ex step3 confirm page
+    Given I am on the cfs step3 page
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step4 verify page
-    Given I am on the ex step4 verify page
+    Given I am on the cfs step4 page
     Then screen does not contain any proprietaryNames

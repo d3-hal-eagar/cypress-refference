@@ -3,7 +3,7 @@
 
 
 Given(`I am a user on the cfs flow`, () => {
-    //www.notcreditcfsperian.local
+    //www.notcheckfreescore.local
     cy.wrap({
         flowName: 'cfs',
         validGreen: 'rgb(00, FF, 00)',

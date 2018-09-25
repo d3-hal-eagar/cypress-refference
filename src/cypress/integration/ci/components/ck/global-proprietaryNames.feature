@@ -15,7 +15,7 @@ Feature: test pages to ensure proprietary names are removed
 
 
   Background:
-    Given make siteName is "IasadGeas"
+    Given We make siteName "IasadGeas" and flow is "ck"
     Given I am a user on the ck flow
     Given the siteName is "IasadGeas"
     Given the following list of proprietaryNames

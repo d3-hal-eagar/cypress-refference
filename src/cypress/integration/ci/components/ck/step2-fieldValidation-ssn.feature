@@ -49,10 +49,10 @@ Feature: Social Security Number - Validation Criteria & Error Handling
 
 # unique placement of validation message means this step not valid for ssn
 #  Scenario: User enters invalid characters in SSN code multiple input errors
-#    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
+#    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
 #
 #  Scenario: User enters additional invalid characters in SSN code multiple input errors
-#    When I have enter invalid characters ".,#'\//\" " into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
+#    When I have enter invalid characters ".' ,#_\/\\\"" into valid input "1234" on the "ssn" and I see validation error message "Please enter the last 4 digits."
 
     #todo without entering ssn
     #todo all tests for full ssn   "Please enter your street address."

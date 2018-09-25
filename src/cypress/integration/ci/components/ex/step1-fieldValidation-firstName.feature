@@ -25,6 +25,7 @@ Feature: First Name - Validation Criteria & Error Handling
     And I shall be displayed no error for the "firstName" field
     Then I enter additional text into "firstName" field text "yzw"
     And I am restricted from entering more than "25" characters in "firstName" field
+    And I shall be displayed no error for the "firstName" field
 
   Scenario: 3 User without entering any characters focuses out of the First Name field
     When without entering "firstName"
@@ -85,23 +86,16 @@ Feature: First Name - Validation Criteria & Error Handling
     When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
 
-  Scenario Outline: User enters an valid firstName
-    When I have enter valid "firstName" value "<name_entered>"
-    Then I shall be displayed no errors
-    And I shall be displayed no error for the "firstName" field
-
-    Examples:
+  Scenario: User enters an valid firstName
+    When I have enter valid "firstName" value I do not see the validation error message
       | name_entered |
       | Henry        |
       | d'Amore      |
       | mell-any     |
       | D amore      |
 
-  Scenario Outline: User enters an invalid firstName
-    When I have enter invalid "firstName" value "<name_entered>" that "<type_of_error>"
-    Then I shall be displayed an error for the "firstName" field - "<error_message>"
-
-    Examples:
+  Scenario: User enters an invalid firstName
+    When I have enter invalid "firstName" value I see the correct validation error message
       | name_entered     | type_of_error                        | error_message              |
       | mighty77         | contians a number                    | First Name may not include numbers or special characters. |
       | smith  jones     | contains two spaces in a row         | First Name may not include numbers or special characters. |
@@ -109,9 +103,9 @@ Feature: First Name - Validation Criteria & Error Handling
       | 'Roid            | does not begin with a letter         | First Name may not include numbers or special characters. |
 
   Scenario: User enters invalid characters in First Name multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
   Scenario: User enters additional invalid characters in First Name multiple input errors
-    When I have enter invalid characters ".,#\//\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
+    When I have enter invalid characters ".,#_\/\\\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
 
 

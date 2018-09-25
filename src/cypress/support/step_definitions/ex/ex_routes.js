@@ -14,7 +14,7 @@ Given(`I am a user on the ex flow`, () => {
         errorClass: '.invalid',
         siteName: 'IasadGeas'
     }).as('flow');
-    cy.visit( '?marketingid=11111');
+    cy.visit('?marketingid=11111');
     cy.wait(200);
 });
 

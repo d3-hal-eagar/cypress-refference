@@ -17,8 +17,8 @@
       }
     },
     "flow": {
-      "id": 23,
-      "name": "ck",
+      "id": 33,
+      "name": "cfs",
       "options": {
         "states": [
           {
@@ -455,6 +455,11 @@
             "extended": null
           },
           {
+            "id": 5,
+            "value": "Jr",
+            "extended": null
+          },
+          {
             "id": 1,
             "value": "Sr",
             "extended": null
@@ -473,11 +478,6 @@
             "id": 4,
             "value": "IV",
             "extended": null
-          },
-          {
-            "id": 5,
-            "value": "Jr",
-            "extended": null
           }
         ]
       },
@@ -488,8 +488,8 @@
       },
       "steps": [
         {
-          "id": 10,
-          "route": "/ck/landing",
+          "id": 100,
+          "route": "/cfs/landing",
           "order": 1,
           "name": "Sign up",
           "options": {},
@@ -501,8 +501,8 @@
           }
         },
         {
-          "id": 3,
-          "route": "/ck/signUp",
+          "id": 101,
+          "route": "/cfs/complete",
           "order": 2,
           "name": "Step 1",
           "options": {},
@@ -512,13 +512,52 @@
           }
         },
         {
-          "id": 4,
-          "route": "/ck/info",
+          "id": 102,
+          "route": "/cfs/confirm",
           "order": 3,
           "name": "Step 2",
           "options": {},
           "metadata": {
             "rebound": true
+          },
+          "template": {
+            "tokens": {}
+          }
+        },
+        {
+          "id": 103,
+          "route": "/cfs/verify",
+          "order": 4,
+          "name": "Step 3",
+          "options": {},
+          "metadata": {
+            "rebound": true
+          },
+          "template": {
+            "tokens": {}
+          }
+        },
+        {
+          "id": 104,
+          "route": "/cfs/kba",
+          "order": 5,
+          "name": "Step 4",
+          "options": {},
+          "metadata": {
+            "rebound": false
+          },
+          "template": {
+            "tokens": {}
+          }
+        },
+        {
+          "id": 105,
+          "route": "/cfs/auth/home",
+          "order": 6,
+          "name": "Credit score",
+          "options": {},
+          "metadata": {
+            "rebound": false
           },
           "template": {
             "tokens": {}

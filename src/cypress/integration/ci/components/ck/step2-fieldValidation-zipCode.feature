@@ -32,6 +32,7 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     When I have enter invalid "zip" value "100" that "has less than 5 digits"
     Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And "zip" field label is displayed in red
+    And "zip" input field is displayed in red
 
   Scenario: 3a - User focuses back on the Zip-Code field that has the error "Please enter a valid zip code."
     When I have enter invalid "zip" value "123" that "has less than 5 digits"
@@ -42,25 +43,13 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     And "zip" field input is displayed in black
     And I shall be displayed no error for the "zip" field
 
-  Scenario Outline: 4 - User enters alphabets/special characters
-    When I have enter invalid "zip" value "<zip_entered>" that "<type_of_err>"
-    Then I shall be displayed an error for the "zip" field - "<err_message>" in red
-    And "zip" field label is displayed in red
-    And "zip" input field is displayed in red
-
-    Examples:
+  Scenario: 4 - User enters alphabets/special characters
+    When I have enter invalid "zip" value I see the correct validation error message
       | zip_entered | type_of_err      | err_message                                                                                 |
       | 123O5             | has a 'O' letter | Please enter a valid zip code. |
       | 12'35             | has a ''' symbol | Please enter a valid zip code. |
       | 22,12             | has a ',' symbol | Please enter a valid zip code. |
 
-    # performance optimized multi value test
-    # benefit fast test execution
-    # downside less specific error data bubbled up to the top level report,
-    # downside reported as 1 test though it's many
-    # stops on error not testing every permutation
-
-    # TIP: if it fails to test every permutation comment out the next three lines an let table be used by previous Scenario Outline
   Scenario: 4 - User enters alphabets/special characters
     When I have enter invalid "zip" value I see the correct validation error message
       | apartment_entered | type_of_err                    | err_message                            |
@@ -98,7 +87,7 @@ Feature: Zip Code - Validation Criteria & Character Restriction
     And I shall be displayed no error for the "zip" field
 
   Scenario: User enters invalid characters in Zip code multiple input errors
-    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|_*ãü木✉" into valid input "12345" on the "zip" and I see validation error message "Please enter a valid zip code."
+    When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "12345" on the "zip" and I see validation error message "Please enter a valid zip code."
 
   Scenario: User enters additional invalid characters in Zip code multiple input errors
-    When I have enter invalid characters ".,#'\//\" " into valid input "12345" on the "zip" and I see validation error message "Please enter a valid zip code."
+    When I have enter invalid characters ".,#_'\//\" " into valid input "12345" on the "zip" and I see validation error message "Please enter a valid zip code."

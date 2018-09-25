@@ -23,16 +23,16 @@ Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
 Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red$/, (formField,errorText) => {
     cy.get('@flow').then((flow) => {
 
-        if (formField.startsWith("ssn") || formField.startsWith("dob")) {
+        if ((formField.startsWith("ssn") && flow.flowName === 'ck') || formField.startsWith("dob")) {
             // e.g. ssn-error-message, dob-error-message
             cy.get('div[data-test='+formField+'-error-message]'+flow.errorSelector).contains(errorText).should('be.visible');
             cy.getElement(formField+'-error-message').should('have.css', 'color', flow.errorRed);
         } else {
             cy.getFormGroup(formField).contains(errorText).should('be.visible');
-            if (flow === 'ck') {
+            if (flow.flowName === 'ck') {
                 cy.getFormGroup(formField).find('span'+flow.errorSelector).should('have.css', 'color', flow.errorRed);
-            } else if (flow === 'ex') {
-                cy.getFormGroup(formField).find(flow.errorSelector).should('have.css', 'color', flow.errorRed);
+            } else if (flow.flowName === 'ex') {
+                cy.getFormGroup(formField).find(flow.errorSelector).should('have.css', 'background-color', flow.errorRedBorder);
             }
         }
     });
@@ -195,6 +195,12 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
             else if(formField === 'ssn'){
                 validInput = '1234';
             }
+            else if(formField === 'phone'){
+                validInput = '5555551234';
+            }
+            else if(formField === 'email'){
+                validInput = 'jdoe@example.com';
+            }
             // log test intent this is otherwise lost when doing multiple tests in a single step
             cy.log('(example #'+rowindex+') I have enter invalid '+formField+' value "'+userInput+'" that '+errorType+' and am displayed an error "'+errorText+'"');
             // chained actions clear previous error
@@ -212,6 +218,24 @@ When(/^I have enter invalid "(.*?)" value I see the correct validation error mes
 
     });
 });
+
+
+When(/^I have enter valid "(.*?)" value I do not see the validation error message$/, function (formField,dataTable) {
+    cy.get('@flow').then((flow) => {
+        // starting at rowindex 1 to skip header row
+        for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+            let userInput = dataTable.rawTable[rowindex][0];
+
+            // log test intent this is otherwise lost when doing multiple tests in a single step
+            cy.log('(example #'+rowindex+') I have enter valid '+formField+' value "'+userInput+'"');
+            // chained actions clear previous error
+            // re-enter text and check for error
+            cy.getElement(formField).clear().type(userInput).blur().focus()
+                .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible');
+        }
+    });
+});
+
 
 When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
     cy.get('@flow').then((flow) => {
