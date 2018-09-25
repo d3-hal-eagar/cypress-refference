@@ -9,11 +9,14 @@
     "test:mobile": "node_modules/.bin/cypress open --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile",
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run",
-    "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --parallel --ci-build-id local-docker",
-    "cypress:mobilerecord": "node_modules/.bin/cypress run  --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6",
+    "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group desktop --parallel --ci-build-id local-docker",
+    "cypress:mobilerecord": "node_modules/.bin/cypress run  --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group mobile --parallel --ci-build-id local-docker",
     "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec cypress/integration/ci/end2end/**/*",
-    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/component/**/*"
-
+    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/components/**/*",
+    "cfs": "node_modules/.bin/cypress run --spec cypress/integration/ci/components/cfs/**/*",
+    "reporttest": "npm run clearReports & npm run cfs & npm run htmlJunit",
+    "clearReports": "node clearReports.js",
+    "htmlJunit": "node htmlJunitViewer.js"
   },
   "repository": {
     "type": "git",
@@ -31,12 +34,10 @@
   },
   "homepage": "",
   "dependencies": {
+    "cypress": "^3.1.0",
     "cypress-cucumber-preprocessor": "^1.2.1",
-    "mocha": "^5.2.0",
-    "mochawesome": "^3.0.2",
-    "mochawesome-report-generator": "^3.1.2"
+    "junit-viewer": "^4.11.1",
+    "mocha": "^5.2.0"
   },
-  "devDependencies": {
-    "cypress": "^3.1.0"
-  }
+  "devDependencies": {}
 }
