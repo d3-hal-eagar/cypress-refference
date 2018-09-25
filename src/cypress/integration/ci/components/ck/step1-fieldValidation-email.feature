@@ -80,6 +80,9 @@ Feature: Step 1 Create your account fields Email Addres
     Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
     And "email" field label is displayed in black
 
+    # additional rules correctly enforced localpart@label.tld
+    # *label* can only be 63
+    # *localpart* can only be 64 characters
   Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
     When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
     Then I shall be displayed no error for the "email" field
