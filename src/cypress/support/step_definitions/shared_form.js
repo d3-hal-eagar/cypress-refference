@@ -274,19 +274,25 @@ Then(/^I shall be able to scroll within the options in "(.*?)" field$/, (formFie
 });
 
 When(/^I have selected valid dobYear option I see the correct value$/, function () {
+    // age should be 18-99
     const thisYear = (new Date()).getFullYear();
     const youngYear = thisYear - 18;
     const oldYear = thisYear - 99;
     const formField = 'dobYear';
     cy.get('@flow').then((flow) => {
-
-        for (let year = youngYear; year > oldYear; year--) {
+        // counting down by 5 years to speed up test
+        for (let year = youngYear; year > oldYear; year-=5) {
             // log test intent this is otherwise lost when doing multiple tests in a single step
             cy.log('(example #' + year + ') I have selected valid ' + year + ' option for the ' + formField + ' field that has ' + year + ' value');
             cy.getElement(formField).select(''+year).should('have.value', year.toString()).and('contain',year.toString())
                 .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible').wait(1);
 
         }
+        // since were skipping by 5 make sure we hit oldest age
+        cy.log('(example #' + oldYear + ') I have selected valid ' + oldYear + ' option for the ' + formField + ' field that has ' + oldYear + ' value');
+        cy.getElement(formField).select(''+oldYear).should('have.value', oldYear.toString()).and('contain',oldYear.toString())
+            .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible').wait(1);
+
     });
 });
 
@@ -309,8 +315,14 @@ Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$
     cy.getElement(formField).select(userInput).should('be.selected').and('be.visible');
 });
 
-Then(/^I shall not be displayed invalid year in the "(.*?)" field$/, function (formField) {
-    cy.getElement(formField).should('not.contain', ['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018']);
+Then(/^I shall not be displayed invalid year in the dobYear field$/, function () {
+    // age should be 18-99
+    const thisYear = (new Date()).getFullYear();
+    const youngYear = thisYear - 17;
+    const oldYear = thisYear - 100;
+    const formField = 'dobYear';
+    cy.getElement(formField).should('not.contain', youngYear);
+    cy.getElement(formField).should('not.contain', oldYear);
 });
 
 Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
