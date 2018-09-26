@@ -36,7 +36,7 @@
   "dependencies": {
     "cypress": "^3.1.0",
     "cypress-cucumber-preprocessor": "^1.2.1",
-    "junit-viewer": "^4.11.1",
+    "junit-viewer": "github:haleagar/junit_viewer",
     "mocha": "^5.2.0"
   },
   "devDependencies": {}
