@@ -82,12 +82,7 @@ Feature: Date of Birth - Validation Criteria and Error Handling
     Then I shall be displayed "Year" option for the "dobYear" field by default
     And I shall be able to select only one "dobYear" at a time
     When I have selected valid dobYear option I see the correct value
-##todo    And I shall not be displayed invalid year in the "dobYear" field
-#
-##    When I have selected valid "dobYear" option I see the correct value
-##      | year_selected | value |
-##      | 2000          | 2000  |
-##      | 1919          | 1919  |
+    And I shall not be displayed invalid year in the dobYear field
 
   Scenario: 3a User without selecting a Date, Month and Year focuses out of DOB Field.
     When without entering "dobMonth"
@@ -106,22 +101,46 @@ Feature: Date of Birth - Validation Criteria and Error Handling
     And "dobYear" select field is displayed in red
 
   Scenario: 3b User selecting a valid Date, Month and Year
-
-    When I am on the ex step2 form page
     And I select "02" on the "dobMonth" field
     Then "dobMonth" select field is bordered in green
     And "dobDay" select field is displayed in black
     And "dobYear" select field is displayed in black
 
-    When I select "23" on the "dobDay" field
+    When I am on the ex step2 form page
+    And I select "23" on the "dobDay" field
     Then "dobDay" select field is bordered in green
-    And "dobMonth" select field is displayed in green
+    And "dobMonth" select field is displayed in black
     And "dobYear" select field is displayed in black
 
-    When I select "1989" on the "dobYear" field
+    When I am on the ex step2 form page
+    And I select "1989" on the "dobYear" field
     Then "dobYear" select field is bordered in green
-    And "dobMonth" select field is displayed in green
-    And "dobDay" select field is displayed in green
+    And "dobMonth" select field is displayed in black
+    And "dobDay" select field is displayed in black
+
+  Scenario: 3c User without selecting a Month focuses out of DOB Field - error message is appeared.
+    When without entering "dobMonth"
+    And I select "23" on the "dobDay" field
+    And I select "1989" on the "dobYear" field
+    Then "dobMonth" select field is displayed in red
+    And "dobDay" select field is bordered in green
+    And "dobYear" select field is bordered in green
+
+  Scenario: 3d User without selecting a Day focuses out of DOB Field - error message is appeared
+    When I select "02" on the "dobMonth" field
+    And without entering "dobDay"
+    And I select "1989" on the "dobYear" field
+    Then "dobMonth" select field is bordered in green
+    And "dobDay" select field is displayed in red
+    And "dobYear" select field is bordered in green
+
+  Scenario: 3e - User without selecting a Year focuses out of DOB Field - error message is appeared.
+    When I select "02" on the "dobMonth" field
+    And I select "23" on the "dobDay" field
+    And without entering "dobYear"
+    Then "dobMonth" select field is bordered in green
+    And "dobDay" select field is bordered in green
+    And "dobYear" select field is displayed in red
 
     #  Note - Date of Birth - Field Name will turn red and Error Message appears only when the user has focused on all the 3 dropdowns - Month, Day & Year. User could have selected 1 or 2 fields, please note the error is displayed when all the 3 are focused.
 
