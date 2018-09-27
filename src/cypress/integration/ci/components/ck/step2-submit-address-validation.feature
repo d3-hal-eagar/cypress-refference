@@ -1,4 +1,4 @@
-Feature: Submit with Address Validation
+Feature: ck/step2-submit-address-validation.feature
 
     covers
         - CP-840 Desktop CK Step 2 Submit Invalid Zipcode

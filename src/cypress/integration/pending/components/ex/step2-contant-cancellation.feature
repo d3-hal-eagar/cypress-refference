@@ -1,4 +1,4 @@
-Feature: ex Step 2 Right rail content
+Feature: ex/step2-contant-cancellation.feature
 
   ex acquisition flow, display blocks of information on the right rail
 

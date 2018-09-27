@@ -1,4 +1,4 @@
-Feature: Ex Landing Page
+Feature: ex/landingPage-conent.feature
 
   As a user when I am on the "ex lp" page then I am displayed the following blocks
 

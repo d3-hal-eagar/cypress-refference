@@ -1,4 +1,4 @@
-Feature: CK Landing Page
+Feature: ck/landingPage-content.feature
 
   As a user when I am on the "ck landing" page then I am displayed the following blocks
 

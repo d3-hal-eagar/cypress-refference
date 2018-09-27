@@ -1,4 +1,4 @@
-Feature: Zip Code - Validation Criteria & Character Restriction
+Feature: ex/step1-fieldValidation-zipCode.feature
 
   Covers
     - CP-841 Desktop - EX - Step 1 Page - Zip Code - Validation Criteria & Error Handling

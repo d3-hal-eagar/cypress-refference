@@ -1,4 +1,4 @@
-Feature: Back button in the web browser
+Feature: ck/global-backButtonInWebBrowser.feature
 
   Covers
   - CP-786 (D3F-326) Back button in the web browser

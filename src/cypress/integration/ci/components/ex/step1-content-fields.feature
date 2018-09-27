@@ -1,4 +1,4 @@
-Feature: Desktop - EX - Step 1 - About You - Input Fields
+Feature: ex/step1-content-fields.feature
 
   As a user when I am on Step 1 of acquisition flow then I am displayed the form fields
 

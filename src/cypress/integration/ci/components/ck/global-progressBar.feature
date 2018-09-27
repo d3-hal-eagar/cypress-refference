@@ -1,4 +1,4 @@
-Feature: CK Progress Bar
+Feature: ck/global-progressBar.feature
 
   As a user I am displayed a Progress Bar Indicator on Steps of acquisition flow so that I know the percentage of completion.
 

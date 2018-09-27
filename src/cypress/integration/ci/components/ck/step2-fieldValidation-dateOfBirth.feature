@@ -1,4 +1,4 @@
-Feature: Date of Birth - Validation Criteria and Error Handling
+Feature: ck/step2-fieldValidation-dateOfBirth.feature
 
   Covers
   D3F-46

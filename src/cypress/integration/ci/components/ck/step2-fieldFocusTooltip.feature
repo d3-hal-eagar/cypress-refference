@@ -1,4 +1,4 @@
-Feature: CK Focus Tooltip
+Feature: ck/step2-fieldFocusTooltip.feature
 
   As a user when I focus on the form fields in 'Tell us who you are' - Step 2 - I shall be displayed a tooltip.
 

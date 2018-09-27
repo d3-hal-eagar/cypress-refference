@@ -1,4 +1,4 @@
-Feature: Street Address - Validation Criteria & Error Handling
+Feature: ck/step2-fieldValidation-streetAddres.feature
 
   covers
     - CP-818 (D3F-41) Validation scenarios for Street Address input field in Step 2 of Acquisition Flow.

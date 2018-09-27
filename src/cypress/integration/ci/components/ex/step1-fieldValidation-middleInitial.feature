@@ -1,4 +1,4 @@
-Feature: Middle Initial - Validation Criteria and Error Handling
+Feature: ex/step1-fieldValidation-middleInitial.feature
 
   Covers
     - CP-713 (D3F-431) Middle Initial - Validation Criteria and Error Handling

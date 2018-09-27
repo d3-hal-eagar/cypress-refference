@@ -1,4 +1,4 @@
-Feature: test pages to ensure proprietary names are removed
+Feature: ck/global-proprietaryNames.feature
 
   Pages will not contain proprietaryNames (list pending)
   provide the name with spaces
@@ -36,9 +36,10 @@ Feature: test pages to ensure proprietary names are removed
     Given I am on the ck landing page
     Then screen does not contain any proprietaryNames
 
-  Scenario: No proprietary names are displayed on the Privacy Policy screen
-    Given I am on the ck Privacy Policy screen
-    Then screen does not contain any proprietaryNames
+# moved to pending directory related story for page content not complete
+#  Scenario: No proprietary names are displayed on the Privacy Policy screen
+#    Given I am on the ck Privacy Policy screen
+#    Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the Terms of Service screen
     Given the following list of proprietaryNames

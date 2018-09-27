@@ -1,4 +1,4 @@
-Feature: ex Step 1 Right rail content
+Feature: ex/step1-content-rightRail.feature
 
   ex acquisition flow, display blocks of information on the right rail
 

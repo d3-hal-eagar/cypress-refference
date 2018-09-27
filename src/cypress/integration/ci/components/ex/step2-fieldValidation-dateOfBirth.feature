@@ -1,4 +1,4 @@
-Feature: Date of Birth - Validation Criteria and Error Handling
+Feature: ex/step2-fieldValidation-dateOfBirth.feature
 
   Covers
   CP-332 Desktop - EX - Date of Birth - Validation Criteria and Error Handling

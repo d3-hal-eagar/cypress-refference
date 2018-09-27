@@ -1,4 +1,4 @@
-Feature: Phone Number - Validation Criteria and Error Handling
+Feature: ex/step1-fieldValidation-phoneNumber.feature
 
   Covers
   - CP-820 Desktop - EX - Step 1 Page - Phone Number - Validation Criteria and Error Handling

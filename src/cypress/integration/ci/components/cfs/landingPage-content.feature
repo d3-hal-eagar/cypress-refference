@@ -1,4 +1,4 @@
-Feature: CFS Landing Page
+Feature: cfs/landingPage-content.feature
 
   As a user when I am on the "cfs landing" page then I am displayed the following blocks
 

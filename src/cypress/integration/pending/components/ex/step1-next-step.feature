@@ -1,5 +1,6 @@
-Feature: Submit Step 1 with valid data
+Feature: ex/step1-next-step.feature
 
+    Submit Step 1 with valid data
     covers
     - CP-812 Mobile - EX - Step 1 - Submit and Continue Call-to-Action Button
     - CP-781 Desktop/Mobile - EX - Step 1 - Submit and Continue CTA

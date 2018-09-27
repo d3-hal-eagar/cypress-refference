@@ -1,4 +1,4 @@
-Feature: Apartment - Validation Criteria & Error Handling
+Feature: ck/step2-fieldValidation-apartment.feature
 
   Covers
     - CP-799 (D3F-43) Validation scenarios for Apartment input field on Step 2 of Acquisition Flow.

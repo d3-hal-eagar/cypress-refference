@@ -1,4 +1,4 @@
-Feature: Desktop - EX - Step 1 - Previous Address
+Feature: ex/step1-content-previousAddress.feature
 
   As a user when I am on Step 1 and I need to enter my previous address
 

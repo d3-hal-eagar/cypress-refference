@@ -1,4 +1,4 @@
-Feature: Step 1 Next Step button
+Feature: ck/step1-next-step.feature
 
   As a user I create an account by providing valid email and password
   Covers
