@@ -1,4 +1,4 @@
-Feature: Step 1 email and password tooltips
+Feature: ck/step1-fieldFocusTooltip.feature
 
   I am shown helpfull tooltip while I interact input data in a field
   Tooltips are shown regardless of input data and disapear when removed.

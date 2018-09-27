@@ -1,4 +1,4 @@
-Feature: State - Validation Criteria and when no character is entered
+Feature: ex/step1-fieldValidation-state.feature
 
   Covers
     - CP-808 Desktop - EX - State - Error Handling & Validation Criteria

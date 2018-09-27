@@ -1,4 +1,4 @@
-Feature: First Name - Validation Criteria & Error Handling
+Feature: ex/step1-fieldValidation-firstName.feature
 
   Covers
     - CP-803 (D3F-383) First Name - Validation Criteria & Error Handling

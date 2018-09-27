@@ -1,4 +1,4 @@
-Feature: Step 2 First Name fields
+Feature: ck/step2-fieldValidation-firstName.feature
 
   Covers
     - D3F-39 First Name - Validation Criteria & Error Handling

@@ -1,4 +1,4 @@
-Feature: Step 2 Last Name fields
+Feature: ck/step2-fieldValidation-lastName.feature
 
   Covers
     - CP-810 (D3F-40) Last Name - Validation Criteria & Error Handling

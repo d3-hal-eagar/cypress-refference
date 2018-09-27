@@ -1,4 +1,4 @@
-Feature: Social Security Number - Validation Criteria & Error Handling
+Feature: ex/step2-fieldValidation-ssn.feature
 
   Covers:
   CP-499 - Desktop - EX - Social Security Number - Validation Criteria & Error Handling

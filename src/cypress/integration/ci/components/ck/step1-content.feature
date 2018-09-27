@@ -1,4 +1,4 @@
-Feature: Step 1 Create your account fields
+Feature: ck/step1-content.feature
 
   Covers
   - CP-70 (D3F-27) Create your account fields

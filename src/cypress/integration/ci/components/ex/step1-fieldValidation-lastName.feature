@@ -1,4 +1,4 @@
-Feature: Last Name - Validation Criteria & Error Handling
+Feature: ex/step1-fieldValidation-lastName.feature
 
   Covers
     - CP-834 (D3F-384) Last Name - Validation Criteria & Error Handling

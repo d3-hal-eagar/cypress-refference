@@ -1,4 +1,4 @@
-Feature: Zip Code - Validation Criteria & Character Restriction
+Feature: ck/step2-fieldValidation-zipCode.feature
 
   Covers
     - CP-710 (D3F-45) Validation scenarios for Zip Code input field in Step 2 of Acquisition Flow.

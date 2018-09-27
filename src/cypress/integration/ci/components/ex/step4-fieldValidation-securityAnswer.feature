@@ -1,4 +1,4 @@
-Feature: Security Answer - Validation Criteria & Error Handling
+Feature: ex/step4-fieldValidation-securityAnswer.feature
 
   covers
     -  CP-794 Desktop/Mobile - EX - Step 4 - Security Answers and validations

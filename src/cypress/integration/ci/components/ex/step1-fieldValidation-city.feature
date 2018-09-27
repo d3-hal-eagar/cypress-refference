@@ -1,4 +1,4 @@
-Feature: City - Validation Criteria and Error Handling
+Feature: ex/step1-fieldValidation-city.feature
 
   Covers
   - CP-830 Desktop - EX - Step 1 Page - City - Validation Criteria and Error Handling

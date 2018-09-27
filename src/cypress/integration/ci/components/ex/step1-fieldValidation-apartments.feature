@@ -1,4 +1,4 @@
-Feature: Apartment - Validation Criteria & Error Handling
+Feature: ex/step1-fieldValidation-apartments.feature
 
   Covers
     - CP-824 Desktop - EX - Step 1 Page - Apt, Unit, Bldg, Suite - Validation Criteria & Error Handling

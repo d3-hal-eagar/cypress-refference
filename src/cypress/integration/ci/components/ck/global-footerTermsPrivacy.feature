@@ -1,4 +1,4 @@
-Feature: Header, Footer, Terms of Service and Privacy Policy
+Feature: ck/global-footerTermsPrivacy.feature
 
   As a user I shall be displayed the footer on all screens.
   Covers

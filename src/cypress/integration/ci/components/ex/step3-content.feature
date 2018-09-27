@@ -1,4 +1,4 @@
-Feature: Step 3 verify fields
+Feature: ex/step3-content.feature
 
   As a user when I am on Step 3 of acquisition flow then I am displayed the form fields
 

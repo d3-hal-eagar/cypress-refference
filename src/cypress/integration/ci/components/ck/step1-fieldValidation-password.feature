@@ -1,4 +1,4 @@
-Feature: Step 1 Create your account fields password
+Feature: ck/step1-fieldValidation-password.feature
 
   As a user I create an account by providing valid email and password
   Covers

@@ -1,4 +1,6 @@
-Feature: Header, Footer, Terms of Service and Privacy Policy
+Feature: ex/global-footerTermsPrivacy.feature
+
+  Header, Footer, Terms of Service and Privacy Policy
 
   As a user I shall be displayed the footer on all screens.
   Covers

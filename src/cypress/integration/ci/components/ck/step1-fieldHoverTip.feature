@@ -1,4 +1,4 @@
-Feature: Step 1 email tips on hover
+Feature: ck/step1-fieldHoverTip.feature
 
   I am given explicit instructions about correcting invalid email when I hover over the email field.
   Display of help is browser function based on field title, and does not display visibly on mobile where hover is not possible.

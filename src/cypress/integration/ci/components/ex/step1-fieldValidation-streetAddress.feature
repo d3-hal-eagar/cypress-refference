@@ -1,4 +1,4 @@
-Feature: Street Address - Validation Criteria & Error Handling
+Feature: ex/step1-fieldValidation-streetAddress.feature
 
   covers
     - CP-800 Desktop - EX - Step 1 Page - Current Street Address - Validation Criteria & Error Handling

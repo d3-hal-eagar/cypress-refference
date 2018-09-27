@@ -1,4 +1,4 @@
-Feature: test pages to ensure proprietary names are removed
+Feature: ck/global-proprietaryNames.feature
 
   Pages will not contain proprietaryNames (list pending)
   provide the name with spaces

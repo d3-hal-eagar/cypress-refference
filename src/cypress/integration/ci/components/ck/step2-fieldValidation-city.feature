@@ -1,4 +1,4 @@
-Feature: City - Validation Criteria and Error Handling
+Feature: ck/step2-fieldValidation-city.feature
 
   Covers
     - CP-777 (D3F-42) Validation scenarios for City input field in Step 2 of Acquisition Flow.

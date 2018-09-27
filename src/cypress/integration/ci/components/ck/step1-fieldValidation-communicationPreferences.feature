@@ -1,4 +1,4 @@
-Feature: Communication Preferences - Validation Criteria & Error Handling
+Feature: ck/step1-fieldValidation-communicationPreferences.feature
 
   Covers
     - CP-1485 Desktop/Mobile - CK - Step 1 Page - Communication Preferences Option

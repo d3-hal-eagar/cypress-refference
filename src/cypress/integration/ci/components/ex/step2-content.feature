@@ -1,4 +1,4 @@
-  Feature: Step2 info fields
+  Feature: ex/step2-content.feature
 
   As a user when I am on Step 2 of acquisition flow then I am displayed the form fields
 

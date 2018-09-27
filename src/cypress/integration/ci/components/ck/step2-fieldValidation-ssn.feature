@@ -1,4 +1,4 @@
-Feature: Social Security Number - Validation Criteria & Error Handling
+Feature: ck/step2-fieldValidation-ssn.feature
 
   Covers:
   CP-769 - Social Security Number - Validation Criteria & Error Handling

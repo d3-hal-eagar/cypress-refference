@@ -1,4 +1,4 @@
-Feature: State - Validation Criteria and when no character is entered
+Feature: ck/step2-fieldValidation-state.feature
 
   Covers
     - CP-816 (D3F-44) Validation scenarios for State input field in Step 2 of Acquisition Flow.

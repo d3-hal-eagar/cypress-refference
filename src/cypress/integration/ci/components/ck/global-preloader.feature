@@ -1,4 +1,4 @@
-Feature: Preloading screen
+Feature: ck/global-preloader.feature
 
   As a user on completing step 3 of acquisition flow and selecting Get my score when all my answers are correct and I am authenticated, then I will be displayed a preloading screen as seen in the UX.
 
