@@ -10,6 +10,11 @@ Then(/^"(.*?)" with text "(.*?)" Hyperlinked to "(.*?)"$/, (dataTest, linkText, 
 
 });
 
+Then(/^The "(.*?)" element shall not be hyperlinked$/, (dataTest) => {
+    cy.getElement(dataTest).should('not.have.attr', 'href');
+    cy.getChildElement('<a',dataTest).should('not.be.visible');
+});
+
 Then(`I am displayed flow Footer`, () => {
     cy.get('footer').should('be.visible');
     cy.getElement('copyright-text').should('be.visible');
