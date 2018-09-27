@@ -7,6 +7,7 @@ Feature: ex/global-footerTermsPrivacy.feature
    - CP-453 Desktop - EX - Build Footer, Terms of Service and Privacy Policy
    - CP-789Mobile - EX - Build Footer, Terms of Service and Privacy Policy
 
+  - bugs open CP-495, CP-390, CP-292
 
   Background:
     Given I am a user on the ex flow
@@ -25,7 +26,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     When I am on the ex step2 form page
     Then I am displayed flow Logo
     Then I am displayed flow Footer
-    And "tos-link on terms" with text "Terms Of Service" Hyperlinked to "/ex/tos"
+    And "tos-link on terms" with text "Terms Of Use Agreement" Hyperlinked to "/ex/tos"
     And "tos-link on terms" targets opening in a new tab
     And "privacy-link on terms" with text "Privacy Policy" Hyperlinked to "/ex/privacy"
     And "privacy-link on terms" targets opening in a new tab
