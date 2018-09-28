@@ -49,6 +49,10 @@ Then(/^The "(.*?)" element present on the page$/, (element) => {
     cy.getElement(element).should('be.visible');
 });
 
+Then(/^The "(.*?)" element is not present on the page$/, (element) => {
+    cy.getElement(element).should('not.be.visible');
+});
+
 Then(/^The "(.*?)" image is displayed on the page$/, (dataTest) => {
     cy.get('[data-test='+dataTest+']>h3>img').should('be.visible');
 });
