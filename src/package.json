@@ -4,17 +4,19 @@
   "description": "end to end testing with cypress and cucumber",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/cypress run --spec cypress/integration/ci/**/*",
+    "start": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/**/*'",
     "test": "node_modules/.bin/cypress open",
     "test:mobile": "node_modules/.bin/cypress open --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile",
     "cypress:open": "node_modules/.bin/cypress open",
     "cypress:headless": "node_modules/.bin/cypress run",
     "cypress:record": "node_modules/.bin/cypress run --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group desktop --parallel --ci-build-id local-docker",
     "cypress:mobilerecord": "node_modules/.bin/cypress run  --config viewportWidth=360,viewportHeight=640 --env TESTMODE=mobile --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group mobile --parallel --ci-build-id local-docker",
-    "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec cypress/integration/ci/end2end/**/*",
-    "runGroup:ci-component": "node_modules/.bin/cypress run --spec cypress/integration/ci/components/**/*",
-    "cfs": "node_modules/.bin/cypress run --spec cypress/integration/ci/components/cfs/**/*",
-    "reporttest": "npm run clearReports & npm run cfs & npm run htmlJunit",
+    "runGroup:ci-end2end": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/end2end/**/*'",
+    "runGroup:ci-component": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/**/*'",
+    "ck": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/ck/**/*'",
+    "ex": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/ex/**/*'",
+    "cfs": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/cfs/**/*'",
+    "reportcfs": "npm run clearReports & npm run cfs & npm run htmlJunit",
     "clearReports": "node clearReports.js",
     "htmlJunit": "node htmlJunitViewer.js"
   },
@@ -35,7 +37,7 @@
   "homepage": "",
   "dependencies": {
     "cypress": "^3.1.0",
-    "cypress-cucumber-preprocessor": "^1.2.1",
+    "cypress-cucumber-preprocessor": "^1.5.1",
     "junit-viewer": "github:haleagar/junit_viewer",
     "mocha": "^5.2.0"
   },
