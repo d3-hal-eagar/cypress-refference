@@ -46,11 +46,13 @@ Feature: ck/global-footerTermsPrivacy.feature
     When I am on the ck step3 confirm page
     Then I am displayed flow Logo
     Then I am displayed flow Footer
+    When I click element "privacy-link on <footer>"
+    Then I am guided to the ck Privacy Policy screen
 
   Scenario: 4 User is displayed the following on Terms of Service screen
     When I am on the ck Terms of Service screen
     Then I am displayed flow Logo
-    Then I am displayed ck Terms of Service Text
+    Then I am displayed flow Terms of Service Text
     And The "section-title in tos-section" message contains siteName
     And The "<p> in tos-section" message contains siteName
     Then I am displayed flow Footer
@@ -58,7 +60,7 @@ Feature: ck/global-footerTermsPrivacy.feature
   Scenario: 5 User is displayed the following on Privacy Policy screen
     When I am on the ck Privacy Policy screen
     Then I am displayed flow Logo
-    Then I am displayed ck Privacy Policy Text
+    Then I am displayed flow Privacy Policy Text
     And The "<p> in privacy-section" message contains siteName
     Then I am displayed flow Footer
 
@@ -66,5 +68,7 @@ Feature: ck/global-footerTermsPrivacy.feature
     When I am on the ck landing page
     Then I am displayed flow Logo
     Then I am displayed flow Footer
+    When I click element "tos-link on <footer>"
+    Then I am guided to the ck Terms of Service screen
 
 
