@@ -10,8 +10,21 @@ Then(/^"(.*?)" with text "(.*?)" Hyperlinked to "(.*?)"$/, (dataTest, linkText, 
 
 });
 
+Then(/^"(.*?)" is Hyperlinked to "(.*?)"$/, (dataTest, linkUrl) => {
+    cy.getElement(dataTest).should('have.attr', 'href', linkUrl).and('be.visible');
+
+});
+
+Then(/^"(.*?)" Hyperlink includes "(.*?)"$/, (dataTest, linkUrl) => {
+    //cy.getElement(dataTest).should('have.attr', 'href').and('include', linkUrl).and('be.visible');
+    // this is way over complicated but cypress barfed on the url parameters so we work around it
+    cy.getElement(dataTest).should('have.attr', 'href').then((href) => {
+       cy.wrap(href).should('contain',linkUrl);
+    });
+});
+
 Then(/^The "(.*?)" element shall not be hyperlinked$/, (dataTest) => {
-    cy.getElement(dataTest).should('not.have.attr', 'href');
+    cy.getElement(dataTest).should('be.visible').and('not.have.attr', 'href');
     cy.getChildElement('<a',dataTest).should('not.be.visible');
 });
 
