@@ -49,20 +49,20 @@ Then(`I am guided to the cfs step3 page`, () => {
     cy.url().should('contain','/cfs/verify').getElement('verify-page').should('be.visible');
 });
 
-When(`I am on the cfs step4 page`, () => {
+When(`I am on the cfs step4 authentication page`, () => {
     cy.visit('/cfs/kba').getElement('kba-page').should('be.visible');
 });
 
-Then(`I am guided to the cfs step4 page`, () => {
+Then(`I am guided to the cfs step4 authentication page`, () => {
     cy.url().should('contain','/cfs/kba').getElement('kba-page').should('be.visible');
 });
 
-When(`I am on the cfs portal page`, () => {
-    cy.visit('/cfs/portal/home').getElement('portal-page').should('be.visible');
+When(`I am on the cfs step 4 view page`, () => {
+    cy.visit('/cfs/auth/home').getElement('portal-page').should('be.visible');
 });
 
-Then(`I am guided to the cfs portal page`, () => {
-    cy.url().should('contain','/cfs/portal/home').getElement('portal-page').should('be.visible');
+Then(`I am guided to the cfs step4 view page`, () => {
+    cy.url().should('contain','/cfs/auth/home').getElement('portal-page').should('be.visible');
 });
 
 When(`I am on the cfs Privacy Policy screen`, () => {
