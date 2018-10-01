@@ -26,7 +26,7 @@ Then(`I am guided to the cfs landing page`, () => {
 });
 
 When(`I am on the cfs step1 page`, () => {
-    cy.visit('/cfs/complete').getElement('complete-page').should('be.visible');
+    cy.visit('/cfs/complete').getElement('complete-section').should('be.visible');
 });
 
 Then(`I am guided to the cfs step1 page`, () => {
