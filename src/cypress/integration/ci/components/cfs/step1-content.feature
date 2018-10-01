@@ -9,7 +9,7 @@ Feature: cfs/step1-content.feature
     Given the siteName is "NotCheckFreeScore"
 
 
-  Scenario: 1 - Step 1 Page
+  Scenario: 1 - Privacy Security Image shall display on the Step 1 page
     Then The "main-header-section" element present on the page
     And The "main-header-section" image is displayed on the page
     And The "main-header-section" element shall not be hyperlinked
