@@ -49,6 +49,14 @@ Then(/^The "(.*?)" element present on the page$/, (element) => {
     cy.getElement(element).should('be.visible');
 });
 
+Then(/^The "(.*?)" element is not present on the page$/, (element) => {
+    cy.getElement(element).should('not.be.visible');
+});
+
+Then(/^The "(.*?)" image is displayed on the page$/, (dataTest) => {
+    cy.get('[data-test='+dataTest+']>h3>img').should('be.visible');
+});
+
 Then(/^The "(.*?)" element present on the mobile page only$/, (element) => {
     if (Cypress.env('TESTMODE') === 'mobile') {
         cy.getElement(element).should('be.visible');
@@ -153,5 +161,4 @@ When(/^I close the modal$/, () => {
 Then(/^the modal is not visible$/, () => {
     cy.getElement('modal-header').should('not.be.visible');
     cy.get('.modal-content').should('not.be.visible');
-
 });
