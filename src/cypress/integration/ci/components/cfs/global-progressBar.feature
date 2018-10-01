@@ -16,22 +16,22 @@ Feature: cfs/global-progressBar.feature
     Given I am a user on the cfs flow
 
 
-  Scenario: 1 - Steps Progress Indicator is displayed within CFS Step 1 COMPLETE page as seen on the design
+  Scenario: 1 - Steps Progress Indicator is displayed within CFS Step 1 COMPLETE page
     When I am on the cfs step1 page
-    Then I shall be displayed the Progress Bar Indicator as Step 1 - COMPLETE
+    Then I shall be displayed the Progress Bar Indicator as 'Step 1 - COMPLETE' as seen on the design
 
-  Scenario: 2 - Steps Progress Indicator is displayed within CFS Step 2 CONFIRM page as seen on the design
+  Scenario: 2 - Steps Progress Indicator is displayed within CFS Step 2 CONFIRM page
     When I am on the cfs step2 page
-    Then I shall be displayed the Progress Bar Indicator as Step 2 - CONFIRM
+    Then I shall be displayed the Progress Bar Indicator as 'Step 2 - CONFIRM' as seen on the design
 
-  Scenario: 3 - Steps Progress Indicator is displayed within CFS Step 3 VERIFY page as seen on the design
+  Scenario: 3 - Steps Progress Indicator is displayed within CFS Step 3 VERIFY page
     When I am on the cfs step3 page
-    Then I shall be displayed the Progress Bar Indicator as Step 3 - VERIFY
+    Then I shall be displayed the Progress Bar Indicator as 'Step 3 - VERIFY' as seen on the design
 
-  Scenario: 4 - Steps Progress Indicator is displayed within CFS Step 4 KBA page as seen on the design
+  Scenario: 4 - Steps Progress Indicator is displayed within CFS Step 4 KBA page
     When I am on the cfs step4 page
-    Then I shall be displayed the Progress Bar Indicator as Step 4 - AUTHENTICATION
+    Then I shall be displayed the Progress Bar Indicator as 'Step 4 - AUTHENTICATION' as seen on the design
 
-  Scenario: 5 - Steps Progress Indicator is displayed within CFS Step 4 VIEW page as seen on the design
+  Scenario: 5 - Steps Progress Indicator is not displayed within CFS Step 4 VIEW page
     When I am on the cfs authentication page
-    Then I shall be displayed the Progress Bar Indicator as Step 4 - VIEW
+    Then I shall not be displayed the Progress Bar Indicator as Step 4 - VIEW
