@@ -37,11 +37,13 @@ Feature: ex/global-footerTermsPrivacy.feature
     Then I am displayed flow Logo
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
+    When I click element "privacy-link on <footer>"
+    Then I am guided to the ex Privacy Policy screen
 
   Scenario: 4 User is displayed the following on Terms of Service screen
     When I am on the ex Terms of Service screen
     Then I am displayed flow Logo
-    Then I am displayed ck Terms of Service Text
+    Then I am displayed flow Terms of Service Text
     And The "section-title in tos-section" message contains siteName
     And The "<p> in tos-section" message contains siteName
     Then I am displayed flow Footer
@@ -50,7 +52,7 @@ Feature: ex/global-footerTermsPrivacy.feature
   Scenario: 5 User is displayed the following on Privacy Policy screen
     When I am on the ex Privacy Policy screen
     Then I am displayed flow Logo
-    Then I am displayed ck Privacy Policy Text
+    Then I am displayed flow Privacy Policy Text
     And The "<p> in privacy-section" message contains siteName
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
@@ -66,3 +68,5 @@ Feature: ex/global-footerTermsPrivacy.feature
     Then I am displayed flow Logo
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
+    When I click element "tos-link on <footer>"
+    Then I am guided to the ex Terms of Service screen

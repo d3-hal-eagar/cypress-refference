@@ -18,51 +18,51 @@ Given(`I am a user on the cfs flow`, () => {
 });
 
 When(`I am on the cfs landing page`, () => {
-    cy.visit('/cfs/landing').getElement('landing-page-section').should('be.visible');
+    cy.visit('/cfs/landing').getElement('landing-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs landing page`, () => {
-    cy.url().should('contain','/cfs/landing').getElement('landing-section').should('be.visible');
+    cy.url().should('contain','/cfs/landing').getElement('landing-page').should('be.visible');
 });
 
 When(`I am on the cfs step1 page`, () => {
-    cy.visit('/cfs/complete').getElement('complete-section').should('be.visible');
+    cy.visit('/cfs/complete').getElement('complete-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs step1 page`, () => {
-    cy.url().should('contain','/cfs/complete').getElement('complete-section').should('be.visible');
+    cy.url().should('contain','/cfs/complete').getElement('complete-page').should('be.visible');
 });
 
 When(`I am on the cfs step2 page`, () => {
-    cy.visit('/cfs/confirm').getElement('confirm-section').should('be.visible');
+    cy.visit('/cfs/confirm').getElement('confirm-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs step2 page`, () => {
-    cy.url().should('contain','/cfs/confirm').getElement('confirm-section').should('be.visible');
+    cy.url().should('contain','/cfs/confirm').getElement('confirm-page').should('be.visible');
 });
 
 When(`I am on the cfs step3 page`, () => {
-    cy.visit('/cfs/verify').getElement('verify-section').should('be.visible');
+    cy.visit('/cfs/verify').getElement('verify-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs step3 page`, () => {
-    cy.url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
+    cy.url().should('contain','/cfs/verify').getElement('verify-page').should('be.visible');
 });
 
 When(`I am on the cfs step4 page`, () => {
-    cy.visit('/cfs/kba').getElement('authentication-section').should('be.visible');
+    cy.visit('/cfs/kba').getElement('kba-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs step4 page`, () => {
-    cy.url().should('contain','/cfs/kba').getElement('authentication-section').should('be.visible');
+    cy.url().should('contain','/cfs/kba').getElement('kba-page').should('be.visible');
 });
 
 When(`I am on the cfs portal page`, () => {
-    cy.visit('/cfs/portal/home').getElement('portal-page-section').should('be.visible');
+    cy.visit('/cfs/portal/home').getElement('portal-page').should('be.visible');
 });
 
 Then(`I am guided to the cfs portal page`, () => {
-    cy.url().should('contain','/cfs/portal/home').getElement('portal-page-section').should('be.visible');
+    cy.url().should('contain','/cfs/portal/home').getElement('portal-page').should('be.visible');
 });
 
 When(`I am on the cfs Privacy Policy screen`, () => {

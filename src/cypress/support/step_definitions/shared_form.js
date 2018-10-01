@@ -337,6 +337,11 @@ Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
     });
 });
 
+
+Then(/^The "(.*?)" field placeholder is "(.*?)"$/, (formField,labelText) => {
+    cy.getElement(formField).should('have.attr','placeholder').and('contain',labelText);
+});
+
 Then(/^The "(.*?)" radio group label is "(.*?)"$/, (formField,labelText) => {
     cy.getFormGroup(formField).contains(labelText).should('be.visible');
 });

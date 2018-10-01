@@ -26,7 +26,7 @@
 
 function wrapWithDataId (dataTest) {
     var cssSelector = '';
-    if (dataTest.match(/^(\.|#|\+)/)) {
+    if (dataTest.match(/^(\.|#|\+|\[)/)) {
         //if (dataTest.startsWith('#') || dataTest.startsWith('.')) {
         cssSelector = dataTest;
     } else if (dataTest.startsWith('<')) {

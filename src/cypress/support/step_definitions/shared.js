@@ -49,6 +49,26 @@ Then(/^The "(.*?)" element present on the page$/, (element) => {
     cy.getElement(element).should('be.visible');
 });
 
+Then(/^The "(.*?)" element present on the mobile page only$/, (element) => {
+    if (Cypress.env('TESTMODE') === 'mobile') {
+        cy.getElement(element).should('be.visible');
+    } else {
+        cy.getElement(element).should('not.be.visible');
+    }
+});
+
+Then(/^The "(.*?)" element present on the desktop page only$/, (element) => {
+    if (Cypress.env('TESTMODE') === 'mobile') {
+        cy.getElement(element).should('not.be.visible');
+    } else {
+        cy.getElement(element).should('be.visible');
+    }
+});
+
+Then(/^The "(.*?)" element is not present on the page$/, (element) => {
+    cy.getElement(element).should('not.be.visible');
+});
+
 Then(/^"(.*?)" contains "(.*?)"$/, (element, messageText) => {
     cy.getElement(element).should('contain', messageText);
 });
