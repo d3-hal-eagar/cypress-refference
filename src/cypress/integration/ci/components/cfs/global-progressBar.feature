@@ -16,22 +16,22 @@ Feature: cfs/global-progressBar.feature
     Given I am a user on the cfs flow
 
 
-  Scenario: 1 - Steps Progress Indicator is displayed within CFS Step 1 COMPLETE page
+  Scenario: 1 - Steps Progress Indicator is displayed within CFS Step 1 COMPLETE page as seen on the design
     When I am on the cfs step1 page
     Then I shall be displayed the Progress Bar Indicator as Step 1 - COMPLETE
 
-  Scenario: 2 - Steps Progress Indicator is displayed within CFS Step 2 CONFIRM page
+  Scenario: 2 - Steps Progress Indicator is displayed within CFS Step 2 CONFIRM page as seen on the design
     When I am on the cfs step2 page
     Then I shall be displayed the Progress Bar Indicator as Step 2 - CONFIRM
 
-  Scenario: 3 - Steps Progress Indicator is displayed within CFS Step 3 VERIFY page
+  Scenario: 3 - Steps Progress Indicator is displayed within CFS Step 3 VERIFY page as seen on the design
     When I am on the cfs step3 page
     Then I shall be displayed the Progress Bar Indicator as Step 3 - VERIFY
 
-  Scenario: 4 - Steps Progress Indicator is displayed within CFS Step 4 KBA page
+  Scenario: 4 - Steps Progress Indicator is displayed within CFS Step 4 KBA page as seen on the design
     When I am on the cfs step4 page
     Then I shall be displayed the Progress Bar Indicator as Step 4 - AUTHENTICATION
 
-  Scenario: 5 - Steps Progress Indicator is displayed within CFS Step 4 VIEW page
+  Scenario: 5 - Steps Progress Indicator is displayed within CFS Step 4 VIEW page as seen on the design
     When I am on the cfs authentication page
     Then I shall be displayed the Progress Bar Indicator as Step 4 - VIEW
