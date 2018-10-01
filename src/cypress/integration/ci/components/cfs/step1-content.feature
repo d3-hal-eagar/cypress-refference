@@ -14,9 +14,3 @@ Feature: cfs/step1-content.feature
     And The "main-header-section" image is displayed on the page
     And The "main-header-section" element shall not be hyperlinked
     And The "main-header-section" message contains "Privacy Security Protected"
-
-  Scenario: 2 - Step 2 Page
-    Then The "main-header-section" element present on the page
-    And The "main-header-section" image is displayed on the page
-    And The "main-header-section" element shall not be hyperlinked
-    And The "main-header-section" message contains "Privacy Security Protected"
