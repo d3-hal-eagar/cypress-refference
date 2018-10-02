@@ -28,6 +28,23 @@ Then(/^The "(.*?)" element shall not be hyperlinked$/, (dataTest) => {
     cy.getChildElement('<a',dataTest).should('not.be.visible');
 });
 
+Then(/^The "(.*?)" element shall not be hyperlinked desktop page only$/, (dataTest) => {
+   if (Cypress.env('TESTMODE') === 'mobile') {
+
+    } else {
+       cy.getElement(dataTest).should('be.visible').and('not.have.attr', 'href');
+       cy.getChildElement('<a',dataTest).should('not.be.visible');
+    }
+});
+
+
+Then(/^The "(.*?)" element shall not be hyperlinked mobile page only$/, (dataTest) => {
+    if (Cypress.env('TESTMODE') === 'mobile') {
+        cy.getElement(dataTest).should('be.visible').and('not.have.attr', 'href');
+        cy.getChildElement('<a',dataTest).should('not.be.visible');
+    }
+});
+
 Then(`I am displayed flow Footer`, () => {
     cy.get('footer').should('be.visible');
     cy.getElement('copyright-text').should('be.visible');
@@ -76,7 +93,6 @@ Then(`I am displayed Copyright - © 2018 siteName. All Rights Reserved in the fo
         cy.get('footer').contains('© 2018 '+flow.siteName+'. All Rights Reserved');
     });
 });
-
 
 Then(`I am displayed siteName in the header`, () => {
     cy.get('@flow').then((flow) => {
