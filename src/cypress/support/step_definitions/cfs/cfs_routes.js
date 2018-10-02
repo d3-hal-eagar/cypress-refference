@@ -46,7 +46,7 @@ When(`I am on the cfs step3 page`, () => {
 });
 
 Then(`I am guided to the cfs step3 page`, () => {
-    cy.url().should('contain','/cfs/verify').getElement('verify-page').should('be.visible');
+    cy.url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
 });
 
 When(`I am on the cfs step4 authentication page`, () => {
