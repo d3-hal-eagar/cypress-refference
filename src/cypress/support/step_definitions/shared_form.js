@@ -337,7 +337,6 @@ Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
     });
 });
 
-
 Then(/^The "(.*?)" field placeholder is "(.*?)"$/, (formField,labelText) => {
     cy.getElement(formField).should('have.attr','placeholder').and('contain',labelText);
 });

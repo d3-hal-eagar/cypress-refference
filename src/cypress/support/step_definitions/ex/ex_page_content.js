@@ -84,6 +84,7 @@ Then(`I am displayed the right rail Secure block`, () => {
 Then(/^I am displayed the correct message in the modal header "(.*?)"$/, (modalText) => {
     cy.get('.modal-header').contains(modalText);
 });
+
 Then(`I am displayed the correct message in the modal`, (modalText) => {
     cy.get('.modal-body').contains(modalText);
 });

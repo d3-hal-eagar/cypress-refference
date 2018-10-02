@@ -154,6 +154,22 @@ Then(/^The "(.*?)" message contains "(.*?)"$/, (element, messageText) => {
     cy.getElement(element).should('contain', messageText);
 });
 
+Then(/^The "(.*?)" message contains "(.*?)" on the desktop page only$/, (element, messageText) => {
+    if (Cypress.env('TESTMODE') !== 'mobile') {
+        cy.getElement(element).should('contain', messageText);
+    }
+});
+
+Then(/^The "(.*?)" message contains "(.*?)" on the mobile page only$/, (element, messageText) => {
+    if (Cypress.env('TESTMODE') === 'mobile') {
+        cy.getElement(element).should('contain', messageText);
+    }
+});
+
+Then(/^I am displayed the correct message on "(.*?)"$/, (element,messageText) => {
+    cy.getElement(element).contains(messageText);
+});
+
 When(/^I close the modal$/, () => {
     cy.getElement('modal-header').find('.close').click();
 });

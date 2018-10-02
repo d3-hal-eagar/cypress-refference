@@ -26,18 +26,22 @@ Feature: cfs/landingPage-content.feature
     When I click on the "firstName" field
     Then Check that the "firstName" field is focused
     And The "firstName" field placeholder is "First Name"
+    And The cfs "firstName" field label is "First Name" on the mobile page only
     #CP-493
     When I click on the "lastName" field
     Then Check that the "lastName" field is focused
     And The "lastName" field placeholder is "Last Name"
+    And The cfs "lastName" field label is "Last Name" on the mobile page only
     #CP-526
     When I click on the "email" field
     Then Check that the "email" field is focused
     And The "email" field placeholder is "Email"
+    And The cfs "email" field label is "Email" on the mobile page only
     #CP-518
     When I click on the "zip" field
     Then Check that the "zip" field is focused
     And The "zip" field placeholder is "Zip Code"
+    And The cfs "zip" field label is "Zip Code" on the mobile page only
     #CP-468
     And I focus on the "cta-button" field
     And The "cta-button" message contains "Your Score - Now"
@@ -47,13 +51,13 @@ Feature: cfs/landingPage-content.feature
     Then The "search-img" element present on the page
     And The "search-img" element shall not be hyperlinked
     #CP-394
-    Then The "left-img" element present on the page
-    And The "left-img" element shall not be hyperlinked
+    Then The "left-img" element present on the desktop page only
+    And The "left-img" element shall not be hyperlinked desktop page only
     #CP-345
-    And The ".rightcont" message contains "Instantly Access Your Credit Score"
-    And The ".rightcont" message contains "Secure Online Delivery"
-    And The ".rightcont" message contains "No Credit Card Required"
-    And The ".rightcont" message contains "See Score In Under 60 Seconds"
+    And The "benefits" message contains "Instantly Access Your Credit Score"
+    And The "benefits" message contains "Secure Online Delivery"
+    And The "benefits" message contains "No Credit Card Required"
+    And The "benefits" message contains "See Score In Under 60 Seconds"
     #CP-357
     Then The "score-img" element present on the page
     And The "score-img" element shall not be hyperlinked
@@ -63,7 +67,7 @@ Feature: cfs/landingPage-content.feature
     #CP-323
       Then The "arrow-img" element present on the page
     #CP-471
-    And The "<legend>" message contains "Start Here"
+    And The "legend" message contains "Start Here"
     #CP-516
     And The "<h5> in check-score-text" message contains "Why do I need to check my Credit Score?"
     And The "<p> in check-score-text" message contains "A good credit score is your passport to competitive interest rates for mortgages, cars, credit card offers, job offers, insurance premiums and more. A strong score is worth money because it saves you in excess costs."
