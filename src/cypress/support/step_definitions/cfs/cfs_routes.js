@@ -60,9 +60,9 @@
         cy.url().should('contain','/cfs/kba').getElement('kba-section').should('be.visible');
     });
 
-    When(`I am on the cfs step 4 view page`, () => {
-        cy.visit('/cfs/auth/home').getElement('portal-page').should('be.visible');
-    });
+When(`I am on the cfs step4 view page`, () => {
+    cy.visit('/cfs/auth/home').getElement('portal-page').should('be.visible');
+});
 
     Then(`I am guided to the cfs step4 view page`, () => {
         cy.url().should('contain','/cfs/auth/home').getElement('portal-page').should('be.visible');
