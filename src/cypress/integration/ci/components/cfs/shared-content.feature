@@ -32,9 +32,9 @@ Feature: cfs/landingPage-content.feature
   Scenario: step1 Page Content
     Given I am on the cfs step1 page
     #CP-449
-      Then The "<img.spr-mcafee on mcafee2-link" element present on the page
-      And "mcafee2-link" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
-      And "mcafee2-link" targets opening in a new tab
+    Then The "<img.spr-mcafee on mcafee2-link" element present on the page
+    And "mcafee2-link" is Hyperlinked to "https://www.mcafeesecure.com/RatingVerify?ref=checkfreescore.com"
+    And "mcafee2-link" targets opening in a new tab
     #CP-527
     Then The "<img.spr-verisign on verisign2-link" element present on the page
     And "verisign2-link" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
@@ -90,6 +90,9 @@ Feature: cfs/landingPage-content.feature
       Then The "<img.spr-mcafee on mcafee2-link" element present on the page
       And "mcafee2-link" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
       And "mcafee2-link" targets opening in a new tab
+    Then The "<img.spr-mcafee on mcafee2-link" element present on the page
+    And "mcafee2-link" is Hyperlinked to "https://www.mcafeesecure.com/RatingVerify?ref=checkfreescore.com"
+    And "mcafee2-link" targets opening in a new tab
     #CP-527
     Then The "<img.spr-verisign on verisign2-link" element present on the page
     And "verisign2-link" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
