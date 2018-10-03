@@ -7,6 +7,7 @@ Feature: cfs/landingPage-content.feature
   - CP-527 Desktop/Mobile - CFS - Left Side Security Certificate Image
   - CP-515 Desktop/Mobile - CFS - Customers Served Image
   - CP-307 Desktop/Mobile - CFS - Sample Credit Score Image
+  - CP-498 Desktop/Mobile - CFS - Secure Site Seal Image
 
 
   Background:
@@ -40,7 +41,9 @@ Feature: cfs/landingPage-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-
+    #CP-498
+    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
+    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
@@ -56,6 +59,9 @@ Feature: cfs/landingPage-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
+    #CP-498
+    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
+    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
 
   Scenario: step3 Page Content
     Given I am on the cfs step3 page
@@ -71,6 +77,9 @@ Feature: cfs/landingPage-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
+    #CP-498
+    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
+    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
 
   Scenario: step4 Page Content
     Given I am on the cfs step4 authentication page
@@ -86,3 +95,6 @@ Feature: cfs/landingPage-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
+    #CP-498
+    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
+    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
