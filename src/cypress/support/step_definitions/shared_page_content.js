@@ -94,13 +94,13 @@
 
 Then(`I am displayed siteName in the header`, () => {
     cy.get('@flow').then((flow) => {
-        cy.get('nav.navbar [data-test="site-link"]').should('contain', flow.siteName);
+        cy.get('.navbar [data-test="site-link"]').should('contain', flow.siteName);
     });
 });
 
-    Then(`I am displayed flow Logo`, () => {
+Then(`I am displayed flow Logo`, () => {
         cy.get('@flow').then((flow) => {
-            cy.get('nav.navbar [data-test="site-link"]').should('contain', flow.siteName);
+            cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow.siteName);
         });
     });
 })();

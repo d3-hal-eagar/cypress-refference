@@ -51,9 +51,9 @@ Feature: cfs/global-proprietaryNames.feature
     Given I am on the cfs Terms of Service screen
     Then screen does not contain any proprietaryNames
 
-#  Scenario: No proprietary names are displayed on the portal page
-#    Given I am on the cfs portal page
-#    Then screen does not contain any proprietaryNames
+  Scenario: No proprietary names are displayed on the portal page
+    Given Given I am on the cfs step 4 view page
+    Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step1 signup page
     Given I am on the cfs step1 page
@@ -68,5 +68,5 @@ Feature: cfs/global-proprietaryNames.feature
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step4 verify page
-    Given I am on the cfs step4 page
+    Given I am on the cfs step4 authentication page page
     Then screen does not contain any proprietaryNames

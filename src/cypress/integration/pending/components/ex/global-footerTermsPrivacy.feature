@@ -24,7 +24,8 @@ Feature: ex/global-footerTermsPrivacy.feature
 
   Scenario: 2 User is displayed the following on step2 form page
     When I am on the ex step2 form page
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Footer
     And "tos-link on terms" with text "Terms Of Use Agreement" Hyperlinked to "/ex/tos"
     And "tos-link on terms" targets opening in a new tab
@@ -34,7 +35,8 @@ Feature: ex/global-footerTermsPrivacy.feature
 
   Scenario: 3 User is displayed the following on ck step3 screen
     When I am on the ex step3 confirm page
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
     When I click element "privacy-link on <footer>"
@@ -42,7 +44,8 @@ Feature: ex/global-footerTermsPrivacy.feature
 
   Scenario: 4 User is displayed the following on Terms of Service screen
     When I am on the ex Terms of Service screen
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Terms of Service Text
     And The "section-title in tos-section" message contains siteName
     And The "<p> in tos-section" message contains siteName
@@ -51,7 +54,8 @@ Feature: ex/global-footerTermsPrivacy.feature
 
   Scenario: 5 User is displayed the following on Privacy Policy screen
     When I am on the ex Privacy Policy screen
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Privacy Policy Text
     And The "<p> in privacy-section" message contains siteName
     Then I am displayed flow Footer
@@ -59,13 +63,15 @@ Feature: ex/global-footerTermsPrivacy.feature
 
   Scenario: 6 User is displayed the following on ck landing screen
     When I am on the ex landing page
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
 
   Scenario: 7 User is displayed the following on step4 verify page
     When I am on the ex step4 verify page
-    Then I am displayed flow Logo
+    #Then I am displayed flow Logo
+    Then I am displayed siteName in the header
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
     When I click element "tos-link on <footer>"
