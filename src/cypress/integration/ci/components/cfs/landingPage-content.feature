@@ -14,6 +14,7 @@ Feature: cfs/landingPage-content.feature
   - CP-323 Desktop - CFS - Landing Page - Start Here Arrow
   - CP-471 Desktop - CFS - Landing Page - Start Here Prompt (Copy Requirement)
   - CP-516 Desktop - CFS - Landing Page - Why Check Blurb (copy requirement)
+  - CP-467 Desktop - CFS - Landing Page - No Harm Declaration (copy requirement)
 
   Background:
     Given I am a user on the cfs flow
@@ -71,3 +72,5 @@ Feature: cfs/landingPage-content.feature
     #CP-516
     And The "<h5> in check-score-text" message contains "Why do I need to check my Credit Score?"
     And The "<p> in check-score-text" message contains "A good credit score is your passport to competitive interest rates for mortgages, cars, credit card offers, job offers, insurance premiums and more. A strong score is worth money because it saves you in excess costs."
+    #CP-467
+    And The "no-harm-text" message contains "Checking your credit will not harm your score"

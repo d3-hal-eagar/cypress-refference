@@ -33,7 +33,7 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains siteName
 
   Scenario: Step 4 Footer shall contain Copyright, Terms of Service, Privacy Policy, and Contact Us
-    When I am on the cfs step4 page
+    When I am on the cfs step4 authentication page page
     Then I am displayed flow Footer
     #Then I am displayed flow Footer
     And "tos-link on <footer>" with text "Terms Of Service" Hyperlinked to "/cfs/tos"
@@ -71,7 +71,7 @@ Feature: cfs/global-footer-content.feature
     And The "<p> in tos-section" message contains siteName
 
   Scenario: portal Page Content
-    Given I am on the cfs portal page
+    Given Given I am on the cfs step 4 view page
     Then I am displayed flow Footer
 
   Scenario: step2 Page Content
