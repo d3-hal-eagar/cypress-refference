@@ -57,7 +57,7 @@ Then(`I am guided to the cfs step4 authentication page`, () => {
     cy.url().should('contain','/cfs/kba').getElement('kba-section').should('be.visible');
 });
 
-When(`I am on the cfs step 4 view page`, () => {
+When(`I am on the cfs step4 view page`, () => {
     cy.visit('/cfs/auth/home').getElement('portal-page').should('be.visible');
 });
 
