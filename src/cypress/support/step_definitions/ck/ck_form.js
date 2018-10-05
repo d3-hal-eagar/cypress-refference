@@ -3,38 +3,42 @@
 (function() {
     "use strict";
 
-    const CK_errorRed = 'rgb(220, 53, 69)';
-    const CK_textBlack = 'rgb(73, 80, 87)';
-    const CK_textDark = 'rgb(90, 92, 94)';
-
     Then(/^"(.*?)" field label is displayed in red$/, function (formField) {
         // e.g. ssn-label, dob-label
-        if (formField.endsWith("-label")){
-            cy.get('label[data-test='+formField+'].text-danger').should('be.visible');
-            cy.getElement(formField).should('have.css', 'color', CK_errorRed);
-        }
-        else {
-            cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
-            cy.getFormGroup(formField).find('label').should('have.css', 'color', CK_errorRed);
-        }
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (formField.endsWith("-label")){
+                cy.get('label[data-test='+formField+'].text-danger').should('be.visible');
+                cy.getElement(formField).should('have.css', 'color', flow_specific.errorRed);
+            }
+            else {
+                cy.getFormGroup(formField).find('label.text-danger').should('be.visible');
+                cy.getFormGroup(formField).find('label').should('have.css', 'color', flow_specific.errorRed);
+            }
+        });
     });
 
     Then(/^"(.*?)" field label is displayed in black/, function (formField) {
-        if (formField.startsWith("ssn") || formField.startsWith("dob")){
-            // e.g. ssn-label, dob-label
-            cy.get('label[data-test='+formField+'-label]').should('have.css', 'color', CK_textDark);
-        } else {
-            cy.getFormGroup(formField).find('label').should('have.css', 'color', CK_textDark);
-        }
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (formField.startsWith("ssn") || formField.startsWith("dob")){
+                // e.g. ssn-label, dob-label
+                cy.get('label[data-test='+formField+'-label]').should('have.css', 'color', flow_specific.textDark);
+            } else {
+                cy.getFormGroup(formField).find('label').should('have.css', 'color', flow_specific.textDark);
+            }
+        });
     });
 
     Then(/^"(.*?)" field input is displayed in black$/, function (formField) {
-        cy.getFormGroup(formField).find('input').should('have.css', 'color', CK_textBlack);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('input').should('have.css', 'color', flow_specific.textBlack);
+        });
     });
 
     Then(/^"(.*?)" input field is displayed in red$/, function (formField) {
-        cy.getFormGroup(formField).find('input.text-danger').should('be.visible');
-        cy.getFormGroup(formField).find('input').should('have.css', 'color', CK_errorRed);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('input.text-danger').should('be.visible');
+            cy.getFormGroup(formField).find('input').should('have.css', 'color', flow_specific.errorRed);
+        });
     });
 
     Then(/^"(.*?)" field displays X Icon$/, function (formField) {
@@ -58,6 +62,8 @@
     });
 
     Then(/^"(.*?)" select field shall be red/, function (formField) {
-        cy.getFormGroup(formField).find('select').should('have.css', 'color', CK_errorRed);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('select').should('have.css', 'color', flow_specific.errorRed);
+        });
     });
 })();

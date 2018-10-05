@@ -132,35 +132,35 @@
     });
 
     Then(/^The "(.*?)" field border is displayed in green/, function (formField) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             cy.getFormGroup(formField).find('input.valid').should('be.visible');
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow.validGreen);
+            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.validGreen);
         });
     });
 
     Then(/^The "(.*?)" select border is displayed in green/, function (formField) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             cy.getFormGroup(formField).find('select.valid').should('be.visible');
-            cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow.validGreen);
+            cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow_specific.validGreen);
         });
     });
 
     Then(/^The "(.*?)" field border is outlined in red color/, function (formField) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             cy.getFormGroup(formField).find('input.invalid').should('be.visible');
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow.errorRedBorder);
+            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.errorRedBorder);
         });
     });
 
     Then(/^The "(.*?)" field border shall have a highlighted focus border/, function (formField) {
-        cy.get('@flow').then((flow) => {
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow.selectBorder);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.selectBorder);
         });
     });
 
     Then(/^The "(.*?)" field border shall have a default border/, function (formField) {
-        cy.get('@flow').then((flow) => {
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow.defaultBorder);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.defaultBorder);
         });
     });
 

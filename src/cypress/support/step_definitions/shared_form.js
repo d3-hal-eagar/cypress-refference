@@ -17,52 +17,52 @@
     });
 
     Then(/^I shall be displayed an error for the "(.*?)" field$/, (formField) => {
-        cy.get('@flow').then((flow) => {
-            cy.getFormGroup(formField).find(flow.errorSelector).should('be.visible');
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find(flow_specific.errorSelector).should('be.visible');
         });
     });
 
     Then(/^I shall be displayed an error for the "(.*?)" field - "(.*?)" in red$/, (formField,errorText) => {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
 
-            if ((formField.startsWith("ssn") && flow.flowName === 'ck') || formField.startsWith("dob")) {
+            if ((formField.startsWith("ssn") && flow_specific.flowName === 'ck') || formField.startsWith("dob")) {
                 // e.g. ssn-error-message, dob-error-message
-                cy.get('div[data-test='+formField+'-error-message]'+flow.errorSelector).contains(errorText).should('be.visible');
-                cy.getElement(formField+'-error-message').should('have.css', 'color', flow.errorRed);
+                cy.get('div[data-test='+formField+'-error-message]'+flow_specific.errorSelector).contains(errorText).should('be.visible');
+                cy.getElement(formField+'-error-message').should('have.css', 'color', flow_specific.errorRed);
             } else {
                 cy.getFormGroup(formField).contains(errorText).should('be.visible');
-                if (flow.flowName === 'ck') {
-                    cy.getFormGroup(formField).find('span'+flow.errorSelector).should('have.css', 'color', flow.errorRed);
-                } else if (flow.flowName === 'ex') {
-                    cy.getFormGroup(formField).find(flow.errorSelector).should('have.css', 'background-color', flow.errorRedBorder);
+                if (flow_specific.flowName === 'ck') {
+                    cy.getFormGroup(formField).find('span'+flow_specific.errorSelector).should('have.css', 'color', flow_specific.errorRed);
+                } else if (flow_specific.flowName === 'ex') {
+                    cy.getFormGroup(formField).find(flow_specific.errorSelector).should('have.css', 'background-color', flow_specific.errorRedBorder);
                 }
             }
         });
     });
 
     Then(/^"(.*?)" select field is displayed in red$/, function (formField) {
-        cy.get('@flow').then((flow) => {
-            if (flow.flowName === 'ck') {
-                cy.getFormGroup(formField).find('select'+flow.errorClass).should('be.visible');
-                cy.getFormGroup(formField).find('select').should('have.css', 'color', flow.errorRed);
-            } else if (flow.flowName === 'ex') {
-                cy.getFormGroup(formField).find('select'+flow.errorClass).should('be.visible');
-                cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow.errorRedBorder);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (flow_specific.flowName === 'ck') {
+                cy.getFormGroup(formField).find('select'+flow_specific.errorClass).should('be.visible');
+                cy.getFormGroup(formField).find('select').should('have.css', 'color', flow_specific.errorRed);
+            } else if (flow_specific.flowName === 'ex') {
+                cy.getFormGroup(formField).find('select'+flow_specific.errorClass).should('be.visible');
+                cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow_specific.errorRedBorder);
             }
 
         });
     });
 
     Then(/^"(.*?)" select field is bordered in green$/, function (formField) {
-        cy.get('@flow').then((flow) => {
-            cy.getFormGroup(formField).find('select'+flow.errorSelector).should('not.be.visible');
-            cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow.validGreen);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('select'+flow_specific.errorSelector).should('not.be.visible');
+            cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow_specific.validGreen);
         });
     });
 
     Then(/^"(.*?)" select field is displayed in black$/, function (formField) {
-        cy.get('@flow').then((flow) => {
-            cy.getFormGroup(formField).find('select').should('have.css', 'color', flow.textBlack);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('select').should('have.css', 'color', flow_specific.textBlack);
         });
     });
 
@@ -141,18 +141,18 @@
     // });
 
     Then(/^I shall be displayed no errors$/, () => {
-        cy.get('@flow').then((flow) => {
-            cy.get(flow.errorSelector).should('not.be.visible');
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.get(flow_specific.errorSelector).should('not.be.visible');
         });
     });
 
     Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             if (formField.startsWith("ssn") || formField.startsWith("dob")) {
                 cy.getElement(formField+'-error-message').should('not.be.visible');
             }
             else {
-                cy.getFormGroup(formField).find(flow.errorSelector).should('not.be.visible');
+                cy.getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
             }
         });
     });
@@ -183,7 +183,7 @@
     // });
 
     When(/^I have enter invalid "(.*?)" value I see the correct validation error message$/, function (formField,dataTable) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             // starting at rowindex 1 to skip header row
             for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
                 let userInput = dataTable.rawTable[rowindex][0];
@@ -207,7 +207,7 @@
                 // chained actions clear previous error
                 // re-enter text and check for error
                 cy.getElement(formField).clear().type(validInput).blur().focus()
-                  .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible')
+                  .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible')
                   .getElement(formField).clear().type(userInput).blur().focus();
                 if(formField.startsWith("ssn") || formField.startsWith("dob")){
                     cy.getElement(formField+'-error-message').contains(errorText).should('be.visible');
@@ -221,7 +221,7 @@
     });
 
     When(/^I have enter valid "(.*?)" value I do not see the validation error message$/, function (formField,dataTable) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             // starting at rowindex 1 to skip header row
             for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
                 let userInput = dataTable.rawTable[rowindex][0];
@@ -230,20 +230,20 @@
                 cy.log('(example #'+rowindex+') I have enter valid '+formField+' value "'+userInput+'"');
                 // chained actions clear previous error
                 // re-enter text and check for error
-                if (flow.flowName === 'cfs') {
+                if (flow_specific.flowName === 'cfs') {
                     // might be able to add this for all flows if we set the color in flow object
                     cy.getElement(formField).clear().type(userInput).blur().focus()
-                        .should('have.css', 'border-color', flow.selectBorder);
+                        .should('have.css', 'border-color', flow_specific.selectBorder);
                 } else {
                     cy.getElement(formField).clear().type(userInput).blur().focus()
-                        .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible');
+                        .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
                 }
             }
         });
     });
 
     When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             // starting at rowindex 1 to skip header row
             for (let charindex = 0; charindex < characterList.length; charindex++) {
                 let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
@@ -252,19 +252,19 @@
                 // chained actions clear previous error
                 // re-enter text and check for error
                 cy.getElement(formField).clear().type(validInput).blur().focus()
-                    .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible');
-                if (flow.flowName === 'ck') {
+                    .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
+                if (flow_specific.flowName === 'ck') {
                     cy.getElement(formField).clear().type(userInput).blur().focus()
                         .getFormGroup(formField).contains(errorText).should('be.visible');
                 }
-                else if (flow.flowName === 'ex') {
+                else if (flow_specific.flowName === 'ex') {
                     cy.getElement(formField).clear().type(userInput).focus()
                         .getFormGroup(formField).contains(errorText).should('be.visible');
                 }
-                else if (flow.flowName === 'cfs') {
+                else if (flow_specific.flowName === 'cfs') {
                     //no error display until submit
                     cy.getElement(formField).clear().type(userInput).focus()
-                        .should('have.css', 'border-color', flow.errorRedBorder);
+                        .should('have.css', 'border-color', flow_specific.errorRedBorder);
 
                 }
             }
@@ -290,25 +290,25 @@
         const youngYear = thisYear - 18;
         const oldYear = thisYear - 99;
         const formField = 'dobYear';
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             // counting down by 5 years to speed up test
             for (let year = youngYear; year > oldYear; year-=5) {
                 // log test intent this is otherwise lost when doing multiple tests in a single step
                 cy.log('(example #' + year + ') I have selected valid ' + year + ' option for the ' + formField + ' field that has ' + year + ' value');
                 cy.getElement(formField).select(''+year).should('have.value', year.toString()).and('contain',year.toString())
-                    .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible').wait(1);
+                    .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible').wait(1);
 
             }
             // since were skipping by 5 make sure we hit oldest age
             cy.log('(example #' + oldYear + ') I have selected valid ' + oldYear + ' option for the ' + formField + ' field that has ' + oldYear + ' value');
             cy.getElement(formField).select(''+oldYear).should('have.value', oldYear.toString()).and('contain',oldYear.toString())
-                .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible').wait(1);
+                .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible').wait(1);
 
         });
     });
 
     When(/^I have selected valid "(.*?)" option I see the correct value$/, function (formField,dataTable) {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             // starting at rowindex 1 to skip header row
             for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
                 let optionName = dataTable.rawTable[rowindex][0];
@@ -316,7 +316,7 @@
                 // log test intent this is otherwise lost when doing multiple tests in a single step
                 cy.log('(example #' + rowindex + ') I have selected valid ' + optionName + ' option for the ' + formField + ' field that has ' + optionValue + ' value');
                 cy.getElement(formField).select(optionName).should('have.value', optionValue).and('contain',optionName)
-                    .getFormGroup(formField).find(flow.errorSelector).should('not.be.visible').wait(1);
+                    .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible').wait(1);
 
             }
         });
@@ -338,7 +338,7 @@
 
     Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
 
-        //cy.get('@flow').then((flow) => {
+        //cy.get('@_flow_specific').then((flow_specific) => {
             if (formField.startsWith("ssn") || formField.startsWith("dob")){
                 // e.g. ssn-label, dob-label
                 cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');

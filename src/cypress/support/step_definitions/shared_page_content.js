@@ -31,9 +31,7 @@
     });
 
     Then(/^The "(.*?)" element shall not be hyperlinked desktop page only$/, (dataTest) => {
-       if (Cypress.env('TESTMODE') === 'mobile') {
-
-        } else {
+       if (Cypress.env('TESTMODE') !== 'mobile') {
            cy.getElement(dataTest).should('be.visible').and('not.have.attr', 'href');
            cy.getChildElement('<a',dataTest).should('not.be.visible');
         }
@@ -72,35 +70,35 @@
     });
 
     Given(/^the siteName is "(.*?)"$/, (providedSiteName) => {
-        cy.get('@flow').then((flow) => {
-            flow.siteName = providedSiteName;
-            cy.log('siteName',flow.siteName);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            flow_specific.siteName = providedSiteName;
+            cy.log('siteName',flow_specific.siteName);
         });
     });
 
     Then(/^The "(.*?)" message contains siteName$/, function (element) {
-        cy.get('@flow').then((flow) => {
-            cy.getElement(element).should('contain', flow.siteName);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getElement(element).should('contain', flow_specific.siteName);
         });
     });
 
     Then(`I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer`, () => {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             cy.getElement('copyright-text').should('be.visible');
-            cy.get('footer').contains('© 2018 '+flow.siteName+'. All Rights Reserved');
+            cy.get('footer').contains('© 2018 '+flow_specific.siteName+'. All Rights Reserved');
         });
     });
 
 
 Then(`I am displayed siteName in the header`, () => {
-    cy.get('@flow').then((flow) => {
-        cy.get('.navbar [data-test="site-link"]').should('contain', flow.siteName);
+    cy.get('@_flow_specific').then((flow_specific) => {
+        cy.get('.navbar [data-test="site-link"]').should('contain', flow_specific.siteName);
     });
 });
 
 Then(`I am displayed flow Logo`, () => {
-        cy.get('@flow').then((flow) => {
-            cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow.siteName);
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow_specific.siteName);
         });
     });
 })();

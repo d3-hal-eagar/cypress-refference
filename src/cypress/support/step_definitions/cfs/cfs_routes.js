@@ -3,23 +3,6 @@
 (function() {
     "use strict";
 
-    Given(`I am a user on the cfs flow`, () => {
-        //www.notcheckfreescore.local
-        cy.wrap({
-            flowName: 'cfs',
-            validGreen: 'rgb(00, FF, 00)',
-            selectBorder: 'rgb(128, 189, 255)',
-            defaultBorder: 'rgb(206, 212, 218)',
-            errorRedBorder: 'rgb(FF, 00, 00)',
-            errorRed: 'rgb(FF, 00, 00)',
-            errorSelector: '.validation-error',
-            errorClass: '.invalid',
-            siteName: 'IasadGeas'
-        }).as('flow');
-        cy.visit( '?marketingid=000');
-        cy.wait(200);
-    });
-
     When(`I am on the cfs landing page`, () => {
         cy.visit('/cfs/landing').getElement('landing-page-section').should('be.visible');
     });
