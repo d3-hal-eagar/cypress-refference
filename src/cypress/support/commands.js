@@ -56,7 +56,7 @@ Cypress.Commands.add("getElement", (dataTest) => {
         return cy.getChildElement(multiSelectorsChildFirst[1],multiSelectorsChildFirst[0]);
     }
     if (multiSelectorsParentFirst.length == 2) {
-        return cy.getChildElement(multiSelectorsParentFirst[0],multiSelectorsParentFirst[1]);
+        return cy.getParentElement(multiSelectorsParentFirst[0],multiSelectorsParentFirst[1]);
     } else {
         var cssSelector = wrapWithDataId(dataTest);
         return cy.get(cssSelector);
@@ -65,6 +65,12 @@ Cypress.Commands.add("getElement", (dataTest) => {
 
 Cypress.Commands.add("getFormGroup", (dataTest) => {
     return cy.getElement(dataTest).closest('.form-group');
+});
+
+Cypress.Commands.add("getParentElement", (parentDataTest, childDataTest) => {
+    var parentCssSelector = wrapWithDataId(parentDataTest);
+    var childCssSelector = wrapWithDataId(childDataTest);
+    return cy.get(childCssSelector).closest(parentCssSelector);
 });
 
 Cypress.Commands.add("getChildElement", (parentDataTest, childDataTest) => {

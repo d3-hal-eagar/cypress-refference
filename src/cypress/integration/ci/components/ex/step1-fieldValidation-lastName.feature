@@ -97,7 +97,7 @@ Feature: ex/step1-fieldValidation-lastName.feature
   Scenario: User enters an invalid lastName
     When I have enter invalid "lastName" value I see the correct validation error message
       | name_entered | type_of_error                       | error_message                                                          |
-      | mighty77     | contians a number                   | Last Name may not begin with or include numbers or special characters. |
+      | mighty77     | contains a number                   | Last Name may not begin with or include numbers or special characters. |
       | smith  jones | contains two spaces in a row        | Last Name may not begin with or include numbers or special characters. |
       | Mc--Mac      | contains two dashes in a row        | Last Name may not begin with or include numbers or special characters. |
       | d''art       | contains two single quotes in a row | Last Name may not begin with or include numbers or special characters. |

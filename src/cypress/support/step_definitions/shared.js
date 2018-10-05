@@ -44,7 +44,7 @@
         cy.getElement('header').contains(headerText).should('be.visible');
     });
 
-    Then(/^The page contians "(.*?)"$/, (headerText) => {
+    Then(/^The page contains "(.*?)"$/, (headerText) => {
         cy.get('body').contains(headerText).should('be.visible');
     });
 

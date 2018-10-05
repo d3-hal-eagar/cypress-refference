@@ -116,7 +116,7 @@ Feature: ck/step2-fieldValidation-firstName.feature
   Scenario: User enters an invalid firstName
     When I have enter invalid "firstName" value I see the correct validation error message
       | name_entered      | type_of_error                        | error_message                                             |
-      | mighty77          | contians a number                    | First Name may not include numbers or special characters. |
+      | mighty77          | contains a number                    | First Name may not include numbers or special characters. |
       | Ilike--mdash      | contains two dashes in a row         | First Name may not include numbers or special characters. |
       | d''art            | contains two single quotes in a row  | First Name may not include numbers or special characters. |
       | 'Roid             | does not begin with a letter         | First Name may not include numbers or special characters. |
