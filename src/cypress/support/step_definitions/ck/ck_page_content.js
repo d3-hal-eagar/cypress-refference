@@ -45,17 +45,17 @@
     });
 
     Then(`I am displayed the correct blocks on the ck Step 1 right rail`, () => {
-        //cy.get('@flow').then((flow) => {
+        //cy.get('@_flow_specific').then((flow_specific) => {
             //D3F-217
             cy.get('.sidebar').should('be.visible');
         //     // Header:
         //     cy.get('.sidebar [data-test=score-sidebar-section] h2').contains('A Truly Free Credit Score');
         //     //Description:
-        //     cy.get('.sidebar [data-test=score-sidebar-section] p').contains(flow.siteName+' is free, forever. We will never ask you for your credit card or payment information.');
+        //     cy.get('.sidebar [data-test=score-sidebar-section] p').contains(flow_specific.siteName+' is free, forever. We will never ask you for your credit card or payment information.');
         //     // Header:
         //     cy.get('.sidebar [data-test=credit-sidebar-section] h2').contains('Will This Affect My Credit?');
         //     //Description:
-        //     cy.get('.sidebar [data-test=credit-sidebar-section] p').contains('Absolutely not! Checking your score on '+flow.siteName+' is a soft inquiry, which will never affect your credit.');
+        //     cy.get('.sidebar [data-test=credit-sidebar-section] p').contains('Absolutely not! Checking your score on '+flow_specific.siteName+' is a soft inquiry, which will never affect your credit.');
             // Header:
             cy.get('.sidebar [data-test=score-sidebar-section] h2').contains('No Credit Card Required');
             //Description:
@@ -69,7 +69,7 @@
     });
 
     Then(`I am displayed the correct blocks on the ck Step 2 right rail`, () => {
-        cy.get('@flow').then((flow) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
             //D3F-218
             cy.get('.sidebar').should('be.visible');
             // Header:
@@ -79,7 +79,7 @@
             // Header:
             cy.get('.sidebar .row h2').contains('Information Security');
             //Description:
-            cy.get('.sidebar .row ul li').contains(flow.siteName+' uses 256-bit encryption to secure the transmission of information to our site.');
+            cy.get('.sidebar .row ul li').contains(flow_specific.siteName+' uses 256-bit encryption to secure the transmission of information to our site.');
             cy.get('.sidebar .row ul li').contains('We do not share your personal information with unaffiliated third parties for their own marketing purposes.');
         });
     });

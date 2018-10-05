@@ -3,22 +3,6 @@
 (function() {
     "use strict";
 
-    Given(`I am a user on the ex flow`, () => {
-        //www.notcreditexperian.local
-        cy.wrap({
-            flowName: 'ex',
-            textBlack: 'rgb(73, 80, 87)',
-            validGreen: 'rgb(37, 145, 94)',
-            errorRedBorder: 'rgb(203, 18, 62)',
-            errorRed: 'rgb(203, 18, 62) none repeat scroll 0% 0% / auto padding-box border-box',
-            errorSelector: '.popover-body',
-            errorClass: '.invalid',
-            siteName: 'IasadGeas'
-        }).as('flow');
-        cy.visit('?marketingid=11111');
-        cy.wait(200);
-    });
-
     When(`I am on the ex landing page`, () => {
         cy.visit('/ex/lp').getElement('landing-page-section').should('be.visible');
     });

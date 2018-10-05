@@ -3,21 +3,6 @@
 (function() {
     "use strict";
 
-    Given(`I am a user on the ck flow`, () => {
-        //www.notcreditkarma.local
-        cy.wrap({
-            flowName: 'ck',
-            textBlack: 'rgb(73, 80, 87)',
-            validGreen: 'rgb(206, 212, 218)',
-            errorRed: 'rgb(220, 53, 69)',
-            errorSelector: '.text-danger',
-            errorClass: '.text-danger',
-            siteName: 'IasadGeas'
-        }).as('flow');
-        cy.visit( '?marketingid=00000');
-        cy.wait(200);
-    });
-
     When(`I am on the ck landing page`, () => {
         cy.visit('/ck/landing').getElement('landing-page-section').should('be.visible');
     });
