@@ -1,4 +1,4 @@
-Feature: cfs/landingPage-content.feature
+Feature: cfs/shared-content.feature
 
   As a user when I am on the "cfs landing" page then I am displayed the following blocks
 
