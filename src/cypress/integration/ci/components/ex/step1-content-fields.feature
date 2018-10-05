@@ -83,8 +83,8 @@ Feature: ex/step1-content-fields.feature
     Then Action detail "all fields were present"
 
   Scenario: 2 - test existence of messages and site name token
-    Then The "signup-section containing title" message contains "Tell Us About Yourself"
+    Then The "title within signup-section" message contains "Tell Us About Yourself"
     Then I shall be displayed the ex Progress Bar with Step1 highlighted in green as seen in the design
     And The form header is "About You"
     And The a subheader exists "About You"
-    Then The "signup-section containing header" message contains "About You"
+    Then The "header within signup-section" message contains "About You"

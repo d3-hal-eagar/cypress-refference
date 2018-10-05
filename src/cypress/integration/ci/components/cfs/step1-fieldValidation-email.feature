@@ -84,7 +84,7 @@ Feature: cfs/step1-fieldValidation-email.feature
       | userguy@gnail.com    | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
       | userguy@gmail.co     | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
       | userguy@gmail..com   | double dot         | Please enter a valid email address.                                                                         |
-      | .userguy@gmail.com   | stars with dot     | Please enter a valid email address.                                                                         |
+      | .userguy@gmail.com   | starts with dot     | Please enter a valid email address.                                                                         |
       | userguy.gmail.com    | does not contain @ | Please enter a valid email address.                                                                         |
 
   Scenario: User enters invalid characters in email multiple input errors

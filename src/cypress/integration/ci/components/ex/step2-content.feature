@@ -42,7 +42,7 @@
 
   Scenario: 2 - test existence of messages and site name token
     #Then The page header is "Create Your Account"
-    Then The "account-section containing title" message contains "Create Your Account"
+    Then The "title within account-section" message contains "Create Your Account"
     And The a subheader exists "Identity Verification"
     And The a subheader exists "Account Information"
     And The "terms" message contains "By clicking \"Submit Secure Order\": I accept and agree to your Terms of Use Agreement, as well as acknowledge receipt of your Privacy Policy."
