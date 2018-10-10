@@ -8,7 +8,7 @@
     });
 
     Then(`I am guided to the cfs landing page`, () => {
-        cy.url().should('contain','/cfs/landing').getElement('landing-page').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/landing').getElement('landing-page-section').should('be.visible');
     });
 
     When(`I am on the cfs step1 page`, () => {
@@ -16,7 +16,7 @@
     });
 
     Then(`I am guided to the cfs step1 page`, () => {
-        cy.url().should('contain','/cfs/complete').getElement('complete-section').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/complete').getElement('complete-section').should('be.visible');
     });
 
     When(`I am on the cfs step2 page`, () => {
@@ -24,7 +24,7 @@
     });
 
     Then(`I am guided to the cfs step2 page`, () => {
-        cy.url().should('contain','/cfs/confirm').getElement('confirm-section').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/confirm').getElement('confirm-section').should('be.visible');
     });
 
     When(`I am on the cfs step3 page`, () => {
@@ -32,7 +32,7 @@
     });
 
     Then(`I am guided to the cfs step3 page`, () => {
-        cy.url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
     });
 
     When(`I am on the cfs step4 authentication page`, () => {
@@ -40,7 +40,7 @@
     });
 
     Then(`I am guided to the cfs step4 authentication page`, () => {
-        cy.url().should('contain','/cfs/kba').getElement('kba-section').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/kba').getElement('kba-section').should('be.visible');
     });
 
     When(`I am on the cfs step4 view page`, () => {
@@ -48,7 +48,7 @@
     });
 
     Then(`I am guided to the cfs step4 view page`, () => {
-        cy.url().should('contain','/cfs/auth/home').getElement('portal-page').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/auth/home').getElement('portal-page').should('be.visible');
     });
 
     When(`I am on the cfs Privacy Policy screen`, () => {
