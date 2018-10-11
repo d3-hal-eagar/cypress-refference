@@ -25,4 +25,11 @@
     When(/^I click element "(.*?)"$/, (dataTest) => {
         cy.getElement(dataTest).click();
     });
+
+    When(/^I remove link target from "(.*?)"$/, (dataTest) => {
+        cy.getElement(dataTest).should($input => {
+            expect($input.get(0).removeAttribute('target'));
+        });
+    });
+
 })();
