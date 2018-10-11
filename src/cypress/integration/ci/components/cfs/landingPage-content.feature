@@ -44,9 +44,12 @@ Feature: cfs/landingPage-content.feature
     And The "zip" field placeholder is "Zip Code"
     And The cfs "zip" field label is "Zip Code" on the mobile page only
 
-    #no ticket for checkbox but it's in zeplin
+    #checkbox added to ticket CP-460
     When I click on the "communicationPreferences" field
     Then Check that the "communicationPreferences" field is focused
+    Then Check that the "communicationPreferences" field is checked
+    When I click on the "communicationPreferences" field
+    Then Check that the "communicationPreferences" field is not checked
     And The "communicationPreferences" field label is "Yes, please send special offers from NotCheckFreeScore.com and partners to my email."
 
     #CP-468
