@@ -4,7 +4,8 @@
     "use strict";
 
     Then(`I am displayed flow Terms of Service Text`, () => {
-        cy.getElement('section-title').contains('Terms of Use');
+        //cy.getElement('section-title').contains('Terms of Use');
+        cy.getElement('<h3>').contains('TERMS OF USE');
         cy.get('body').contains('BY USING THE WEBSITE AND THE SERVICES AND/OR REQUESTING THAT WE CONTACT YOU ABOUT OUR SERVICES,');
         cy.get('body').contains('The following additional terms apply to any software (including any updates or upgrades to the software and any related documentation) that we make available to you from time to time for your use in connection with the Website and Services (the "Software"):');
         cy.get('body').contains('INFORMATIONAL PURPOSES; NO PROFESSIONAL ADVICE');
@@ -26,7 +27,8 @@
     });
 
     Then(/^I am displayed flow Privacy Policy Text$/, () => {
-        cy.getElement('section-title').contains('Privacy Policy');
+        //cy.getElement('section-title').contains('Privacy Policy');
+        cy.getElement('<h2>').contains('PRIVACY POLICY');
         //cy.get('body').contains('We Are Committed to Safeguarding Customer Information');
         cy.get('body').contains('WE ARE COMMITTED TO SAFEGUARDING CUSTOMER INFORMATION');
         cy.get('body').contains('THE INFORMATION WE GATHER');

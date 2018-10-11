@@ -21,39 +21,52 @@ Feature: cfs/global-footer-content.feature
     And "tos-link on <footer>" targets opening in a new tab
     And "privacy-link on <footer>" with text "Privacy Policy" Hyperlinked to "/cfs/privacy"
     And "privacy-link on <footer>" targets opening in a new tab
-    And "contact-link on <footer>" with text "Contact Us" Hyperlinked to "/cfs/contact"
 
     And I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer
     And The "<footer>" message contains "Important Information: The credit score(s) you receive from us may not be the same scores used by lenders or other commercial users for credit decisions. There are various types of credit scores, and lenders may use a different type of credit score to make lending decisions than the ones being offered."
     And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
     And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
     And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
-    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses. Credit information is provided either by Transunion® and TransUnion Interactive, Inc. or Experian and CSIdentity Corporation."
-    And The "<footer>" message contains "All product and company names and trademarks mentioned herein are the property of their respective owners."
+    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
     And The "<footer>" message contains siteName
 
   Scenario: Step 4 Footer shall contain Copyright, Terms of Service, Privacy Policy, and Contact Us
-    When I am on the cfs step4 authentication page page
+    When I am on the cfs step4 authentication page
     Then I am displayed flow Footer
     #Then I am displayed flow Footer
     And "tos-link on <footer>" with text "Terms Of Service" Hyperlinked to "/cfs/tos"
     And "tos-link on <footer>" targets opening in a new tab
     And "privacy-link on <footer>" with text "Privacy Policy" Hyperlinked to "/cfs/privacy"
     And "privacy-link on <footer>" targets opening in a new tab
-    And "contact-link on <footer>" with text "Contact Us" Hyperlinked to "/cfs/contact"
 
     And I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer
     And The "<footer>" message contains "Important Information: The credit score(s) you receive from us may not be the same scores used by lenders or other commercial users for credit decisions. There are various types of credit scores, and lenders may use a different type of credit score to make lending decisions than the ones being offered."
     And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
     And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
     And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
-    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses. Credit information is provided either by Transunion® and TransUnion Interactive, Inc. or Experian and CSIdentity Corporation."
-    And The "<footer>" message contains "All product and company names and trademarks mentioned herein are the property of their respective owners."
+    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
     And The "<footer>" message contains siteName
 
   Scenario: Landing Page Content
     Given I am on the cfs landing page
     Then I am displayed flow Footer
+    And "tos-link on <footer>" with text "Terms Of Service" Hyperlinked to "/cfs/tos"
+    And "tos-link on <footer>" targets opening in a new tab
+    And "privacy-link on <footer>" with text "Privacy Policy" Hyperlinked to "/cfs/privacy"
+    And "privacy-link on <footer>" targets opening in a new tab
+
+    And I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer
+    And The "<footer>" message contains "Important Information: The credit score(s) you receive from us may not be the same scores used by lenders or other commercial users for credit decisions. There are various types of credit scores, and lenders may use a different type of credit score to make lending decisions than the ones being offered."
+    And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
+    And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
+    And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
+    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
+    And The "<footer>" message contains siteName
+
+    When I remove link target from "tos-link"
     When I click element "tos-link on <footer>"
     Then I am guided to the cfs Terms of Service screen
 
@@ -67,16 +80,17 @@ Feature: cfs/global-footer-content.feature
     Given I am on the cfs Terms of Service screen
     Then I am displayed flow Footer
     Then I am displayed flow Terms of Service Text
-    And The "section-title in tos-section" message contains siteName
+#    And The "section-title in tos-section" message contains siteName
     And The "<p> in tos-section" message contains siteName
 
   Scenario: portal Page Content
-    Given Given I am on the cfs step 4 view page
+    Given I am on the cfs step4 view page
     Then I am displayed flow Footer
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
     Then I am displayed flow Footer
+    When I remove link target from "privacy-link"
     When I click element "privacy-link on <footer>"
     Then I am guided to the cfs Privacy Policy screen
 
@@ -85,13 +99,14 @@ Feature: cfs/global-footer-content.feature
     Then I am displayed flow Footer
 
   @CP-326
-  Scenario: Contact Us Option
-    When I am on the ck step1 signup page
+  Scenario: Landing Page Contact Us Option
+    Given I am on the cfs landing page
+    And The "modal-link on <footer>" message contains "Contact Us"
     When I click "Contact Us"
 #    Then I am displayed the correct message in the modal header ""
     And I am displayed the correct message in the modal
       """
-      Instantly Access Your  Credit Score
+      Instantly Access Your Credit Score
       """
     And I am displayed the correct message in the modal
       """
@@ -127,10 +142,15 @@ Feature: cfs/global-footer-content.feature
       """
     And I am displayed the correct message in the modal
       """
-CheckFreeScore.com
-RE: Customer Service
-5100 Buckeystown Pike, Suite 250
-Frederick, MD 21704
+      RE: Customer Service
+      """
+    And I am displayed the correct message in the modal
+      """
+      5100 Buckeystown Pike, Suite 250
+      """
+    And I am displayed the correct message in the modal
+      """
+      Frederick, MD 21704
       """
     When I close the modal
     Then the modal is not visible
