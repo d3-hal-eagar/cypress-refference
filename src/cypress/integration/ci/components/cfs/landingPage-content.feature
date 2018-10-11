@@ -43,6 +43,15 @@ Feature: cfs/landingPage-content.feature
     Then Check that the "zip" field is focused
     And The "zip" field placeholder is "Zip Code"
     And The cfs "zip" field label is "Zip Code" on the mobile page only
+
+    #checkbox added to ticket CP-460
+    When I click on the "communicationPreferences" field
+    Then Check that the "communicationPreferences" field is focused
+    Then Check that the "communicationPreferences" field is checked
+    When I click on the "communicationPreferences" field
+    Then Check that the "communicationPreferences" field is not checked
+    And The "communicationPreferences" field label is "Yes, please send special offers from NotCheckFreeScore.com and partners to my email."
+
     #CP-468
     And I focus on the "cta-button" field
     And The "cta-button" message contains "Your Score - Now"

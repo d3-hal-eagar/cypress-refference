@@ -1,4 +1,4 @@
-Feature: cfs/shared-content.feature
+Feature: cfs/landing-fieldValidation-email.feature
 
   As a user when I am on the "cfs landing" page then I am displayed the following blocks
 

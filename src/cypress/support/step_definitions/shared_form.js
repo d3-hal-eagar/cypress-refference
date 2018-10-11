@@ -77,10 +77,6 @@
         cy.getElement(formField).click();
     });
 
-    When(/^I click on the "(.*?)" element$/, (formField) => {
-        cy.getFormGroup(formField).click('center', { force: true });
-    });
-
     Then(/^Check that the "(.*?)" field is focused$/, (formField) => {
         cy.focused().should('have.attr', 'data-test', formField);
         // the test browser does not show the focused highlight correctly though this is known to work,
@@ -103,7 +99,17 @@
     });
 
     When(/^I have enter valid "(.*?)" value "(.*?)"$/, (formField,userInput) => {
-        cy.getElement(formField).clear().type(userInput).blur().focus();
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (flow_specific.flowName === 'ck') {
+                cy.getElement(formField).clear().type(userInput).blur().focus();
+            }
+            else if (flow_specific.flowName === 'ex') {
+                cy.getElement(formField).clear().type(userInput).blur().focus();
+            }
+            else if (flow_specific.flowName === 'cfs') {
+                cy.getElement(formField).clear().type(userInput).blur()
+            }
+        });
     });
 
     Then(/^"(.*?)" value is "(.*?)"$/, (formField,userInput) => {
@@ -233,7 +239,7 @@
                 if (flow_specific.flowName === 'cfs') {
                     // might be able to add this for all flows if we set the color in flow object
                     cy.getElement(formField).clear().type(userInput).blur().focus()
-                        .should('have.css', 'border-color', flow_specific.selectBorder);
+                        .should('not.have.css', 'border-color', flow_specific.errorRedBorder);
                 } else {
                     cy.getElement(formField).clear().type(userInput).blur().focus()
                         .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
@@ -265,7 +271,6 @@
                     //no error display until submit
                     cy.getElement(formField).clear().type(userInput).focus()
                         .should('have.css', 'border-color', flow_specific.errorRedBorder);
-
                 }
             }
         });
