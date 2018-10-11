@@ -107,7 +107,7 @@
                 cy.getElement(formField).clear().type(userInput).blur().focus();
             }
             else if (flow_specific.flowName === 'cfs') {
-                cy.getElement(formField).clear().type(userInput).blur()
+                cy.getElement(formField).clear().type(userInput).blur();
             }
         });
     });
