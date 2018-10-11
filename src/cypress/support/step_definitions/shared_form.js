@@ -360,7 +360,7 @@
         //cy.get('@_flow_specific').then((flow_specific) => {
             if (formField.startsWith("ssn") || formField.startsWith("dob")){
                 // e.g. ssn-label, dob-label
-                cy.get('label[data-test='+formField+'-label]').contains(labelText).should('be.visible');
+                cy.get('[data-test='+formField+'-label]').contains(labelText).should('be.visible');
             } else {
                 cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
             }
