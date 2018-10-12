@@ -8,11 +8,11 @@
         cy.wrap({
             flowName: 'cfs',
             siteName: 'IasadGeas',
-            errorSelector: '.validation-error',
+            errorSelector: '.error-container',
             errorClass: '.invalid',
             textBlack: 'rgb(0, 0, 0)',
             validGreen: 'rgb(0, 255, 0)',
-            errorRed: 'rgb(255, 0, 0)',
+            errorRed: 'rgb(238, 0, 0)',
             errorRedBorder: 'rgb(255, 0, 0)',
             selectBorder: 'rgb(128, 189, 255)',
             defaultBorder: 'rgb(206, 212, 218)',
@@ -44,7 +44,7 @@
         cy.wrap({
             flowName: 'ex',
             siteName: 'IasadGeas',
-            errorSelector: '.popover-body',
+            errorSelector: '.error-container',
             errorClass: '.invalid',
             textBlack: 'rgb(73, 80, 87)',
             validGreen: 'rgb(37, 145, 94)',

@@ -1,15 +1,12 @@
 Feature: cfs/step1-fieldValidation-lastName.feature
 
   Covers
-    -CP-493 Desktop - CFS - Landing Page Last Name Field
+    - CP-402 Desktop/Mobile - CFS - Step 1 Page - Last Name Field
   Validation Criteria
     - Is a required field
     - Last Name must be between 1 and 25 characters
-    #todo - not allow press/hold any keyboard character to repeatedly input a character
-
-  not sure if these are valid for this field but I think they are
-  - consecutive-special - Input cannot have consecutive special characters
-  - Input must begin with a letter- A-Z a-z
+    -consecutive-special - Input cannot have consecutive special characters
+    - Input must begin with a letter- A-Z a-z
 
 
   Background:
@@ -19,69 +16,77 @@ Feature: cfs/step1-fieldValidation-lastName.feature
 
   Scenario: 1 User enters Legal Last Name that meets the required rules
     When I have enter valid "lastName" value "McSmith"
-    Then The "lastName" field border is displayed in green
-    And A green checkmark inside the "lastName" field is displayed
+    And I click element "cta-button"
+    Then The "lastName" field border shall have a default border
 
   Scenario: 2 System restricts the user from entering more than 25 characters
     When I have enter valid "lastName" value "abcdefghijklmnopqrstuvwx"
+    And I click element "cta-button"
     Then I shall be displayed no error for the "lastName" field
-    Then The "lastName" field border shall have a default border
     And I enter additional text into "lastName" field text "yzw"
+    And I click element "cta-button"
     And I am restricted from entering more than "25" characters in "lastName" field
     And I shall be displayed no error for the "lastName" field
-    Then The "lastName" field border shall have a default border
 
   Scenario: 3 User without entering any characters focuses out of the Last Name field
     When without entering "lastName"
+    And I click element "cta-button"
     And The "lastName" field border is outlined in red color
 
   Scenario: 3a User focuses on the Last Name input field that is invalid and enters valid text
     When without entering "lastName"
-    #Then I shall be displayed an error for the "lastName" field - "Last Name is required."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
     When I enter additional text into "lastName" field text "Codeson"
+    And I click element "cta-button"
     Then The "lastName" field border shall have a default border
 
   Scenario: 3b User focuses on the Last Name input field that is invaid and enters invalid text
     When without entering "lastName"
-    #Then I shall be displayed an error for the "lastName" field - "Last Name is required."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
     When I enter additional text into "lastName" field text "3rd"
+    And I click element "cta-button"
     And The "lastName" field border is outlined in red color
-    #Then I shall be displayed an error for the "lastName" field
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
   Scenario: 4 User enters invalid Last Name
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    #Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
-    And I click on the "cta-button" element
-    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
   Scenario: 4a User enters invalid Last Name, and fixes it
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    #Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
     When I enter additional text into "lastName" field text "{backspace}{backspace}{backspace}{backspace}Jones"
-    #And I shall be displayed no error for the "lastName" field
-    Then The "firstName" field border shall have a default border
+    And I click element "cta-button"
+    And I shall be displayed no error for the "lastName" field
 
   Scenario: 4b User enters invalid Last Name, and it remains invalid
     When I have enter invalid "lastName" value "4ork" that "contains a number"
-    #Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
     And I enter additional text into "lastName" field text "{backspace}{backspace}{backspace}{backspace}me@dee.da"
     And The "lastName" field border is outlined in red color
-    And I click on the "cta-button" element
-    And I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    And I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
  # extended validations
   Scenario: User enters invalid Last Name with multiple special characters
     When I have enter invalid "lastName" value "hal--stone" that "contains a number"
-    And I click on the "cta-button" element
-    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
   Scenario: User enters invalid Last Name not starting with a letter
     When I have enter invalid "lastName" value "-stone" that "does not begin with a letter"
-    And I click on the "cta-button" element
-    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
 
   Scenario: User enters an valid lastName

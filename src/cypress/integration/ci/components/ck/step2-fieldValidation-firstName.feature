@@ -29,20 +29,20 @@ Feature: ck/step2-fieldValidation-firstName.feature
 
   Scenario: 3 User without entering any characters focuses out of the First Name field
     When without entering "firstName"
-    Then I shall be displayed an error for the "firstName" field - "First Name is required"
+    Then I shall be displayed an error for the "firstName" field - "First Name is required" in red
     And "firstName" field label is displayed in red
     And "firstName" field displays X Icon
 
   Scenario: 3a User without entering any characters focuses out of the First Name field, then clicks the error icon
     When without entering "firstName"
-    Then I shall be displayed an error for the "firstName" field - "First Name is required"
+    Then I shall be displayed an error for the "firstName" field - "First Name is required" in red
     And "firstName" field displays X Icon
     When I click the X Icon on the "firstName" field
     Then Check that the "firstName" field is not focused
 
   Scenario: 3b User without entering any characters focuses out of the First Name field that has an error, then returns to enter text
     When without entering "firstName"
-    Then I shall be displayed an error for the "firstName" field - "First Name is required"
+    Then I shall be displayed an error for the "firstName" field - "First Name is required" in red
     And "firstName" field label is displayed in red
     And "firstName" field displays X Icon
     When I click on the "firstName" field
@@ -54,31 +54,31 @@ Feature: ck/step2-fieldValidation-firstName.feature
     When I have enter valid "firstName" value "John"
     And I enter additional text into "firstName" field text " (the dude)"
     And I blur the "firstName" field
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
 
   Scenario: 3d User focuses back on the first name field that has the error and backspaces
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    And I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    And I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     And I enter additional text into "firstName" field text "{backspace}"
     Then I shall be displayed no error for the "firstName" field
 
   Scenario: 4 User enters invalid First Name with number
     When I have enter invalid "firstName" value "4ork" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     And "firstName" field label is displayed in red
     And "firstName" field displays X Icon
     And "firstName" input field is displayed in red
 
   Scenario: 4a User enters invalid First Name , then clicks the error icon
     When I have enter invalid "firstName" value "1" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     When I blur the "firstName" field
     And I click the X Icon on the "firstName" field
     Then Check that the "firstName" field is not focused
 
   Scenario: 4b User enters invalid First Name, and fixes it
     When I have enter invalid "firstName" value "4ork" that "that contains a number"
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
     And I shall be displayed no error for the "firstName" field
     Then "firstName" field label is displayed in black
@@ -99,11 +99,11 @@ Feature: ck/step2-fieldValidation-firstName.feature
   # extended validations
   Scenario: User enters invalid First Name with multiple special characters
     When I have enter invalid "firstName" value "hal--stone" that "contains a number"
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
 
   Scenario: User enters invalid First Name not starting with a letter
     When I have enter invalid "firstName" value "-stone" that "does not begin with a letter"
-    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters."
+    Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
 
   Scenario: User enters an valid firstName
     When I have enter valid "firstName" value I do not see the validation error message

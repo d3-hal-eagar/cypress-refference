@@ -1,8 +1,7 @@
-Feature: ex/step1-fieldValidation-city.feature
+Feature: cfs/step1-fieldValidation-city.feature
 
   Covers
-  - CP-830 Desktop - EX - Step 1 Page - City - Validation Criteria and Error Handling
-  - CP-836 (D3F-820) City field: Make it so that you can include apostrophes in the validation rules. Also apply this to street address, city, and name.
+  - CP-347 Desktop/Mobile - CFS - Step 1 Page - City Field.
   Validation Criteria
   - Is a required field.
   - Max length of 27 characters
@@ -10,32 +9,35 @@ Feature: ex/step1-fieldValidation-city.feature
 
 
   Background: user on Step 1 acquisition flow screen
-    Given I am a user on the ex flow
-    Given I am on the ex step1 signup page
+    Given I am a user on the cfs flow
+    Given I am on the cfs step1 page
 
 
   Scenario: 1 - User enters valid City with just letters and space
     When I have enter valid "city" value "New York"
+    And I click element "cta-button"
     And I shall be displayed no error for the "city" field
-    Then The "city" field border is displayed in green
-    And A green checkmark inside the "city" field is displayed
 
   Scenario: 2 - User without entering City focuses out of City field.
     When without entering "city"
+    And I click element "cta-button"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     And The "city" field border is outlined in red color
-    And A red warning icon inside the "city" field is displayed
 
   Scenario: 2a - User focuses back on the City field that has the error - "Please enter a valid city."
     When without entering "city"
+    And I click element "cta-button"
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I have enter valid "city" value "New York"
+    And I click element "cta-button"
     And I shall be displayed no error for the "city" field
 
   Scenario: 3 - System restricts user from entering more than 27 characters in the City input field.
     When I have enter valid "city" value "Test City New York"
+    And I click element "cta-button"
     Then I shall be displayed no error for the "city" field
     And I enter additional text into "city" field text " Test city test"
+    And I click element "cta-button"
     And I am restricted from entering more than "27" characters in "city" field
 
   # extended validations
@@ -63,9 +65,12 @@ Feature: ex/step1-fieldValidation-city.feature
 
   Scenario: 4b - User focuses on the City input field that has the error "Please enter a valid city."
     When Action detail "Trigger error state - 'Please enter a valid city.'"
+    And I click element "cta-button"
     And I have enter invalid "city" value "New &York" that "has an '&' symbol"
-   Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I have enter valid "city" value "New York"
+    And I click element "cta-button"
     And I shall be displayed no error for the "city" field
 
   Scenario: User enters invalid characters in City multiple input errors

@@ -30,10 +30,14 @@
                 cy.get('div[data-test='+formField+'-error-message]'+flow_specific.errorSelector).contains(errorText).should('be.visible');
                 cy.getElement(formField+'-error-message').should('have.css', 'color', flow_specific.errorRed);
             } else {
-                cy.getFormGroup(formField).contains(errorText).should('be.visible');
-                if (flow_specific.flowName === 'ck') {
+                if (flow_specific.flowName === 'cfs') {
+                    cy.get(flow_specific.errorSelector).contains(errorText).should('be.visible');
+                    cy.get(flow_specific.errorSelector+' .error-header').should('have.css', 'background-color', flow_specific.errorRed);
+                } else if (flow_specific.flowName === 'ck') {
+                    cy.getFormGroup(formField).contains(errorText).should('be.visible');
                     cy.getFormGroup(formField).find('span'+flow_specific.errorSelector).should('have.css', 'color', flow_specific.errorRed);
                 } else if (flow_specific.flowName === 'ex') {
+                    cy.getFormGroup(formField).contains(errorText).should('be.visible');
                     cy.getFormGroup(formField).find(flow_specific.errorSelector).should('have.css', 'background-color', flow_specific.errorRedBorder);
                 }
             }
@@ -154,11 +158,16 @@
 
     Then(/^I shall be displayed no error for the "(.*?)" field$/, (formField) => {
         cy.get('@_flow_specific').then((flow_specific) => {
-            if (formField.startsWith("ssn") || formField.startsWith("dob")) {
-                cy.getElement(formField+'-error-message').should('not.be.visible');
-            }
-            else {
-                cy.getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
+
+            if (flow_specific.flowName === 'cfs') {
+                    cy.getElement(formField).should('have.css', 'border-color', flow_specific.defaultBorder);
+            } else {
+                if (formField.startsWith("ssn") || formField.startsWith("dob")) {
+                    cy.getElement(formField+'-error-message').should('not.be.visible');
+                }
+                else {
+                    cy.getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible');
+                }
             }
         });
     });
@@ -215,11 +224,16 @@
                 cy.getElement(formField).clear().type(validInput).blur().focus()
                   .getFormGroup(formField).find(flow_specific.errorSelector).should('not.be.visible')
                   .getElement(formField).clear().type(userInput).blur().focus();
-                if(formField.startsWith("ssn") || formField.startsWith("dob")){
+
+                if (flow_specific.flowName === 'cfs') {
+                    cy.get('[type="submit"]').click().get(flow_specific.errorSelector).contains(errorText).should('be.visible');
+                } else {
+                    if(formField.startsWith("ssn") || formField.startsWith("dob")){
                     cy.getElement(formField+'-error-message').contains(errorText).should('be.visible');
-                }
-                else {
-                    cy.getFormGroup(formField).contains(errorText).should('be.visible');
+                    }
+                    else {
+                        cy.getFormGroup(formField).contains(errorText).should('be.visible');
+                    }
                 }
             }
 
@@ -269,7 +283,7 @@
                 }
                 else if (flow_specific.flowName === 'cfs') {
                     //no error display until submit
-                    cy.getElement(formField).clear().type(userInput).focus()
+                    cy.get('[type="submit"]').click().getElement(formField).clear().type(userInput).focus()
                         .should('have.css', 'border-color', flow_specific.errorRedBorder);
                 }
             }

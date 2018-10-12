@@ -1,59 +1,49 @@
-Feature: cfs/step1-fieldValidation-email.feature
+Feature: cfs/step2-fieldValidation-email.feature
 
   Covers
     -CP-526 Desktop/Mobile - CFS - Landing Page Email Address Field
-    #todo - not allow press/hold any keyboard character to repeatedly input a character
 
   Background:
     Given I am a user on the cfs flow
-    Given I am on the cfs step1 page
-
-
-#browser behaviour of placeholder text tested in content steps
-#  Scenario: 1 Placeholder copy in Email Address Field
-#    Then "Email" shall display in the Email Address Field before the user's input
-#  Scenario: 2 Re-appearing placeholder copy
-#    When I input and then delete characters in the Email Address Field, removing all my input
-#    Then "Email" shall re-display in the Email Address Field
+    Given I am on the cfs step2 page
 
 
   Scenario: 3 Email Address Field Border Glow
-    When I click on the "firstName" field
+    When I click on the "email" field
+    And I click element "cta-button"
     And The "email" field border shall have a highlighted focus border
 
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
+    And I click element "cta-button"
     Then I shall be displayed no error for the "email" field
-    Then The "firstName" field border shall have a default border
-#
-#  No error state for empty required fields in cfs
-#  Scenario: 2  User without entering an Email Address focuses out of the field
-#    When without entering "email"
-#    Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
+    Then The "email" field border shall have a default border
 
   Scenario: 2b - User focuses on the Email Address input field that has an error
     When without entering "email"
     And I enter additional text into "email" field text "@"
     And I shall be displayed no error for the "email" field
-    Then The "firstName" field border shall have a default border
+    Then The "email" field border shall have a default border
 
   Scenario: 3 User enters invalid email address
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
+    And I click element "cta-button"
     And The "email" field border is outlined in red color
-    And I click on the "cta-button" element
-    Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
+    Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
 
   Scenario: 3a When the user focuses on the Email Address input field that has the error on it
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
-    #Then I shall be displayed an error for the "email" field - "Please enter a valid email address."
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
     And The "email" field border is outlined in red color
     When I enter additional text into "email" field text "f"
     Then I shall be displayed no error for the "email" field
-    Then The "firstName" field border shall have a default border
+    Then The "email" field border shall have a default border
 
-#  Scenario: 4 User enters an email address with typo
-#    When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
-#    Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address."
+  Scenario: 4 User enters an email address with typo
+    When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
+    And I click element "cta-button"
+    Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address." in red
 
     # additional rules correctly enforced localpart@label.tld
     # *label* can only be 63
@@ -61,7 +51,7 @@ Feature: cfs/step1-fieldValidation-email.feature
   Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
     When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
     Then I shall be displayed no error for the "email" field
-    Then The "firstName" field border shall have a default border
+    Then The "email" field border shall have a default border
     And I enter additional text into "email" field text ".comando"
     And I am restricted from entering more than "75" characters in "email" field
 
