@@ -133,7 +133,7 @@ Feature: ex/step1-content-previousAddress.feature
     Then Action detail "enter valid"
       When I select "AK" on the "state in previous-address-section" field
       And I blur the "state in previous-address-section" field
-    Then The "state in previous-address-section" select border is displayed in green
+    Then The "state in previous-address-section" field border is displayed in green
 
   Scenario: Zip single test validation rules
     When I click on the "continuousResidenceNo" field

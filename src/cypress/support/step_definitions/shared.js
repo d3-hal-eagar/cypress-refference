@@ -133,22 +133,16 @@
 
     Then(/^The "(.*?)" field border is displayed in green/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getFormGroup(formField).find('input.valid').should('be.visible');
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.validGreen);
-        });
-    });
-
-    Then(/^The "(.*?)" select border is displayed in green/, function (formField) {
-        cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getFormGroup(formField).find('select.valid').should('be.visible');
-            cy.getFormGroup(formField).find('select').should('have.css', 'border-color', flow_specific.validGreen);
+            //cy.getFormGroup(formField).find('select.valid').should('be.visible');
+            cy.getElement(formField).should('have.class', 'valid');
+            cy.getElement(formField).should('have.css', 'border-color', flow_specific.validGreen);
         });
     });
 
     Then(/^The "(.*?)" field border is outlined in red color/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getFormGroup(formField).find('input.invalid').should('be.visible');
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.errorRedBorder);
+            cy.getElement(formField).should('have.class', 'invalid');
+            cy.getElement(formField).should('have.css', 'border-color', flow_specific.errorRedBorder);
         });
     });
 

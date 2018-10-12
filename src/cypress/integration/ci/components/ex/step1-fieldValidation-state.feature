@@ -16,7 +16,7 @@ Feature: ex/step1-fieldValidation-state.feature
     When I select "AK" on the "state" field
     And I blur the "state" field
     Then I shall be displayed no error for the "state" field
-    Then The "state" select border is displayed in green
+    Then The "state" field border is displayed in green
 
   Scenario: 2 System by default displays 'Select' and on focusing on State field highlights 'Select'.
     Then I shall be displayed "Select..." option for the "state" field by default
@@ -95,7 +95,7 @@ Feature: ex/step1-fieldValidation-state.feature
     Then Check that the "state" field is focused
       And I select "NY" on the "state" field
     Then I shall be displayed no error for the "state" field
-    Then The "state" select border is displayed in green
+    Then The "state" field border is displayed in green
 
   Scenario: 5 User shall be able to change the state that was prefilled by the system according to the entered zip code.
     When I have enter valid "zip" value "10007"
