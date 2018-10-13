@@ -15,8 +15,16 @@ Feature: cfs/step2-fieldValidation-dateOfBirth.feature
     Given I am on the cfs step2 page
 
 
+  Scenario: Date of Birth Field Border Glow
+    When I select "12" on the "dobMonth" field
+    And The "dobMonth" field border shall have a highlighted focus border
+    And I select "23" on the "dobDay" field
+    And The "dobDay" field border shall have a highlighted focus border
+    And I select "1989" on the "dobYear" field
+    And The "dobYear" field border shall have a highlighted focus border
+
   Scenario: 1 - User selects the Date, Month and Year
-    When I select "02" on the "dobMonth" field
+    When I select "12" on the "dobMonth" field
     And I select "23" on the "dobDay" field
     And I select "1989" on the "dobYear" field
     When I click element "cta-button"
@@ -29,18 +37,18 @@ Feature: cfs/step2-fieldValidation-dateOfBirth.feature
     And I shall be able to select only one "dobMonth" at a time
     When I have selected valid "dobMonth" option I see the correct value
       | month_selected | value |
-      | 01             | 1     |
-      | 02             | 2     |
-      | 03             | 3     |
-      | 04             | 4     |
-      | 05             | 5     |
-      | 06             | 6     |
-      | 07             | 7     |
-      | 08             | 8     |
-      | 09             | 9     |
-      | 10             | 10    |
-      | 11             | 11    |
-      | 12             | 12    |
+      | January        | 1     |
+      | February       | 2     |
+      | March          | 3     |
+      | April          | 4     |
+      | May            | 5     |
+      | June           | 6     |
+      | July           | 7     |
+      | August         | 8     |
+      | September      | 9     |
+      | October        | 10    |
+      | November       | 11    |
+      | December       | 12    |
 
   Scenario: 2b - Focused mode of Day
     Then I shall be displayed "Day" option for the "dobDay" field by default
@@ -85,63 +93,28 @@ Feature: cfs/step2-fieldValidation-dateOfBirth.feature
     When I have selected valid dobYear option I see the correct value
     And I shall not be displayed invalid year in the dobYear field
 
-  Scenario: 3a User without selecting a Date, Month and Year focuses out of DOB Field.
-    When without entering "dobMonth"
-    When I click element "cta-button"
-    Then "dobMonth" select field is displayed in red
-    And "dobDay" select field is displayed in black
-    And "dobYear" select field is displayed in black
-
-    When without entering "dobDay"
-    When I click element "cta-button"
-    Then "dobMonth" select field is displayed in red
-    And "dobDay" select field is displayed in red
-    And "dobYear" select field is displayed in black
-
-    When without entering "dobYear"
-    When I click element "cta-button"
-    Then "dobMonth" select field is displayed in red
-    And "dobDay" select field is displayed in red
-    And "dobYear" select field is displayed in red
-
-  Scenario: 3c User without selecting a Month focuses out of DOB Field - error message is appeared.
-    When without entering "dobMonth"
-    And I select "23" on the "dobDay" field
-    And I select "1989" on the "dobYear" field
-    When I click element "cta-button"
-    And The "dobMonth" field border is outlined in red color
-    Then The "dobDay" field border shall have a default border
-    Then The "dobYear" field border shall have a default border
-
-  Scenario: 3d User without selecting a Day focuses out of DOB Field - error message is appeared
-    When I select "02" on the "dobMonth" field
-    And without entering "dobDay"
-    And I select "1989" on the "dobYear" field
-    When I click element "cta-button"
-    Then The "dobMonth" field border shall have a default border
-    And The "dobDay" field border is outlined in red color
-    Then The "dobYear" field border shall have a default border
-
-  Scenario: 3e - User without selecting a Year focuses out of DOB Field - error message is appeared.
-    When I select "02" on the "dobMonth" field
-    And I select "23" on the "dobDay" field
-    And without entering "dobYear"
-    When I click element "cta-button"
-    Then The "dobMonth" field border shall have a default border
-    Then The "dobDay" field border shall have a default border
-    And The "dobYear" field border is outlined in red color
-
     #  Note - Date of Birth - Field Name will turn red and Error Message appears only when the user has focused on all the 3 dropdowns - Month, Day & Year. User could have selected 1 or 2 fields, please note the error is displayed when all the 3 are focused.
 
   Scenario: 3f - User focuses on the Date of Birth field that has the error
-    When without entering "dobMonth"
-    And without entering "dobDay"
-    And without entering "dobYear"
+    And I select "12" on the "dobMonth" field
+    And I select "31" on the "dobDay" field
+    And I select "2000" on the "dobYear" field
+    And The "dobMonth" field border is outlined in red color
+    And The "dobDay" field border is outlined in red color
+    And The "dobYear" field border is outlined in red color
     When I click element "cta-button"
-    And I select "02" on the "dobMonth" field
+    And I select "2" on the "dobMonth" field
     And I select "23" on the "dobDay" field
     And I select "1989" on the "dobYear" field
     When I click element "cta-button"
     Then The "dobMonth" field border shall have a default border
     Then The "dobDay" field border shall have a default border
     Then The "dobYear" field border shall have a default border
+
+  Scenario: 3f - User enters invalid date
+    And I select "2" on the "dobMonth" field
+    And I select "31" on the "dobDay" field
+    And I select "1920" on the "dobYear" field
+    And The "dobMonth" field border is outlined in red color
+    And The "dobDay" field border is outlined in red color
+    And The "dobYear" field border is outlined in red color

@@ -1,16 +1,15 @@
 Feature: cfs/step2-fieldValidation-email.feature
 
   Covers
-    -CP-526 Desktop/Mobile - CFS - Landing Page Email Address Field
+    - CP-507 Desktop/Mobile - CFS - Step 2 Page - Create Account
 
   Background:
     Given I am a user on the cfs flow
     Given I am on the cfs step2 page
 
 
-  Scenario: 3 Email Address Field Border Glow
+  Scenario: Email Address Field Border Glow
     When I click on the "email" field
-    And I click element "cta-button"
     And The "email" field border shall have a highlighted focus border
 
   Scenario: 1 User enters an email address that meets the required validation criteria
@@ -21,6 +20,9 @@ Feature: cfs/step2-fieldValidation-email.feature
 
   Scenario: 2b - User focuses on the Email Address input field that has an error
     When without entering "email"
+    And I click element "cta-button"
+    #CP-327 #Then I shall be displayed an error for the "email" field - "Please enter your email address." in red
+    Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
     And I enter additional text into "email" field text "@"
     And I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
@@ -29,21 +31,18 @@ Feature: cfs/step2-fieldValidation-email.feature
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
     And I click element "cta-button"
     And The "email" field border is outlined in red color
+    #CP-327 Then I shall be displayed an error for the "email" field - "Invalid email address" in red
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
 
   Scenario: 3a When the user focuses on the Email Address input field that has the error on it
-    When I have enter invalid "email" value "userguy" that "does not yet contain @"
+    When I have enter invalid "email" value "them" that "does not yet contain @"
     And I click element "cta-button"
+    #CP-327 Then I shall be displayed an error for the "email" field - "Invalid email address" in red
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
     And The "email" field border is outlined in red color
-    When I enter additional text into "email" field text "f"
+    When I enter additional text into "email" field text "@or.us"
     Then I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
-
-  Scenario: 4 User enters an email address with typo
-    When I have enter invalid "email" value "userguy@gnail.com" that "has a common typo"
-    And I click element "cta-button"
-    Then I shall be displayed an error for the "email" field - "Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address." in red
 
     # additional rules correctly enforced localpart@label.tld
     # *label* can only be 63
@@ -71,10 +70,8 @@ Feature: cfs/step2-fieldValidation-email.feature
   Scenario: User enters an invalid email
     When I have enter invalid "email" value I see the correct validation error message
       | email_entered        | type_of_error      | error_message                                                                                               |
-      | userguy@gnail.com    | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
-      | userguy@gmail.co     | has a common typo  | Oops! It looks like the email address you've entered may contain a typo. Please recheck your email address. |
       | userguy@gmail..com   | double dot         | Please enter a valid email address.                                                                         |
-      | .userguy@gmail.com   | starts with dot     | Please enter a valid email address.                                                                         |
+      | .userguy@gmail.com   | starts with dot    | Please enter a valid email address.                                                                         |
       | userguy.gmail.com    | does not contain @ | Please enter a valid email address.                                                                         |
 
   Scenario: User enters invalid characters in email multiple input errors

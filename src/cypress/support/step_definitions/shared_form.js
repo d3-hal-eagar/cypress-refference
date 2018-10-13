@@ -356,7 +356,6 @@
     });
 
     Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {
-
         //cy.get('@_flow_specific').then((flow_specific) => {
             if (formField.startsWith("ssn") || formField.startsWith("dob")){
                 // e.g. ssn-label, dob-label

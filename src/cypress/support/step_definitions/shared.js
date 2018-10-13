@@ -148,13 +148,13 @@
 
     Then(/^The "(.*?)" field border shall have a highlighted focus border/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.selectBorder);
+            cy.getElement(formField).should('have.css', 'border-color', flow_specific.selectBorder);
         });
     });
 
     Then(/^The "(.*?)" field border shall have a default border/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getFormGroup(formField).find('input').should('have.css', 'border-color', flow_specific.defaultBorder);
+            cy.getElement(formField).should('have.css', 'border-color', flow_specific.defaultBorder);
         });
     });
 
