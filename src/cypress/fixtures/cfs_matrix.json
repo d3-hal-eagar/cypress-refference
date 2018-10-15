@@ -10,9 +10,11 @@
       "template": {
         "tokens": {
           "siteName": "IasadGeas",
+          "siteDomain": "IasadGeas.org",
           "logo": "logo.png",
           "signUpLogo": "signUp.png",
-          "portalLogo": "logo-large.png"
+          "portalLogo": "logo-large.png",
+          "creditBureauLogo": "credit-bureau-logo.png"
         }
       }
     },
@@ -479,6 +481,45 @@
             "value": "IV",
             "extended": null
           }
+        ],
+        "surveyQuestions": [
+          {
+            "id": 123,
+            "value": "I'm getting my free score for a job opportunity.",
+            "extended": null
+          },
+          {
+            "id": 456,
+            "value": "Is your credit score request part of a loan application?",
+            "extended": null
+          },
+          {
+            "id": 789,
+            "value": "Are you getting your credit score just to apply for a loan?",
+            "extended": null
+          },
+          {
+            "id": 1011,
+            "value": "Are you getting your credit score at the request of a food stamp application site?",
+            "extended": null
+          },
+          {
+            "id": 1213,
+            "value": "Are you checking your credit score as instructed by someone over the telephone?",
+            "extended": null
+          },
+          {
+            "id": 1415,
+            "value": "Is getting your score part of winning a gift or prize?",
+            "extended": null
+          }
+        ],
+        "communicationPreferences": [
+          {
+            "id": 1,
+            "value": "Yes, please send special offers from CheckFreeScore.com and partners to my email",
+            "extended": null
+          }
         ]
       },
       "template": {
@@ -526,7 +567,7 @@
         },
         {
           "id": 103,
-          "route": "/cfs/verify",
+          "route": "/cfs/kba",
           "order": 4,
           "name": "Step 3",
           "options": {},
@@ -539,21 +580,8 @@
         },
         {
           "id": 104,
-          "route": "/cfs/kba",
-          "order": 5,
-          "name": "Step 4",
-          "options": {},
-          "metadata": {
-            "rebound": false
-          },
-          "template": {
-            "tokens": {}
-          }
-        },
-        {
-          "id": 105,
           "route": "/cfs/auth/home",
-          "order": 6,
+          "order": 5,
           "name": "Credit score",
           "options": {},
           "metadata": {
