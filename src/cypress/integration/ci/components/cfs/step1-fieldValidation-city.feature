@@ -21,12 +21,14 @@ Feature: cfs/step1-fieldValidation-city.feature
   Scenario: 2 - User without entering City focuses out of City field.
     When without entering "city"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "city" field - "City cannot be blank." in red
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     And The "city" field border is outlined in red color
 
   Scenario: 2a - User focuses back on the City field that has the error - "Please enter a valid city."
     When without entering "city"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "city" field - "City cannot be blank." in red
     Then I shall be displayed an error for the "city" field - "Please enter a valid city." in red
     When I have enter valid "city" value "New York"
     And I click element "cta-button"

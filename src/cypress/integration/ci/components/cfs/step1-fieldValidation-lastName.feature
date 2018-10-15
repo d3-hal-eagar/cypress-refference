@@ -31,11 +31,14 @@ Feature: cfs/step1-fieldValidation-lastName.feature
   Scenario: 3 User without entering any characters focuses out of the Last Name field
     When without entering "lastName"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "lastName" field - "Last Name cannot be blank" in red
+    Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
     And The "lastName" field border is outlined in red color
 
   Scenario: 3a User focuses on the Last Name input field that is invalid and enters valid text
     When without entering "lastName"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "lastName" field - "Last Name cannot be blank" in red
     Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
     When I enter additional text into "lastName" field text "Codeson"
     And I click element "cta-button"
@@ -44,6 +47,7 @@ Feature: cfs/step1-fieldValidation-lastName.feature
   Scenario: 3b User focuses on the Last Name input field that is invaid and enters invalid text
     When without entering "lastName"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "lastName" field - "Last Name cannot be blank" in red
     Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
     When I enter additional text into "lastName" field text "3rd"
     And I click element "cta-button"

@@ -31,6 +31,7 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
     When I have enter invalid "zip" value "100" that "has less than 5 digits"
     And I click element "cta-button"
     And The "zip" field border is outlined in red color
+    #CP-514 #Then I shall be displayed an error for the "zip" field - "Invalid Zip Code." in red
     Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
 
   Scenario: 3a - User focuses back on the Zip-Code field that has the error "Please enter a valid zip code."
@@ -69,11 +70,13 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
   Scenario: 5 - User does not enter a Zip Code
     When without entering "zip"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "zip" field - "Invalid Zip Code." in red
     Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
 
   Scenario: 5a - User focuses back on the Zip code field that has the error - "Please enter a valid zip code."
     When without entering "zip"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "zip" field - "Invalid Zip Code." in red
     Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And The "zip" field border is outlined in red color
     When I have enter valid "zip" value "99999"

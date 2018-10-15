@@ -39,11 +39,13 @@ Feature: cfs/step1-fieldValidation-streetAddress.feature
     When without entering "street1"
     And I click element "cta-button"
     And "street1" input field shall be outlined in red
+    #CP-514 #Then I shall be displayed an error for the "street1" field - "Billing Address cannot be blank." in red
     Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
 
   Scenario: 3b - User focuses on the Street Address input field that has the error "Please enter your street address."
     When without entering "street1"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "street1" field - "Billing Address cannot be blank." in red
     Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
     Then I enter additional text into "street1" field text "22 Cortland st"
     And I click element "cta-button"
@@ -52,6 +54,12 @@ Feature: cfs/step1-fieldValidation-streetAddress.feature
     And I click element "cta-button"
     And "street1" input field shall be outlined in red
     Then I shall be displayed an error for the "street1" field - "Please enter your street address." in red
+
+  #CP-514 Scenario: 6
+#  Scenario: 4 - Only Numbers in Address Field
+#    When I have enter invalid "street1" value "134" that "has only numbers"
+#    And I click element "cta-button"
+#    Then I shall be displayed an error for the "street1" field - "Billing Address cannot have only numbers." in red
 
   # extended validations
   Scenario: 1 - User enters valid StreetAddress
