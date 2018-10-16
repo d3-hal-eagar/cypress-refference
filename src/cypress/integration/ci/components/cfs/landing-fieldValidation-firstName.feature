@@ -1,7 +1,8 @@
 Feature: cfs/landing-fieldValidation-firstName.feature
 
   Covers
-    -CP-374 Desktop - CFS - Landing Page First Name Field
+    - CP-374 Desktop - CFS - Landing Page First Name Field
+
   Validation Criteria
     - Is a required field
     - First name must be between 1 and 25 characters.

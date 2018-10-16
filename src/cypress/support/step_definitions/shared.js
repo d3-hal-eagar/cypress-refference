@@ -174,28 +174,33 @@
         cy.getElement(element).should('contain', messageText);
     });
 
-Then(/^The "(.*?)" message contains "(.*?)" on the desktop page only$/, (element, messageText) => {
-    if (Cypress.env('TESTMODE') !== 'mobile') {
-        cy.getElement(element).should('contain', messageText);
-    }
-});
+    Then(/^The "(.*?)" message contains "(.*?)" on the desktop page only$/, (element, messageText) => {
+        if (Cypress.env('TESTMODE') !== 'mobile') {
+            cy.getElement(element).should('contain', messageText);
+        }
+    });
 
-Then(/^The "(.*?)" message contains "(.*?)" on the mobile page only$/, (element, messageText) => {
-    if (Cypress.env('TESTMODE') === 'mobile') {
-        cy.getElement(element).should('contain', messageText);
-    }
-});
+    Then(/^The "(.*?)" message contains "(.*?)" on the mobile page only$/, (element, messageText) => {
+        if (Cypress.env('TESTMODE') === 'mobile') {
+            cy.getElement(element).should('contain', messageText);
+        }
+    });
 
-Then(/^I am displayed the correct message on "(.*?)"$/, (element,messageText) => {
-    cy.getElement(element).contains(messageText);
-});
+    Then(/^I am displayed the correct message on "(.*?)"$/, (element,messageText) => {
+        cy.getElement(element).contains(messageText);
+    });
 
-When(/^I close the modal$/, () => {
-    cy.getElement('modal-header').find('.close').click();
-});
+    When(/^I close the modal$/, () => {
+        cy.getElement('modal-header').find('.close').click();
+    });
 
     Then(/^the modal is not visible$/, () => {
         cy.getElement('modal-header').should('not.be.visible');
         cy.get('.modal-content').should('not.be.visible');
     });
+
+    When(/^I wait "(.*?)"$/, (milliseconds) => {
+        cy.wait(milliseconds*1);
+    });
+
 })();

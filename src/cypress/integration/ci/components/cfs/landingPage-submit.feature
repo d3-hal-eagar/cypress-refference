@@ -4,7 +4,7 @@ Feature: cfs/landingPage-submit.feature
 
   Covers
   - CP-468 Desktop - CFS - Landing Page - Your Score Now CTA (API Dependency)
-
+  - CP-311 Desktop - CFS - Landing Page - Keyboard Navigation
 
   Background:
     Given I am a user on the cfs flow
@@ -139,3 +139,33 @@ Feature: cfs/landingPage-submit.feature
     When I select "HI" on the "state" field
     And I click on the "cta-button" field
     And "email" value is "li@ame.tld"
+
+  #CP-311
+  Scenario: 1 Landing Page Default Keyboard Navigation
+    Then Check that the "firstName" field is focused
+    # tab order Not possible in cypress
+    When I have enter valid "firstName" value "{enter}"
+    When I wait "500"
+    Then I am guided to the cfs landing page
+    And The "firstName" field border is outlined in red color
+    And The "lastName" field border is outlined in red color
+    And The "zip" field border is outlined in red color
+    And The "email" field border is outlined in red color
+    #enter partial valid
+    When I have enter valid "firstName" value "emantsrif"
+    When I have enter valid "lastName" value "emantsal"
+    When I have enter valid "zip" value "54324"
+    When I enter additional text into "firstName" field text "{enter}"
+    When I wait "500"
+    Then I am guided to the cfs landing page
+    And The "email" field border is outlined in red color
+    Then Check that the "email" field is focused
+    Then The "firstName" field border shall have a default border
+    Then The "lastName" field border shall have a default border
+    Then The "zip" field border shall have a default border
+    #enter all valid
+    When I have enter valid "email" value "li@ame.tld"
+    When I enter additional text into "email" field text "{enter}"
+    When I wait "500"
+    Then I am guided to the cfs step1 page
+
