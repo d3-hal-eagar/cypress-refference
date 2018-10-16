@@ -19,6 +19,10 @@
         cy.getElement(formField).should('have.attr', 'type', 'password');
     });
 
+    Then(/^"(.*?)" field does not have masked characters$/, function (formField) {
+        cy.getElement(formField).should('not.have.attr', 'type', 'password');
+    });
+
     Then(/^I shall be displayed the "(.*?)", "(.*?)" and "(.*?)" fields in the XXX-XX-___ format$/, function (formField1, formField2, formField3) {
         cy.getElement(formField1)
             .should('be.visible')

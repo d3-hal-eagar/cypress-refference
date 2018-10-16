@@ -66,7 +66,7 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
     And The "<footer>" message contains siteName
 
-    When I remove link target from "tos-link"
+    When I remove link target from "tos-link on <footer>"
     When I click element "tos-link on <footer>"
     Then I am guided to the cfs Terms of Service screen
 
@@ -90,7 +90,7 @@ Feature: cfs/global-footer-content.feature
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
     Then I am displayed flow Footer
-    When I remove link target from "privacy-link"
+    When I remove link target from "privacy-link on <footer>"
     When I click element "privacy-link on <footer>"
     Then I am guided to the cfs Privacy Policy screen
 

@@ -61,3 +61,8 @@ Feature: cfs/step1-content.feature
     #CP-281
     And I focus on the "cta-button" field
     And The "cta-button" message contains "Continue"
+
+  Scenario: Step 1 validation area
+    When I click on the "cta-button" field
+    And The ".error-header within error-container" message contains "6 error(s) prohibited this from being submitted."
+    And The ".error-body within error-container" message contains "There were problems with the following fields:"
