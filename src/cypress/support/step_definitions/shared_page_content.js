@@ -25,6 +25,14 @@
         });
     });
 
+    Then(/^"(.*?)" Hyperlink includes siteDomain$/, (dataTest, linkUrl) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getElement(dataTest).should('have.attr', 'href').then((href) => {
+                cy.wrap(href).should('contain',flow_specific.siteDomain);
+            });
+        });
+    });
+
     Then(/^The "(.*?)" element shall not be hyperlinked$/, (dataTest) => {
         cy.getElement(dataTest).should('be.visible').and('not.have.attr', 'href');
         cy.getChildElement('<a',dataTest).should('not.be.visible');
@@ -73,6 +81,19 @@
         cy.get('@_flow_specific').then((flow_specific) => {
             flow_specific.siteName = providedSiteName;
             cy.log('siteName',flow_specific.siteName);
+        });
+    });
+
+    Given(/^the siteDomain is "(.*?)"$/, (providedSiteDomain) => {
+        cy.get('@_flow_specific').then((flow_specific) => {
+            flow_specific.siteDomain = providedSiteDomain;
+            cy.log('siteName',flow_specific.siteDomain);
+        });
+    });
+
+    Then(/^The "(.*?)" message contains siteDomain/, function (element) {
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getElement(element).should('contain', flow_specific.siteDomain);
         });
     });
 

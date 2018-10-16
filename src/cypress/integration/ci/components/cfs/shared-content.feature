@@ -11,6 +11,7 @@ Feature: cfs/landing-fieldValidation-email.feature
   Background:
     Given I am a user on the cfs flow
     Given the siteName is "NotCheckFreeScore"
+    Given the siteDomain is "NotCheckFreeScore.com"
 
 
   Scenario: Landing Page Content
@@ -20,10 +21,12 @@ Feature: cfs/landing-fieldValidation-email.feature
     #And "<a> on mcaffe-logo" is Hyperlinked to "https://www.mcafeesecure.com/RatingVerify?ref=checkfreescore.com"
     #domain possibly from token?
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
     And "<a> on mcaffe-logo" targets opening in a new tab
     #CP-527
     Then The "<img.verisign on verisign-logo" element present on the page
     And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
     #CP-515
     Then The "badge-img" element present on the page
 
@@ -33,9 +36,11 @@ Feature: cfs/landing-fieldValidation-email.feature
     Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
     And "<a> on mcaffe-logo" targets opening in a new tab
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
     #CP-527
     Then The "<img.verisign on verisign-logo" element present on the page
     And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
     #CP-515
     Then The "badge-img" element present on the mobile page only
 

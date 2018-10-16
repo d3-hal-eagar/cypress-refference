@@ -10,6 +10,7 @@
       "template": {
         "tokens": {
           "siteName": "IasadGeas",
+          "siteDomain": "IasadGeas.org",
           "logo": "logo.png",
           "signUpLogo": "signUp.png",
           "portalLogo": "logo-large.png"
