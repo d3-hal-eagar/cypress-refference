@@ -87,6 +87,9 @@ Feature: cfs/step1-fieldValidation-state.feature
   Scenario: 4 - User without selecting a state, focuses out of state field.
     And without entering "state"
     And I click element "cta-button"
+    #CP-514 #Then I shall be displayed an error for the "state" field - "State/Province cannot be blank." in red
+    Then I shall be displayed an error for the "state" field - "Please select a State/Province." in red
+
     And "state" select field is displayed in red
 
   Scenario: 4a - User focuses back on state field that has error message
