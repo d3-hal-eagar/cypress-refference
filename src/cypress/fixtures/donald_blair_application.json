@@ -1,0 +1,24 @@
+{
+  "firstName": "Donald",
+  "lastName": "Blair",
+  "email": "donald@mailinator.com",
+  "address": {
+    "city": "SAN ANTONIO",
+    "state": "TX",
+    "zip": "78228",
+    "address1": "3627 W POPLAR ST"
+  },
+  "survey": {
+    "1415": false
+  },
+  "dobMonth": "9",
+  "dobDay": "20",
+  "dobYear": "1939",
+  "ssn1": "666",
+  "ssn2": "28",
+  "dob": "1939-10-20T05:00:00.000Z",
+  "ssn": "666285344",
+  "ssn4": "5344",
+  "password": "1securePassword$",
+  "trackingId": "fake_trackingId"
+}

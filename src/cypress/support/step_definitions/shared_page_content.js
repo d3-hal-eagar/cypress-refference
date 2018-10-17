@@ -122,4 +122,5 @@ Then(`I am displayed flow Logo`, () => {
             cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow_specific.siteName);
         });
     });
+
 })();

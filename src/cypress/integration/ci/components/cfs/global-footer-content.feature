@@ -32,7 +32,7 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains siteName
 
   Scenario: Step 4 Footer shall contain Copyright, Terms of Service, Privacy Policy, and Contact Us
-    When I am on the cfs step4 authentication page
+    When I am on the cfs step3A authentication page
     Then I am displayed flow Footer
     #Then I am displayed flow Footer
     And "tos-link on <footer>" with text "Terms Of Service" Hyperlinked to "/cfs/tos"
@@ -66,10 +66,6 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
     And The "<footer>" message contains siteName
 
-    When I remove link target from "tos-link on <footer>"
-    When I click element "tos-link on <footer>"
-    Then I am guided to the cfs Terms of Service screen
-
   Scenario: Privacy Policy Page Content
     Given I am on the cfs Privacy Policy screen
     Then I am displayed flow Footer
@@ -89,13 +85,6 @@ Feature: cfs/global-footer-content.feature
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
-    Then I am displayed flow Footer
-    When I remove link target from "privacy-link on <footer>"
-    When I click element "privacy-link on <footer>"
-    Then I am guided to the cfs Privacy Policy screen
-
-  Scenario: step3 Page Content
-    Given I am on the cfs step3 page
     Then I am displayed flow Footer
 
   @CP-326
@@ -154,3 +143,19 @@ Feature: cfs/global-footer-content.feature
       """
     When I close the modal
     Then the modal is not visible
+
+  Scenario: step1 tos-link
+    Given I am on the cfs step2 page
+    When I remove link target from "tos-link on <footer>"
+    When I focus on the "cta-button" field
+    When I blur the "cta-button" field
+    When I click element "tos-link on <footer>"
+    Then I am guided to the cfs Terms of Service screen
+
+  Scenario: step2 privacy-link
+    Given I am on the cfs step2 page
+    When I remove link target from "privacy-link on <footer>"
+    When I focus on the "cta-button" field
+    When I blur the "cta-button" field
+    When I click element "privacy-link on <footer>"
+    Then I am guided to the cfs Privacy Policy screen

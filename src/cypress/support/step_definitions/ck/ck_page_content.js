@@ -7,11 +7,11 @@
         //cy.getElement('section-title').contains('Terms of Use');
         cy.getElement('<h3>').contains('TERMS OF USE');
         cy.get('body').contains('BY USING THE WEBSITE AND THE SERVICES AND/OR REQUESTING THAT WE CONTACT YOU ABOUT OUR SERVICES,');
-        cy.get('body').contains('The following additional terms apply to any software (including any updates or upgrades to the software and any related documentation) that we make available to you from time to time for your use in connection with the Website and Services (the "Software"):');
+        cy.get('body').contains('The following additional terms apply to any software (including any updates or upgrades to the software and any related documentation) that we make available to you from time to time for your use in connection with the Website and Services');
         cy.get('body').contains('INFORMATIONAL PURPOSES; NO PROFESSIONAL ADVICE');
         cy.get('body').contains('SERVICES');
         cy.get('body').contains('REGISTRATION');
-        cy.get('body').contains('CONSENT');
+        cy.get('body').contains('NFORMATION AUTHORIZATION');
         cy.get('body').contains('FCRA DISCLOSURES');
         cy.get('body').contains('TRIAL PERIODS');
         cy.get('body').contains('SUBSCRIPTIONS; BILLING');

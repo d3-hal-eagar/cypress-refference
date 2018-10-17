@@ -1,0 +1,48 @@
+{
+  "message": "Accepted",
+  "data": {
+    "key": "83a44cf8-d153-4c34-8b4f-1a40be12e0eb",
+    "orderID": "123456789",
+    "customerID": "19909099",
+    "questions": [
+      {
+        "sequence": 1,
+        "text": "Will you Answer This Option D?",
+        "key": "SSN_ISSUED",
+        "id": "39756718",
+        "answers": [
+          {
+            "sequence": 1,
+            "text": "Option A",
+            "key": "Option A",
+            "id": "9999999506"
+          },
+          {
+            "sequence": 2,
+            "text": "Option B",
+            "key": "Option B",
+            "id": "9999999508"
+          },
+          {
+            "sequence": 3,
+            "text": "Option C",
+            "key": "Option C",
+            "id": "9999999510"
+          },
+          {
+            "sequence": 4,
+            "text": "Option D",
+            "key": "Option D",
+            "id": "9999999512"
+          },
+          {
+            "sequence": 5,
+            "text": "None of the Above",
+            "key": "!(Option A^Option B^Option C^Option D)",
+            "id": "9999999514"
+          }
+        ]
+      }
+    ]
+  }
+}
