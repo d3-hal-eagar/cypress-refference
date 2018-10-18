@@ -17,6 +17,7 @@
     "ex": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/ex/**/*'",
     "cfs": "node_modules/.bin/cypress run --spec 'cypress/integration/ci/components/cfs/**/*'",
     "reportcfs": "npm run clearReports & npm run cfs & npm run htmlJunit",
+    "recordTestRun": "node recordTestRun.js",
     "clearReports": "node clearReports.js",
     "htmlJunit": "node htmlJunitViewer.js"
   },
@@ -36,6 +37,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "child_process": "^1.0.2",
     "cypress": "^3.1.0",
     "cypress-cucumber-preprocessor": "^1.5.1",
     "junit-viewer": "github:haleagar/junit_viewer",
