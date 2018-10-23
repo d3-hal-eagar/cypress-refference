@@ -111,7 +111,7 @@
                 cy.getElement(formField).clear().type(userInput).blur().focus();
             }
             else if (flow_specific.flowName === 'cfs') {
-                cy.getElement(formField).clear().type(userInput).blur();
+                cy.getElement(formField).clear().type(userInput);
             }
         });
     });
@@ -132,7 +132,17 @@
 
     // noinspection JSUnusedLocalSymbols
     When(/^I have enter invalid "(.*?)" value "(.*?)" that "(.*?)"$/, (formField,userInput, typeOfValidationFailure) => {
-        cy.getElement(formField).clear().type(userInput).blur().focus();
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (flow_specific.flowName === 'ck') {
+                cy.getElement(formField).clear().type(userInput).blur().focus();
+            }
+            else if (flow_specific.flowName === 'ex') {
+                cy.getElement(formField).clear().type(userInput).blur().focus();
+            }
+            else if (flow_specific.flowName === 'cfs') {
+                cy.getElement(formField).clear().type(userInput);
+            }
+        });
     });
 
     When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {

@@ -1,4 +1,4 @@
-Feature: cfs/landing-fieldValidation-email.feature
+Feature: cfs/shared-content.feature
 
   As a user when I am on the "cfs landing" page then I am displayed the following blocks
 
@@ -56,20 +56,8 @@ Feature: cfs/landing-fieldValidation-email.feature
     #CP-515
     Then The "badge-img" element present on the mobile page only
 
-  Scenario: step3 Page Content
-    Given I am on the cfs step3 page
-    #CP-449
-    Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
-    And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
-    And "<a> on mcaffe-logo" targets opening in a new tab
-    #CP-527
-    Then The "<img.verisign on verisign-logo" element present on the page
-    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
-    #CP-515
-    Then The "badge-img" element present on the mobile page only
-
-  Scenario: step4 authentication Page Content
-    Given I am on the cfs step4 authentication page
+  Scenario: step3A authentication page Content
+    Given I am on the cfs step3A authentication page
     #CP-449
     Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="

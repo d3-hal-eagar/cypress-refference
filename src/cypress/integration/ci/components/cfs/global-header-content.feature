@@ -42,12 +42,7 @@ Feature: cfs/global-header-content.feature
     Then I am displayed flow Logo
     And The "nav-transunion" element shall not be hyperlinked
 
-  Scenario: step3 Page Content
-    Given I am on the cfs step3 page
-    Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
-
-  Scenario: step4 Page Content authentication
-    Given I am on the cfs step4 authentication page
+  Scenario: step3A Page Content authentication
+    Given I am on the cfs step3A authentication page
     Then I am displayed flow Logo
     And The "nav-transunion" element shall not be hyperlinked

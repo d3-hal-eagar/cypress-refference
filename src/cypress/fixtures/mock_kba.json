@@ -1,0 +1,124 @@
+{
+  "message": "Ok",
+  "data": {
+    "key": "84c7fe7f-84e7-49c8-b9fe-0176cc653a3b",
+    "orderID": "123456789",
+    "customerID": "19909099",
+    "questions": [
+      {
+        "sequence": 1,
+        "text": "Will you Answer This Option A?",
+        "key": "TESTQ1",
+        "id": "99999991",
+        "answers": [
+          {
+            "sequence": 1,
+            "text": "Option A",
+            "key": "Option A",
+            "id": "9999999106"
+          },
+          {
+            "sequence": 2,
+            "text": "Option B",
+            "key": "Option B",
+            "id": "9999999108"
+          },
+          {
+            "sequence": 3,
+            "text": "Option C",
+            "key": "Option C",
+            "id": "9999999110"
+          },
+          {
+            "sequence": 4,
+            "text": "Option D",
+            "key": "Option D",
+            "id": "9999999112"
+          },
+          {
+            "sequence": 5,
+            "text": "None of the Above",
+            "key": "!(Option A^Option B^Option C^Option D)",
+            "id": "9999999114"
+          }
+        ]
+      },
+      {
+        "sequence": 2,
+        "text": "Will you Answer This Option C?",
+        "key": "TESTQ2",
+        "id": "99999992",
+        "answers": [
+          {
+            "sequence": 1,
+            "text": "Option A",
+            "key": "Option A",
+            "id": "9999999216"
+          },
+          {
+            "sequence": 2,
+            "text": "Option B",
+            "key": "Option B",
+            "id": "9999999218"
+          },
+          {
+            "sequence": 3,
+            "text": "Option C",
+            "key": "Option C",
+            "id": "9999999220"
+          },
+          {
+            "sequence": 4,
+            "text": "Option D",
+            "key": "Option D",
+            "id": "9999999222"
+          },
+          {
+            "sequence": 5,
+            "text": "None of the Above",
+            "key": "!(Option A^Option B^Option C^Option D)",
+            "id": "9999999224"
+          }
+        ]
+      },
+      {
+        "sequence": 3,
+        "text": "Will you Answer This Option B?",
+        "key": "TESTQ3",
+        "id": "99999993",
+        "answers": [
+          {
+            "sequence": 1,
+            "text": "Option A",
+            "key": "Option A",
+            "id": "9999999326"
+          },
+          {
+            "sequence": 2,
+            "text": "Option B",
+            "key": "Option B",
+            "id": "9999999328"
+          },
+          {
+            "sequence": 3,
+            "text": "Option C",
+            "key": "Option C",
+            "id": "9999999330"
+          },
+          {
+            "sequence": 4,
+            "text": "Option D",
+            "key": "Option D",
+            "id": "9999999332"
+          },
+          {
+            "sequence": 5,
+            "text": "None of the Above",
+            "key": "!(Option A^Option B^Option C^Option D)",
+            "id": "9999999334"
+          }
+        ]
+      }
+    ]
+  }
+}

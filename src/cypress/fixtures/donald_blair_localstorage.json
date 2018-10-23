@@ -1,0 +1,680 @@
+{
+  "settings": {
+    "cookieExpiration": 999592000,
+    "apiUrl": "http://localhost:3000/api"
+  },
+  "flow": {
+    "name": "cfs",
+    "theme": "dark",
+    "steps": [
+      {
+        "id": 100,
+        "route": "/cfs/landing",
+        "order": 1,
+        "name": "Sign up",
+        "options": {},
+        "metadata": {},
+        "template": {
+          "tokens": {
+            "siteName": "IasadGeas",
+            "siteDomain": "IasadGeas.org",
+            "logo": "logo.png",
+            "signUpLogo": "signUp2.png",
+            "portalLogo": "logo-large.png",
+            "creditBureauLogo": "credit-bureau-logo.png"
+          }
+        }
+      },
+      {
+        "id": 101,
+        "route": "/cfs/complete",
+        "order": 2,
+        "name": "Step 1",
+        "options": {},
+        "metadata": {
+          "validated": true
+        },
+        "template": {
+          "tokens": {
+            "siteName": "IasadGeas",
+            "siteDomain": "IasadGeas.io",
+            "logo": "logo.png",
+            "signUpLogo": "signUp2.png",
+            "portalLogo": "logo-large.png",
+            "creditBureauLogo": "credit-bureau-logo.png"
+          }
+        }
+      },
+      {
+        "id": 102,
+        "route": "/cfs/confirm",
+        "order": 3,
+        "name": "Step 2",
+        "options": {},
+        "metadata": {
+          "rebound": true,
+          "validated": true
+        },
+        "template": {
+          "tokens": {
+            "siteName": "IasadGeas",
+            "siteDomain": "IasadGeas.io",
+            "logo": "logo.png",
+            "signUpLogo": "signUp2.png",
+            "portalLogo": "logo-large.png",
+            "creditBureauLogo": "credit-bureau-logo.png"
+          }
+        }
+      },
+      {
+        "id": 103,
+        "route": "/cfs/kba",
+        "order": 4,
+        "name": "Step 3",
+        "options": {},
+        "metadata": {
+          "rebound": true
+        },
+        "template": {
+          "tokens": {
+            "siteName": "IasadGeas",
+            "siteDomain": "IasadGeas.io",
+            "logo": "logo.png",
+            "signUpLogo": "signUp2.png",
+            "portalLogo": "logo-large.png",
+            "creditBureauLogo": "credit-bureau-logo.png"
+          }
+        }
+      },
+      {
+        "id": 104,
+        "route": "/cfs/auth/home",
+        "order": 5,
+        "name": "Credit score",
+        "options": {},
+        "metadata": {
+          "rebound": false
+        },
+        "template": {
+          "tokens": {
+            "siteName": "IasadGeas",
+            "siteDomain": "IasadGeas.io",
+            "logo": "logo.png",
+            "signUpLogo": "signUp2.png",
+            "portalLogo": "logo-large.png",
+            "creditBureauLogo": "credit-bureau-logo.png"
+          }
+        }
+      }
+    ],
+    "trackingId": "3637d8c8-4580-4653-8e10-5138a960806a",
+    "marketingId": 33,
+    "baseTokens": {
+      "siteName": "IasadGeas",
+      "siteDomain": "IasadGeas.io",
+      "logo": "logo.png",
+      "signUpLogo": "signUp2.png",
+      "portalLogo": "logo-large.png",
+      "creditBureauLogo": "credit-bureau-logo.png"
+    },
+    "options": {
+      "states": [
+        {
+          "id": 1,
+          "extended": "AK",
+          "value": "Alaska"
+        },
+        {
+          "id": 2,
+          "extended": "AL",
+          "value": "Alabama"
+        },
+        {
+          "id": 3,
+          "extended": "AR",
+          "value": "Arkansa"
+        },
+        {
+          "id": 4,
+          "extended": "AZ",
+          "value": "Arizona"
+        },
+        {
+          "id": 5,
+          "extended": "CA",
+          "value": "California"
+        },
+        {
+          "id": 6,
+          "extended": "CO",
+          "value": "Colorado"
+        },
+        {
+          "id": 7,
+          "extended": "CT",
+          "value": "Conneticut"
+        },
+        {
+          "id": 8,
+          "extended": "DC",
+          "value": "District of Columbia"
+        },
+        {
+          "id": 9,
+          "extended": "DE",
+          "value": "Delaware"
+        },
+        {
+          "id": 10,
+          "extended": "FL",
+          "value": "Florida"
+        },
+        {
+          "id": 12,
+          "extended": "GA",
+          "value": "Georgia"
+        },
+        {
+          "id": 13,
+          "extended": "HI",
+          "value": "Hawaii"
+        },
+        {
+          "id": 14,
+          "extended": "IA",
+          "value": "Iowa"
+        },
+        {
+          "id": 15,
+          "extended": "ID",
+          "value": "Idaho"
+        },
+        {
+          "id": 16,
+          "extended": "IL",
+          "value": "Illinois"
+        },
+        {
+          "id": 17,
+          "extended": "IN",
+          "value": "Indiana"
+        },
+        {
+          "id": 18,
+          "extended": "KS",
+          "value": "Kansas"
+        },
+        {
+          "id": 19,
+          "extended": "KY",
+          "value": "Kentucky"
+        },
+        {
+          "id": 20,
+          "extended": "LA",
+          "value": "Louisiana"
+        },
+        {
+          "id": 21,
+          "extended": "MA",
+          "value": "Massachusetts"
+        },
+        {
+          "id": 22,
+          "extended": "MD",
+          "value": "Maryland"
+        },
+        {
+          "id": 23,
+          "extended": "ME",
+          "value": "Maine"
+        },
+        {
+          "id": 24,
+          "extended": "MI",
+          "value": "Michigan"
+        },
+        {
+          "id": 25,
+          "extended": "MN",
+          "value": "Minnesota"
+        },
+        {
+          "id": 26,
+          "extended": "MO",
+          "value": "Missouri"
+        },
+        {
+          "id": 27,
+          "extended": "MS",
+          "value": "Mississippi"
+        },
+        {
+          "id": 28,
+          "extended": "MT",
+          "value": "Montana"
+        },
+        {
+          "id": 29,
+          "extended": "NC",
+          "value": "North Carolina"
+        },
+        {
+          "id": 30,
+          "extended": "ND",
+          "value": "Nort Dakota"
+        },
+        {
+          "id": 31,
+          "extended": "NE",
+          "value": "Nebraska"
+        },
+        {
+          "id": 32,
+          "extended": "NH",
+          "value": "New Hampshire"
+        },
+        {
+          "id": 33,
+          "extended": "NJ",
+          "value": "New Jersey"
+        },
+        {
+          "id": 34,
+          "extended": "NM",
+          "value": "New Mexico"
+        },
+        {
+          "id": 35,
+          "extended": "NV",
+          "value": "Nevada"
+        },
+        {
+          "id": 36,
+          "extended": "NY",
+          "value": "New York"
+        },
+        {
+          "id": 37,
+          "extended": "OH",
+          "value": "Ohio"
+        },
+        {
+          "id": 38,
+          "extended": "OK",
+          "value": "Oklahoma"
+        },
+        {
+          "id": 39,
+          "extended": "OR",
+          "value": "Oregon"
+        },
+        {
+          "id": 40,
+          "extended": "PA",
+          "value": "Pennsylvania"
+        },
+        {
+          "id": 41,
+          "extended": "PR",
+          "value": "Puerto Rico"
+        },
+        {
+          "id": 42,
+          "extended": "RI",
+          "value": "Rhode Island"
+        },
+        {
+          "id": 43,
+          "extended": "SC",
+          "value": "South Carolina"
+        },
+        {
+          "id": 44,
+          "extended": "SD",
+          "value": "South Dakota"
+        },
+        {
+          "id": 45,
+          "extended": "TN",
+          "value": "Tennessee"
+        },
+        {
+          "id": 46,
+          "extended": "TX",
+          "value": "Texas"
+        },
+        {
+          "id": 47,
+          "extended": "UT",
+          "value": "Utah"
+        },
+        {
+          "id": 48,
+          "extended": "VA",
+          "value": "Virginia"
+        },
+        {
+          "id": 49,
+          "extended": "VT",
+          "value": "Vermont"
+        },
+        {
+          "id": 50,
+          "extended": "WA",
+          "value": "Washington"
+        },
+        {
+          "id": 51,
+          "extended": "WV",
+          "value": "West Virginia"
+        },
+        {
+          "id": 52,
+          "extended": "WI",
+          "value": "Wisconsin"
+        },
+        {
+          "id": 53,
+          "extended": "WY",
+          "value": "Wyoming"
+        },
+        {
+          "id": 54,
+          "extended": "AA",
+          "value": "Armed Forces Americas"
+        },
+        {
+          "id": 55,
+          "extended": "AE",
+          "value": "Armed Forces Africa"
+        },
+        {
+          "id": 56,
+          "extended": "AP",
+          "value": "Armed Forces Pacific"
+        },
+        {
+          "id": 57,
+          "extended": "VI",
+          "value": "Virgin Islands"
+        },
+        {
+          "id": 58,
+          "extended": "GU",
+          "value": "Guam"
+        },
+        {
+          "id": 59,
+          "extended": "MP",
+          "value": "Mariana Islands"
+        }
+      ],
+      "reasonsForChecking": [
+        {
+          "id": 1,
+          "value": "Applying for home loan or refinance",
+          "extended": null
+        },
+        {
+          "id": 2,
+          "value": "Checking my report or score for accuracy",
+          "extended": null
+        },
+        {
+          "id": 3,
+          "value": "Buying or leasing a car",
+          "extended": null
+        },
+        {
+          "id": 4,
+          "value": "Concerned about identity theft",
+          "extended": null
+        },
+        {
+          "id": 5,
+          "value": "Applying for a credit card",
+          "extended": null
+        },
+        {
+          "id": 6,
+          "value": "Applying for a personal loan",
+          "extended": null
+        },
+        {
+          "id": 7,
+          "value": "Looking to repair my credit",
+          "extended": null
+        },
+        {
+          "id": 8,
+          "value": "other",
+          "extended": null
+        }
+      ],
+      "frequencyForChecking": [
+        {
+          "id": 1,
+          "value": "Constantly",
+          "extended": null
+        },
+        {
+          "id": 2,
+          "value": "Often",
+          "extended": null
+        },
+        {
+          "id": 3,
+          "value": "Once in a while",
+          "extended": null
+        },
+        {
+          "id": 4,
+          "value": "Rarely",
+          "extended": null
+        },
+        {
+          "id": 5,
+          "value": "Never",
+          "extended": null
+        },
+        {
+          "id": 6,
+          "value": "Other",
+          "extended": null
+        }
+      ],
+      "securityQuestions": [
+        {
+          "id": 1,
+          "value": "What was the name of your favorite teacher?",
+          "extended": null
+        },
+        {
+          "id": 2,
+          "value": "What street did you grow up on?",
+          "extended": null
+        },
+        {
+          "id": 3,
+          "value": "What summer camp did you go to?",
+          "extended": null
+        },
+        {
+          "id": 4,
+          "value": "What was the model of your first car?",
+          "extended": null
+        },
+        {
+          "id": 5,
+          "value": "What was the name of your first boyfriend or girlfriend?",
+          "extended": null
+        },
+        {
+          "id": 6,
+          "value": "What was the name of your first employer?",
+          "extended": null
+        },
+        {
+          "id": 7,
+          "value": "What was the name of your childhood best friend?",
+          "extended": null
+        },
+        {
+          "id": 8,
+          "value": "What was the name of your elementary school?",
+          "extended": null
+        },
+        {
+          "id": 9,
+          "value": "What hospital were you born in?",
+          "extended": null
+        },
+        {
+          "id": 10,
+          "value": "What was your maternal grandmother's maiden name?",
+          "extended": null
+        },
+        {
+          "id": 11,
+          "value": "In what city was your mother born?",
+          "extended": null
+        },
+        {
+          "id": 12,
+          "value": "What is your favorite hobby?",
+          "extended": null
+        }
+      ],
+      "suffix": [
+        {
+          "id": 0,
+          "value": "None",
+          "extended": null
+        },
+        {
+          "id": 5,
+          "value": "Jr",
+          "extended": null
+        },
+        {
+          "id": 1,
+          "value": "Sr",
+          "extended": null
+        },
+        {
+          "id": 2,
+          "value": "II",
+          "extended": null
+        },
+        {
+          "id": 3,
+          "value": "III",
+          "extended": null
+        },
+        {
+          "id": 4,
+          "value": "IV",
+          "extended": null
+        }
+      ],
+      "surveyQuestions": [
+        {
+          "id": 123,
+          "value": "I'm getting my free score for a job opportunity.",
+          "extended": null
+        },
+        {
+          "id": 456,
+          "value": "Is your credit score request part of a loan application?",
+          "extended": null
+        },
+        {
+          "id": 789,
+          "value": "Are you getting your credit score just to apply for a loan?",
+          "extended": null
+        },
+        {
+          "id": 1011,
+          "value": "Are you getting your credit score at the request of a food stamp application site?",
+          "extended": null
+        },
+        {
+          "id": 1213,
+          "value": "Are you checking your credit score as instructed by someone over the telephone?",
+          "extended": null
+        },
+        {
+          "id": 1415,
+          "value": "Is getting your score part of winning a gift or prize?",
+          "extended": null
+        }
+      ],
+      "communicationPreferences": [
+        {
+          "id": 1,
+          "value": "Yes, please send special offers from NotCheckFreeScore.org and partners to my email.",
+          "extended": null
+        }
+      ]
+    }
+  },
+  "context": {
+    "tokens": null,
+    "step": {
+      "id": 103,
+      "route": "/cfs/kba",
+      "order": 4,
+      "name": "Step 3",
+      "options": {},
+      "metadata": {
+        "rebound": true
+      },
+      "template": {
+        "tokens": {
+          "siteName": "IasadGeas",
+          "siteDomain": "IasadGeas.io",
+          "logo": "logo.png",
+          "signUpLogo": "signUp2.png",
+          "portalLogo": "logo-large.png",
+          "creditBureauLogo": "credit-bureau-logo.png"
+        }
+      }
+    },
+    "referrer": "/cfs/confirm",
+    "lastStepVisited": 103,
+    "flatTokens": {
+      "siteName": "IasadGeas",
+      "siteDomain": "IasadGeas.io",
+      "logo": "logo.png",
+      "signUpLogo": "signUp2.png",
+      "portalLogo": "logo-large.png",
+      "creditBureauLogo": "credit-bureau-logo.png"
+    }
+  },
+  "application": {
+    "firstName": "Donald",
+    "lastName": "Blair",
+    "address": {
+      "zip": "78228",
+      "city": "SAN ANTONIO",
+      "address1": "3627 W Poplar St",
+      "state": "TX"
+    },
+    "ssn4": "5344",
+    "dobMonth": "11",
+    "dobDay": "20",
+    "dobYear": "1939",
+    "ssn1": "666",
+    "ssn2": "28",
+    "email": "tester@credmo.0.6393579128479001.com",
+    "password": "1securePassword$",
+    "dob": "1939-12-20T05:00:00.000Z",
+    "ssn": "666285344"
+  },
+  "user": {
+    "id": 8,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFja2luZ0lkIjoiMzYzN2Q4YzgtNDU4MC00NjUzLThlMTAtNTEzOGE5NjA4MDZhIiwiZW1haWwiOiJ0ZXN0ZXJAY3JlZG1vLjAuNjM5MzU3OTEyODQ3OTAwMS5jb20iLCJmaXJzdE5hbWUiOiJEb25hbGQiLCJsYXN0TmFtZSI6IkJsYWlyIiwiaWQiOjgsImlhdCI6MTUzOTk5MjgxNCwiZXhwIjoxNTM5OTk0NjE0fQ.H0qw80aqqg9GSJTmiVIO2R4EVCIW-JfSCG28Wr-1yps",
+    "expires_at": "2019-01-02T23:46:54.446Z"
+  }
+}

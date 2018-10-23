@@ -24,12 +24,8 @@ Feature: cfs/global-progressBar.feature
     When I am on the cfs step2 page
     Then I shall be displayed the Progress Bar Indicator as 'Step 2 - CONFIRM' as seen on the design
 
-  Scenario: 3 - Steps Progress Indicator is displayed within CFS Step 3 VERIFY page
-    When I am on the cfs step3 page
-    Then I shall be displayed the Progress Bar Indicator as 'Step 3 - VERIFY' as seen on the design
-
   Scenario: 4 - Steps Progress Indicator is displayed within CFS Step 4 KBA page
-    When I am on the cfs step4 authentication page
+    When I am on the cfs step3A authentication page
     Then I shall be displayed the Progress Bar Indicator as 'Step 4 - AUTHENTICATION' as seen on the design
 
   Scenario: 5 - Steps Progress Indicator is not displayed within CFS Step 4 VIEW page

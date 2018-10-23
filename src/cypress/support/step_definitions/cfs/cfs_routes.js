@@ -27,19 +27,19 @@
         cy.wait(200).url().should('contain','/cfs/confirm').getElement('confirm-section').should('be.visible');
     });
 
-    When(`I am on the cfs step3 page`, () => {
-        cy.visit('/cfs/verify').getElement('verify-section').should('be.visible');
-    });
+    // When(`I am on the cfs step3 page`, () => {
+    //     cy.visit('/cfs/verify').getElement('verify-section').should('be.visible');
+    // });
+    //
+    // Then(`I am guided to the cfs step3 page`, () => {
+    //     cy.wait(200).url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
+    // });
 
-    Then(`I am guided to the cfs step3 page`, () => {
-        cy.wait(200).url().should('contain','/cfs/verify').getElement('verify-section').should('be.visible');
-    });
-
-    When(`I am on the cfs step4 authentication page`, () => {
+    When(`I am on the cfs step3A authentication page`, () => {
         cy.visit('/cfs/kba').getElement('kba-section').should('be.visible');
     });
 
-    Then(`I am guided to the cfs step4 authentication page`, () => {
+    Then(`I am guided to the cfs step3A authentication page`, () => {
         cy.wait(200).url().should('contain','/cfs/kba').getElement('kba-section').should('be.visible');
     });
 

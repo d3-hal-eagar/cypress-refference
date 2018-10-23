@@ -32,6 +32,32 @@ Feature: cfs/step2-fieldValidation-dateOfBirth.feature
     Then I shall be displayed no error for the "dobDay" field
     Then I shall be displayed no error for the "dobYear" field
 
+  Scenario: 3 - User focuses on the Date of Birth field that has the error and fixes it
+    And I select "12" on the "dobMonth" field
+    And I select "31" on the "dobDay" field
+    And I select "2000" on the "dobYear" field
+    When I click element "cta-button"
+    And The "dobMonth" field border is outlined in red color
+    And The "dobDay" field border is outlined in red color
+    And The "dobYear" field border is outlined in red color
+    When I click element "cta-button"
+    And I select "2" on the "dobMonth" field
+    And I select "23" on the "dobDay" field
+    And I select "1989" on the "dobYear" field
+    When I click element "cta-button"
+    Then The "dobMonth" field border shall have a default border
+    Then The "dobDay" field border shall have a default border
+    Then The "dobYear" field border shall have a default border
+
+  Scenario: 4 - User enters invalid date
+    And I select "2" on the "dobMonth" field
+    And I select "31" on the "dobDay" field
+    And I select "1920" on the "dobYear" field
+    When I click element "cta-button"
+    And The "dobMonth" field border is outlined in red color
+    And The "dobDay" field border is outlined in red color
+    And The "dobYear" field border is outlined in red color
+
   Scenario: 2a - Focused mode of Month
     Then I shall be displayed "Month" option for the "dobMonth" field by default
     And I shall be able to select only one "dobMonth" at a time
@@ -94,27 +120,3 @@ Feature: cfs/step2-fieldValidation-dateOfBirth.feature
     And I shall not be displayed invalid year in the dobYear field
 
     #  Note - Date of Birth - Field Name will turn red and Error Message appears only when the user has focused on all the 3 dropdowns - Month, Day & Year. User could have selected 1 or 2 fields, please note the error is displayed when all the 3 are focused.
-
-  Scenario: 3f - User focuses on the Date of Birth field that has the error
-    And I select "12" on the "dobMonth" field
-    And I select "31" on the "dobDay" field
-    And I select "2000" on the "dobYear" field
-    And The "dobMonth" field border is outlined in red color
-    And The "dobDay" field border is outlined in red color
-    And The "dobYear" field border is outlined in red color
-    When I click element "cta-button"
-    And I select "2" on the "dobMonth" field
-    And I select "23" on the "dobDay" field
-    And I select "1989" on the "dobYear" field
-    When I click element "cta-button"
-    Then The "dobMonth" field border shall have a default border
-    Then The "dobDay" field border shall have a default border
-    Then The "dobYear" field border shall have a default border
-
-  Scenario: 3f - User enters invalid date
-    And I select "2" on the "dobMonth" field
-    And I select "31" on the "dobDay" field
-    And I select "1920" on the "dobYear" field
-    And The "dobMonth" field border is outlined in red color
-    And The "dobDay" field border is outlined in red color
-    And The "dobYear" field border is outlined in red color
