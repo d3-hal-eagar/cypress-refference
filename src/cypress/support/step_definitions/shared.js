@@ -203,12 +203,12 @@
         cy.wait(milliseconds*1);
     });
 
-    When(/^Wait for not exists "(.*?)"$/, (element) => {
-        cy.get(element, { timeout: 15000 }).should('not.be.visible');
+    Then(/^Wait for not exists "(.*?)"$/, (element) => {
+        cy.get(element, { timeout: 20000 }).should('not.be.visible');
     });
 
-    When(/^Wait for exists "(.*?)"$/, (element) => {
-        cy.get(element, { timeout: 15000 }).should('be.visible');
+    Then(/^Wait for exists "(.*?)"$/, (element) => {
+        cy.get(element, { timeout: 20000 }).should('be.visible');
     });
 
 

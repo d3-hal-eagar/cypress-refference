@@ -44,11 +44,11 @@
     });
 
     When(`I am on the cfs step4 view page`, () => {
-        cy.visit('/cfs/auth/home').getElement('portal-page').should('be.visible');
+        cy.visit('/cfs/auth/home').getElement('portal-home-section').should('be.visible');
     });
 
     Then(`I am guided to the cfs step4 view page`, () => {
-        cy.wait(200).url().should('contain','/cfs/auth/home').getElement('portal-page').should('be.visible');
+        cy.wait(200).url().should('contain','/cfs/auth/home').getElement('portal-home-section').should('be.visible');
     });
 
     When(`I am on the cfs Privacy Policy screen`, () => {
