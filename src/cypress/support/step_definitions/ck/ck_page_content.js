@@ -46,7 +46,7 @@
     Then(/^I am displayed flow Privacy Policy Text$/, () => {
         //cy.getElement('section-title').contains('Privacy Policy');
         cy.getElement('<h2>').contains('PRIVACY POLICY');
-        cy.get('body').contains('Last updated on June 12, 2018');
+        cy.get('body').contains('Last updated on October 4, 2018');
         cy.get('body').contains('WE ARE COMMITTED TO SAFEGUARDING CUSTOMER INFORMATION');
         cy.get('body').contains('THE INFORMATION WE GATHER');
         cy.get('body').contains('INFORMATION SHARING');
