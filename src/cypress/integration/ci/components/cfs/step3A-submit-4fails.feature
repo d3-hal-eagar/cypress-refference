@@ -25,7 +25,6 @@ Feature: cfs/step3A-submit-4fails.feature
     When I have enter unique "email" value "tester@credmo.com"
     When I have enter valid "password" value "1securePassword$"
     And I click element "cta-button"
-    Then The "modal-body" message contains "Loading questions, please wait..."
     Then Wait for not exists ".loading-modal"
     Then I am guided to the cfs step3A authentication page
 
@@ -35,11 +34,11 @@ Feature: cfs/step3A-submit-4fails.feature
     Then Action detail "first try 3 questions then 2"
       Then The "kba-heading within kba-form" message contains "Verification Questions"
       And The "kba-message within kba-form" message contains "You’re almost there! For the protection of your information, we just need to ask you a few questions to confirm your identity before proceeding."
-    When Maybe incorrectly fill out kba questions and submit
+    When I fill out kba questions and submit
       Then The "kba-heading within kba-form" message contains "Verification Questions"
       And The "kba-message within kba-form" message contains "Sorry, we were unable to verify your identity. For the protection of your information, we just need to ask you a few more questions to confirm your identity before proceeding."
-    When Maybe incorrectly fill out kba questions and submit
-    When Maybe incorrectly fill out kba questions and submit
+    When I fill out kba questions and submit
+    When I fill out kba questions and submit
 
 
     Then Action detail "first retry offer"
@@ -50,9 +49,9 @@ Feature: cfs/step3A-submit-4fails.feature
       Then Wait for not exists ".loading-modal"
 
     Then Action detail "Second try 3 questions then 2"
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
 
     Then Action detail "second retry offer"
 #      Then The "<h1> within kba-form" message contains "We were unable to validate your identity."
@@ -62,9 +61,9 @@ Feature: cfs/step3A-submit-4fails.feature
       Then Wait for not exists ".loading-modal"
 
     Then Action detail "Third try 3 questions then 2"
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
 
 
     Then Action detail "Third retry offer"
@@ -75,9 +74,9 @@ Feature: cfs/step3A-submit-4fails.feature
       Then Wait for not exists ".loading-modal"
 
     Then Action detail "forth try 3 questions then 2"
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
-      When Maybe incorrectly fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
+      When I fill out kba questions and submit
 
     Then Action detail "I failed KBAs 4 times failed message"
       Then The "failed-kba" message contains "We are sorry, but we are unable to help you at this time."

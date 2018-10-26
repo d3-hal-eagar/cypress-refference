@@ -3,73 +3,89 @@
 (function() {
     "use strict";
 
-    Then(/^I incorrectly fill out 3 kba questions$/, function () {
-        //todo better selectors
+    Then(/^I fill out 3 kba questions$/, function () {
         cy.get('[data-test=kba-question-1] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
         cy.get('[data-test=kba-question-2] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
         cy.get('[data-test=kba-question-3] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
     });
 
-    Then(/^I incorrectly fill out 1 kba questions$/, function () {
-        //todo better selectors
+    Then(/^I fill out 1 kba questions$/, function () {
         cy.get('[data-test=kba-question-1] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
     });
 
-    Then(/^Maybe incorrectly fill out kba questions and submit$/, function () {
+    Then(/^I fill out kba questions correct answers and submit$/, function () {
+        cy.get('body').then(($body) => {
+            // the point here is we're doing our if checks in jQuery not a cy promise so we don't fail if it's not true
+            let questionSelectorList = ['[data-test=kba-question-1]', '[data-test=kba-question-2]', '[data-test=kba-question-3]','[data-test=kba-question-4]'];
+            let correctAnswerList = [
+                {'question':'street name','answer':'Ashwood'},
+                {'question':'employer','answer':'Iec'},
+                {'question':'social security number issued','answer':'New Hampshire'},
+                {'question':'auto loan','answer':'2000'}
+            ];
+            for (let questionSelector of questionSelectorList) {
+
+                if ($body.find(questionSelector).length) {
+                    // answer it what we hope is correctly
+                    cy.get(questionSelector).then(($question) => {
+                        let knownAnswer = false;
+                        for (let correctAnswer of correctAnswerList) {
+                            if ($question.find('.questions-title:contains("'+correctAnswer.question+'")').length && $question.find('[data-test=kba-option]:contains("'+correctAnswer.answer+'")').length) {
+                                knownAnswer = true;
+                                cy.get(questionSelector+' [data-test=kba-option]').contains(correctAnswer.answer).closest('[data-test=kba-option]').find('[type=radio]').click()
+                                    .then(() => {
+                                        if ($body.find('[data-test=kba-form]').length) {
+                                            // click submit after each question, it will just give validate error until we are done
+                                            cy.get('[data-test=cta-button]').click().wait(100).get('.loading-modal', { timeout: 20000 }).should('not.be.visible');
+                                        }
+                                    });;
+                            }
+                        }
+                        if (!knownAnswer) {
+                            cy.get(questionSelector+' [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click()
+                                .then(() => {
+                                    if ($body.find('[data-test=kba-form]').length) {
+                                        // if we are on a kba form submit it
+                                        cy.get('[data-test=cta-button]').click().wait(100).get('.loading-modal', { timeout: 20000 }).should('not.be.visible');
+                                    }
+                                });
+                        }
+                    });
+                }
+            }
+        });
+    });
+
+    Then(/^I fill out kba questions and submit$/, function () {
         // the reason for this is I may get 1 2 or 3 pages of KBA questions
         // and each page may have 1-4 questions
         // only after the form is no longer returned will we expect the next page state
         // just mea culpa smashing Cypress best practices here doing conditional behavior
-        // also synchronously clicking the options
+
         cy.get('body').then(($body) => {
-            // synchronously query from body
-            // to find which element was created
-            if ($body.find('[data-test=kba-question-2]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-2] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
+            let questionSelectorList = ['[data-test=kba-question-1]', '[data-test=kba-question-2]', '[data-test=kba-question-3]','[data-test=kba-question-4]'];
+            for (let questionSelector of questionSelectorList) {
+                if ($body.find(questionSelector).length) {
+                    // answer it and submit it
+                    cy.get(questionSelector+' [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click()
+                        .then(() => {
+                            cy.get('[data-test=cta-button]').click().wait(100).get('.loading-modal', {timeout: 20000}).should('not.be.visible');
+                        });
+                }
             }
-            if ($body.find('[data-test=kba-question-3]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-3] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
-            }
-            if ($body.find('[data-test=kba-question-4]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-4] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
-            }
-            if ($body.find('[data-test=kba-question-1]').length) {
-                // answer it and submit it
-                cy.get('[data-test=kba-question-1] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click()
-                    .then(() => {
-                        cy.wait(100).get('[data-test=cta-button]').click().get('.loading-modal', { timeout: 15000 }).should('not.be.visible');
-                });
-            }
-        });//.then(() => {});
+        });
     });
 
-    Then(/^I correctly fill out kba questions$/, function () {
+    Then(/^I fill out kba questions and stop/, function () {
+
         cy.get('body').then(($body) => {
-            // synchronously query from body
-            // to find which element was created
-            if ($body.find('[data-test=kba-question-2]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-2] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
+            let questionSelectorList = ['[data-test=kba-question-1]', '[data-test=kba-question-2]', '[data-test=kba-question-3]','[data-test=kba-question-4]'];
+            for (let questionSelector of questionSelectorList) {
+                if ($body.find(questionSelector).length) {
+                    cy.get(questionSelector+' [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
+                }
             }
-            if ($body.find('[data-test=kba-question-3]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-3] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
-            }
-            if ($body.find('[data-test=kba-question-4]').length) {
-                // answer it
-                cy.get('[data-test=kba-question-4] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click();
-            }
-            if ($body.find('[data-test=kba-question-1]').length) {
-                // answer it and submit it
-                cy.get('[data-test=kba-question-1] [data-test=kba-option]').contains('None of the Above').closest('[data-test=kba-option]').find('[type=radio]').click()
-                    .then(() => {
-                        cy.wait(100).get('[data-test=cta-button]').click().get('.loading-modal', { timeout: 15000 }).should('not.be.visible');
-                    });
-            }
-        });//.then(() => {});
+        });
     });
 
     Then(/^The cfs "(.*?)" field label is "(.*?)" on the mobile page only$/, (formField,labelText) => {

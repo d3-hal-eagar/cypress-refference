@@ -41,6 +41,7 @@
             url: '/api/v1/kba/*',    // that have a URL that matches
             response: '@kbaQuestionsJSON',        // and force the response to be:
             status: 200,
+            delay: 100,
         }).as('kbaQuestionsCall');
     });
 
@@ -51,6 +52,7 @@
             url: '/api/v1/kba/*',
             response: '{"message":"Ok"}',
             status: 202,
+            delay: 100,
         }).as('kbaPassCall');
     });
 
@@ -61,16 +63,36 @@
             url: '/api/v1/kba/*',
             response: '{"message":"Unauthorized","errors":{"code":701}}',
             status: 401,
+            delay: 100,
         }).as('kbaFailCall');
     });
 
     Given(/^Mock KBA secondRound/, () => {
         cy.fixture('mock_kba_second.json').as('kbaQuestionsTwoJSON');
+        cy.server();
         cy.route({
             method: 'POST',      // Route all GET requests
             url: '/api/v1/kba/*',    // that have a URL that matches
             response: '@kbaQuestionsTwoJSON',        // and force the response to be:
             status: 202,
+            delay: 100,
         }).as('kbaQuestionsTwoJSON');
+    });
+
+    Given(/^Mock Report for "(.*?)"$/, (identity) => {
+
+        let identityString = identity.replace(/\s/g, '_');
+        identityString = identityString.toLowerCase();
+        cy.fixture(identityString+'_report.json').as('reportJSON');
+        cy.server();           // enable response stubbing
+        cy.route({
+            method: 'GET',      // Route all GET requests
+            url: '/api/v1/scores/*',    // that have a URL that matches
+            //response: '@reportJSON',        // real data not working
+            //response: '{"html":"<!DOCTYPE html>\\n<html lang=\\"en\\"><head<title>1b report</title></head><body><div data-test=\"fake-report\">this would be report<div class=\"score left scoreVal score_sm\">TUIS</div></div></body></html>""}',
+            response: '{"html":"<div data-test="fake-report">this would be report</div>"}',        // and force the response to be:
+            status: 200,
+            delay: 100,
+        }).as('scoresCall');
     });
 })();
