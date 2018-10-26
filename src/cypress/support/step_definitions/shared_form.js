@@ -399,4 +399,11 @@
     When(/^I unselect the checkbox on "(.*?)" field element$/, (formField) => {
         cy.getElement(formField).uncheck().should('not.be.checked');
     });
+
+    When(/^I make "(.*?)" tabable$/, (formField) => {
+        cy.getElement(formField).then(($field) => {
+            $field.attr( 'tabindex', 1 );
+        });
+    });
+
 })();

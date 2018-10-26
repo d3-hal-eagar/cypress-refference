@@ -10,6 +10,7 @@ Feature: cfs/step3A-submit.feature
     Given Register "Donald Blair"
     Given Mock KBA
     Given I am on the cfs step3A authentication page
+    Then Wait for not exists ".loading-modal"
 
 
   Scenario: Submit KBA First and Second page of One KBA round
@@ -38,5 +39,20 @@ Feature: cfs/step3A-submit.feature
     And The "kba-form" message contains "If you would like to try again, please do so now."
     And The "cta-button" message contains "Click to Try Again"
 
+
+#  #CP-311
+#  Scenario: Step 3 User Verified Page Default Keyboard Navigation
+#    Given Mock KBA fail
+#    When I fill out kba questions and stop
+#    Given I make "cta-button" tabable
+#    And I focus on the "cta-button" field
+#    When I enter additional text into "cta-button" field text "{enter}"
+#
+#    Then The "<h3> within kba-form" message contains "We were unable to validate your identity."
+#    And The "cta-button" message contains "Click to Try Again"
+#    Given I make "cta-button" tabable
+#    And I focus on the "cta-button" field
+#    When I enter additional text into "cta-button" field text "{enter}"
+#    Then The "kba-heading within kba-form" message contains "Verification Questions"
 
 
