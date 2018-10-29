@@ -29,7 +29,8 @@ Feature: cfs/global-header-content.feature
     And The "nav-transunion" element is not present on the page
 
   Scenario: portal Page Content aka step 4 view
-    Given Given I am on the cfs step 4 view page
+    Given Mock Report for "Donald Blair"
+    Given I am on the cfs step4 view page
     Then I am displayed flow Logo
 
   Scenario: step1 Page Content

@@ -72,7 +72,7 @@
             cy.server();           // enable response stubbing
             cy.route({
                 method: 'GET',      // Route all GET requests
-                url: '/api/v1/matrix/*/*',    // that have a URL that matches
+                url: '/api/v1/matrix/*',    // that have a URL that matches
                 response: '@matrixJSON'        // and force the response to be:
             }).as('matrixCall');
     });

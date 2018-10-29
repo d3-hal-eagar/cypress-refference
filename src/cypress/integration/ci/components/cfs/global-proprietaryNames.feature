@@ -26,11 +26,13 @@ Feature: cfs/global-proprietaryNames.feature
       | Check Free Score |
       | Credit Karma     |
       | Credmo           |
+      | score.com        |
 
 
-  Scenario: Testing Sitename shows in header
-    Given I am on the cfs landing page
-    And The "site-link" message contains siteName
+  Scenario: No proprietary names are displayed on the portal page
+    Given Mock Report for "Donald Blair"
+    Given I am on the cfs step4 view page
+    Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the landing page
     Given I am on the cfs landing page
@@ -48,11 +50,8 @@ Feature: cfs/global-proprietaryNames.feature
       | Check Free Score |
       | Credit Karma     |
       | Credmo           |
+      | score.com        |
     Given I am on the cfs Terms of Service screen
-    Then screen does not contain any proprietaryNames
-
-  Scenario: No proprietary names are displayed on the portal page
-    Given Given I am on the cfs step 4 view page
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step1 signup page
