@@ -13,15 +13,13 @@ Feature: cfs/shared-content.feature
     Given We make siteName "IasadGeas" and flow is "cfs"
     Given I am a user on the cfs flow
     Given the siteName is "IasadGeas"
-    Given the siteDomain is "IasadGeas.cc"
+    Given the siteDomain is "IasadGeas.io"
 
 
   Scenario: Landing Page Content
     Given I am on the cfs landing page
     #CP-449
     Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
-    #And "<a> on mcaffe-logo" is Hyperlinked to "https://www.mcafeesecure.com/RatingVerify?ref=checkfreescore.com"
-    #domain possibly from token?
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
     And "<a> on mcaffe-logo" Hyperlink includes siteDomain
     And "<a> on mcaffe-logo" targets opening in a new tab

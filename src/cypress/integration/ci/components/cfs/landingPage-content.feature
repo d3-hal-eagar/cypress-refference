@@ -50,7 +50,7 @@ Feature: cfs/landingPage-content.feature
     Then Check that the "communicationPreferences" field is checked
     When I click on the "communicationPreferences" field
     Then Check that the "communicationPreferences" field is not checked
-    And The "communicationPreferences" field label is "Yes, please send special offers from NotCheckFreeScore.com and partners to my email."
+    And The "communicationPreferences" field label is "Yes, please send special offers from NotCheckFreeScore.org and partners to my email."
 
     #CP-468
     And I focus on the "cta-button" field

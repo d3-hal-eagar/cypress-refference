@@ -12,7 +12,7 @@ Feature: cfs/shared-sidebar-content.feature
     Given We make siteName "IasadGeas" and flow is "cfs"
     Given I am a user on the cfs flow
     Given the siteName is "IasadGeas"
-    Given the siteDomain is "IasadGeas.cc"
+    Given the siteDomain is "IasadGeas.io"
 
 
   Scenario: step1 Page Content

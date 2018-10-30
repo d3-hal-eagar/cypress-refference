@@ -10,7 +10,7 @@
       "template": {
         "tokens": {
           "siteName": "IasadGeas",
-          "siteDomain": "IasadGeas.cc",
+          "siteDomain": "IasadGeas.io",
           "logo": "logo.png",
           "signUpLogo": "signUp.png",
           "portalLogo": "logo-large.png",
@@ -517,7 +517,7 @@
         "communicationPreferences": [
           {
             "id": 1,
-            "value": "Yes, please send special offers from CheckFreeScore.com and partners to my email",
+            "value": "Yes, please send special offers from IasadGeas.io and partners to my email",
             "extended": null
           }
         ]
