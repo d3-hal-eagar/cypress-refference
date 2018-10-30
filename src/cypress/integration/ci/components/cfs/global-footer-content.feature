@@ -80,6 +80,7 @@ Feature: cfs/global-footer-content.feature
     And The "<p> in tos-section" message contains siteName
 
   Scenario: portal Page Content
+    Given Mock Report for "Donald Blair"
     Given I am on the cfs step4 view page
     Then I am displayed flow Footer
 

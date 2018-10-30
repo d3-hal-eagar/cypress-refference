@@ -9,9 +9,10 @@ Feature: cfs/shared-sidebar-content.feature
 
 
   Background:
+    Given We make siteName "IasadGeas" and flow is "cfs"
     Given I am a user on the cfs flow
-    Given the siteName is "NotCheckFreeScore"
-    Given the siteDomain is "NotCheckFreeScore.com"
+    Given the siteName is "IasadGeas"
+    Given the siteDomain is "IasadGeas.cc"
 
 
   Scenario: step1 Page Content
@@ -59,17 +60,3 @@ Feature: cfs/shared-sidebar-content.feature
     Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
     And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
 
-  Scenario: step4 view Page Content
-    Given I am on the cfs step4 view page
-    #CP-403
-    Then The "side-footer-section" element present on the page
-    And The "side-footer-section" message contains "Should I expect to find errors in my credit profile?"
-    And The "side-footer-section" message contains "It's likely, according to financial experts and analysts. Your credit report can include errors and inaccuracies that can lower your credit score. As a member of "
-    And The "side-footer-section" message contains ", you'll have access to your credit report from TransUnion® credit reporting - so you can review your report for any possible issues."
-    And The "side-footer-section" message contains siteDomain
-    #CP-307
-    Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
-    And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked

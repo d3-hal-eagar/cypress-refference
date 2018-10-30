@@ -204,12 +204,19 @@
     });
 
     Then(/^Wait for not exists "(.*?)"$/, (element) => {
-        cy.get(element, { timeout: 20000 }).should('not.be.visible');
+        cy.getElement(element, { timeout: 20000 }).should('not.be.visible');
     });
 
     Then(/^Wait for exists "(.*?)"$/, (element) => {
-        cy.get(element, { timeout: 20000 }).should('be.visible');
+        cy.getElement(element, { timeout: 20000 }).should('be.visible');
     });
 
+    Then(/^Expect "(.*?)" not to exist$/, (element) => {
+        cy.getElement(element).should('not.be.visible');
+    });
+
+    Then(/^Expect "(.*?)" to exist$/, (element) => {
+        cy.getElement(element).should('be.visible');
+    });
 
 })();
