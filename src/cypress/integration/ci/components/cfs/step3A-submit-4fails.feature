@@ -27,6 +27,7 @@ Feature: cfs/step3A-submit-4fails.feature
     And I click element "cta-button"
     Then Wait for not exists ".loading-modal"
     Then I am guided to the cfs step3A authentication page
+    Then Wait for not exists ".loading-modal"
 
   #CP-333
   Scenario: 2,3,4 The user shall have four chances to respond correctly to KBA
@@ -42,7 +43,7 @@ Feature: cfs/step3A-submit-4fails.feature
 
 
     Then Action detail "first retry offer"
-      Then The "<h3> within kba-form" message contains "We were unable to validate your identity."
+      Then The "<h4> within kba-form" message contains "We were unable to validate your identity."
       And The "kba-form" message contains "If you would like to try again, please do so now."
       And The "cta-button" message contains "Click to Try Again"
       When I click element "cta-button"
@@ -54,7 +55,7 @@ Feature: cfs/step3A-submit-4fails.feature
       When I fill out kba questions and submit
 
     Then Action detail "second retry offer"
-#      Then The "<h1> within kba-form" message contains "We were unable to validate your identity."
+#      Then The "<h4> within kba-form" message contains "We were unable to validate your identity."
 #      And The "kba-message within kba-form" message contains "If you would like to try again, please do so now."
       And The "cta-button" message contains "Click to Try Again"
       When I click element "cta-button"
@@ -67,7 +68,7 @@ Feature: cfs/step3A-submit-4fails.feature
 
 
     Then Action detail "Third retry offer"
-#      Then The "<h1> within kba-form" message contains "We were unable to validate your identity."
+#      Then The "<h4> within kba-form" message contains "We were unable to validate your identity."
 #      And The "kba-message within kba-form" message contains "If you would like to try again, please do so now."
       And The "cta-button" message contains "Click to Try Again"
       When I click element "cta-button"

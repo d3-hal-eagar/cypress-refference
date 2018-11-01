@@ -12,7 +12,7 @@
         cy.get('body').contains('1. INFORMATIONAL PURPOSES; NO PROFESSIONAL ADVICE');
         cy.get('body').contains('2. SERVICES');
         cy.get('body').contains('3. REGISTRATION');
-        cy.get('body').contains('4. CONSENT');
+        cy.get('body').contains('4. INFORMATION AUTHORIZATION');
         cy.get('body').contains('5. FCRA DISCLOSURES');
         cy.get('body').contains('6. TRIAL PERIODS');
         cy.get('body').contains('7. SUBSCRIPTIONS; BILLING');

@@ -12,6 +12,7 @@ Feature: cfs/step2-fieldValidation-password.feature
 
   Scenario: password Field Border Glow
     When I click on the "password" field
+    Then Check that the "password" field is focused
     And The "password" field border shall have a highlighted focus border
 
   #D3F-30

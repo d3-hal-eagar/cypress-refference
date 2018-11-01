@@ -17,14 +17,21 @@ Feature: cfs/step4-content.feature
     Given I am on the cfs step3A authentication page
     Then Wait for not exists ".loading-modal"
     Given Mock KBA pass
+    Given Mock scores-quick "812"
     When I fill out kba questions and submit
     #made it to step 3B
     Given Mock Report for "Donald Blair"
-    Then The "cta-button" message contains "Take Me To My Score"
-    And I click on the "cta-button" field
+    #Then The "cta-button" message contains "Take Me To My Score"
+    #this page and function is now no longer expected to act the same
+      #    And I select "03" on the "ccExpMonth" field
+      #    And I select "2028" on the "ccExpYear" field
+      #    And I have enter valid "ccCvv" value "123"
+      #    And I have enter valid "ccNum" value "4545454545454545"
+      #    And I click on the "cta-button" field
 
-    Then I am guided to the cfs step4 view page
-    Then The ".loading-modal-content" message contains "Loading your credit report, please wait..."
+#    Then I am guided to the cfs step4 view page
+#    Then The ".loading-modal-content" message contains "Loading your credit report, please wait..."
+
 #    Then Wait for not exists ".loading-modal"
 #    Then Wait for exists ".header-content .header-image"
 #    Then The ".header-content h2" message contains "My Credit Reports"
@@ -61,14 +68,19 @@ Feature: cfs/step4-content.feature
     When I fill out kba questions correct answers and submit
     When I fill out kba questions correct answers and submit
     #made it to step 3B
-    Then The "cta-button" message contains "Take Me To My Score"
-    And I click on the "cta-button" field
+    #Then The "cta-button" message contains "Take Me To My Score"
+    #this page and function is now no longer expected to act the same
+          #    And I select "03" on the "ccExpMonth" field
+          #    And I select "2028" on the "ccExpYear" field
+          #    And I have enter valid "ccCvv" value "123"
+          #    And I have enter valid "ccNum" value "4545454545454545"
+          #    And I click on the "cta-button" field
 
-    Then I am guided to the cfs step4 view page
-    Then The ".loading-modal-content" message contains "Loading your credit report, please wait..."
-    Then Wait for not exists ".loading-modal"
-    Then Wait for exists ".header-content .header-image"
-    Then The ".header-content h2" message contains "My Credit Reports"
-    Then The ".container .row h3" message contains "Credit Report Date"
-    Then Wait for exists ".score.scoreVal"
+#    Then I am guided to the cfs step4 view page
+#    Then The ".loading-modal-content" message contains "Loading your credit report, please wait..."
+#    Then Wait for not exists ".loading-modal"
+#    Then Wait for exists ".header-content .header-image"
+#    Then The ".header-content h2" message contains "My Credit Reports"
+#    Then The ".container .row h3" message contains "Credit Report Date"
+#    Then Wait for exists ".score.scoreVal"
 

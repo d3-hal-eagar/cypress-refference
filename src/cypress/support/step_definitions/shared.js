@@ -148,7 +148,7 @@
 
     Then(/^The "(.*?)" field border shall have a highlighted focus border/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.getElement(formField).should('have.css', 'border-color', flow_specific.selectBorder);
+            cy.wait(100).getElement(formField).should('have.css', 'border-color', flow_specific.selectBorder);
         });
     });
 
@@ -212,11 +212,11 @@
     });
 
     Then(/^Wait for not exists "(.*?)"$/, (element) => {
-        cy.getElement(element, { timeout: 20000 }).should('not.be.visible');
+        cy.getElement(element, { timeout: 30000 }).should('not.be.visible');
     });
 
     Then(/^Wait for exists "(.*?)"$/, (element) => {
-        cy.getElement(element, { timeout: 20000 }).should('be.visible');
+        cy.getElement(element, { timeout: 2000 }).should('be.visible');
     });
 
     Then(/^Expect "(.*?)" not to exist$/, (element) => {

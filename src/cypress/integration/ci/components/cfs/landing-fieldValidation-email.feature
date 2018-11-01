@@ -18,27 +18,30 @@ Feature: cfs/landing-fieldValidation-email.feature
 
   Scenario: 3 Email Address Field Border Glow
     When I click on the "email" field
-    When I focus on the "email" field
     And The "email" field border shall have a highlighted focus border
 
   Scenario: 1 User enters an email address that meets the required validation criteria
     When I have enter valid "email" value "tester@credmo.com"
+    And I click element "cta-button"
     Then I shall be displayed no error for the "email" field
     And The "email" field border shall have a default border
 
   Scenario: 5 - User does not enter a email
     When without entering "email"
+    And I click element "cta-button"
     Then The "email" field border is outlined in red color
 
-  Scenario: 5a - User does not enter a email
+  Scenario: 5a - User does not enter even focus email field
     When without entering "zip"
     And I click element "cta-button"
     And The "email" field border is outlined in red color
 
   Scenario: 2b - User corrects invalid Email Address input field that has an error
     When without entering "email"
+    And I click element "cta-button"
+    And The "email" field border is outlined in red color
     And I enter additional text into "email" field text "me@example.com"
-    And I blur the "email" field
+    And I focus on the "zip" field
     And I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
     And I click element "cta-button"
@@ -46,7 +49,7 @@ Feature: cfs/landing-fieldValidation-email.feature
 
   Scenario: 3 User enters invalid email address
     When I have enter invalid "email" value "userguy" that "does not yet contain @"
-    And The "email" field border is outlined in red color
+    Then The "email" field border shall have a default border
     And I click element "cta-button"
     And The "email" field border is outlined in red color
 
@@ -54,6 +57,7 @@ Feature: cfs/landing-fieldValidation-email.feature
     # *label* can only be 63
     # *localpart* can only be 64 characters
   Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
+    And I click element "cta-button"
     When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
     Then I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border

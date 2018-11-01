@@ -140,15 +140,20 @@
                 cy.getElement(formField).clear().type(userInput).blur().focus();
             }
             else if (flow_specific.flowName === 'cfs') {
-                cy.getElement(formField).clear().type(userInput);
+                cy.getElement(formField).clear().type(userInput).focused().blur();
             }
         });
     });
 
     When(/^I select "(.*?)" on the "(.*?)" field$/, (userInput, formField) => {
-        cy.getElement(formField).focus().select(userInput).blur().focus();
+        cy.get('@_flow_specific').then((flow_specific) => {
+            if (flow_specific.flowName === 'cfs') {
+                cy.getElement(formField).focus().select(userInput);
+            } else {
+                cy.getElement(formField).focus().select(userInput).blur().focus();
+            }
+        });
     });
-
 
     When(/^I select 18yrs ago on the "(.*?)" field$/, (formField) => {
         const thisYear = (new Date()).getFullYear();
@@ -170,7 +175,7 @@
         cy.get('@_flow_specific').then((flow_specific) => {
 
             if (flow_specific.flowName === 'cfs') {
-                    cy.getElement(formField).should('have.css', 'border-color', flow_specific.defaultBorder);
+                    cy.wait(100).getElement(formField).should('have.css', 'border-color', flow_specific.defaultBorder);
             } else {
                 if (formField.startsWith("ssn") || formField.startsWith("dob")) {
                     cy.getElement(formField+'-error-message').should('not.be.visible');

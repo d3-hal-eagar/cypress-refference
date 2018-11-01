@@ -29,5 +29,5 @@ Feature: cfs/global-progressBar.feature
     Then I shall be displayed the Progress Bar Indicator as 'Step 4 - AUTHENTICATION' as seen on the design
 
   Scenario: 5 - Steps Progress Indicator is not displayed within CFS Step 4 VIEW page
-    When I am on the cfs step 4 view page
+    When I am on the cfs step4 view page
     Then I shall not be displayed the Progress Bar Indicator as Step 4 - VIEW

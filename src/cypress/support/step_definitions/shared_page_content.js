@@ -25,7 +25,7 @@
         });
     });
 
-    Then(/^"(.*?)" Hyperlink includes siteDomain$/, (dataTest, linkUrl) => {
+    Then(/^"(.*?)" Hyperlink includes siteDomain$/, (dataTest) => {
         cy.get('@_flow_specific').then((flow_specific) => {
             cy.getElement(dataTest).should('have.attr', 'href').then((href) => {
                 cy.wrap(href).should('contain',flow_specific.siteDomain);
@@ -119,7 +119,8 @@ Then(`I am displayed siteName in the header`, () => {
 
 Then(`I am displayed flow Logo`, () => {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow_specific.siteName);
+            //cy.get('.navbar [data-test="site-link"] img').should('have.attr','alt').and('contain', flow_specific.siteName);
+            cy.get('.navbar img').should('have.attr','alt').and('contain', flow_specific.siteName);
         });
     });
 

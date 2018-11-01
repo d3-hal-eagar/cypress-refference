@@ -18,12 +18,13 @@ Feature: cfs/step2-fieldValidation-email.feature
     Then I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
 
-  Scenario: 2b - User focuses on the Email Address input field that has an error
+  Scenario: 2b - User corrects the Email Address input field that has an error
     When without entering "email"
     And I click element "cta-button"
     #CP-327 #Then I shall be displayed an error for the "email" field - "Please enter your email address." in red
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
-    And I enter additional text into "email" field text "@"
+    And I enter additional text into "email" field text "a@be.cc"
+    Then I blur the "email" field
     And I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
 
@@ -34,13 +35,14 @@ Feature: cfs/step2-fieldValidation-email.feature
     #CP-327 Then I shall be displayed an error for the "email" field - "Invalid email address" in red
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
 
-  Scenario: 3a When the user focuses on the Email Address input field that has the error on it
+  Scenario: 3a When the user corrects the Email Address input field that has the error on it
     When I have enter invalid "email" value "them" that "does not yet contain @"
     And I click element "cta-button"
     #CP-327 Then I shall be displayed an error for the "email" field - "Invalid email address" in red
     Then I shall be displayed an error for the "email" field - "Please enter a valid email address." in red
     And The "email" field border is outlined in red color
     When I enter additional text into "email" field text "@or.us"
+    Then I blur the "email" field
     Then I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
 
@@ -49,6 +51,7 @@ Feature: cfs/step2-fieldValidation-email.feature
     # *localpart* can only be 64 characters
   Scenario: 5 - System restricts user from entering more than 27 characters in the City input field.
     When I have enter valid "email" value "12345678901234567890123456789012345678901234567809123@seventyfive.limit"
+    Then I blur the "email" field
     Then I shall be displayed no error for the "email" field
     Then The "email" field border shall have a default border
     And I enter additional text into "email" field text ".comando"
