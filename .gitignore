@@ -62,6 +62,9 @@ src/cypress/results/
 src/cypress/videos/
 src/cypress/screenshots/
 src/mochawesome-report
+src/allure-report
+src/allure-results
+src/reports-archive
 src/.Trash-0
 # this is a ghost copy of src/cypress/support/ genreated by the cypress GUI on exit (bug?)
 src/support/
