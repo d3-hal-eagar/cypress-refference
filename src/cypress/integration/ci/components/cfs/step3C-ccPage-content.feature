@@ -22,11 +22,7 @@ Feature: cfs/step3C-ccPage-content.feature
   #CP-418
   #Scenario: Submit Valid KBA
     Given Mock KBA pass
-    When I fill out kba questions and stop
-    When I click on the "cta-button" field
-    #CP-360 second loading message
-    Then The "modal-body" message contains "Processing questions, please wait..."
-    Then Wait for not exists ".loading-modal"
+    When I fill out kba questions and submit
     Then I am guided to the cfs step3A authentication page
 
     #CP-521
@@ -43,12 +39,12 @@ Feature: cfs/step3C-ccPage-content.feature
     And The ".provide-info in identity-confirmation-message" message contains "Please provide your payment information for your $1.00 trial and membership"
     And The "ccName" element present on the desktop page only
     And The "ccType" element present on the desktop page only
-    And The "<img.cc-image within [data-test=cc-image]" element present on the mobile page only
-    When I click on the "ccNum" field
-    Then Check that the "ccNum" field is focused
+    And The "<img.cc-image within cc-image" element present on the mobile page only
+    When I click on the "#ccNum" field
+    Then Check that the "#ccNum" field is focused
     And The "ccNum" field label is "Card Number:"
-    And The "<img.cc-image within [data-test=cc-image]" element present on the mobile page only
-    And The "<img.lock-circle within [data-test=identity-confirmation-message]" element present on the page
+    And The "<img.cc-image within cc-image" element present on the mobile page only
+    And The "<img.lock-circle within identity-confirmation-message" element present on the page
     And The "ccExpMonth" element present on the page
     And The "ccExpYear" element present on the page
     And The "ccExpMonth" field label is "Expiration Date:"
