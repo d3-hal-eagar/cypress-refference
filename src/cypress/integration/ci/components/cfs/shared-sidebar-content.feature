@@ -59,4 +59,3 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-498
     Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
     And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
-
