@@ -95,4 +95,17 @@
             delay: 100,
         }).as('scoresCall');
     });
+
+    Given(/^Mock scores-quick "(.*?)"$/, (score) => {
+        cy.wrap({value:score}).as('_score');
+        cy.server();           // enable response stubbing
+        cy.route({
+            method: 'GET',      // Route all GET requests
+            url: '/api/v1/scores/quick/*',    // that have a URL that matches
+            response: '{"score":'+score+'}',        // and force the response to be:
+            status: 200,
+            delay: 100,
+        }).as('scoresQuickCall');
+    });
+
 })();

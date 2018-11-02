@@ -125,5 +125,3 @@ Feature: cfs/step1-fieldValidation-firstName.feature
 
   Scenario: User enters additional invalid characters in First Name multiple input errors
     When I have enter invalid characters ".,#_\/\\\"" into valid input "Katy" on the "firstName" and I see validation error message "First Name may not include numbers or special characters."
-
-

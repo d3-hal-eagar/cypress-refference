@@ -20,7 +20,8 @@
     "reporttest": "npm run clearReports & npm run temptest & npm run allureReport",
     "recordTestRun": "node recordTestRun.js",
     "clearReports": "node clearReports.js",
-    "allureReport": "node allureArchive.js"
+    "allureReport": "node allureArchive.js",
+    "recordFlicker": "cypress run --spec \"cypress/integration/ci/components/cfs/flicker.feature\""
   },
   "repository": {
     "type": "git",
