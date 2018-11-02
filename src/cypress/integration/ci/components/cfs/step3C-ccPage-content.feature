@@ -15,8 +15,6 @@ Feature: cfs/step3C-ccPage-content.feature
   Scenario: 1 - identity-confirmation with firstname lastname and cta button
     Given Mock KBA
     Given I am on the cfs step3A authentication page
-    #CP-360 first loading message
-    Then The "modal-body" message contains "Loading questions, please wait..."
     Then Wait for not exists ".loading-modal"
 
   #CP-418
@@ -36,6 +34,7 @@ Feature: cfs/step3C-ccPage-content.feature
 
     #CP-2259
     # Some attributes/tests should be changed after CP-2487 will be fixed
+    And ".col-4.d-none.d-md-block" date is 7 days from now
     And The ".provide-info in identity-confirmation-message" message contains "Please provide your payment information for your $1.00 trial and membership"
     And The "ccName" element present on the desktop page only
     And The "ccType" element present on the desktop page only
