@@ -38,7 +38,7 @@
                                             // click submit after each question, it will just give validate error until we are done
                                             cy.get('[data-test=cta-button]').click().wait(100).get('.loading-modal', { timeout: 20000 }).should('not.be.visible');
                                         }
-                                    });;
+                                    });
                             }
                         }
                         if (!knownAnswer) {
@@ -93,6 +93,14 @@
             cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
         } else {
             cy.get('label[data-test='+formField+'-label]').should('not.be.visible');
+        }
+    });
+
+    Then(/^The cfs "(.*?)" field label is "(.*?)" on the desktop page only$/, (formField,labelText) => {
+        if (Cypress.env('TESTMODE') === 'mobile') {
+            cy.get('label[data-test='+formField+'-label]').should('not.be.visible');
+        } else {
+            cy.getFormGroup(formField).find('label').contains(labelText).should('be.visible');
         }
     });
 

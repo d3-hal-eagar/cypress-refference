@@ -20,6 +20,7 @@ Feature: cfs/step3C-ccPage-content.feature
   #CP-418
   #Scenario: Submit Valid KBA
     Given Mock KBA pass
+    Given Mock scores-quick "250"
     When I fill out kba questions and submit
     Then I am guided to the cfs step3A authentication page
 
@@ -34,15 +35,15 @@ Feature: cfs/step3C-ccPage-content.feature
 
     #CP-2259
     # Some attributes/tests should be changed after CP-2487 will be fixed
-    And ".col-4.d-none.d-md-block" date is 7 days from now
     And The ".provide-info in identity-confirmation-message" message contains "Please provide your payment information for your $1.00 trial and membership"
     And The "ccName" element present on the desktop page only
+    And The cfs "ccName" field label is "Name on Card:" on the desktop page only
     And The "ccType" element present on the desktop page only
-    And The "<img.cc-image within cc-image" element present on the mobile page only
-    When I click on the "#ccNum" field
-    Then Check that the "#ccNum" field is focused
+    And The cfs "ccType" field label is "Card Type:" on the desktop page only
+    When I click on the "ccNum" field
+    Then Check that the "ccNum" field is focused
     And The "ccNum" field label is "Card Number:"
-    And The "<img.cc-image within cc-image" element present on the mobile page only
+    And The "<img.cc-image within .cc-form" element present on the mobile page only
     And The "<img.lock-circle within identity-confirmation-message" element present on the page
     And The "ccExpMonth" element present on the page
     And The "ccExpYear" element present on the page
@@ -50,7 +51,14 @@ Feature: cfs/step3C-ccPage-content.feature
     And The "ccCvv" element present on the page
     And The "ccCvv" field label is "CVV:"
     And The ".offer-details" message contains "Offer Details"
-    And The ".col-4.d-none.d-md-block" message contains "7-Day $1 Trial Ends"
-    And The ".col-4.d-none.d-md-block" message contains "Monthly Membership for just $39.90 after trial until cancelled"
-    And The ".col-4.d-none.d-md-block" message contains "To Cancel, Just Call (855) 506-9167"
+    And The "trialMobile" message contains "By clicking the button below, I agree to the 7-Day $1 Trial which ends" on the mobile page only
+    And The "trialEnd" message contains "7-Day $1 Trial Ends" on the desktop page only
+    And The "membership" message contains "Monthly Membership for just $39.90 after trial until cancelled" on the desktop page only
+    And The "trialMobile" message contains "Monthly Membership for just $39.90 after trial period until cancelled" on the mobile page only
+    And The "cancellation" message contains "To Cancel, Just Call (855) 506-9167"
+    And The "trialMobile" message contains "To cancel, just call (855) 506-9167"
+    And "trialEnd" desktop "trialMobile" mobile date is 7 days from now
+    And The "score-arrow" element present on the desktop page only
+
+
     And The "cta-button" message contains "I agree and accept. Take me to my score."

@@ -186,6 +186,14 @@
         }
     });
 
+    Then(/^The "(.*?)" desktop "(.*?)" mobile message contains "(.*?)"$/, (desk_element, mob_element, messageText) => {
+        if (Cypress.env('TESTMODE') === 'mobile') {
+            cy.getElement(mob_element).should('contain', messageText);
+        } else {
+            cy.getElement(desk_element).should('contain', messageText);
+        }
+    });
+
     Then(/^I am displayed the correct message on "(.*?)"$/, (element,messageText) => {
         cy.getElement(element).contains(messageText);
     });
@@ -217,6 +225,20 @@
 
     Then(/^Expect "(.*?)" to exist$/, (element) => {
         cy.getElement(element).should('be.visible');
+    });
+
+
+
+    Then(/^Expect "(.*?)" to just not exist$/, (element) => {
+        cy.getElement(element).should('not.exist');
+    });
+
+    Then(/^Expect "(.*?)" to just exist$/, (element) => {
+        cy.getElement(element).should('exist');
+    });
+
+    Then(/^Expect "(.*?)" to toggle existence on "(.*?)"/, (element,page) => {
+        cy.visit(page).getElement(element).should('exist').wait(1).should('not.exist').wait(1).should('exist');
     });
 
 })();
