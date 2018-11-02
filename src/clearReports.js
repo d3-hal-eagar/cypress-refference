@@ -1,5 +1,5 @@
 
-const path = require('path'), fs=require('fs');
+const path = require('path'), fs=require('fs'), fse=require('fs-extra');
 
 function deleteFiles(startPath,filter){
 
@@ -16,7 +16,7 @@ function deleteFiles(startPath,filter){
         let filename=path.join(startPath,files[i]);
         let stat = fs.lstatSync(filename);
         if (stat.isDirectory()){
-            fromDir(filename,filter); //recurse
+            //deleteFiles(filename,filter); //recurse
         }
         else if (filename.indexOf(filter)>=0) {
             filesArray.push(filename);
@@ -28,7 +28,8 @@ function deleteFiles(startPath,filter){
     return filesArray;
 }
 
-deleteFiles('cypress/reports','cypress-junit-output.xml');
-fs.unlink('cypress/reports/CypressTestReport.html', (err) => {
-    if (err) throw err;
-});
+deleteFiles('allure-results','-testsuite.xml');
+// deleteFiles('cypress/reports','cypress-junit-output.xml');
+//  fs.unlink('cypress/reports/CypressTestReport.html', (err) => {
+//      if (err) throw err;
+// });

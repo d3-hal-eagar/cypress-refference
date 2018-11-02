@@ -3,24 +3,13 @@
   "pageLoadTimeout": 100000,
   "watchForFileChanges": false,
   "trashAssetsBeforeRuns": true,
-  "video": false,
+  "video": true,
   "viewportHeight":	768,
   "viewportWidth":	1024,
   "baseUrl": "http://localhost:4200",
-  "reporter": "junit",
+  "reporter": "mocha-allure-reporter",
   "reporterOptions": {
-    "mochaFile": "cypress/reports/[hash]-cypress-junit-output.xml",
-    "toConsole": false,
-    "properties": {
-      "Enviroment": "local-docker",
-      "Platform": "Win 10"
-    },
-    "suiteTitleSeparatedBy": " Scenario: ",
-    "includePending": true,
-    "rootSuiteTitle": "credmo",
-    "testsuitesTitle": "Cypress Tests",
-    "testCaseSwitchClassnameAndName": true,
-    "useFullSuiteTitle": false
+
   },
   "integrationFolder": "cypress/integration/",
   "waitForAnimations": true,
