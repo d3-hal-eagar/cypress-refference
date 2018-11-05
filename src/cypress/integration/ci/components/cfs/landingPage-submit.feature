@@ -75,7 +75,7 @@ Feature: cfs/landingPage-submit.feature
     And The "zip" field border shall have a default border
     And "zip" value is "96768"
 
-  Scenario: Landing page firstName empty
+  Scenario: Landing page email empty
     When I have enter valid "firstName" value "Samatha"
     When I have enter valid "lastName" value "Stone"
     When without entering "email"
@@ -91,7 +91,7 @@ Feature: cfs/landingPage-submit.feature
     And The "zip" field border shall have a default border
     And "zip" value is "96768"
 
-  Scenario: Landing page firstName empty
+  Scenario: Landing page zip empty
     When I have enter valid "firstName" value "Samatha"
     When I have enter valid "lastName" value "Stone"
     When I have enter valid "email" value "SS@AP.com"
@@ -108,17 +108,17 @@ Feature: cfs/landingPage-submit.feature
     And "zip" value is ""
 
   Scenario: Landing page invalid values entered
-    When I have enter invalid "firstName" value "4ork" that "contains a number"
-    When I have enter invalid "lastName" value "5tone" that "contains a number"
+    When I have enter invalid "firstName" value "ork#" that "contains a symbol"
+    When I have enter invalid "lastName" value "tone$" that "contains a symbol"
     When I have enter invalid "email" value "SS.AP.com" that "contains no @"
     When I have enter invalid "zip" value "9676B" that "contains a letter"
     And I click on the "cta-button" field
     Then Check that the "communicationPreferences" field is not checked
     Then I am guided to the cfs landing page
     And The "firstName" field border is outlined in red color
-    And "firstName" value is "4ork"
+    And "firstName" value is "ork#"
     And The "lastName" field border is outlined in red color
-    And "lastName" value is "5tone"
+    And "lastName" value is "tone$"
     And The "email" field border is outlined in red color
     And "email" value is "SS.AP.com"
     And The "zip" field border is outlined in red color

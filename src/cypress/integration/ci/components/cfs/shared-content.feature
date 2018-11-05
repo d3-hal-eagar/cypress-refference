@@ -30,7 +30,8 @@ Feature: cfs/shared-content.feature
     #CP-515
     Then The "badge-img" element present on the page
     #CP-428
-    And The ".navbar" message contains siteName
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
     And Expect "nav-transunion" to exist
 
   Scenario: step1 Page Content
@@ -47,7 +48,8 @@ Feature: cfs/shared-content.feature
     #CP-515
     Then The "badge-img" element present on the mobile page only
     #CP-428
-    And The ".navbar" message contains siteName
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
     And Expect "nav-transunion" to exist
 
   Scenario: step2 Page Content
@@ -62,11 +64,24 @@ Feature: cfs/shared-content.feature
     #CP-515
     Then The "badge-img" element present on the mobile page only
     #CP-428
-    And The ".navbar" message contains siteName
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
     And Expect "nav-transunion" to exist
 
   Scenario: step3A authentication page Content
     Given I am on the cfs step3A authentication page
+    #CP-515
+    Then The "badge-img" element present on the mobile page only
+    #CP-428
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
+    And Expect "nav-transunion" to exist
+
+  Scenario: step3B
+    Given Register "Donald Blair"
+    Given Mock KBA
+    Given I am on the cfs step3A authentication page
+    Then Wait for not exists ".loading-modal"
     #CP-449
     Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
@@ -77,7 +92,8 @@ Feature: cfs/shared-content.feature
     #CP-515
     Then The "badge-img" element present on the mobile page only
     #CP-428
-    And The ".navbar" message contains siteName
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
     And Expect "nav-transunion" to exist
 
   Scenario: step4 view Page Content
@@ -86,5 +102,6 @@ Feature: cfs/shared-content.feature
     #CP-515
     Then The "badge-img" element present on the mobile page only
     #CP-428
-    And The ".navbar" message contains siteName
+    #And The ".navbar" message contains siteName
+    And I am displayed flow Logo
     And Expect "nav-transunion" not to exist

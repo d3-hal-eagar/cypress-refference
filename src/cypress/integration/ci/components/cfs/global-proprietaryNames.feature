@@ -63,5 +63,5 @@ Feature: cfs/global-proprietaryNames.feature
     Then screen does not contain any proprietaryNames
 
   Scenario: No proprietary names are displayed on the step3A verify page
-    Given I am on the cfs step3A authentication page page
+    Given I am on the cfs step3A authentication page
     Then screen does not contain any proprietaryNames

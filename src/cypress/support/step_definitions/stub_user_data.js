@@ -41,7 +41,7 @@
             url: '/api/v1/kba/*',    // that have a URL that matches
             response: '@kbaQuestionsJSON',        // and force the response to be:
             status: 200,
-            delay: 100,
+            delay: 200,
         }).as('kbaQuestionsCall');
     });
 

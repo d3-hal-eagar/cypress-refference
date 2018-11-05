@@ -16,7 +16,7 @@
             errorRedBorder: 'rgb(255, 0, 0)',
             selectBorder: 'rgb(128, 189, 255)',
             defaultBorder: 'rgb(206, 212, 218)',
-            backgroundBlue: 'rgb(15, 50, 115)',
+            backgroundBlue: 'rgb(31, 47, 114)',
             backgroundWhite: 'rgb(255, 255, 255)'
         }).as('_flow_specific');
         cy.visit( '?marketingid=000');

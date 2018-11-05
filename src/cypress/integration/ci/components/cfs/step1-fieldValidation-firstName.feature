@@ -16,6 +16,13 @@ Feature: cfs/step1-fieldValidation-firstName.feature
     Given I am on the cfs step1 page
 
 
+  Scenario: User can not enter numbers in the first name field
+    When I have enter valid "firstName" value "First1Guy8"
+    And I click element "cta-button"
+    And I shall be displayed no error for the "firstName" field
+    Then The "firstName" field border shall have a default border
+    And "firstName" value is "FirstGuy"
+
   Scenario: 1 User enters Legal First Name that meets the required rules
     When I have enter valid "firstName" value "Allan"
     And I click element "cta-button"
@@ -55,13 +62,13 @@ Feature: cfs/step1-fieldValidation-firstName.feature
     #CP-514 #Then I shall be displayed an error for the "firstName" field - "First Name cannot be blank." in red
     Then I shall be displayed an error for the "firstName" field - "First Name is required." in red
     And The "firstName" field border is outlined in red color
-    When I enter additional text into "firstName" field text "4ork"
+    When I enter additional text into "firstName" field text "*ork"
     And The "firstName" field border is outlined in red color
     And I click element "cta-button"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
 
   Scenario: 4 User enters invalid First Name
-    When I have enter invalid "firstName" value "4ork" that "contains a number"
+    When I have enter invalid "firstName" value "&ork" that "contains a symbol"
     And I click element "cta-button"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     And The "firstName" field border is outlined in red color
@@ -69,7 +76,7 @@ Feature: cfs/step1-fieldValidation-firstName.feature
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
 
   Scenario: 4a User enters invalid First Name, and fixes it
-    When I have enter invalid "firstName" value "4ork" that "contains a number"
+    When I have enter invalid "firstName" value "*ork" that "contains a symbol"
     And I click element "cta-button"
     And The "firstName" field border is outlined in red color
     When I enter additional text into "firstName" field text "{backspace}{backspace}{backspace}{backspace}sally"
@@ -78,7 +85,7 @@ Feature: cfs/step1-fieldValidation-firstName.feature
     Then The "firstName" field border shall have a default border
 
   Scenario: 4b User enters invalid First Name, and it remains invalid
-    When I have enter invalid "firstName" value "4ork" that "contains a number"
+    When I have enter invalid "firstName" value "(ork" that "contains a symbol"
     And I click element "cta-button"
     Then I shall be displayed an error for the "firstName" field - "First Name may not include numbers or special characters." in red
     And The "firstName" field border is outlined in red color
@@ -115,7 +122,7 @@ Feature: cfs/step1-fieldValidation-firstName.feature
   Scenario: User enters an invalid firstName
     When I have enter invalid "firstName" value I see the correct validation error message
       | name_entered     | type_of_error                        | error_message              |
-      | mighty77         | contains a number                    | First Name may not include numbers or special characters. |
+      | mighty)^         | contains a symbol                    | First Name may not include numbers or special characters. |
       | smith  jones     | contains two spaces in a row         | First Name may not include numbers or special characters. |
       | Mc--Mac          | contains two dashes in a row         | First Name may not include numbers or special characters. |
       | 'Roid            | does not begin with a letter         | First Name may not include numbers or special characters. |

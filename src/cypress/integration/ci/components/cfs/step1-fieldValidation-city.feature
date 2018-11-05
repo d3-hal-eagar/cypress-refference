@@ -13,6 +13,13 @@ Feature: cfs/step1-fieldValidation-city.feature
     Given I am on the cfs step1 page
 
 
+  Scenario: User can not enter numbers in the City field
+    When I have enter valid "city" value "2nd City"
+    And I click element "cta-button"
+    And I shall be displayed no error for the "city" field
+    Then The "city" field border shall have a default border
+    And "city" value is "nd City"
+
   Scenario: 1 - User enters valid City with just letters and space
     When I have enter valid "city" value "New York"
     And I click element "cta-button"
@@ -56,12 +63,12 @@ Feature: cfs/step1-fieldValidation-city.feature
       | New / York               | has a '/' symbol            | Please enter a valid city. |
       | San José                 | has a extended latin symbol | Please enter a valid city. |
       | St. Louis                | has a '.' symbol            | Please enter a valid city. |
-      | Town323                  | has a numer                 | Please enter a valid city. |
+#      | Town323                  | has a number                 | Please enter a valid city. |
 
   Scenario: 4a - User enters invalid City multiple input errors.
     When I have enter invalid "city" value I see the correct validation error message
       | city_entered    | type_of_error                  | error_message                               |
-      | New 45 York     | has a number                   | Please enter a valid city. |
+      #| New 45 York     | has a number                   | Please enter a valid city. |
       | New York –north | has a non-ASCII en dash symbol | Please enter a valid city. |
       | New York —west  | has a non-ASCII em dash symbol | Please enter a valid city. |
 

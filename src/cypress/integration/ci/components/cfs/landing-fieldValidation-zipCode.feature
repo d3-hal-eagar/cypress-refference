@@ -16,13 +16,22 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
     Given I am on the cfs landing page
 
 
+  Scenario: User can not enter letter in the zip file
+    When I have enter valid "zip" value "123dfe45"
+    And I click element "cta-button"
+    And I shall be displayed no error for the "zip" field
+    Then The "zip" field border shall have a default border
+    And "zip" value is "12345"
+
   Scenario: 3 Zip Code Address Field Border Glow
     When I click on the "zip" field
-    When I focus on the "zip" field
     And The "zip" field border shall have a highlighted focus border
 
   Scenario: 5 - User does not enter a Zip Code
     When without entering "zip"
+    When I focus on the "firstName" field
+    Then The "zip" field border shall have a default border
+    And I click element "cta-button"
     And The "zip" field border is outlined in red color
 
   Scenario: 5a- User does not enter a Zip Code
@@ -31,6 +40,7 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
 
   Scenario: 1 - User enters valid Zip Code
     When I have enter valid "zip" value "10007"
+    When I focus on the "firstName" field
     Then I shall be displayed no error for the "zip" field
     Then The "zip" field border shall have a default border
     And I click element "cta-button"
@@ -38,6 +48,7 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
 
   Scenario: 2 - System restricts the user to enter a maximum of five characters
     When I have enter valid "zip" value "12345"
+    And I click element "cta-button"
     Then I shall be displayed no error for the "zip" field
     Then The "zip" field border shall have a default border
     And I enter additional text into "zip" field text "678"
@@ -45,19 +56,21 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
 
   Scenario: 3 - User enters less than 5 digits on Zip Code input field
     When I have enter invalid "zip" value "100" that "has less than 5 digits"
-    And The "zip" field border is outlined in red color
     And I click element "cta-button"
     And The "zip" field border is outlined in red color
 
   Scenario: 3a - User focuses back on the Zip-Code field that has the error
     When I have enter invalid "zip" value "123" that "has less than 5 digits"
+    And I click element "cta-button"
     #Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And The "zip" field border is outlined in red color
     When I have enter valid "zip" value "10007"
+    And I focus on the "cta-button" field
     And I shall be displayed no error for the "zip" field
     Then The "zip" field border shall have a default border
 
   Scenario: 4a - User focuses back on the Zip-Code field that has the error
+    And I click element "cta-button"
     And I have enter invalid "zip" value "100%2" that "has an '%' symbol"
     #Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And The "zip" field border is outlined in red color
@@ -68,6 +81,7 @@ Feature: cfs/landing-fieldValidation-zipCode.feature
 
   Scenario: 5a - User focuses back on the Zip code field that has the error
     When without entering "zip"
+    And I click element "cta-button"
     #Then I shall be displayed an error for the "zip" field - "Please enter a valid zip code." in red
     And The "zip" field border is outlined in red color
     When I have enter valid "zip" value "99999"

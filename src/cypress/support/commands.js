@@ -47,7 +47,7 @@ function wrapWithDataId (dataTest) {
 };
 
 
-Cypress.Commands.add("getElement", (dataTest) => {
+Cypress.Commands.add("getElement", (dataTest, options) => {
     var separatorsChildFirst = [' in ', ' on ', ' within '];
     var separatorsParentFirst = [' containing ', ' with '];
     var multiSelectorsChildFirst = dataTest.split(new RegExp(separatorsChildFirst.join('|'), 'g'));
@@ -59,7 +59,7 @@ Cypress.Commands.add("getElement", (dataTest) => {
         return cy.getParentElement(multiSelectorsParentFirst[0],multiSelectorsParentFirst[1]);
     } else {
         var cssSelector = wrapWithDataId(dataTest);
-        return cy.get(cssSelector);
+        return cy.get(cssSelector, options);
     }
 });
 

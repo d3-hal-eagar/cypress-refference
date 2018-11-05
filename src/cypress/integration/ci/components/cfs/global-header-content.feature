@@ -21,12 +21,12 @@ Feature: cfs/global-header-content.feature
   Scenario: Privacy Policy Page Content
     Given I am on the cfs Privacy Policy screen
     Then I am displayed flow Logo
-    And The "nav-transunion" element is not present on the page
+    And The "nav-transunion" element shall not be hyperlinked
 
   Scenario: Terms of Service Page Content
     Given I am on the cfs Terms of Service screen
     Then I am displayed flow Logo
-    And The "nav-transunion" element is not present on the page
+    And The "nav-transunion" element shall not be hyperlinked
 
   Scenario: portal Page Content aka step 4 view
     Given Mock Report for "Donald Blair"

@@ -10,7 +10,7 @@ if(mm<10){
     mm='0'+mm;
 }
 let cibuildid = 'local-docker'+yyyy+mm+dd;
-let commandDesktop = "node node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/**/*\" --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group desktop --parallel --ci-build-id " + cibuildid;
+let commandDesktop = "cypress run --spec \"cypress/integration/ci/components/**/*\" --record --key f3230691-58fd-4a68-9a0d-9ceb252be8e6 --group desktop --parallel --ci-build-id " + cibuildid + 'b';
 
 //node_modules/.bin/cypress run --spec 'cypress/integration/ci/end2end/**/*'
 

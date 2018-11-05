@@ -14,6 +14,13 @@ Feature: cfs/step1-fieldValidation-lastName.feature
     Given I am on the cfs step1 page
 
 
+  Scenario: User can not enter numbers in the first name file
+    When I have enter valid "lastName" value "First1Gal9"
+    And I click element "cta-button"
+    And I shall be displayed no error for the "lastName" field
+    Then The "lastName" field border shall have a default border
+    And "lastName" value is "FirstGal"
+
   Scenario: 1 User enters Legal Last Name that meets the required rules
     When I have enter valid "lastName" value "McSmith"
     And I click element "cta-button"
@@ -49,13 +56,13 @@ Feature: cfs/step1-fieldValidation-lastName.feature
     And I click element "cta-button"
     #CP-514 #Then I shall be displayed an error for the "lastName" field - "Last Name cannot be blank" in red
     Then I shall be displayed an error for the "lastName" field - "Last Name is required." in red
-    When I enter additional text into "lastName" field text "3rd"
+    When I enter additional text into "lastName" field text "&rd"
     And I click element "cta-button"
     And The "lastName" field border is outlined in red color
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
   Scenario: 4 User enters invalid Last Name
-    When I have enter invalid "lastName" value "4ork" that "contains a number"
+    When I have enter invalid "lastName" value "!ork" that "contains a symbol"
     And I click element "cta-button"
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
@@ -63,7 +70,7 @@ Feature: cfs/step1-fieldValidation-lastName.feature
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
   Scenario: 4a User enters invalid Last Name, and fixes it
-    When I have enter invalid "lastName" value "4ork" that "contains a number"
+    When I have enter invalid "lastName" value "#ork" that "contains a symbol"
     And I click element "cta-button"
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
@@ -72,7 +79,7 @@ Feature: cfs/step1-fieldValidation-lastName.feature
     And I shall be displayed no error for the "lastName" field
 
   Scenario: 4b User enters invalid Last Name, and it remains invalid
-    When I have enter invalid "lastName" value "4ork" that "contains a number"
+    When I have enter invalid "lastName" value "%ork" that "contains a symbol"
     And I click element "cta-button"
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
     And The "lastName" field border is outlined in red color
@@ -83,7 +90,7 @@ Feature: cfs/step1-fieldValidation-lastName.feature
 
  # extended validations
   Scenario: User enters invalid Last Name with multiple special characters
-    When I have enter invalid "lastName" value "hal--stone" that "contains a number"
+    When I have enter invalid "lastName" value "hal--stone" that "contains consecutive special caracters"
     And I click element "cta-button"
     Then I shall be displayed an error for the "lastName" field - "Last Name may not begin with or include numbers or special characters." in red
 
@@ -104,7 +111,7 @@ Feature: cfs/step1-fieldValidation-lastName.feature
   Scenario: User enters an invalid lastName
     When I have enter invalid "lastName" value I see the correct validation error message
       | name_entered | type_of_error                       | error_message                                                          |
-      | mighty77     | contains a number                   | Last Name may not begin with or include numbers or special characters. |
+      | mighty@#     | contains a symbol                   | Last Name may not begin with or include numbers or special characters. |
       | smith  jones | contains two spaces in a row        | Last Name may not begin with or include numbers or special characters. |
       | Mc--Mac      | contains two dashes in a row        | Last Name may not begin with or include numbers or special characters. |
       | d''art       | contains two single quotes in a row | Last Name may not begin with or include numbers or special characters. |

@@ -19,13 +19,13 @@ Feature: cfs/step2-fieldValidation-ssn4.feature
 
   Scenario: 2 ssn Field Border Glow
     When I click on the "ssn1" field
-    When I focus on the "ssn1" field
+    Then Check that the "ssn1" field is focused
     And The "ssn1" field border shall have a highlighted focus border
     When I click on the "ssn2" field
-    When I focus on the "ssn2" field
+    Then Check that the "ssn2" field is focused
     And The "ssn2" field border shall have a highlighted focus border
     When I click on the "ssn4" field
-    When I focus on the "ssn4" field
+    Then Check that the "ssn4" field is focused
     And The "ssn4" field border shall have a highlighted focus border
 
   Scenario: 3 - the system shall mask the ssn digits behind bullets for the ssn1 and ssn2 after they are valid
