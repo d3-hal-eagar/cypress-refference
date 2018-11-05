@@ -16,7 +16,7 @@
     "ck": "node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/ck/**/*\"",
     "ex": "node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/ex/**/*\"",
     "cfs": "node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/cfs/**/*\"",
-    "temptest": "node_modules/.bin/cypress run --spec \"cypress/integration/pending/components/ex/**/*\"",
+    "temptest": "node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/**/*\"",
     "reporttest": "npm run clearReports & npm run temptest & npm run allureReport",
     "recordTestRun": "node recordTestRun.js",
     "clearReports": "node clearReports.js",

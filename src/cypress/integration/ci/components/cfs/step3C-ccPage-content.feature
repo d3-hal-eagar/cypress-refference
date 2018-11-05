@@ -11,12 +11,12 @@ Feature: cfs/step3C-ccPage-content.feature
     Given I am a user on the cfs flow
     Given the siteName is "NotCheckFreeScore"
     Given Register "Donald Blair"
-
-  Scenario: 1 - identity-confirmation with firstname lastname and cta button
     Given Mock KBA
     Given I am on the cfs step3A authentication page
     Then Wait for not exists ".loading-modal"
+    Then Action detail "I have reached Step 3CC"
 
+  Scenario: 1 - identity-confirmation with firstname lastname and cta button
   #CP-418
   #Scenario: Submit Valid KBA
     Given Mock KBA pass

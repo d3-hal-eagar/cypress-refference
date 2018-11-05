@@ -356,8 +356,11 @@
         });
     });
 
-    Then(/^I select "(.*?)" on the "(.*?)" field and the correct value is displayed$/, (userInput, formField) => {
-        cy.getElement(formField).select(userInput).should('be.selected').and('be.visible');
+    Then(/^I select "(.*?)" on the "(.*?)" field and the correct value "(.*?)" is displayed$/, (userInput, formField, value) => {
+        cy.getElement(formField).select(userInput).should('have.value', value);
+    });
+    Then(/^Default value "(.*?)" on the "(.*?)" field is displayed$/, (value, formField) => {
+        cy.getElement(formField).should('have.value', value);
     });
 
     Then(/^I shall not be displayed invalid year in the dobYear field$/, function () {
@@ -368,6 +371,12 @@
         const formField = 'dobYear';
         cy.getElement(formField).should('not.contain', youngYear);
         cy.getElement(formField).should('not.contain', oldYear);
+    });
+
+
+    Then(/^I shall not be displayed invalid year "(.*?)" in the "(.*?)" field$/, function (year,formField) {
+        //const thisYear = (new Date()).getFullYear();
+        cy.getElement(formField).should('not.contain', year);
     });
 
     Then(/^The "(.*?)" field label is "(.*?)"$/, (formField,labelText) => {

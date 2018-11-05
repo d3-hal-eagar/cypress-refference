@@ -12,10 +12,11 @@ Feature: cfs/step3B-content.feature
     Given I am a user on the cfs flow
     Given the siteName is "NotCheckFreeScore"
     Given Register "Donald Blair"
-
-  Scenario: 1 - identity-confirmation with firstname lastname and cta button
     Given Mock KBA
     Given I am on the cfs step3A authentication page
+    Then Action detail "I have reached Step 3B"
+
+  Scenario: 1 - identity-confirmation with firstname lastname and cta button
     #CP-360 first loading message
     Then The "modal-body" message contains "Loading questions, please wait..."
     Then Wait for not exists ".loading-modal"
