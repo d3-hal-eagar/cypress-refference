@@ -187,6 +187,12 @@
         });
     });
 
+    Then(/^I shall be able to enter only numbers into the "(.*?)" field$/, function (formField) {
+        cy.getElement(formField).should('have.attr','numbersonly')
+                                .and('have.attr','type','tel');
+    });
+
+
     Then(/^"(.*?)" field displays check Icon$/, function (formField) {
         cy.getFormGroup(formField).find('i.oi.oi-circle-check').should('be.visible');
     });
