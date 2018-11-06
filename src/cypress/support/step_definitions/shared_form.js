@@ -188,8 +188,8 @@
     });
 
     Then(/^I shall be able to enter only numbers into the "(.*?)" field$/, function (formField) {
-        cy.getElement(formField).should('have.attr','numbersonly')
-                                .and('have.attr','type','tel');
+        cy.getElement(formField).should('have.attr','numbersonly');
+        cy.getElement(formField).should('have.attr','type','tel');
     });
 
 
@@ -286,6 +286,10 @@
     When(/^I have enter invalid characters "(.*?)" into valid input "(.*?)" on the "(.*?)" and I see validation error message "(.*?)"$/, function (characterList,validInput,formField,errorText) {
         cy.get('@_flow_specific').then((flow_specific) => {
             // starting at rowindex 1 to skip header row
+            if (flow_specific.flowName === 'cfs') {
+                // enable validation display
+                cy.getElement('cta-button').click();
+            }
             for (let charindex = 0; charindex < characterList.length; charindex++) {
                 let userInput = validInput.slice(0, -1) + characterList.substring(charindex, charindex+1);
                 // log test intent this is otherwise lost when doing multiple tests in a single step
@@ -304,7 +308,7 @@
                 }
                 else if (flow_specific.flowName === 'cfs') {
                     //no error display until submit
-                    cy.get('[type="submit"]').click().getElement(formField).clear().type(userInput).focus()
+                    cy.getElement(formField).clear().type(userInput)
                         .should('have.css', 'border-color', flow_specific.errorRedBorder);
                 }
             }
