@@ -1,0 +1,30 @@
+[
+{
+  "name": "Ignored tests",
+  "matchedStatuses": ["skipped"]
+},
+{
+"name": "step",
+"messageRegex": ".*step.*"
+},
+{
+"name": "validation",
+"messageRegex": ".*validation.*"
+},
+{
+"name": "EX flow",
+"messageRegex": ".*/ex.*"
+},
+{
+"name": "CK flow",
+"messageRegex": ".*/ck.*"
+},
+{
+"name": "CFS flow",
+"messageRegex": ".*/cfs.*"
+},
+{
+"name": "Test defects",
+  "matchedStatuses": ["broken", "failed"]
+}
+]
