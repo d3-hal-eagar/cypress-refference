@@ -16,17 +16,17 @@ Feature: cfs/global-header-content.feature
     Given I am on the cfs landing page
     #Then I am displayed siteName in the header
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
 
   Scenario: Privacy Policy Page Content
     Given I am on the cfs Privacy Policy screen
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
 
   Scenario: Terms of Service Page Content
     Given I am on the cfs Terms of Service screen
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
 
   Scenario: portal Page Content aka step 4 view
     Given Mock Report for "Donald Blair"
@@ -36,14 +36,14 @@ Feature: cfs/global-header-content.feature
   Scenario: step1 Page Content
     Given I am on the cfs step1 page
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
 
   Scenario: step3A Page Content authentication
     Given I am on the cfs step3A authentication page
     Then I am displayed flow Logo
-    And The "nav-transunion" element shall not be hyperlinked
+    And The "nav-bureaus" element shall not be hyperlinked
