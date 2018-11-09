@@ -32,7 +32,8 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" to exist
+    #CP-2477
+    And Expect "nav-bureaus" to exist
 
   Scenario: step1 Page Content
     Given I am on the cfs step1 page
@@ -50,7 +51,8 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" to exist
+    #CP-2477
+    And Expect "nav-bureaus" to exist
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
@@ -66,7 +68,8 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" to exist
+    #CP-2477
+    And Expect "nav-bureaus" to exist
 
   Scenario: step3A authentication page Content
     Given I am on the cfs step3A authentication page
@@ -75,7 +78,8 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" to exist
+    #CP-2477
+    And Expect "nav-bureaus" to exist
 
   Scenario: step3B
     Given Register "Donald Blair"
@@ -94,7 +98,8 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" to exist
+    #CP-2477
+    And Expect "nav-bureaus" to exist
 
   Scenario: step4 view Page Content
     Given Mock Report for "Donald Blair"
@@ -104,4 +109,5 @@ Feature: cfs/shared-content.feature
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
-    And Expect "nav-transunion" not to exist
+#    #CP-2477
+#    And Expect "nav-bureaus" to exist
