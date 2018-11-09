@@ -101,6 +101,15 @@ Feature: cfs/shared-content.feature
     #CP-2477
     And Expect "nav-bureaus" to exist
 
+  Scenario: step3C
+    Given Register "Donald Blair"
+    Given Mock KBA
+    Given I am on the cfs step3A authentication page
+    Then Wait for not exists ".loading-modal"
+    And I am displayed flow Logo
+    #CP-2477
+    And Expect "nav-bureaus" to exist
+
   Scenario: step4 view Page Content
     Given Mock Report for "Donald Blair"
     Given I am on the cfs step4 view page

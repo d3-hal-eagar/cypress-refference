@@ -47,3 +47,14 @@ Feature: cfs/global-header-content.feature
     Given I am on the cfs step3A authentication page
     Then I am displayed flow Logo
     And The "nav-bureaus" element shall not be hyperlinked
+
+  Scenario: step3C CC Page Content
+    Given Mock KBA pass
+    And Mock scores-quick "812"
+    When I fill out kba questions and stop
+    And I click on the "cta-button" field
+    Then The "modal-body" message contains "Processing questions, please wait..."
+    And Wait for not exists ".loading-modal"
+    And I am guided to the cfs step3A authentication page
+    And I am displayed flow Logo
+    And The "nav-bureaus" element shall not be hyperlinked
