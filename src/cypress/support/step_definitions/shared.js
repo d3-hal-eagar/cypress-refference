@@ -223,6 +223,12 @@
         cy.getElement(element).should('not.be.visible');
     });
 
+    Then(/^Expect "(.*?)" not to be visible yet$/, (element) => {
+        cy.getElement(element).should('not.be.visible');
+    });
+
+
+
     Then(/^Expect "(.*?)" to exist$/, (element) => {
         cy.getElement(element).should('be.visible');
     });

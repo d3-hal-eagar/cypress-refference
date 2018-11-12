@@ -5,6 +5,7 @@ Feature: cfs/step1-content.feature
     - CP-452 Mobile - CFS - Step 1 Page (Foundational UX/UI)
     - CP-373 - Desktop/Mobile - CFS - Privacy Security Image
     - CP-520 - Desktop/Mobile - CFS - Step 1 Page - Please Provide Entreaty (copy requirement)
+    - CP-2475 Desktop/Mobile - CFS - Step 1 Page - Phone Number Field
 
   Background:
     Given I am a user on the cfs flow
@@ -15,9 +16,14 @@ Feature: cfs/step1-content.feature
   Scenario: Step 1 page elements
   #CP-373 removed per CP-2474
     Then The "main-header-section" element is not present on the page
-  #CP-520
-  #Scenario: 2 - Please Provide Entreaty Placement
+  #CP-520 Scenario: 2 - Please Provide Entreaty Placement
     And The "<h5> within complete-section" message contains "Please provide your name and address so we can locate your credit file"
+  # CP-2475 Scenario: 4 Link in the Assuage for the Phone Number Fields
+    And The "phone-opt-in-message" message contains "By providing my phone number, which may include a landline, wireless or mobile number, and clicking the button below to continue, I verify this is my number and consent to receive calls, text messages and emails via automated systems for an artificial or prerecorded Voice to this number, regarding marketing or promotional offers and related transactions from or on behalf of Company and one or more of our marketing partners listed here. Message and data rates may apply. I understand that consent is not required for purchase and I can forgo providing my phone number"
+    And The "marketing-partners-link" message contains "one or more of our marketing partners listed here"
+    And Expect "marketing-partners-message" not to be visible yet
+    When I click element "marketing-partners-message"
+    And The "marketing-partners-message" message contains "CreditFix.com, Debtfix and Hello Lending"
 
   Scenario: Step 1 fields
     #CP-310
@@ -62,6 +68,14 @@ Feature: cfs/step1-content.feature
     Then Check that the "zip" field is focused
     When I have enter valid "zip" value "98989"
     And The "zip" field label is filled color
+    #CP-2475
+    And The "phone1" field label is "Phone:"
+    And The "phone1" field label is filled color
+    When I click on the "phone1" field
+    Then Check that the "phone1" field is focused
+    When I have enter valid "phone1" value "555"
+    When I have enter valid "phone2" value "987"
+    When I have enter valid "phone3" value "6234"
     #CP-441 Survey Questions
     #tricky the questions vary but they all contain 'score'
     And The "survey" message contains "score"
@@ -80,3 +94,6 @@ Feature: cfs/step1-content.feature
     When I click on the "cta-button" field
     And The ".error-header within error-container" message contains "6 error(s) prohibited this from being submitted."
     And The ".error-body within error-container" message contains "There were problems with the following fields:"
+    When I have enter valid "phone1" value "55"
+    When I click on the "cta-button" field
+    And The ".error-header within error-container" message contains "7 error(s) prohibited this from being submitted."

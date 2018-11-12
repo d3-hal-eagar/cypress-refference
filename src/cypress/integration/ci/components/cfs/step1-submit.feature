@@ -36,6 +36,20 @@ Feature: cfs/step1-submit.feature
     When I have enter valid "city" value "Old York"
     When I have enter valid "street1" value "22 Streat lane"
     When I select "NY" on the "state" field
+    #phone not required
+    And I click on the "cta-button" field
+    Then I am guided to the cfs step2 page
+
+  Scenario: step1 fields valid
+    When I have enter valid "firstName" value "Juine"
+    When I have enter valid "lastName" value "Ruby"
+    When I have enter valid "zip" value "98989"
+    When I have enter valid "city" value "Old York"
+    When I have enter valid "street1" value "22 Streat lane"
+    When I select "NY" on the "state" field
+    When I have enter valid "phone1" value "555"
+    When I have enter valid "phone2" value "987"
+    When I have enter valid "phone3" value "6234"
     And I click on the "cta-button" field
     Then I am guided to the cfs step2 page
 
@@ -45,6 +59,9 @@ Feature: cfs/step1-submit.feature
     When I have enter invalid "zip" value "9676B" that "contains a letter"
     When I have enter invalid "city" value "New %ork" that "contains a symbol"
     When I have enter invalid "street1" value "22 Cortland $*" that "contains a symbol"
+    When I have enter valid "phone1" value "555"
+    When I have enter valid "phone2" value "0"
+    When I have enter valid "phone3" value "93"
     And I click on the "cta-button" field
     Then I am guided to the cfs step1 page
     And The "firstName" field border is outlined in red color
@@ -57,6 +74,12 @@ Feature: cfs/step1-submit.feature
     And "city" value is "New %ork"
     And The "street1" field border is outlined in red color
     And "street1" value is "22 Cortland $*"
+    And The "phone1" field border is outlined in red color
+    And The "phone2" field border is outlined in red color
+    And The "phone3" field border is outlined in red color
+    And "phone1" value is "555"
+    And "phone1" value is "0"
+    And "phone1" value is "93"
 
   #CP-311
   Scenario: 1 Landing Page Default Keyboard Navigation
