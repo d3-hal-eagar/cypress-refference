@@ -129,3 +129,37 @@ Feature: cfs/shared-sidebar-content.feature
     And The "benefits-message-section" message contains "Social Security Number Monitoring"
     And The "benefits-message-section" message contains "Identity Theft Protection"
     And The "benefits-message-section" message contains siteDomain
+
+  Scenario: step3 CC Page Content
+    Given Register "Donald Blair"
+    Given Mock KBA
+    Given I am on the cfs step3A authentication page
+    Then Wait for not exists ".loading-modal"
+    Given Mock KBA pass
+    Given Mock scores-quick "812"
+    When I fill out kba questions and submit
+    Then Action detail "I have reached Step 3CC"
+    #CP-403
+    #CP-2601
+    Then The "side-footer-section" element present on the page
+    And The "side-footer-section" message contains "Should I expect to find errors in my credit profile?"
+    And The "side-footer-section" message contains "It's likely, according to financial experts and analysts. Your credit report can include errors and inaccuracies that can lower your credit score. As a member of "
+    And The "side-footer-section" message contains ", you'll have access to your credit report from all 3 credit bureaus - TransUnion, Experian, Equifax - so you can be sure that your credit information is correct."
+    And The "side-footer-section" message contains siteDomain
+    #CP-307
+    Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
+    And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
+    #CP-498
+    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
+    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
+    #CP-2476
+    Then The "benefits-message-section" element present on the page
+    And The "benefits-message-section" message contains "What are the benefits of my "
+    And The "benefits-message-section" message contains " Membership?"
+    And The "benefits-message-section" message contains "You will have unlimited access to:"
+    And The "benefits-message-section" message contains "24/7 Credit Monitoring"
+    And The "benefits-message-section" message contains "E-mail Alerts about changes in your credit"
+    And The "benefits-message-section" message contains "Credit Education Center access"
+    And The "benefits-message-section" message contains "Social Security Number Monitoring"
+    And The "benefits-message-section" message contains "Identity Theft Protection"
+    And The "benefits-message-section" message contains siteDomain
