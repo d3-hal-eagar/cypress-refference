@@ -27,8 +27,9 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
     And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
     And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
-    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
-    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
+    And The "<footer>" message contains "redit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided either by Transunion® and TransUnion Interactive, Inc. or Experian and CSIdentity Corporation."
+    And The "<footer>" message contains "All product and company names and trademarks mentioned herein are the property of their respective owners."
     And The "<footer>" message contains siteName
 
   Scenario: Step 4 Footer shall contain Copyright, Terms of Service, Privacy Policy, and Contact Us
@@ -45,8 +46,9 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
     And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
     And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
-    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
-    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
+    And The "<footer>" message contains "redit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided either by Transunion® and TransUnion Interactive, Inc. or Experian and CSIdentity Corporation."
+    And The "<footer>" message contains "All product and company names and trademarks mentioned herein are the property of their respective owners."
     And The "<footer>" message contains siteName
 
   Scenario: Landing Page Content
@@ -62,8 +64,9 @@ Feature: cfs/global-footer-content.feature
     And The "<footer>" message contains "Under federal law you have the right to receive a Credit Report from each of the three nationwide consumer reporting agencies once every 12 months. A Credit Score is not included."
     And The "<footer>" message contains "After verification of your identity, your scores are available for immediate online delivery securely. Scores shown are for illustrative purposes only."
     And The "<footer>" message contains "provides you with the tools you need to access and monitor your financial profile through the program's credit reporting and monthly monitoring benefits."
-    And The "<footer>" message contains "Credit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
-    And The "<footer>" message contains "Credit information is provided by TransUnion® credit reporting."
+    And The "<footer>" message contains "redit Monitoring and its benefit providers are not credit repair service providers and do not receive fees for such services, nor are they credit clinics, credit repair or credit services organizations or businesses."
+    And The "<footer>" message contains "Credit information is provided either by Transunion® and TransUnion Interactive, Inc. or Experian and CSIdentity Corporation."
+    And The "<footer>" message contains "All product and company names and trademarks mentioned herein are the property of their respective owners."
     And The "<footer>" message contains siteName
 
   Scenario: Privacy Policy Page Content
