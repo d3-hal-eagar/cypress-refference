@@ -95,12 +95,12 @@ Feature: cfs/shared-sidebar-content.feature
     And The "side-footer-section" message contains "Identity Theft Protection"
     And The "side-footer-section" message contains siteDomain
 
-  Scenario: step3 CC Page Content
+  Scenario: step3 Page Content
     Given Register "Donald Blair"
     Given Mock KBA
     Given I am on the cfs step3A authentication page
     Then Wait for not exists ".loading-modal"
-    And Action detail "I have reached Step 3CC"
+    And Action detail "I have reached Step 3 KBA"
     #CP-403
     Then The "side-footer-section" element present on the page
     And The "side-footer-section" message contains "Should I expect to find errors in my credit profile?"
