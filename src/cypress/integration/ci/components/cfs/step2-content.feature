@@ -15,12 +15,8 @@ Feature: cfs/step2-content.feature
 
 
   Scenario: Step 2 page elements
-  #CP-373
-  #Scenario: 1 - Privacy Security Image shall display on the Step 1 page
-    Then The "main-header-section" element present on the page
-    And The "main-header-section" image is displayed on the page
-    And The "main-header-section" element shall not be hyperlinked
-    And The "main-header-section" message contains "Privacy Security Protected"
+    #CP-373 removed per CP-2474
+    Then The "main-header-section" element is not present on the page
 
     #CP-349 Continue Acknowledgement
     And "tos-link on terms" with text "Terms and Conditions" Hyperlinked to "/cfs/tos"

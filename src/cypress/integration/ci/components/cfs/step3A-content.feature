@@ -18,12 +18,9 @@ Feature: cfs/step3A-content.feature
     Given I am on the cfs step3A authentication page
     Then The "failed-kba" message contains "We are sorry, but we are unable to help you at this time."
 
-  #CP-373
-  Scenario: 1 - Privacy Security Image shall display on the Step 3A page
-    Then The "main-header-section" element present on the page
-    And The "main-header-section" image is displayed on the page
-    And The "main-header-section" element shall not be hyperlinked
-    And The "main-header-section" message contains "Privacy Security Protected"
+
+  #CP-373 removed per CP-2474
+    Then The "main-header-section" element is not present on the page
 
   #CP-315 CP-320
   Scenario: KBA content validation

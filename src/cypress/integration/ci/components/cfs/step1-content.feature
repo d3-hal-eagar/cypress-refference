@@ -13,16 +13,11 @@ Feature: cfs/step1-content.feature
 
 
   Scenario: Step 1 page elements
-  #CP-373
-  #Scenario: 1 - Privacy Security Image shall display on the Step 1 page
-    Then The "main-header-section" element present on the page
-    And The "main-header-section" image is displayed on the page
-    And The "main-header-section" element shall not be hyperlinked
-    And The "main-header-section" message contains "Privacy Security Protected"
+  #CP-373 removed per CP-2474
+    Then The "main-header-section" element is not present on the page
   #CP-520
   #Scenario: 2 - Please Provide Entreaty Placement
-    And The "<h5> within complete-section" message contains "Please provide your address to locate your credit file"
-    And The "<p> within complete-section" message contains "Please take the time to set up your account."
+    And The "<h5> within complete-section" message contains "Please provide your name and address so we can locate your credit file"
 
   Scenario: Step 1 fields
     #CP-310
