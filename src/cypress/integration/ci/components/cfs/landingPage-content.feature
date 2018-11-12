@@ -15,6 +15,8 @@ Feature: cfs/landingPage-content.feature
   - CP-471 Desktop - CFS - Landing Page - Start Here Prompt (Copy Requirement)
   - CP-516 Desktop - CFS - Landing Page - Why Check Blurb (copy requirement)
   - CP-467 Desktop - CFS - Landing Page - No Harm Declaration (copy requirement)
+  - CP-2495 Desktop - CFS - Landing Page - Left Side Image (Revision of CP-394)
+  - CP-2497 Desktop/Mobile - CFS - Landing Page - Benefits Tout (Revision of CP-345)
 
   Background:
     Given I am a user on the cfs flow
@@ -61,13 +63,15 @@ Feature: cfs/landingPage-content.feature
     Then The "search-img" element present on the page
     And The "search-img" element shall not be hyperlinked
     #CP-394
+    #CP-2495
     Then The "left-img" element present on the desktop page only
     And The "left-img" element shall not be hyperlinked desktop page only
     #CP-345
-    And The "benefits" message contains "Instantly Access Your Credit Score"
+    #CP-2497
+    And The "benefits" message contains "Instantly Access Your 3 Credit Scores"
     And The "benefits" message contains "Secure Online Delivery"
-    And The "benefits" message contains "No Credit Card Required"
-    And The "benefits" message contains "See Score In Under 60 Seconds"
+    And The "benefits" message contains "Daily 3 Bureau Credit Monitoring"
+    And The "benefits" message contains "Roadside Assistance"
     #CP-357
     Then The "score-img" element present on the page
     And The "score-img" element shall not be hyperlinked

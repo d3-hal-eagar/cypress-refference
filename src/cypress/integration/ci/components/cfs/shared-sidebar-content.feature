@@ -3,11 +3,11 @@ Feature: cfs/shared-sidebar-content.feature
   I am displayed the sidebar blocks on steps 1-4
 
   Covers
-    - CP-403 Desktop/Mobile - CFS - Assuage Error Fear Message (copy requirement)  (1,2,3,4,4)
-    - CP-307 Desktop/Mobile - CFS - Sample Credit Score Image (1,2,3,4,4)
-    - CP-498 Desktop/Mobile - CFS - Secure Site Seal Image (1,2,3,4,4)
-    - CP-2476 Desktop/Mobile - CFS - Benefits Message
-    - CP-2494 Desktop/Mobile - CFS - Assuage Error Fear Message (Revision of CP-403)
+  - CP-403 Desktop/Mobile - CFS - Assuage Error Fear Message (copy requirement)  (1,2,3,4,4)
+  - CP-307 Desktop/Mobile - CFS - Sample Credit Score Image (1,2,3,4,4)
+  - CP-498 Desktop/Mobile - CFS - Secure Site Seal Image (1,2,3,4,4)
+  - CP-2476 Desktop/Mobile - CFS - Benefits Message
+  - CP-2494 Desktop/Mobile - CFS - Assuage Error Fear Message (Revision of CP-403)
 
 
   Background:
