@@ -38,7 +38,9 @@ Feature: cfs/step3B-content.feature
     And The ".success-message-top in identity-confirmation-message" message contains "your identity has been confirmed and your score is ready!"
     And The ".success-message-bottom in identity-confirmation-message" message contains "TransUnion Credit Score"
     And The ".success-message-bottom in identity-confirmation-message" message contains "Pulling Your Accounts on File"
-    And The ".success-message-bottom in identity-confirmation-message" message contains "Processed"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Equifax Credit Score"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Experian Credit Score"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Credit Bureau Monitoring"
     And The ".success-message-bottom in identity-confirmation-message" message contains "Processed"
 
     #CP-482
