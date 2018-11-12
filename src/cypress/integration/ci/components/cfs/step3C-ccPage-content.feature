@@ -30,20 +30,18 @@ Feature: cfs/step3C-ccPage-content.feature
     And The ".success-message-top in identity-confirmation-message" message contains "your identity has been confirmed and your score is ready!"
     And The ".success-message-bottom in identity-confirmation-message" message contains "TransUnion Credit Score"
     And The ".success-message-bottom in identity-confirmation-message" message contains "Pulling Your Accounts on File"
-    And The ".success-message-bottom in identity-confirmation-message" message contains "Processed"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Equifax Credit Score"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Experian Credit Score"
+    And The ".success-message-bottom in identity-confirmation-message" message contains "Credit Bureau Monitoring"
     And The ".success-message-bottom in identity-confirmation-message" message contains "Processed"
 
     #CP-2259
     # Some attributes/tests should be changed after CP-2487 will be fixed
     And The ".provide-info in identity-confirmation-message" message contains "Please provide your payment information for your $1.00 trial and membership"
-    And The "ccName" element present on the desktop page only
-    And The cfs "ccName" field label is "Name on Card:" on the desktop page only
-    And The "ccType" element present on the desktop page only
-    And The cfs "ccType" field label is "Card Type:" on the desktop page only
+    And Expect "ccName" not to exist
     When I click on the "ccNum" field
     Then Check that the "ccNum" field is focused
     And The "ccNum" field label is "Card Number:"
-    And The "<img.cc-image within .cc-form" element present on the mobile page only
     And The "<img.lock-circle within identity-confirmation-message" element present on the page
     And The "ccExpMonth" element present on the page
     And The "ccExpYear" element present on the page
@@ -59,6 +57,14 @@ Feature: cfs/step3C-ccPage-content.feature
     And The "trialMobile" message contains "To cancel, just call (855) 506-9167"
     And "trialEnd" desktop "trialMobile" mobile date is 7 days from now
     And The "score-arrow" element present on the desktop page only
+    # CP-2480 Desktop - CFS Step 3 CC Page (Revision of CP-2259) 7.  Card Type
+    And The "cc-type-list" element present on the page
+    And The "cc-type-amex" element present on the page
+    And The "cc-type-mastercard" element present on the page
+    And The "cc-type-visa" element present on the page
+    And The "cc-type-discover" element present on the page
+
+
 
 
     And The "cta-button" message contains "I agree and accept. Take me to my score."
