@@ -104,4 +104,18 @@
         }
     });
 
+    Then(/^The "(.*?)" field label is default color/, function (formField) {
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('label').should('have.css', 'color', flow_specific.placeholderGrey);
+            cy.getFormGroup(formField).find('label').should('not.have.css', 'opacity', '1');
+        });
+    });
+
+    Then(/^The "(.*?)" field label is filled color/, function (formField) {
+        cy.get('@_flow_specific').then((flow_specific) => {
+            cy.getFormGroup(formField).find('label').should('have.css', 'color', flow_specific.placeholderGrey);
+            cy.getFormGroup(formField).find('label').should('have.css', 'opacity', '1');
+        });
+    });
+
 })();
