@@ -37,17 +37,18 @@ Feature: cfs/shared-content.feature
 
   Scenario: step1 Page Content
     Given I am on the cfs step1 page
-    #CP-449
-    Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
+    #CP-498
+    #CP-2493
+    Then The "secure-site-section" element present on the page
+    And The "<img.verisign on verisign-logo" element present on the page
+    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
+    And The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
     And "<a> on mcaffe-logo" targets opening in a new tab
     And "<a> on mcaffe-logo" Hyperlink includes siteDomain
-    #CP-527
-    Then The "<img.verisign on verisign-logo" element present on the page
-    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
-    And "<a> on verisign-logo" Hyperlink includes siteDomain
-    #CP-515
-    Then The "badge-img" element present on the mobile page only
+    And The "<img.img-responsive.badge on secure-site-section" element present on the page
+    And The "<img.img-responsive.badge on secure-site-section" element shall not be hyperlinked
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
@@ -56,15 +57,18 @@ Feature: cfs/shared-content.feature
 
   Scenario: step2 Page Content
     Given I am on the cfs step2 page
-    #CP-449
-    Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
+    #CP-498
+    #CP-2493
+    Then The "secure-site-section" element present on the page
+    And The "<img.verisign on verisign-logo" element present on the page
+    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
+    And The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
     And "<a> on mcaffe-logo" targets opening in a new tab
-    #CP-527
-    Then The "<img.verisign on verisign-logo" element present on the page
-    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
-    #CP-515
-    Then The "badge-img" element present on the mobile page only
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
+    And The "<img.img-responsive.badge on secure-site-section" element present on the page
+    And The "<img.img-responsive.badge on secure-site-section" element shall not be hyperlinked
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
@@ -73,8 +77,18 @@ Feature: cfs/shared-content.feature
 
   Scenario: step3A authentication page Content
     Given I am on the cfs step3A authentication page
-    #CP-515
-    Then The "badge-img" element present on the mobile page only
+    #CP-498
+    #CP-2493
+    Then The "secure-site-section" element present on the page
+    And The "<img.verisign on verisign-logo" element present on the page
+    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
+    And The "<img.spr-mcafee on mcaffe-logo" element present on the page
+    And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
+    And "<a> on mcaffe-logo" targets opening in a new tab
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
+    And The "<img.img-responsive.badge on secure-site-section" element present on the page
+    And The "<img.img-responsive.badge on secure-site-section" element shall not be hyperlinked
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
@@ -86,15 +100,18 @@ Feature: cfs/shared-content.feature
     Given Mock KBA
     Given I am on the cfs step3A authentication page
     Then Wait for not exists ".loading-modal"
-    #CP-449
-    Then The "<img.spr-mcafee on mcaffe-logo" element present on the page
+    #CP-498
+    #CP-2493
+    Then The "secure-site-section" element present on the page
+    And The "<img.verisign on verisign-logo" element present on the page
+    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
+    And The "<img.spr-mcafee on mcaffe-logo" element present on the page
     And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
     And "<a> on mcaffe-logo" targets opening in a new tab
-    #CP-527
-    Then The "<img.verisign on verisign-logo" element present on the page
-    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
-    #CP-515
-    Then The "badge-img" element present on the mobile page only
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
+    And The "<img.img-responsive.badge on secure-site-section" element present on the page
+    And The "<img.img-responsive.badge on secure-site-section" element shall not be hyperlinked
     #CP-428
     #And The ".navbar" message contains siteName
     And I am displayed flow Logo
@@ -109,6 +126,18 @@ Feature: cfs/shared-content.feature
     And I am displayed flow Logo
     #CP-2477
     And Expect "nav-bureaus" to exist
+    #CP-498
+    #CP-2493
+    Then The "secure-site-section" element present on the page
+    And The "<img.verisign on verisign-logo" element present on the page
+    And "<a> on verisign-logo" Hyperlink includes "https://trustsealinfo.verisign.com/splash"
+    And "<a> on verisign-logo" Hyperlink includes siteDomain
+    And The "<img.spr-mcafee on mcaffe-logo" element present on the page
+    And "<a> on mcaffe-logo" Hyperlink includes "https://www.mcafeesecure.com/RatingVerify?ref="
+    And "<a> on mcaffe-logo" targets opening in a new tab
+    And "<a> on mcaffe-logo" Hyperlink includes siteDomain
+    And The "<img.img-responsive.badge on secure-site-section" element present on the page
+    And The "<img.img-responsive.badge on secure-site-section" element shall not be hyperlinked
 
   Scenario: step4 view Page Content
     Given Mock Report for "Donald Blair"

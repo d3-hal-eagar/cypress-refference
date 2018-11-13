@@ -29,9 +29,6 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
     #CP-2476
     Then The "benefits-message-section" element present on the page
     And The "benefits-message-section" message contains "What are the benefits of my "
@@ -57,9 +54,6 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
     #CP-2476
     Then The "benefits-message-section" element present on the page
     And The "benefits-message-section" message contains "What are the benefits of my "
@@ -84,9 +78,6 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
     #CP-2476
     Then The "benefits-message-section" element present on the page
     And The "benefits-message-section" message contains "What are the benefits of my "
@@ -115,9 +106,6 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
     #CP-2476
     Then The "benefits-message-section" element present on the page
     And The "benefits-message-section" message contains "What are the benefits of my "
@@ -149,9 +137,6 @@ Feature: cfs/shared-sidebar-content.feature
     #CP-307
     Then The "<img.yourcreditscore within [data-test=sample-score-section]" element present on the page
     And The "<img.yourcreditscore within [data-test=sample-score-section]" element shall not be hyperlinked
-    #CP-498
-    Then The "<img.securesite within [data-test=secure-site-section]" element present on the page
-    And The "<img.securesite within [data-test=secure-site-section]" element shall not be hyperlinked
     #CP-2476
     Then The "benefits-message-section" element present on the page
     And The "benefits-message-section" message contains "What are the benefits of my "
