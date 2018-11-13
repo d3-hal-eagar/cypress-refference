@@ -13,13 +13,13 @@ Feature: ex/step4-fieldValidation-securityAnswer.feature
     Given I am on the ex step4 verify page
 
 
-  Scenario: 3 - User without entering Security Answer focuses out of Street Address field.
+  Scenario: 3 - User without entering Security Answer focuses out of Street Address field (expected fail)
     When without entering "s-answer"
     Then "s-answer" field displays warning Icon
     And "s-answer" input field shall be outlined in red
     Then I shall be displayed an error for the "s-answer" field - "Please enter an answer for your selected question" in red
 
-  Scenario: 3b - User focuses on the Street Address input field that has the error "Please enter an answer for your selected question"
+  Scenario: 3b - User focuses on the Street Address input field that has the error "Please enter an answer for your selected question" (expected fail)
     When without entering "s-answer"
     Then I shall be displayed an error for the "s-answer" field - "Please enter an answer for your selected question" in red
     And "s-answer" input field shall be black

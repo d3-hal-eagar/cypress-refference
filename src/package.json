@@ -18,10 +18,13 @@
     "cfs": "node_modules/.bin/cypress run --spec \"cypress/integration/ci/components/cfs/**/*\"",
     "quickTest": "node_modules/.bin/cypress run --spec \"cypress/integration/pending/components/ex/step1-next-step.feature\"",
     "quickAllureReportRun": "npm run clearReports && npm run quickTest && npm run allureReportGenerate",
+    "ckAllureReportRun": "npm run clearReports && npm run ck && npm run allureReportGenerate",
+    "ckexAllureReportRun": "npm run clearReports && npm run ex && npm run allureReportGenerate",
+    "cfsAllureReportRun": "npm run clearReports && npm run cfs && npm run allureReportGenerate",
     "allureReportRun": "npm run clearReports && npm run start && npm run allureReportGenerate",
     "recordCypressDashboardRun": "node recordTestRun.js",
     "clearReports": "node clearReports.js",
-    "allureReportGenerate": "node allureArchive.js",
+    "allureReportGenerate": "npm run enviromentFile && node allureArchive.js",
     "enviromentFile": "node allureEnviroment.js"
   },
   "repository": {

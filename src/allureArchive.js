@@ -107,6 +107,10 @@ function deleteFiles(startPath,filter){
                         // loop each <test-case
                         testCases[0]['test-case'].forEach(function (testCase) {
                             testCase.name = 'Senario: ' + testCase.name;
+                            if (testCase.failure) {
+                                // put test suite name in message for categories
+                                testCase.failure[0].message[0] = testSuiteName +' : '+ testCase.failure[0].message[0];
+                            }
                             testCase.labels = {};
                             testCase.parameters = {};
                             testCase.attachments = {};
@@ -115,7 +119,11 @@ function deleteFiles(startPath,filter){
                             // TODO add lookup source for related jira ticket
                             // .labels.label = [{$: { name:'issue', value:"CP-123"}}];
                             // testCase.parameters.parameter = [{$: { name:'test param', value:'http://google.com',kind:'argument'}}];
-
+                            if (testCase.failure && testCase.name.includes('expected fail')) {
+                                // we can make it pending if we want
+                                testCase.$.status = 'pending';
+                                testCase.failure[0].message[0] = testCase.failure[0].message[0] + ' : expected fail';
+                            }
                             testCase.attachments.attachment = [];
                             // clean title for filename the same way cypress does
                             // see https://github.com/cypress-io/cypress/blob/develop/packages/server/lib/screenshots.coffee

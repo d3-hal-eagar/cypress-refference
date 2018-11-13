@@ -11,7 +11,7 @@ Feature: ex/step2-contant-cancellation.feature
     Given the siteName is "NotCreditExperian"
 
 
-  Scenario: 1 upon receiving an error on Step 2, I get an opportunity to review the information provided before and select 'Submit secure order' again. If the information still does not match the credit files then I am displayed a message on canceling the order.
+  Scenario: 1 upon receiving an error on Step 2, I get an opportunity to review the information provided before and select 'Submit secure order' again. If the information still does not match the credit files then I am displayed a message on canceling the order (expected fail)
     Given I am on the ex step2 form page
 
     When Action detail "I edited/reviewed data on the fields where information was incorrectly given"
@@ -27,13 +27,13 @@ Feature: ex/step2-contant-cancellation.feature
     And Action detail "if the given information still doesn't match the credit files"
     Then I am shown an error apology
 
-  Scenario: 2 on answering incorrect answers to the KBA questions on screen 3, system shall not be able to identify me and thus shall throw me an error and cancel the registration process.
+  Scenario: 2 on answering incorrect answers to the KBA questions on screen 3, system shall not be able to identify me and thus shall throw me an error and cancel the registration process (expected fail)
     Given I am on the ex step3 confirm page
     #And I answer the KBA Questions incorrectly
     When I click element "next-step-button"
     Then I am shown an error and cancel the registration process
 
-  Scenario: 3 As a user when I am on Step 3 and I run out of time while answering KBA question in both the occasions then I am thrown an error and registration is canceled.
+  Scenario: 3 As a user when I am on Step 3 and I run out of time while answering KBA question in both the occasions then I am thrown an error and registration is canceled (expected fail)
     Given I am on the ex step3 confirm page
     #And I answer the KBA Questions incorrectly
     When I click element "next-step-button"

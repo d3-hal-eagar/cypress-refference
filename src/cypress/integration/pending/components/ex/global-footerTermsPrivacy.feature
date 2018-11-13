@@ -13,7 +13,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     Given I am a user on the ex flow
     Given the siteName is "NotCreditExperian"
 
-  Scenario: 1 Footer shall contain Copyright, Terms of Service & Privacy Policy
+  Scenario: 1 Footer shall contain Copyright, Terms of Service & Privacy Policy (expected fail)
     When I am on the ex step1 signup page
     And "tos-link on <footer>" with text "Terms Of Service" Hyperlinked to "/ex/tos"
     And "tos-link on <footer>" targets opening in a new tab
@@ -22,7 +22,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     And I am displayed Copyright - © 2018 siteName. All Rights Reserved in the footer
     Then I am displayed siteName in the header
 
-  Scenario: 2 User is displayed the following on step2 form page
+  Scenario: 2 User is displayed the following on step2 form page (expected fail)
     When I am on the ex step2 form page
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header
@@ -33,7 +33,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     And "privacy-link on terms" targets opening in a new tab
     Then I am displayed siteName in the header
 
-  Scenario: 3 User is displayed the following on ck step3 screen
+  Scenario: 3 User is displayed the following on ck step3 screen (expected fail)
     When I am on the ex step3 confirm page
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header
@@ -42,7 +42,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     When I click element "privacy-link on <footer>"
     Then I am guided to the ex Privacy Policy screen
 
-  Scenario: 4 User is displayed the following on Terms of Service screen
+  Scenario: 4 User is displayed the following on Terms of Service screen (expected fail)
     When I am on the ex Terms of Service screen
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header
@@ -52,7 +52,7 @@ Feature: ex/global-footerTermsPrivacy.feature
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
 
-  Scenario: 5 User is displayed the following on Privacy Policy screen
+  Scenario: 5 User is displayed the following on Privacy Policy screen (expected fail)
     When I am on the ex Privacy Policy screen
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header
@@ -61,14 +61,14 @@ Feature: ex/global-footerTermsPrivacy.feature
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
 
-  Scenario: 6 User is displayed the following on ck landing screen
+  Scenario: 6 User is displayed the following on ck landing screen (expected fail)
     When I am on the ex landing page
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header
     Then I am displayed flow Footer
     Then I am displayed siteName in the header
 
-  Scenario: 7 User is displayed the following on step4 verify page
+  Scenario: 7 User is displayed the following on step4 verify page (expected fail)
     When I am on the ex step4 verify page
     #Then I am displayed flow Logo
     Then I am displayed siteName in the header

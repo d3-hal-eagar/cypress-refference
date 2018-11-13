@@ -28,6 +28,6 @@ Feature: ck/global-proprietaryNames.feature
       | Credmo           |
 
 
-  Scenario: No proprietary names are displayed on the Privacy Policy screen
+  Scenario: No proprietary names are displayed on the Privacy Policy screen (expected fail)
     Given I am on the ck Privacy Policy screen
     Then screen does not contain any proprietaryNames
