@@ -11,6 +11,7 @@
         "tokens": {
           "siteName": "IasadGeas",
           "siteDomain": "IasadGeas.io",
+          "logo": "logo.png",
           "signUpLogo": "signUp.png",
           "portalLogo": "logo-large.png",
           "creditBureauLogo": "credit-bureau-logo.png"
