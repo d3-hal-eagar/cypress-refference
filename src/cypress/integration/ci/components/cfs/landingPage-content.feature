@@ -17,6 +17,7 @@ Feature: cfs/landingPage-content.feature
   - CP-467 Desktop - CFS - Landing Page - No Harm Declaration (copy requirement)
   - CP-2495 Desktop - CFS - Landing Page - Left Side Image (Revision of CP-394)
   - CP-2497 Desktop/Mobile - CFS - Landing Page - Benefits Tout (Revision of CP-345)
+  - CP-2525 Mobile - CFS Landing Page - 3 Scores Image
 
   Background:
     Given I am a user on the cfs flow
@@ -87,3 +88,6 @@ Feature: cfs/landingPage-content.feature
     And The "<p> in check-score-text" message contains "A good credit score is your passport to competitive interest rates for mortgages, cars, credit card offers, job offers, insurance premiums and more. A strong score is worth money because it saves you in excess costs."
     #CP-467
     And The "no-harm-text" message contains "Checking your credit will not harm your score"
+    #CP-2525
+    Then The "3-scores-img" element present on the mobile page only
+    And The "3-scores-img" element shall not be hyperlinked mobile page only
