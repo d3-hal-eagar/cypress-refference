@@ -6,6 +6,7 @@ Feature: cfs/step3C-ccPage-content.feature
   Covers:
   - CP-2259 Desktop - CFS - Step 3 - CC Page
   - CP-2265 Mobile - CFS - Step 3 - CC Page
+  - CP-2535 Mobile - CFS - Step 3 Page - Offer Details above CTA (Revision for Scenario 8 of CP-2265 )
 
   Background:
     Given I am a user on the cfs flow
@@ -49,13 +50,15 @@ Feature: cfs/step3C-ccPage-content.feature
     And The "ccCvv" element present on the page
     And The "ccCvv" field label is "CVV:"
     And The ".offer-details" message contains "Offer Details"
-    And The "trialMobile" message contains "By clicking the button below, I agree to the 7-Day $1 Trial which ends" on the mobile page only
+    And The "trialMobile" message contains " 7-Day $1 Trial Ends" on the mobile page only
     And The "trialEnd" message contains "7-Day $1 Trial Ends" on the desktop page only
     And The "membership" message contains "Monthly Membership for just $39.90 after trial until cancelled" on the desktop page only
-    And The "trialMobile" message contains "Monthly Membership for just $39.90 after trial period until cancelled" on the mobile page only
+    And The "trialMobile" message contains "Monthly Membership for just $39.90 after trial until cancelled" on the mobile page only
     And The "cancellation" message contains "To Cancel, Just Call (855) 506-9167"
     And The "trialMobile" message contains "To cancel, just call (855) 506-9167"
     And "trialEnd" desktop "trialMobile" mobile date is 7 days from now
+    And The ".glyphicon-ok-sign within trialMobile" element present on the mobile page only
+
     And The "score-arrow" element present on the desktop page only
     # CP-2480 Desktop - CFS Step 3 CC Page (Revision of CP-2259) 7.  Card Type
     And The "cc-type-list" element present on the page
