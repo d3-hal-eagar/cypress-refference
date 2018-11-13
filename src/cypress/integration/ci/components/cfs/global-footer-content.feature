@@ -6,7 +6,7 @@ Feature: cfs/global-footer-content.feature
   - CP-317 Desktop/Mobile - CFS - Footer Legalese
   - CP-404(Deprecated) Desktop/Mobile - CFS - Privacy Policy Page Option
   - CP-410 (Deprecated) Desktop/Mobile - CFS - Terms of Service Option
-  - CP-326 Desktop - CFS - Landing Page - Contact Us Option
+  - CP-2713 Desktop - CFS - Landing Page - Contact Us Option (Revision to CP-326)
 
   Background:
     Given I am a user on the cfs flow
@@ -91,7 +91,8 @@ Feature: cfs/global-footer-content.feature
     Given I am on the cfs step2 page
     Then I am displayed flow Footer
 
-  @CP-326
+  #CP-2713
+  @CP-2713
   Scenario: Landing Page Contact Us Option
     Given I am on the cfs landing page
     And The "modal-link on <footer>" message contains "Contact Us"
@@ -99,7 +100,7 @@ Feature: cfs/global-footer-content.feature
 #    Then I am displayed the correct message in the modal header ""
     And I am displayed the correct message in the modal
       """
-      Instantly Access Your Credit Score
+      Instantly Access Your 3 Credit Scores
       """
     And I am displayed the correct message in the modal
       """
@@ -107,15 +108,15 @@ Feature: cfs/global-footer-content.feature
       """
     And I am displayed the correct message in the modal
       """
-      No Credit Card Required
+      Daily 3 Bureau Credit Monitoring
       """
     And I am displayed the correct message in the modal
       """
-      See Score In Under 60 Seconds
+      Roadside Assistance
       """
     And I am displayed the correct message in the modal
       """
-      See Score In Under 60 Seconds
+      Need to contact us?
       """
     And I am displayed the correct message in the modal
       """
@@ -145,6 +146,7 @@ Feature: cfs/global-footer-content.feature
       """
       Frederick, MD 21704
       """
+    And The "modal-body" message contains siteName
     When I close the modal
     Then the modal is not visible
 
