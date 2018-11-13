@@ -16,5 +16,5 @@
     Given the siteName is "NotCreditExperian"
 
 
-  Scenario: On the right rail I am displayed information blocks one below the other.
+  Scenario: On the right rail I am displayed information blocks one below the other (expected fail)
     Then I am displayed the correct blocks on the ex Step 2 right rail

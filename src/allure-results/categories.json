@@ -13,15 +13,19 @@
 },
 {
 "name": "EX flow",
-"messageRegex": ".*/ex.*"
+"messageRegex": ".*ex/.*"
 },
 {
 "name": "CK flow",
-"messageRegex": ".*/ck.*"
+"messageRegex": ".*ck/.*"
 },
 {
 "name": "CFS flow",
-"messageRegex": ".*/cfs.*"
+"messageRegex": ".*cfs/.*"
+},
+{
+"name": "expected fail",
+"messageRegex": ".*expected fail.*"
 },
 {
 "name": "Test defects",

@@ -10,6 +10,9 @@ Cypress automated tests with Cucumber specs.
   * (Manually) Go to www.nodejs.org and download the latest stable version. (At the moment it is LTS v10)
   * (homebrew) `brew install node`
 * docker:
+* allure: for local report generation only
+  * https://docs.qameta.io/allure/#_get_started
+  * (homebrew) `brew install allure`
 
 install
     

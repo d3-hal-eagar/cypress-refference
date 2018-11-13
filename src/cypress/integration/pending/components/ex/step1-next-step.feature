@@ -10,7 +10,7 @@ Feature: ex/step1-next-step.feature
         Given I am on the ex step1 signup page
 
 
-    Scenario: 1 - Without entering all required fields user selects Submit and Continue.
+    Scenario: 1 - Without entering all required fields user selects Submit and Continue (expected fail)
         And I click element "next-step-button"
         Then I am guided to the ex step1 signup page
         Then Action detail "System shall display a warning Icon inside all the required field elements that have not been completed."
@@ -33,14 +33,14 @@ Feature: ex/step1-next-step.feature
         Then Action detail "System shall by default focus on the First element with the error"
             Then Check that the "firstName" field is focused
 
-    Scenario: 1a - Without entering certain required fields user selects Submit and Continue.
+    Scenario: 1a - Without entering certain required fields user selects Submit and Continue (expected fail)
         When I have enter valid "firstName" value "John"
         And I click element "next-step-button"
         Then I am guided to the ex step1 signup page
         Then Action detail "System shall by default focus on the First element with the error"
         Then Check that the "lastName" field is focused
 
-    Scenario: 2 - User submits form with valid information
+    Scenario: 2 - User submits form with valid information (expected fail)
         When I have enter valid "firstName" value "John"
         And I have enter valid "lastName" value "Smith"
         And I have enter valid "street1" value "22 Cortland street"
@@ -53,7 +53,7 @@ Feature: ex/step1-next-step.feature
         And I click element "next-step-button"
         Then I am guided to the ex step2 form page
 
-    Scenario: 2 - User enters an invalid address and selects Submit and Continue Call-to-Action button upon entering all the required data.
+    Scenario: 2 - User enters an invalid address and selects Submit and Continue Call-to-Action button upon entering all the required data (expected fail)
         When I have enter valid "firstName" value "John"
         And I have enter valid "lastName" value "Smith"
         And I have enter valid "street1" value "14.5 Pillow street"
@@ -73,7 +73,7 @@ Feature: ex/step1-next-step.feature
         And I click element "next-step-button"
         Then I am guided to the ex step2 form page
 
-    Scenario: 3 - User enters an invalid current address and invalid previous address and selects Submit and Continue Call-to-Action button upon entering all the required data.
+    Scenario: 3 - User enters an invalid current address and invalid previous address and selects Submit and Continue Call-to-Action button upon entering all the required data (expected fail)
         When I have enter valid "firstName" value "John"
         And I have enter valid "lastName" value "Smith"
         And I have enter valid "street1" value "14.5 Pillow street"
@@ -102,7 +102,7 @@ Feature: ex/step1-next-step.feature
         And I click element "next-step-button"
         Then I am guided to the ex step2 form page
 
-    Scenario: 2 - User enters an valid address missing apartment
+    Scenario: 2 - User enters an valid address missing apartment (expected fail)
         When I have enter valid "firstName" value "John"
         And I have enter valid "lastName" value "Smith"
         And I have enter valid "street1" value "4135 45th st"
