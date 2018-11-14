@@ -18,6 +18,8 @@ Feature: cfs/landingPage-content.feature
   - CP-2495 Desktop - CFS - Landing Page - Left Side Image (Revision of CP-394)
   - CP-2497 Desktop/Mobile - CFS - Landing Page - Benefits Tout (Revision of CP-345)
   - CP-2525 Mobile - CFS Landing Page - 3 Scores Image
+  - CP-2473 Desktop - CFS Landing Page (Revision of CP-477)
+  - CP-2519 Mobile - CFS Landing Page (Revision of CP-460)
 
   Background:
     Given I am a user on the cfs flow
@@ -29,23 +31,20 @@ Feature: cfs/landingPage-content.feature
     #CP-374
     When I click on the "firstName" field
     Then Check that the "firstName" field is focused
-    And The "firstName" field placeholder is "First Name"
+    And The "firstName" field label is "First Name:"
     And The cfs "firstName" field label is "First Name" on the mobile page only
     #CP-493
     When I click on the "lastName" field
     Then Check that the "lastName" field is focused
-    And The "lastName" field placeholder is "Last Name"
-    And The cfs "lastName" field label is "Last Name" on the mobile page only
+    And The "lastName" field label is "Last Name:"
     #CP-526
     When I click on the "email" field
     Then Check that the "email" field is focused
-    And The "email" field placeholder is "Email"
-    And The cfs "email" field label is "Email" on the mobile page only
+    And The "email" field label is "Email:"
     #CP-518
     When I click on the "zip" field
     Then Check that the "zip" field is focused
-    And The "zip" field placeholder is "Zip Code"
-    And The cfs "zip" field label is "Zip Code" on the mobile page only
+    And The "zip" field label is "Zip Code:"
 
     #checkbox added to ticket CP-460
     When I click on the "communicationPreferences" field
@@ -57,12 +56,15 @@ Feature: cfs/landingPage-content.feature
 
     #CP-468
     And I focus on the "cta-button" field
-    And The "cta-button" message contains "Your Score - Now"
+    And The "cta-button" message contains "Your Scores - Now"
 
   Scenario: Landing page elements
     #CP-301 duplicate #CP-451
     Then The "search-img" element present on the page
     And The "search-img" element shall not be hyperlinked
+    #CP-2519
+    And The "badge-img-mobile" element present on the mobile page only
+    And The "badge-img" element present on the mobile page only
     #CP-394
     #CP-2495
     Then The "left-img" element present on the desktop page only
@@ -77,10 +79,20 @@ Feature: cfs/landingPage-content.feature
     Then The "score-img" element present on the page
     And The "score-img" element shall not be hyperlinked
     #CP-329
-    And The "landing-h1" message contains "Get Your Free Credit Score"
-    And The "landing-h2" message contains "from TransUnion: No Credit Card Required!"
+    #CP-2473
+    And The "landing-h1" message contains "Get Your Free Credit Scores"
+    And The "landing-h2" message contains "from All 3 Bureaus as of"
+    And "landing-h2" message contains current date
+    And The "landing-terms" message contains "7-Day $1 Trial"
+    And The "landing-terms" message contains "Ends "
+    And "landing-terms" message contains date "7" days from now
+    And The "landing-terms" message contains "Monthly Membership for just $39.90"
+    And The "landing-terms" message contains "after trial until cancelled"
+    And The "landing-terms" message contains "To cancel, Just call"
+    And The "landing-terms" message contains "(855) 506-9160"
+    And The ".glyphicon-ok-sign within trialMobile" element present on the mobile page only
     #CP-323
-      Then The "arrow-img" element present on the page
+    Then The "arrow-img" element present on the page
     #CP-471
     And The "legend" message contains "Start Here"
     #CP-516
@@ -89,5 +101,8 @@ Feature: cfs/landingPage-content.feature
     #CP-467
     And The "no-harm-text" message contains "Checking your credit will not harm your score"
     #CP-2525
+    #CP-2519
     Then The "3-scores-img" element present on the mobile page only
     And The "3-scores-img" element shall not be hyperlinked mobile page only
+    Then The "3-scores-arrow" element present on the mobile page only
+    And The "3-scores-arrow" element shall not be hyperlinked mobile page only
