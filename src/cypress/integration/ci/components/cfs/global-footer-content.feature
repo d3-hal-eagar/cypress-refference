@@ -97,20 +97,21 @@ Feature: cfs/global-footer-content.feature
     Given I am on the cfs landing page
     And The "modal-link on <footer>" message contains "Contact Us"
     When I click "Contact Us"
-#    Then I am displayed the correct message in the modal header ""
-    And I am displayed the correct message in the modal
+    Then The "close-button" element present on the modal header
+    And The "<img.img-responsive on modal-body" element present on the modal
+    And I am displayed the correct message in the desktop modal only
       """
       Instantly Access Your 3 Credit Scores
       """
-    And I am displayed the correct message in the modal
+    And I am displayed the correct message in the desktop modal only
       """
       Secure Online Delivery
       """
-    And I am displayed the correct message in the modal
+    And I am displayed the correct message in the desktop modal only
       """
       Daily 3 Bureau Credit Monitoring
       """
-    And I am displayed the correct message in the modal
+    And I am displayed the correct message in the desktop modal only
       """
       Roadside Assistance
       """

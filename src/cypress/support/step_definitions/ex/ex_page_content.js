@@ -85,7 +85,24 @@
         cy.get('.modal-header').contains(modalText);
     });
 
+    Then(/^The "(.*?)" element present on the modal header/, (element) => {
+        cy.getElement(element).should('be.visible');
+    });
+
+    Then(/^The "(.*?)" element present on the modal/, (element) => {
+        cy.getElement(element).should('be.visible');
+    });
+
     Then(`I am displayed the correct message in the modal`, (modalText) => {
         cy.get('.modal-body').contains(modalText);
     });
+
+    Then(`I am displayed the correct message in the desktop modal only`, (modalText) => {
+        if (Cypress.env('TESTMODE') === 'mobile') {
+            cy.get('.modal-body').contains(modalText).should('not.be.visible');
+        } else {
+            cy.get('.modal-body').contains(modalText);
+        }
+    });
+
 })();
