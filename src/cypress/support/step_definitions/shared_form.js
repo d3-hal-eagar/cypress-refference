@@ -175,7 +175,7 @@
         cy.get('@_flow_specific').then((flow_specific) => {
 
             if (flow_specific.flowName === 'cfs') {
-                    cy.wait(100).getElement(formField).should('have.css', 'border-color', flow_specific.defaultBorder);
+                    cy.wait(100).getElement(formField).should('not.have.css', 'border-color', flow_specific.errorRedBorder);
             } else {
                 if (formField.startsWith("ssn") || formField.startsWith("dob")) {
                     cy.getElement(formField+'-error-message').should('not.be.visible');

@@ -148,7 +148,12 @@
 
     Then(/^The "(.*?)" field border shall have a highlighted focus border/, function (formField) {
         cy.get('@_flow_specific').then((flow_specific) => {
-            cy.wait(100).getElement(formField).should('have.css', 'border-color', flow_specific.selectBorder);
+
+            if (flow_specific.flowName === 'cfs') {
+                cy.wait(100).getElement(formField).should('have.css', 'box-shadow', flow_specific.selectBoxShadow);
+            } else {
+                cy.wait(100).getElement(formField).should('have.css', 'border-color', flow_specific.selectBorder);
+            }
         });
     });
 

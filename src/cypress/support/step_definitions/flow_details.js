@@ -13,13 +13,13 @@
             textBlack: 'rgb(0, 0, 0)',
             validGreen: 'rgb(0, 255, 0)',
             errorRed: 'rgb(238, 0, 0)',
-            errorRedBorder: 'rgb(255, 0, 0)',
+            errorRedBorder: 'rgb(194, 4, 0)',
             selectBorder: 'rgb(128, 189, 255)',
-            defaultBorder: 'rgb(206, 212, 218)',
+            defaultBorder: 'rgb(221, 221, 221)',
             backgroundBlue: 'rgb(31, 47, 114)',
             backgroundWhite: 'rgb(255, 255, 255)',
-            placeholderGrey: 'rgb(51, 51, 51)'
-
+            placeholderGrey: 'rgb(51, 51, 51)',
+            selectBoxShadow: 'rgb(114, 191, 251) 0px 0px 5px 0px'
         }).as('_flow_specific');
         cy.visit( '?marketingid=000');
         cy.wait(200);

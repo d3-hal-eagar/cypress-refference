@@ -25,7 +25,7 @@
     "recordCypressDashboardRun": "node recordTestRun.js",
     "clearReports": "node clearReports.js",
     "allureReportGenerate": "npm run enviromentFile && node allureArchive.js",
-    "enviromentFile": "node allureEnviroment.js"
+    "enviromentFile": "node allureEnvironment.js"
   },
   "repository": {
     "type": "git",
