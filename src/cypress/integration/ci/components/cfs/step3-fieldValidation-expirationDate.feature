@@ -30,7 +30,7 @@ Feature: cfs/step3-fieldValidation-expirationDate.feature
     When I select "12" on the "ccExpMonth" field
     When I focus on the "ccExpMonth" field
     And The "ccExpMonth" field border shall have a highlighted focus border
-    Then I select "11-Nov" on the "ccExpMonth" field and the correct value "11" is displayed
+    Then I select "11 - Nov" on the "ccExpMonth" field and the correct value "11" is displayed
 
     And I select "2022" on the "ccExpYear" field
     When I focus on the "ccExpYear" field
@@ -88,7 +88,8 @@ Feature: cfs/step3-fieldValidation-expirationDate.feature
     And I shall be able to select only one "ccExpYear" at a time
     When I have selected valid "ccExpYear" option I see the correct value
       | year_selected | value |
-      | 2018          | 2018  |
+      | 2022          | 2022  |
+      | 2028          | 2028  |
       | 2033          | 2033  |
-    And I shall not be displayed invalid year "2017" in the "ccExpYear" field
+    And I shall see the next 15 years only in the "ccExpYear" field
 
