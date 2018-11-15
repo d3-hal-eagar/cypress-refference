@@ -32,7 +32,6 @@ Feature: cfs/landingPage-content.feature
     When I click on the "firstName" field
     Then Check that the "firstName" field is focused
     And The "firstName" field label is "First Name:"
-    And The cfs "firstName" field label is "First Name" on the mobile page only
     #CP-493
     When I click on the "lastName" field
     Then Check that the "lastName" field is focused
@@ -64,7 +63,7 @@ Feature: cfs/landingPage-content.feature
     And The "search-img" element shall not be hyperlinked
     #CP-2519
     And The "badge-img-mobile" element present on the mobile page only
-    And The "badge-img" element present on the mobile page only
+    And The "badge-img" element present on the desktop page only
     #CP-394
     #CP-2495
     Then The "left-img" element present on the desktop page only
@@ -83,14 +82,15 @@ Feature: cfs/landingPage-content.feature
     And The "landing-h1" message contains "Get Your Free Credit Scores"
     And The "landing-h2" message contains "from All 3 Bureaus as of"
     And "landing-h2" message contains current date
-    And The "landing-terms" message contains "7-Day $1 Trial"
-    And The "landing-terms" message contains "Ends "
-    And "landing-terms" message contains date "7" days from now
-    And The "landing-terms" message contains "Monthly Membership for just $39.90"
-    And The "landing-terms" message contains "after trial until cancelled"
-    And The "landing-terms" message contains "To cancel, Just call"
-    And The "landing-terms" message contains "(855) 506-9160"
-    And The ".glyphicon-ok-sign within trialMobile" element present on the mobile page only
+    And The "trial-end-date" message contains "7-Day $1 Trial"
+    And The "trial-end-date" message contains "Ends "
+    And "trial-end-date" message contains date "7" days from now
+    And The "trial-terms" message contains "Monthly Membership for just $39.90"
+    And The "trial-terms" message contains "after trial until cancelled"
+    And The "trial-cancellation" message contains "To cancel, Just call"
+    And The "trial-cancellation" message contains "(855) 506-9160"
+#   @hal, I commented it since can't find for what test is it.
+#    And The ".glyphicon-ok-sign within trialMobile" element present on the mobile page only
     #CP-323
     Then The "arrow-img" element present on the page
     #CP-471
