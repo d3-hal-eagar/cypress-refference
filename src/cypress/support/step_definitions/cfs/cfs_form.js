@@ -129,7 +129,6 @@
     });
 
     When(/^I have enter valid "(.*?)" value I see the all Credit Card Type icons in active state$/, function (formField,dataTable) {
-            // starting at rowindex 1 to skip header row
             for (let rowindex = 0, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
                 let userInput = dataTable.rawTable[rowindex][0];
                 // log test intent this is otherwise lost when doing multiple tests in a single step
