@@ -23,4 +23,13 @@
         }
     });
 
+    Then(/^"(.*?)" message contains current date$/, (element) => {
+        const todaysDate = Cypress.moment().format('MMM DD, YYYY');
+        cy.getElement(element).should('be.visible', todaysDate);
+    });
+
+    Then(/^"(.*?)" message contains date "(.*?)" days from now$/, (element, days) => {
+        const dateIs = Cypress.moment().add(days, 'days').format('MMM DD, YYYY');
+        cy.getElement(element).should('be.visible', dateIs);
+    });
 })();
