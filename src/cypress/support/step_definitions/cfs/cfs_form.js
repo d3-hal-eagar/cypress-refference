@@ -118,4 +118,30 @@
         });
     });
 
+    Then(/^The "(.*?)" Credit Card Type icon shall remain in an active state/,function (formField){
+            cy.getElement(formField).should('be.visible');
+            cy.getElement(formField).should('not.have.attr', 'class', 'cc-blur');
+        });
+
+    Then(/^The "(.*?)" Credit Card Type icon shall remain in an inactive state/,function (formField){
+            cy.getElement(formField).should('be.visible');
+            cy.getElement(formField).should('have.attr', 'class', 'cc-blur');
+    });
+
+    When(/^I have enter valid "(.*?)" value I see the all Credit Card Type icons in active state$/, function (formField,dataTable) {
+            // starting at rowindex 1 to skip header row
+            for (let rowindex = 1, rows = dataTable.rawTable.length; rowindex < rows; rowindex++) {
+                let userInput = dataTable.rawTable[rowindex][0];
+                // log test intent this is otherwise lost when doing multiple tests in a single step
+                cy.log('(example #'+rowindex+') I have enter valid '+formField+' value "'+userInput+'"');
+                // chained actions clear previous error
+                // re-enter text and check for error
+                cy.getElement(formField).clear().type(userInput).blur().focus();
+                cy.getElement('cc-type-visa').should('not.have.attr', 'class', 'cc-blur');
+                cy.getElement('cc-type-amex').should('not.have.attr', 'class', 'cc-blur');
+                cy.getElement('cc-type-mastercard').should('not.have.attr', 'class', 'cc-blur');
+                cy.getElement('cc-type-discover').should('not.have.attr', 'class', 'cc-blur');
+            }
+    });
+
 })();

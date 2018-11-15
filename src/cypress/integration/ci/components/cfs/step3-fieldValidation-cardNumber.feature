@@ -3,6 +3,7 @@ Feature: cfs/step3-fieldValidation-cardNumber.feature
   Covers:
   CP-2264 Desktop - CFS - Step 3 CC Page - Credit Card Information Section
   CP-2286 Mobile - CFS - Step 3 CC Page - Credit Card Information Section
+  CP-2481 Desktop/Mobile - CFS - Step 3 CC Page - Credit Card Type Dynamic Recognition
 
   Background: user on Step 3CC acquisition flow screen
     Given I am a user on the cfs flow
@@ -15,6 +16,63 @@ Feature: cfs/step3-fieldValidation-cardNumber.feature
     When I fill out kba questions and submit
     Then Action detail "I have reached Step 3CC"
 
+
+  Scenario: 1 - All Credit Card icons for VISA, MC, AMEX, and Discover shall be initially displayed in the active mode
+    When without entering "ccNum"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an active state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an active state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an active state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an active state
+
+  Scenario: 2 - User enters Credit Card number that starts with either of the following numbers or combination of numbers: 34, 37, 4, 5, 6
+    #VISA
+    When I have enter a valid "ccNum" value "4" that "Is an VISA Credit Card Type"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an active state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an inactive state
+    #MASTERCARD
+    When I have enter a valid "ccNum" value "5" that "Is an MASTERCARD Credit Card Type"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an active state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an inactive state
+    #AMEX
+    When I have enter a valid "ccNum" value "34" that "Is an AMEX Credit Card Type"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an active state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an inactive state
+    #AMEX
+    When I have enter a valid "ccNum" value "37" that "Is an AMEX Credit Card Type"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an active state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an inactive state
+    #DISCOVER
+    When I have enter a valid "ccNum" value "6" that "Is an DISCOVER Credit Card Type"
+    Then The "cc-type-visa" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-mastercard" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-amex" Credit Card Type icon shall remain in an inactive state
+    And The "cc-type-discover" Credit Card Type icon shall remain in an active state
+
+  Scenario: 3 - User enters Credit Card number that doesn't start with either of the following numbers or combination of numbers: 34, 37, 4, 5, 6
+    When I have enter valid "ccNum" value I see the all Credit Card Type icons in active state
+      |0|
+      |1|
+      |2|
+      |3|
+      |30|
+      |31|
+      |32|
+      |33|
+      |35|
+      |36|
+      |38|
+      |39|
+      |7|
+      |8|
+      |9|
 
   Scenario: 2 Card Number Field Border Glow
     When I click on the "ccNum" field
@@ -60,8 +118,8 @@ Feature: cfs/step3-fieldValidation-cardNumber.feature
     And I click element "cta-button"
     Then I shall be displayed no error for the "ccNum" field
 
-  Scenario: User enters invalid characters in Card Number code multiple input errors
+  Scenario: 9 - User enters invalid characters in Card Number code multiple input errors
     When I have enter invalid characters "![]&@%?<>!$():;~^{}+=|*ãü木✉" into valid input "411111111111115" on the "ccNum" and I see validation error message "Credit Card - Number is invalid"
 
-  Scenario: User enters additional invalid characters in Card Number code multiple input errors
+  Scenario: 10 - User enters additional invalid characters in Card Number code multiple input errors
     When I have enter invalid characters "' .,#_\/\\\"" into valid input "411111111111115" on the "ccNum" and I see validation error message "Credit Card - Number is invalid"
