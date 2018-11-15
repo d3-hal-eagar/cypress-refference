@@ -41,6 +41,8 @@
         cy.get('body').contains('30. SOFTWARE TERMS');
         cy.get('body').contains('31. CONTACT INFORMATION');
         cy.get('body').contains('32. NOTICE TO CALIFORNIA RESIDENTS');
+        //CP-2724 updates
+        cy.get('body').contains('You authorize your wireless operator (AT&T, Sprint, T-Mobile, US Cellular, Verizon, or any other branded wireless operator) to disclose to');
     });
 
     Then(/^I am displayed flow Privacy Policy Text$/, () => {
