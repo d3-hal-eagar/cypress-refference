@@ -46,7 +46,7 @@
         cy.wrap({
             flowName: 'ex',
             siteName: 'IasadGeas',
-            errorSelector: '.error-container',
+            errorSelector: '.popover-body',
             errorClass: '.invalid',
             textBlack: 'rgb(73, 80, 87)',
             validGreen: 'rgb(37, 145, 94)',
