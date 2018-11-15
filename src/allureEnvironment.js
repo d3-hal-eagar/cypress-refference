@@ -31,13 +31,19 @@ const os = require('os');
                     key:'HOSTNAME',
                     value:os.hostname()
                 });
+                var cypressConf = JSON.parse(fs.readFileSync('cypress.json', 'utf8'));
+                let baseUrl = process.env.CYPRESS_baseUrl;
+                if (baseUrl === undefined) { baseUrl = cypressConf.baseUrl; }
                 paramaters.push({
                     key:'baseUrl',
-                    value:process.env.CYPRESS_baseUrl
+                    value:baseUrl
                 });
+                let testmode = process.env.TESTMODE;
+                if (testmode === undefined) { testmode = cypressConf.testmode; }
+                if (testmode === undefined) { testmode = 'desktop'; }
                 paramaters.push({
                     key:'TESTMODE',
-                    value:process.env.TESTMODE
+                    value:testmode
                 });
                 gitStatus.forEach(function (repoStatus) {
                     paramaters.push({
