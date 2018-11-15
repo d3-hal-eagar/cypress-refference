@@ -41,12 +41,17 @@
         cy.get('body').contains('30. SOFTWARE TERMS');
         cy.get('body').contains('31. CONTACT INFORMATION');
         cy.get('body').contains('32. NOTICE TO CALIFORNIA RESIDENTS');
+        //CP-2724 updates
+        cy.get('body').contains('You authorize your wireless operator (AT&T, Sprint, T-Mobile, US Cellular, Verizon, or any other branded wireless operator) to disclose to');
     });
 
     Then(/^I am displayed flow Privacy Policy Text$/, () => {
         //cy.getElement('section-title').contains('Privacy Policy');
         cy.getElement('<h2>').contains('PRIVACY POLICY');
-        cy.get('body').contains('Last updated on October 4, 2018');
+        //CP-2723 updates
+        cy.get('body').contains('Last updated on October 14, 2018');
+        cy.get('body').contains('Mobile Carrier Authorization');
+
         cy.get('body').contains('WE ARE COMMITTED TO SAFEGUARDING CUSTOMER INFORMATION');
         cy.get('body').contains('THE INFORMATION WE GATHER');
         cy.get('body').contains('INFORMATION SHARING');
@@ -55,7 +60,6 @@
         cy.get('body').contains('PUBLIC FORUMS');
         cy.get('body').contains('CONSENT TO INTERNATIONAL INFORMATION TRANSFERS');
         cy.get('body').contains('SECURITY');
-        cy.get('body').contains('CHANGES TO THIS PRIVACY POLICY');
         cy.get('body').contains('MAKING CHANGES TO YOUR PERSONAL INFORMATION');
         cy.get('body').contains('CHANGES TO THIS PRIVACY POLICY');
         cy.get('body').contains('TERMS OF USE');
