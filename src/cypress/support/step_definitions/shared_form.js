@@ -384,6 +384,19 @@
     });
 
 
+    Then(/^I shall see the next 15 years only in the "(.*?)" field$/, function (formField) {
+        // age should be 18-99
+        const thisYear = (new Date()).getFullYear();
+        const youngYear = thisYear - 1;
+        const lastGoodYear = thisYear + 15;
+        const toFarFuture = thisYear + 16;
+        cy.getElement(formField).should('not.contain', youngYear);
+        cy.getElement(formField).should('contain', thisYear);
+        cy.getElement(formField).should('contain', lastGoodYear);
+        cy.getElement(formField).should('not.contain', toFarFuture);
+    });
+
+
     Then(/^I shall not be displayed invalid year "(.*?)" in the "(.*?)" field$/, function (year,formField) {
         //const thisYear = (new Date()).getFullYear();
         cy.getElement(formField).should('not.contain', year);
