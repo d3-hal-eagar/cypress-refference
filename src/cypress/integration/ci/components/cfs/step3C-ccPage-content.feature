@@ -55,7 +55,7 @@ Feature: cfs/step3C-ccPage-content.feature
     And The "membership" message contains "Monthly Membership for just $39.90 after trial until cancelled" on the desktop page only
     And The "trialMobile" message contains "Monthly Membership for just $39.90 after trial until cancelled" on the mobile page only
     And The "cancellation" message contains "To Cancel, Just Call (855) 506-9167"
-    And The "trialMobile" message contains "To cancel, just call (855) 506-9167"
+    And The "trialMobile" message contains "To cancel, just call (855) 506-9167" on the mobile page only
     And "trialEnd" desktop "trialMobile" mobile date is 7 days from now
     And The ".glyphicon-ok-sign within trialMobile" element present on the mobile page only
 
