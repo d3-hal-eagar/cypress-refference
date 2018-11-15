@@ -27,7 +27,7 @@ Feature: cfs/landingPage-content.feature
     Given the siteName is "NotCheckFreeScore"
 
 
-  Scenario: Landing page fields
+  Scenario: 1 - Landing page fields
     #CP-374
     When I click on the "firstName" field
     Then Check that the "firstName" field is focused
@@ -57,7 +57,7 @@ Feature: cfs/landingPage-content.feature
     And I focus on the "cta-button" field
     And The "cta-button" message contains "Your Scores - Now"
 
-  Scenario: Landing page elements
+  Scenario: 2 - Landing page elements
     #CP-301 duplicate #CP-451
     Then The "search-img" element present on the page
     And The "search-img" element shall not be hyperlinked
