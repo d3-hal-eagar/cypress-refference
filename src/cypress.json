@@ -15,5 +15,6 @@
   "waitForAnimations": true,
   "env": {
     "TESTMODE": "desktop"
-  }
+  },
+  "chromeWebSecurity": false
 }

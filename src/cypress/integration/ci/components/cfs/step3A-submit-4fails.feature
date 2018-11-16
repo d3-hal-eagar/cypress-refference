@@ -80,4 +80,5 @@ Feature: cfs/step3A-submit-4fails.feature
       When I fill out kba questions and submit
 
     Then Action detail "I failed KBAs 4 times failed message"
-      Then The "failed-kba" message contains "We are sorry, but we are unable to help you at this time."
+      #Then The "failed-kba" message contains "We are sorry, but we are unable to help you at this time."
+      Then I am guided to PORTAL_KBA_EXIT

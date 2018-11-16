@@ -66,4 +66,13 @@
     Then(`I am guided to the cfs Terms of Service screen`, () => {
         cy.url().should('contain','/cfs/tos').getElement('tos-section').should('be.visible');
     });
+
+    Then(`I am guided to PORTAL_KBA_EXIT`, () => {
+        cy.url().should('contain','/assets/kbaFailUrl.txt');
+    });
+
+    Then(`I am guided to PORTAL_LOGIN_EXIT`, () => {
+        cy.url().should('contain','/assets/loginUrl.txt');
+    });
+
 })();

@@ -61,7 +61,7 @@
         cy.route({
             method: 'POST',
             url: '/api/v1/kba/*',
-            response: '{"message":"Unauthorized","errors":{"code":701}}',
+            response: '{"message":"Unauthorized","errors":{"code":701,"exitUrl":'+Cypress.config('baseURL')+'/cfs/tos"?CID=341432&AFID=358001&AffiliateReferenceID=344447257&SID=33&fname=Donald&lname=Blair&email=don56anld%40mailinator.com&straddr=&city=San%20Antonio&state=TX&zip=78228&pp1=&pp2=&pp3=&name=&bill_address=&bill_city=San%20Antonio&bill_state=TX&bill_zip=78228&phone=&firstname=Donald&lastname=Blair&address=&zipcode=78228"}}',
             status: 401,
             delay: 100,
         }).as('kbaFailCall');
